@@ -1,5 +1,5 @@
 // Coquille de l'appli en cache ; les données passent toujours par le réseau d'abord.
-const CACHE = "veille-afm-v1";
+const CACHE = "veille-afm-v2";
 const COQUILLE = ["./", "index.html", "manifest.webmanifest", "icons/icon-192.png"];
 self.addEventListener("install", e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(COQUILLE))); self.skipWaiting(); });
 self.addEventListener("activate", e => {
