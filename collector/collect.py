@@ -241,6 +241,7 @@ RE_STRATEGIE = r"acqui|merger|partner|collaborat|agreement|rachat|partenariat"
 RE_FINANCE = r"results|revenue|earnings|quarter|dividend|stock|shares|guidance|résultats"
 RE_FONCTION = (r"force curve|force-distance|nanodma|viscoelast|contact resonance|maugis|\bjkr\b|\bdmt\b|hertz|"
                r"critical dimension|roughness|correlative|multichannel|multi-channel|segmentation")
+RE_AFM = r"\bafm\b|atomic force|scanning probe|\bspm\b|nanoindent|kelvin probe|\bkpfm\b|force spectroscopy|cantilever"
 RE_ML = r"machine learning|deep learning|neural|random forest|automat|artificial intelligence"
 
 
@@ -256,9 +257,11 @@ def importance_pm(it, texte, tags):
 
     if cat == "logiciels":
         if grp == "Mountains":
-            if majeure or it["cited_by"] >= 10:
-                return 4, "MountainsSPIP dans une publication visible : référence client, argument commercial, note d'application."
-            return 3, "Publication utilisant Mountains : référence client à collecter."
+            if "spip" in t or a(RE_AFM):
+                if majeure or it["cited_by"] >= 10:
+                    return 4, "MountainsSPIP ou Mountains en AFM dans une publication visible : référence client, argument commercial, note d'application."
+                return 3, "Mountains utilisé en AFM : référence client MountainsSPIP à collecter."
+            return 2, "Mountains utilisé hors AFM (profilométrie, confocal, MEB…) : référence utile pour les autres produits de la gamme."
         if a(RE_FONCTION) or a(RE_ML):
             return 3, f"{grp} utilisé sur une analyse que MountainsSPIP couvre : à comparer, argumentaire de remplacement."
         return 2, f"Usage de {grp} : suivre l'implantation de la concurrence."
@@ -347,6 +350,8 @@ def main():
 
     limite = (AUJOURDHUI - dt.timedelta(days=cfg["conservation_jours"])).isoformat()
     items = [i for i in par_id.values() if i["first_seen"] >= limite]
+    for i in items:  # les règles évoluent : on renote tout à chaque passage
+        noter(i, cfg)
     items.sort(key=lambda i: (i["first_seen"], i["score"]), reverse=True)
 
     os.makedirs(os.path.dirname(FICHIER_ITEMS), exist_ok=True)
