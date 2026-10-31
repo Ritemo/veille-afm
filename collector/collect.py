@@ -24,7 +24,7 @@ FICHIER_CONFIG = os.path.join(RACINE, "config.json")
 FICHIER_ITEMS = os.path.join(RACINE, "data", "items.json")
 FICHIER_META = os.path.join(RACINE, "data", "meta.json")
 
-VERSION_REQUETES = 2  # à incrémenter quand les requêtes changent
+VERSION_REQUETES = 3  # à incrémenter quand les requêtes changent
 UA = "veille-afm/1.0 (robot personnel de veille scientifique)"
 AUJOURDHUI = dt.date.today()
 erreurs = []
@@ -105,7 +105,7 @@ def openalex_recherche(cfg, requete, depuis, cat, group):
         "search": requete,
         "filter": f"from_publication_date:{depuis}",
         "sort": "publication_date:desc",
-        "per-page": str(cfg["max_par_requete"]),
+        "per-page": str(cfg["max_par_requete"] if cat != "logiciels" else cfg["max_par_requete_logiciels"]),
     }
     url = "https://api.openalex.org/works?" + urllib.parse.urlencode(params)
     return [openalex_vers_item(w, cat, group) for w in get_json(url).get("results", [])]
@@ -127,7 +127,8 @@ def openalex_vers_item(w, cat, group):
 
 def europepmc_recherche(cfg, requete, depuis, cat, group):
     q = f"({requete}) AND FIRST_PDATE:[{depuis} TO {AUJOURDHUI.isoformat()}]"
-    params = {"query": q, "format": "json", "pageSize": str(cfg["max_par_requete"]),
+    taille = cfg["max_par_requete"] if cat != "logiciels" else cfg["max_par_requete_logiciels"]
+    params = {"query": q, "format": "json", "pageSize": str(taille),
               "resultType": "core", "sort": "P_PDATE_D desc"}
     url = "https://www.ebi.ac.uk/europepmc/webservices/rest/search?" + urllib.parse.urlencode(params)
     out = []
@@ -257,6 +258,8 @@ def importance_pm(it, texte, tags):
         return 3, "Ton travail est cité : contact à prendre, preuve de crédibilité scientifique."
 
     if cat == "logiciels":
+        if grp.startswith("SPIP"):
+            return 3, "Utilisateur de l'ancien SPIP : cible de migration vers MountainsSPIP, contact ou argumentaire de mise à jour."
         if grp == "Mountains":
             if "spip" in t or a(RE_AFM):
                 if majeure or it["cited_by"] >= 10:
@@ -290,7 +293,8 @@ def importance_pm(it, texte, tags):
 
 
 # ---------------------------------------------------------------- principal
-def collecter(cfg, depuis):
+def collecter(cfg, depuis, depuis_logiciels=None):
+    depuis_logiciels = depuis_logiciels or depuis
     lots = []
 
     def essai(nom, fn, *a):
@@ -306,12 +310,17 @@ def collecter(cfg, depuis):
     essai("Citations", citations, cfg, depuis)
     for logiciel, termes in cfg["logiciels"].items():
         req = " OR ".join(f'"{t}"' if '"' not in t and " " in t else t for t in termes)
+        afm = cfg["termes_afm"]
         if logiciel == "Mountains":
-            # seulement l'AFM : MountainsSPIP, ou un autre Mountains cité avec un sujet AFM dans le texte
+            # seulement l'AFM : MountainsSPIP (toutes graphies), ou un autre Mountains cité avec un sujet AFM
+            spip = " OR ".join(f'"{t}"' if " " in t else t for t in termes if "spip" in t.lower())
             autres = " OR ".join(f'"{t}"' if " " in t else t for t in termes if "spip" not in t.lower())
-            req = f"MountainsSPIP OR (({autres}) AND ({cfg['termes_afm']}))"
-        essai(f"OpenAlex {logiciel}", openalex_recherche, cfg, req, depuis, "logiciels", logiciel)
-        essai(f"Europe PMC {logiciel}", europepmc_recherche, cfg, req, depuis, "logiciels", logiciel)
+            req = f"{spip} OR (({autres}) AND ({afm}))"
+        elif logiciel.startswith("SPIP"):
+            # l'ancien SPIP (Image Metrology) : « SPIP » seul est ambigu, on exige un contexte
+            req = f'"SPIP software" OR ("Image Metrology" AND SPIP) OR (SPIP AND ({afm}))'
+        essai(f"OpenAlex {logiciel}", openalex_recherche, cfg, req, depuis_logiciels, "logiciels", logiciel)
+        essai(f"Europe PMC {logiciel}", europepmc_recherche, cfg, req, depuis_logiciels, "logiciels", logiciel)
     for theme, req in cfg["themes_afm"].items():
         essai(f"OpenAlex {theme}", openalex_recherche, cfg, req, depuis, "litterature", theme)
     for req in cfg["arxiv"]:
@@ -336,12 +345,15 @@ def main():
     rattrapage = meta_avant.get("version_requetes", 1) < VERSION_REQUETES
     jours = cfg["fenetre_jours_quotidienne"] if anciens and not rattrapage else cfg["fenetre_jours_premier_passage"]
     depuis = (AUJOURDHUI - dt.timedelta(days=jours)).isoformat()
+    # les mentions de logiciels sont rares : au rattrapage on remonte plus loin
+    jl = cfg["fenetre_jours_logiciels_rattrapage"] if (rattrapage or not anciens) else jours
+    depuis_logiciels = (AUJOURDHUI - dt.timedelta(days=jl)).isoformat()
     print(f"Collecte depuis le {depuis}")
 
     par_id = {it["id"]: it for it in anciens}
     nouveaux = 0
     priorite = {"citations": 0, "logiciels": 1, "constructeurs": 2, "litterature": 3}
-    for it in collecter(cfg, depuis):
+    for it in collecter(cfg, depuis, depuis_logiciels):
         if not it["title"]:
             continue
         noter(it, cfg)

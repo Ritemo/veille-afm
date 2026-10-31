@@ -3,19 +3,29 @@
   "fenetre_jours_quotidienne": 14,
   "conservation_jours": 400,
   "max_par_requete": 25,
-
   "auteur_suivi": "Mathieu Cognard",
   "dois_suivis": [],
-
   "termes_afm": "\"atomic force\" OR AFM OR \"scanning probe\" OR SPM OR nanoindentation OR KPFM OR \"force spectroscopy\"",
-
   "logiciels": {
-    "Mountains": ["MountainsSPIP", "MountainsMap", "MountainsSEM", "MountainsLab", "MountainsSpectral", "Digital Surf Mountains"],
-    "SPIP (historique)": ["\"Image Metrology\" SPIP"],
-    "Gwyddion": ["Gwyddion"],
-    "NanoScope Analysis": ["\"NanoScope Analysis\""]
+    "Mountains": [
+      "MountainsSPIP",
+      "Mountains SPIP",
+      "MountainsMap",
+      "MountainsSEM",
+      "MountainsLab",
+      "MountainsSpectral",
+      "Digital Surf"
+    ],
+    "SPIP (ancien)": [
+      "SPIP"
+    ],
+    "Gwyddion": [
+      "Gwyddion"
+    ],
+    "NanoScope Analysis": [
+      "\"NanoScope Analysis\""
+    ]
   },
-
   "themes_afm": {
     "Courbes de force": "\"atomic force microscopy\" \"force curves\" nanomechanics",
     "nanoDMA / viscoélasticité": "\"atomic force microscopy\" nanoDMA viscoelastic",
@@ -25,13 +35,11 @@
     "Machine learning et AFM": "\"machine learning\" \"atomic force microscopy\"",
     "AFM critical dimension": "\"atomic force microscopy\" \"critical dimension\" semiconductor"
   },
-
   "arxiv": [
     "abs:\"atomic force microscopy\" AND abs:nanomechanic*",
     "abs:\"atomic force microscopy\" AND abs:\"machine learning\"",
     "abs:\"AFM-IR\" OR abs:\"s-SNOM\""
   ],
-
   "constructeurs": {
     "Bruker": "Bruker AFM",
     "Park Systems": "\"Park Systems\"",
@@ -41,20 +49,56 @@
     "NT-MDT": "NT-MDT",
     "Digital Surf": "\"Digital Surf\" Mountains"
   },
-
   "mots_cles_prioritaires": [
-    "MountainsSPIP", "Mountains", "Digital Surf", "force curve", "force-distance", "nanoDMA",
-    "Maugis", "JKR", "DMT", "contact resonance", "AFM-IR", "nanoIR", "s-SNOM",
-    "machine learning", "random forest", "deep learning", "critical dimension",
-    "correlative", "automation", "automated"
+    "MountainsSPIP",
+    "Mountains",
+    "Digital Surf",
+    "force curve",
+    "force-distance",
+    "nanoDMA",
+    "Maugis",
+    "JKR",
+    "DMT",
+    "contact resonance",
+    "AFM-IR",
+    "nanoIR",
+    "s-SNOM",
+    "machine learning",
+    "random forest",
+    "deep learning",
+    "critical dimension",
+    "correlative",
+    "automation",
+    "automated"
   ],
-
   "revues_majeures": [
-    "Nature", "Science", "Nature Nanotechnology", "Nature Communications", "Nano Letters",
-    "ACS Nano", "Advanced Materials", "Small", "Nanoscale", "Ultramicroscopy",
-    "Beilstein Journal of Nanotechnology", "Review of Scientific Instruments",
-    "MRS Communications", "Journal of Applied Physics", "Applied Physics Letters"
+    "Nature",
+    "Science",
+    "Nature Nanotechnology",
+    "Nature Communications",
+    "Nano Letters",
+    "ACS Nano",
+    "Advanced Materials",
+    "Small",
+    "Nanoscale",
+    "Ultramicroscopy",
+    "Beilstein Journal of Nanotechnology",
+    "Review of Scientific Instruments",
+    "MRS Communications",
+    "Journal of Applied Physics",
+    "Applied Physics Letters"
   ],
-
-  "mots_annonce_produit": ["launch", "launches", "introduces", "unveils", "new", "release", "announces", "lance", "nouveau"]
+  "mots_annonce_produit": [
+    "launch",
+    "launches",
+    "introduces",
+    "unveils",
+    "new",
+    "release",
+    "announces",
+    "lance",
+    "nouveau"
+  ],
+  "fenetre_jours_logiciels_rattrapage": 365,
+  "max_par_requete_logiciels": 100
 }
