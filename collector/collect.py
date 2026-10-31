@@ -24,6 +24,7 @@ FICHIER_CONFIG = os.path.join(RACINE, "config.json")
 FICHIER_ITEMS = os.path.join(RACINE, "data", "items.json")
 FICHIER_META = os.path.join(RACINE, "data", "meta.json")
 
+VERSION_REQUETES = 2  # à incrémenter quand les requêtes changent
 UA = "veille-afm/1.0 (robot personnel de veille scientifique)"
 AUJOURDHUI = dt.date.today()
 erreurs = []
@@ -305,6 +306,10 @@ def collecter(cfg, depuis):
     essai("Citations", citations, cfg, depuis)
     for logiciel, termes in cfg["logiciels"].items():
         req = " OR ".join(f'"{t}"' if '"' not in t and " " in t else t for t in termes)
+        if logiciel == "Mountains":
+            # seulement l'AFM : MountainsSPIP, ou un autre Mountains cité avec un sujet AFM dans le texte
+            autres = " OR ".join(f'"{t}"' if " " in t else t for t in termes if "spip" not in t.lower())
+            req = f"MountainsSPIP OR (({autres}) AND ({cfg['termes_afm']}))"
         essai(f"OpenAlex {logiciel}", openalex_recherche, cfg, req, depuis, "logiciels", logiciel)
         essai(f"Europe PMC {logiciel}", europepmc_recherche, cfg, req, depuis, "logiciels", logiciel)
     for theme, req in cfg["themes_afm"].items():
@@ -323,7 +328,13 @@ def main():
     if os.path.exists(FICHIER_ITEMS):
         with open(FICHIER_ITEMS, encoding="utf-8") as f:
             anciens = json.load(f)
-    jours = cfg["fenetre_jours_quotidienne"] if anciens else cfg["fenetre_jours_premier_passage"]
+    meta_avant = {}
+    if os.path.exists(FICHIER_META):
+        with open(FICHIER_META, encoding="utf-8") as f:
+            meta_avant = json.load(f)
+    # nouvelles règles de recherche : on refait un passage long pour rattraper
+    rattrapage = meta_avant.get("version_requetes", 1) < VERSION_REQUETES
+    jours = cfg["fenetre_jours_quotidienne"] if anciens and not rattrapage else cfg["fenetre_jours_premier_passage"]
     depuis = (AUJOURDHUI - dt.timedelta(days=jours)).isoformat()
     print(f"Collecte depuis le {depuis}")
 
@@ -359,6 +370,7 @@ def main():
         json.dump(items, f, ensure_ascii=False, indent=0)
     with open(FICHIER_META, "w", encoding="utf-8") as f:
         json.dump({"maj": dt.datetime.now(dt.timezone.utc).isoformat(timespec="minutes"),
+                   "version_requetes": VERSION_REQUETES,
                    "nouveaux": nouveaux, "total": len(items), "erreurs": erreurs},
                   f, ensure_ascii=False, indent=1)
     print(f"{nouveaux} nouveautés, {len(items)} éléments au total, {len(erreurs)} erreur(s)")

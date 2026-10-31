@@ -7,6 +7,8 @@
   "auteur_suivi": "Mathieu Cognard",
   "dois_suivis": [],
 
+  "termes_afm": "\"atomic force\" OR AFM OR \"scanning probe\" OR SPM OR nanoindentation OR KPFM OR \"force spectroscopy\"",
+
   "logiciels": {
     "Mountains": ["MountainsSPIP", "MountainsMap", "MountainsSEM", "MountainsLab", "MountainsSpectral", "Digital Surf Mountains"],
     "SPIP (historique)": ["\"Image Metrology\" SPIP"],
