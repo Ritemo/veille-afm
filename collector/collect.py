@@ -1,0 +1,363 @@
+#!/usr/bin/env python3
+"""Robot de veille AFM.
+
+Collecte les nouveautés (articles, mentions de logiciels, actus constructeurs),
+les note avec des règles simples et les fusionne dans data/items.json.
+Bibliothèque standard uniquement : rien à installer dans GitHub Actions.
+"""
+import datetime as dt
+import email.utils
+import hashlib
+import html
+import json
+import math
+import os
+import re
+import sys
+import time
+import urllib.parse
+import urllib.request
+import xml.etree.ElementTree as ET
+
+RACINE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+FICHIER_CONFIG = os.path.join(RACINE, "config.json")
+FICHIER_ITEMS = os.path.join(RACINE, "data", "items.json")
+FICHIER_META = os.path.join(RACINE, "data", "meta.json")
+
+UA = "veille-afm/1.0 (robot personnel de veille scientifique)"
+AUJOURDHUI = dt.date.today()
+erreurs = []
+
+
+# ---------------------------------------------------------------- outils
+def http_get(url, essais=3):
+    for i in range(essais):
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": UA})
+            with urllib.request.urlopen(req, timeout=30) as r:
+                return r.read()
+        except Exception as e:  # noqa: BLE001
+            if i == essais - 1:
+                raise
+            time.sleep(2 * (i + 1))
+    return b""
+
+
+def get_json(url):
+    return json.loads(http_get(url).decode("utf-8"))
+
+
+def propre(texte, n=None):
+    if not texte:
+        return ""
+    t = html.unescape(re.sub(r"<[^>]+>", " ", str(texte)))
+    t = re.sub(r"\s+", " ", t).strip()
+    if n and len(t) > n:
+        t = t[: n - 1].rsplit(" ", 1)[0] + "…"
+    return t
+
+
+def norm_doi(doi):
+    if not doi:
+        return ""
+    return re.sub(r"^https?://(dx\.)?doi\.org/", "", doi.strip().lower())
+
+
+def cle(item):
+    if item.get("doi"):
+        return "doi:" + item["doi"]
+    titre = re.sub(r"[^a-z0-9]", "", item["title"].lower())[:80]
+    return "t:" + hashlib.sha1(titre.encode()).hexdigest()[:16]
+
+
+def resume_openalex(inv):
+    if not inv:
+        return ""
+    pos = []
+    for mot, idx in inv.items():
+        for i in idx:
+            pos.append((i, mot))
+    return " ".join(m for _, m in sorted(pos))
+
+
+def item(cat, titre, url, date, source, **kw):
+    it = {
+        "cat": cat,
+        "title": propre(titre, 300),
+        "url": url or "",
+        "date": (date or "")[:10],
+        "source": source,
+        "authors": propre(kw.get("authors", ""), 160),
+        "venue": propre(kw.get("venue", ""), 120),
+        "abstract": propre(kw.get("abstract", ""), 320),
+        "doi": norm_doi(kw.get("doi", "")),
+        "cited_by": int(kw.get("cited_by") or 0),
+        "group": kw.get("group", ""),
+    }
+    it["id"] = cle(it)
+    return it
+
+
+# ---------------------------------------------------------------- sources
+def openalex_recherche(cfg, requete, depuis, cat, group):
+    params = {
+        "search": requete,
+        "filter": f"from_publication_date:{depuis}",
+        "sort": "publication_date:desc",
+        "per-page": str(cfg["max_par_requete"]),
+    }
+    url = "https://api.openalex.org/works?" + urllib.parse.urlencode(params)
+    return [openalex_vers_item(w, cat, group) for w in get_json(url).get("results", [])]
+
+
+def openalex_vers_item(w, cat, group):
+    loc = (w.get("primary_location") or {})
+    src = (loc.get("source") or {})
+    auteurs = ", ".join(a["author"]["display_name"] for a in (w.get("authorships") or [])[:4]
+                        if a.get("author"))
+    if len(w.get("authorships") or []) > 4:
+        auteurs += " et al."
+    url = w.get("doi") or loc.get("landing_page_url") or w.get("id")
+    return item(cat, w.get("display_name") or "", url, w.get("publication_date"), "OpenAlex",
+                authors=auteurs, venue=src.get("display_name", ""),
+                abstract=resume_openalex(w.get("abstract_inverted_index")),
+                doi=w.get("doi"), cited_by=w.get("cited_by_count"), group=group)
+
+
+def europepmc_recherche(cfg, requete, depuis, cat, group):
+    q = f"({requete}) AND FIRST_PDATE:[{depuis} TO {AUJOURDHUI.isoformat()}]"
+    params = {"query": q, "format": "json", "pageSize": str(cfg["max_par_requete"]),
+              "resultType": "core", "sort": "P_PDATE_D desc"}
+    url = "https://www.ebi.ac.uk/europepmc/webservices/rest/search?" + urllib.parse.urlencode(params)
+    out = []
+    for r in get_json(url).get("resultList", {}).get("result", []):
+        doi = r.get("doi", "")
+        lien = f"https://doi.org/{doi}" if doi else f"https://europepmc.org/article/{r.get('source')}/{r.get('id')}"
+        out.append(item(cat, r.get("title", ""), lien, r.get("firstPublicationDate"), "Europe PMC",
+                        authors=r.get("authorString", ""), venue=r.get("journalTitle", ""),
+                        abstract=r.get("abstractText", ""), doi=doi,
+                        cited_by=r.get("citedByCount"), group=group))
+    return out
+
+
+def arxiv_recherche(cfg, requete, depuis):
+    params = {"search_query": requete, "sortBy": "submittedDate", "sortOrder": "descending",
+              "max_results": str(cfg["max_par_requete"])}
+    url = "https://export.arxiv.org/api/query?" + urllib.parse.urlencode(params)
+    ns = {"a": "http://www.w3.org/2005/Atom", "x": "http://arxiv.org/schemas/atom"}
+    racine = ET.fromstring(http_get(url))
+    out = []
+    for e in racine.findall("a:entry", ns):
+        date = (e.findtext("a:published", "", ns) or "")[:10]
+        if date and date < depuis:
+            continue
+        auteurs = [a.findtext("a:name", "", ns) for a in e.findall("a:author", ns)]
+        aff = ", ".join(auteurs[:4]) + (" et al." if len(auteurs) > 4 else "")
+        out.append(item("litterature", e.findtext("a:title", "", ns), e.findtext("a:id", "", ns),
+                        date, "arXiv", authors=aff, venue="arXiv (prépublication)",
+                        abstract=e.findtext("a:summary", "", ns),
+                        doi=e.findtext("x:doi", "", ns), group="arXiv"))
+    return out
+
+
+def gnews(requete, depuis, group):
+    jours = max(1, (AUJOURDHUI - dt.date.fromisoformat(depuis)).days)
+    q = f"{requete} when:{jours}d"
+    url = "https://news.google.com/rss/search?" + urllib.parse.urlencode(
+        {"q": q, "hl": "en-US", "gl": "US", "ceid": "US:en"})
+    racine = ET.fromstring(http_get(url))
+    out = []
+    for it in racine.iter("item"):
+        try:
+            date = email.utils.parsedate_to_datetime(it.findtext("pubDate")).date().isoformat()
+        except Exception:  # noqa: BLE001
+            date = ""
+        titre = it.findtext("title", "")
+        media = it.findtext("source", "")
+        if media and titre.endswith(" - " + media):
+            titre = titre[: -len(media) - 3]
+        out.append(item("constructeurs", titre, it.findtext("link", ""), date, "Google Actualités",
+                        venue=media, group=group))
+    return out
+
+
+def citations(cfg, depuis):
+    """Travaux qui citent les articles de l'auteur suivi (ou des DOI listés)."""
+    works = []
+    if cfg.get("auteur_suivi"):
+        url = "https://api.openalex.org/authors?" + urllib.parse.urlencode(
+            {"search": cfg["auteur_suivi"], "per-page": "5"})
+        for a in get_json(url).get("results", []):
+            if a.get("display_name", "").lower() != cfg["auteur_suivi"].lower():
+                continue
+            aid = a["id"].rsplit("/", 1)[-1]
+            url = "https://api.openalex.org/works?" + urllib.parse.urlencode(
+                {"filter": f"author.id:{aid}", "per-page": "50", "select": "id,display_name"})
+            works += get_json(url).get("results", [])
+    for doi in cfg.get("dois_suivis", []):
+        try:
+            works.append(get_json("https://api.openalex.org/works/doi:" + norm_doi(doi)))
+        except Exception as e:  # noqa: BLE001
+            erreurs.append(f"DOI {doi} : {e}")
+    out = []
+    for w in works:
+        wid = w["id"].rsplit("/", 1)[-1]
+        url = "https://api.openalex.org/works?" + urllib.parse.urlencode(
+            {"filter": f"cites:{wid},from_publication_date:{depuis}", "per-page": "50"})
+        for c in get_json(url).get("results", []):
+            out.append(openalex_vers_item(c, "citations", "Cite : " + propre(w.get("display_name"), 70)))
+    return out
+
+
+# ---------------------------------------------------------------- notation
+def noter(it, cfg):
+    base = {"citations": 60, "logiciels": 40, "constructeurs": 30, "litterature": 20}[it["cat"]]
+    texte = (it["title"] + " " + it["abstract"]).lower()
+    tags = [m for m in cfg["mots_cles_prioritaires"] if m.lower() in texte]
+    s = base + min(30, 10 * len(tags))
+    if it["cat"] == "logiciels" and it["group"] == "Mountains":
+        s += 20
+    if it["cited_by"]:
+        s += min(15, round(5 * math.log10(1 + it["cited_by"])))
+    if any(r.lower() == it["venue"].lower() for r in cfg["revues_majeures"]):
+        s += 10
+        tags.append("revue majeure")
+    if it["cat"] == "constructeurs":
+        mots = re.findall(r"[a-zà-ÿ]+", it["title"].lower())
+        if any(m in mots for m in cfg["mots_annonce_produit"]):
+            s += 20
+            tags.append("annonce")
+    it["score"] = min(100, s)
+    it["tags"] = tags
+    it["imp"], it["pm"] = importance_pm(it, texte, tags)
+    return it
+
+
+# ---------------------------------------------------------------- importance Product Manager
+# 4 = critique, 3 = haute, 2 = moyenne, 1 = faible, vu depuis le poste de PM AFM chez Digital Surf
+RE_LOGICIEL = r"software|analysis|analytics|automat|\bai\b|artificial intelligence|machine learning|data|algorithm|platform"
+RE_MATERIEL = r"\bafm\b|atomic force|microscop|probe|cantilever|\bmode\b|nanoir|afm-ir|s-snom|scanner"
+RE_STRATEGIE = r"acqui|merger|partner|collaborat|agreement|rachat|partenariat"
+RE_FINANCE = r"results|revenue|earnings|quarter|dividend|stock|shares|guidance|résultats"
+RE_FONCTION = (r"force curve|force-distance|nanodma|viscoelast|contact resonance|maugis|\bjkr\b|\bdmt\b|hertz|"
+               r"critical dimension|roughness|correlative|multichannel|multi-channel|segmentation")
+RE_ML = r"machine learning|deep learning|neural|random forest|automat|artificial intelligence"
+
+
+def importance_pm(it, texte, tags):
+    cat, grp, t = it["cat"], it["group"], texte
+    majeure = "revue majeure" in tags
+    a = lambda r: re.search(r, t) is not None  # noqa: E731
+
+    if cat == "citations":
+        if "mountains" in t:
+            return 4, "Ton travail est cité ET Mountains est mentionné : cas d'usage idéal à valoriser."
+        return 3, "Ton travail est cité : contact à prendre, preuve de crédibilité scientifique."
+
+    if cat == "logiciels":
+        if grp == "Mountains":
+            if majeure or it["cited_by"] >= 10:
+                return 4, "MountainsSPIP dans une publication visible : référence client, argument commercial, note d'application."
+            return 3, "Publication utilisant Mountains : référence client à collecter."
+        if a(RE_FONCTION) or a(RE_ML):
+            return 3, f"{grp} utilisé sur une analyse que MountainsSPIP couvre : à comparer, argumentaire de remplacement."
+        return 2, f"Usage de {grp} : suivre l'implantation de la concurrence."
+
+    if cat == "constructeurs":
+        if grp == "Digital Surf":
+            return 3, "On parle de Digital Surf : à relayer ou à surveiller."
+        if a(RE_STRATEGIE):
+            return 4, f"Mouvement stratégique chez {grp} : impact possible sur le partenariat et la distribution."
+        if a(RE_FINANCE):
+            return 1, "Information financière : peu d'impact produit."
+        annonce = "annonce" in tags
+        if annonce and a(RE_LOGICIEL):
+            return 4, f"{grp} avance côté logiciel ou analyse : à confronter à la feuille de route MountainsSPIP."
+        if annonce and a(RE_MATERIEL):
+            return 3, f"Nouveau matériel ou mode chez {grp} : vérifier l'import des fichiers et les fonctions d'analyse associées."
+        return 2, f"Actualité {grp} : contexte marché."
+
+    # littérature
+    if a(RE_ML) and a(RE_FONCTION):
+        return 3, "Méthode d'analyse automatisée sur un sujet MountainsSPIP : piste de fonctionnalité."
+    if a(RE_FONCTION) or majeure:
+        return 2, "Tendance scientifique sur une analyse couverte par Mountains : veille de fond utile."
+    return 1, "Veille scientifique générale."
+
+
+# ---------------------------------------------------------------- principal
+def collecter(cfg, depuis):
+    lots = []
+
+    def essai(nom, fn, *a):
+        try:
+            r = fn(*a)
+            print(f"  {nom} : {len(r)}")
+            lots.extend(r)
+        except Exception as e:  # noqa: BLE001
+            erreurs.append(f"{nom} : {e}")
+            print(f"  {nom} : ERREUR {e}", file=sys.stderr)
+        time.sleep(1)
+
+    essai("Citations", citations, cfg, depuis)
+    for logiciel, termes in cfg["logiciels"].items():
+        req = " OR ".join(f'"{t}"' if '"' not in t and " " in t else t for t in termes)
+        essai(f"OpenAlex {logiciel}", openalex_recherche, cfg, req, depuis, "logiciels", logiciel)
+        essai(f"Europe PMC {logiciel}", europepmc_recherche, cfg, req, depuis, "logiciels", logiciel)
+    for theme, req in cfg["themes_afm"].items():
+        essai(f"OpenAlex {theme}", openalex_recherche, cfg, req, depuis, "litterature", theme)
+    for req in cfg["arxiv"]:
+        essai(f"arXiv {req[:40]}", arxiv_recherche, cfg, req, depuis)
+    for nom, req in cfg["constructeurs"].items():
+        essai(f"Actus {nom}", gnews, req, depuis, nom)
+    return lots
+
+
+def main():
+    with open(FICHIER_CONFIG, encoding="utf-8") as f:
+        cfg = json.load(f)
+    anciens = []
+    if os.path.exists(FICHIER_ITEMS):
+        with open(FICHIER_ITEMS, encoding="utf-8") as f:
+            anciens = json.load(f)
+    jours = cfg["fenetre_jours_quotidienne"] if anciens else cfg["fenetre_jours_premier_passage"]
+    depuis = (AUJOURDHUI - dt.timedelta(days=jours)).isoformat()
+    print(f"Collecte depuis le {depuis}")
+
+    par_id = {it["id"]: it for it in anciens}
+    nouveaux = 0
+    priorite = {"citations": 0, "logiciels": 1, "constructeurs": 2, "litterature": 3}
+    for it in collecter(cfg, depuis):
+        if not it["title"]:
+            continue
+        noter(it, cfg)
+        ex = par_id.get(it["id"])
+        if ex:
+            # même publication trouvée par plusieurs requêtes : on garde la catégorie la plus forte
+            if priorite[it["cat"]] < priorite[ex["cat"]]:
+                it["first_seen"] = ex["first_seen"]
+                par_id[it["id"]] = it
+            else:
+                ex["cited_by"] = max(ex.get("cited_by", 0), it["cited_by"])
+                noter(ex, cfg)
+            continue
+        it["first_seen"] = AUJOURDHUI.isoformat()
+        par_id[it["id"]] = it
+        nouveaux += 1
+
+    limite = (AUJOURDHUI - dt.timedelta(days=cfg["conservation_jours"])).isoformat()
+    items = [i for i in par_id.values() if i["first_seen"] >= limite]
+    items.sort(key=lambda i: (i["first_seen"], i["score"]), reverse=True)
+
+    os.makedirs(os.path.dirname(FICHIER_ITEMS), exist_ok=True)
+    with open(FICHIER_ITEMS, "w", encoding="utf-8") as f:
+        json.dump(items, f, ensure_ascii=False, indent=0)
+    with open(FICHIER_META, "w", encoding="utf-8") as f:
+        json.dump({"maj": dt.datetime.now(dt.timezone.utc).isoformat(timespec="minutes"),
+                   "nouveaux": nouveaux, "total": len(items), "erreurs": erreurs},
+                  f, ensure_ascii=False, indent=1)
+    print(f"{nouveaux} nouveautés, {len(items)} éléments au total, {len(erreurs)} erreur(s)")
+
+
+if __name__ == "__main__":
+    main()

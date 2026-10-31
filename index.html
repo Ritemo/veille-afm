@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Veille AFM</title>
+<meta name="theme-color" content="#0b1118">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b1118; --panel:#121a24; --panel2:#18222f; --line:#233142;
+  --txt:#e6edf5; --dim:#8a9bb0; --faint:#5d6f85;
+  --laser:#3fd0c9; --laser-dim:rgba(63,208,201,.14);
+  --hot:#ff7a59; --warm:#f2c14e; --cool:#6b8bd6;
+  --r:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--txt);font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:15px;line-height:1.45}
+body{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.mono{font-family:"IBM Plex Mono",monospace}
+
+header{position:sticky;top:0;z-index:5;background:rgba(11,17,24,.92);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);padding:calc(10px + env(safe-area-inset-top)) 16px 10px}
+.top{display:flex;align-items:center;gap:10px}
+.logo{width:30px;height:30px;flex:none}
+h1{font-size:18px;font-weight:600;letter-spacing:.2px}
+.maj{margin-left:auto;font-size:11px;color:var(--faint);text-align:right}
+.maj b{color:var(--laser);font-weight:500}
+.tools{display:flex;gap:8px;margin-top:10px}
+.search{flex:1;background:var(--panel);border:1px solid var(--line);border-radius:10px;
+  padding:8px 12px;color:var(--txt);font:inherit;font-size:14px;min-width:0}
+.search:focus{outline:none;border-color:var(--laser)}
+.toggle{border:1px solid var(--line);border-radius:10px;padding:0 10px;font-size:12px;color:var(--dim);white-space:nowrap}
+.toggle.on{border-color:var(--laser);color:var(--laser);background:var(--laser-dim)}
+.chips{display:flex;gap:6px;overflow-x:auto;padding:10px 16px 2px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1px solid var(--line);border-radius:999px;padding:4px 11px;font-size:12px;color:var(--dim)}
+.chip.on{background:var(--txt);color:var(--bg);border-color:var(--txt)}
+.chip small{opacity:.6;margin-left:3px}
+
+main{max-width:760px;margin:0 auto;padding:12px 16px}
+.sect{font-size:11px;letter-spacing:1.2px;text-transform:uppercase;color:var(--faint);margin:18px 2px 8px}
+.sect:first-child{margin-top:4px}
+
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:13px 14px 10px;margin-bottom:10px;
+  display:grid;grid-template-columns:40px 1fr;gap:4px 12px;transition:opacity .2s}
+.card.lu{opacity:.48}
+.score{grid-row:span 3;width:40px;height:40px;border-radius:10px;display:grid;place-items:center;
+  font-family:"IBM Plex Mono",monospace;font-size:14px;font-weight:500}
+.i4{background:rgba(255,122,89,.16);color:var(--hot)}
+.i3{background:rgba(242,193,78,.14);color:var(--warm)}
+.i2{background:rgba(107,139,214,.14);color:var(--cool)}
+.i1{background:rgba(93,111,133,.14);color:var(--faint)}
+.lvl{border-radius:4px;padding:0 5px;font-size:10px;font-weight:600;letter-spacing:.5px}
+.pm{grid-column:2;font-size:12.5px;color:var(--txt);opacity:.85;margin-top:5px;padding-left:9px;border-left:2px solid var(--line)}
+.pm b{color:var(--laser);font-weight:500}
+.meta{font-size:11.5px;color:var(--dim);display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center}
+.new{background:var(--laser);color:var(--bg);border-radius:4px;padding:0 5px;font-size:10px;font-weight:600;letter-spacing:.5px}
+.grp{color:var(--laser)}
+.title{font-weight:500;font-size:15px;line-height:1.35;text-decoration:none}
+.title:hover{text-decoration:underline}
+.sub{font-size:12px;color:var(--faint)}
+.abs{grid-column:2;font-size:13px;color:var(--dim);display:none;margin-top:4px}
+.card.open .abs{display:block}
+.tags{grid-column:2;display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.tag{font-size:10.5px;border:1px solid var(--line);border-radius:5px;padding:0 6px;color:var(--dim)}
+.acts{grid-column:2;display:flex;gap:2px;margin-top:6px;margin-left:-8px}
+.act{white-space:nowrap;font-size:12px;color:var(--faint);padding:5px 8px;border-radius:8px;display:flex;gap:5px;align-items:center}
+.act:hover{background:var(--panel2);color:var(--txt)}
+.act.on{color:var(--laser)}
+.act.star.on{color:var(--warm)}
+.act svg{width:15px;height:15px}
+
+.synth{background:linear-gradient(160deg,var(--panel2),var(--panel));border:1px solid var(--line);border-left:3px solid var(--laser);
+  border-radius:var(--r);padding:14px 16px;margin-bottom:6px;font-size:14px}
+.synth h2,.synth h3{font-size:15px;margin:10px 0 4px}
+.synth h2:first-child,.synth h3:first-child{margin-top:0}
+.synth p{margin:6px 0;color:var(--dim)}
+.synth ul{margin:6px 0 6px 18px;color:var(--dim)}
+.synth li{margin:3px 0}
+.synth strong{color:var(--txt)}
+.synth a{color:var(--laser)}
+.empty{text-align:center;color:var(--faint);padding:50px 20px;font-size:14px}
+.more{display:block;width:100%;padding:12px;border:1px dashed var(--line);border-radius:var(--r);color:var(--dim);font-size:13px}
+.err{font-size:12px;color:var(--hot);margin:4px 2px}
+
+nav{position:fixed;bottom:0;left:0;right:0;z-index:5;background:rgba(18,26,36,.96);backdrop-filter:blur(10px);
+  border-top:1px solid var(--line);display:flex;justify-content:space-around;padding:6px 4px calc(6px + env(safe-area-inset-bottom))}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:10.5px;color:var(--faint);padding:4px 0;position:relative}
+.tab svg{width:22px;height:22px}
+.tab.on{color:var(--laser)}
+.badge{position:absolute;top:0;left:calc(50% + 6px);background:var(--hot);color:#fff;border-radius:999px;font-size:9.5px;
+  min-width:16px;height:16px;padding:0 4px;display:grid;place-items:center;font-weight:600}
+@media (min-width:760px){ nav{max-width:760px;margin:0 auto;border:1px solid var(--line);border-bottom:0;border-radius:16px 16px 0 0} }
+</style>
+</head>
+<body>
+<header>
+  <div class="top">
+    <svg class="logo" viewBox="0 0 32 32" aria-hidden="true">
+      <path d="M3 25c4 0 5-6 8-6s4 4 7 4 4-9 7-9 3 5 4 5" fill="none" stroke="#3fd0c9" stroke-width="2" stroke-linecap="round"/>
+      <path d="M13 3h6l-3 8z" fill="#e6edf5"/><line x1="16" y1="11" x2="16" y2="17" stroke="#ff7a59" stroke-width="1.5" stroke-dasharray="1.5 1.5"/>
+    </svg>
+    <h1>Veille AFM</h1>
+    <div class="maj mono" id="maj">chargement…</div>
+  </div>
+  <div class="tools">
+    <input class="search" id="q" type="search" placeholder="Titre, auteur, revue…">
+    <button class="toggle" id="lvlBtn">Tous niveaux</button>
+    <button class="toggle" id="hideRead">Masquer lus</button>
+  </div>
+</header>
+<div class="chips" id="chips"></div>
+<main id="list"><div class="empty">Chargement…</div></main>
+<nav id="nav"></nav>
+
+<script>
+(function(){
+  const TABS = [
+    {id:"une", label:"À la une", icon:'<path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.3 6L12 16.4 6.6 19.4l1.3-6L3.4 9.3l6-.7z"/>'},
+    {id:"citations", label:"Citations", icon:'<path d="M7 7h4v4c0 3-1.5 5-4 6M15 7h4v4c0 3-1.5 5-4 6"/>'},
+    {id:"logiciels", label:"Logiciels", icon:'<rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M3 13l5-4 4 3 4-5 5 4"/>'},
+    {id:"constructeurs", label:"Constructeurs", icon:'<path d="M4 20V9l5 3V9l5 3V5h6v15z"/>'},
+    {id:"litterature", label:"Littérature", icon:'<path d="M4 5c3-1 6-1 8 1 2-2 5-2 8-1v14c-3-1-6-1-8 1-2-2-5-2-8-1zM12 6v14"/>'},
+    {id:"creuser", label:"À creuser", icon:'<path d="M6 3h12v18l-6-4-6 4z"/>'}
+  ];
+  const ICO = {
+    open:'<path d="M6 9l6 6 6-6"/>',
+    lu:'<path d="M4 12l5 5L20 6"/>',
+    star:'<path d="M6 3h12v18l-6-4-6 4z"/>',
+    share:'<path d="M12 3v12M7 8l5-5 5 5M5 14v6h14v-6"/>'
+  };
+  const svg = (p, fill) => `<svg viewBox="0 0 24 24" fill="${fill||"none"}" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${p}</svg>`;
+
+  // ---------- stockage local (statuts lu / à creuser, dernière visite)
+  const KEY = "veilleafm_v1";
+  let st = {lu:{}, creuser:{}, lastVisit:"", prevVisit:"", tab:"une", hideRead:false, minImp:1};
+  const NIV = {4:"CRITIQUE",3:"HAUTE",2:"MOYENNE",1:"FAIBLE"}, LVL_LBL = {1:"Tous niveaux",3:"Haute et +",4:"Critique"};
+  const imp = i => i.imp || 2;
+  try { Object.assign(st, JSON.parse(localStorage.getItem(KEY) || "{}")); } catch(e) {}
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch(e) {} };
+  const today = new Date().toISOString().slice(0,10);
+  if (st.lastVisit !== today) { st.prevVisit = st.lastVisit || "0000"; st.lastVisit = today; save(); }
+
+  const ouverts = {};
+  let items = [], meta = {}, synthese = "", group = "", q = "", shown = 40;
+  const $ = s => document.querySelector(s);
+  const esc = s => String(s||"").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const isNew = it => it.first_seen > st.prevVisit;
+  const fmtDate = d => d ? new Date(d+"T12:00:00").toLocaleDateString("fr-FR",{day:"numeric",month:"short",year:"numeric"}) : "";
+
+  function md(t){
+    const inl = s => esc(s).replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>").replace(/\[(.+?)\]\((https?:[^)]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>');
+    let out = "", inList = false;
+    t.split(/\n/).forEach(l => {
+      const m = l.match(/^\s*[-*]\s+(.*)/);
+      if (m) { if(!inList){out+="<ul>";inList=true;} out += "<li>"+inl(m[1])+"</li>"; return; }
+      if (inList) { out+="</ul>"; inList=false; }
+      if (/^###?\s/.test(l)) out += "<h3>"+inl(l.replace(/^#+\s/,""))+"</h3>";
+      else if (/^#\s/.test(l)) out += "<h2>"+inl(l.slice(2))+"</h2>";
+      else if (l.trim()) out += "<p>"+inl(l)+"</p>";
+    });
+    return out + (inList ? "</ul>" : "");
+  }
+
+  function pool(){
+    if (st.tab === "creuser") return items.filter(i => st.creuser[i.id]);
+    if (st.tab === "une") {
+      const lim = new Date(Date.now()-14*864e5).toISOString().slice(0,10);
+      return items.filter(i => i.first_seen >= lim && imp(i) >= 3).sort((a,b)=>imp(b)-imp(a) || b.score-a.score);
+    }
+    return items.filter(i => i.cat === st.tab);
+  }
+
+  function filtered(){
+    let l = pool();
+    if (group) l = l.filter(i => i.group === group);
+    if (st.minImp > 1) l = l.filter(i => imp(i) >= st.minImp);
+    if (st.hideRead && st.tab !== "creuser") l = l.filter(i => !st.lu[i.id]);
+    if (q) { const k = q.toLowerCase(); l = l.filter(i => (i.title+" "+i.authors+" "+i.venue+" "+i.abstract+" "+i.group).toLowerCase().includes(k)); }
+    return l;
+  }
+
+  function renderNav(){
+    $("#nav").innerHTML = TABS.map(t => {
+      const n = t.id==="creuser" ? 0 : (t.id==="une" ? 0 : items.filter(i => i.cat===t.id && isNew(i) && !st.lu[i.id]).length);
+      return `<button class="tab ${st.tab===t.id?"on":""}" data-tab="${t.id}">${svg(t.icon, t.id==="creuser"&&st.tab===t.id?"currentColor":"none")}${t.label}${n?`<span class="badge">${n>99?"99+":n}</span>`:""}</button>`;
+    }).join("");
+  }
+
+  function renderChips(){
+    if (st.tab === "une" || st.tab === "creuser") { $("#chips").innerHTML = ""; $("#chips").style.display="none"; return; }
+    $("#chips").style.display="";
+    const c = {}; pool().forEach(i => c[i.group] = (c[i.group]||0)+1);
+    const groups = Object.keys(c).sort((a,b)=>c[b]-c[a]);
+    if (group && !c[group]) group = "";
+    $("#chips").innerHTML = `<button class="chip ${!group?"on":""}" data-g="">Tout<small>${pool().length}</small></button>` +
+      groups.map(g => `<button class="chip ${group===g?"on":""}" data-g="${esc(g)}">${esc(g)}<small>${c[g]}</small></button>`).join("");
+  }
+
+  function card(i){
+    const cls = "i"+imp(i);
+    return `<article class="card ${st.lu[i.id]?"lu":""} ${ouverts[i.id]?"open":""}" data-id="${esc(i.id)}">
+      <div class="score ${cls}" title="Score de pertinence">${i.score}</div>
+      <div class="meta"><span class="lvl ${cls}">${NIV[imp(i)]}</span>${isNew(i)?'<span class="new">NOUVEAU</span>':""}<span class="grp">${esc(i.group)}</span><span>${fmtDate(i.date)}</span>${i.cited_by?`<span class="mono">${i.cited_by} cit.</span>`:""}</div>
+      <a class="title" href="${esc(i.url)}" target="_blank" rel="noopener">${esc(i.title)}</a>
+      <div class="sub">${esc([i.venue, i.authors].filter(Boolean).join(" · "))}</div>
+      ${i.pm?`<div class="pm"><b>Pour toi :</b> ${esc(i.pm)}</div>`:""}
+      ${i.abstract?`<div class="abs">${esc(i.abstract)}</div>`:""}
+      ${i.tags&&i.tags.length?`<div class="tags">${i.tags.map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div>`:""}
+      <div class="acts">
+        ${i.abstract?`<button class="act" data-a="open">${svg(ICO.open)}Résumé</button>`:""}
+        <button class="act ${st.lu[i.id]?"on":""}" data-a="lu">${svg(ICO.lu)}Lu</button>
+        <button class="act star ${st.creuser[i.id]?"on":""}" data-a="creuser">${svg(ICO.star, st.creuser[i.id]?"currentColor":"none")}Creuser</button>
+        <button class="act" data-a="share">${svg(ICO.share)}</button>
+      </div></article>`;
+  }
+
+  function render(){
+    renderNav(); renderChips();
+    const l = filtered();
+    let h = "";
+    if (st.tab === "une") {
+      if (synthese) h += `<div class="sect">Synthèse de la semaine</div><div class="synth">${md(synthese)}</div>`;
+      if (meta.erreurs && meta.erreurs.length) h += `<div class="err">Dernier passage : ${meta.erreurs.length} source(s) en erreur.</div>`;
+      h += `<div class="sect">Importance haute et critique, 14 derniers jours</div>`;
+    }
+    if (!l.length) h += `<div class="empty">${st.tab==="creuser"?"Rien de marqué « à creuser » pour l'instant.":"Aucun élément ici pour le moment."}</div>`;
+    h += l.slice(0, shown).map(card).join("");
+    if (l.length > shown) h += `<button class="more" id="more">Afficher ${Math.min(40, l.length-shown)} de plus (${l.length-shown} restants)</button>`;
+    $("#list").innerHTML = h;
+  }
+
+  // ---------- événements (délégation)
+  document.addEventListener("click", e => {
+    const t = e.target.closest("[data-tab]");
+    if (t) { st.tab = t.dataset.tab; group = ""; shown = 40; save(); render(); scrollTo(0,0); return; }
+    const c = e.target.closest("[data-g]");
+    if (c) { group = c.dataset.g; shown = 40; render(); return; }
+    if (e.target.closest("#more")) { shown += 40; render(); return; }
+    if (e.target.closest("#lvlBtn")) { st.minImp = st.minImp===1?3:st.minImp===3?4:1; save(); majLvl(); render(); return; }
+    if (e.target.closest("#hideRead")) { st.hideRead = !st.hideRead; save(); $("#hideRead").classList.toggle("on", st.hideRead); render(); return; }
+    const a = e.target.closest("[data-a]");
+    if (!a) return;
+    const el = a.closest(".card"), id = el.dataset.id, it = items.find(i => i.id === id);
+    if (a.dataset.a === "open") { ouverts[id] = !ouverts[id]; el.classList.toggle("open"); return; }
+    if (a.dataset.a === "share") {
+      if (navigator.share) navigator.share({title: it.title, url: it.url}).catch(()=>{});
+      else navigator.clipboard && navigator.clipboard.writeText(it.title+"\n"+it.url);
+      return;
+    }
+    const k = a.dataset.a;
+    if (st[k][id]) delete st[k][id]; else st[k][id] = 1;
+    save(); render();
+  });
+  document.addEventListener("click", e => {
+    const ti = e.target.closest(".title");
+    if (ti) { const id = ti.closest(".card").dataset.id; if (!st.lu[id]) { st.lu[id]=1; save(); setTimeout(render, 300); } }
+  }, true);
+  let tq; $("#q").addEventListener("input", e => { clearTimeout(tq); tq = setTimeout(() => { q = e.target.value.trim(); shown = 40; render(); }, 150); });
+  $("#hideRead").classList.toggle("on", st.hideRead);
+  function majLvl(){ const b=$("#lvlBtn"); b.textContent = LVL_LBL[st.minImp]; b.classList.toggle("on", st.minImp>1); }
+  majLvl();
+
+  // ---------- chargement
+  const v = "?t=" + Date.now();
+  Promise.all([
+    fetch("data/items.json"+v).then(r => r.ok ? r.json() : []).catch(() => []),
+    fetch("data/meta.json"+v).then(r => r.ok ? r.json() : {}).catch(() => ({})),
+    fetch("data/synthese.md"+v).then(r => r.ok ? r.text() : "").catch(() => "")
+  ]).then(([a, m, s]) => {
+    items = a; meta = m; synthese = s.trim();
+    const nouv = items.filter(isNew).length;
+    $("#maj").innerHTML = meta.maj ? `màj ${new Date(meta.maj).toLocaleDateString("fr-FR",{day:"numeric",month:"short"})}<br><b>${nouv}</b> nouveau${nouv>1?"x":""}` : "pas encore de données";
+    render();
+  });
+
+  if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(()=>{});
+})();
+</script>
+</body>
+</html>

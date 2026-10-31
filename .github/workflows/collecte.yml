@@ -1,0 +1,27 @@
+name: Collecte veille AFM
+
+on:
+  schedule:
+    - cron: "17 4 * * *"   # tous les jours vers 5h-6h heure de Paris
+  workflow_dispatch:         # bouton "Run workflow" pour lancer à la main
+
+permissions:
+  contents: write
+
+jobs:
+  collecte:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Collecter
+        run: python collector/collect.py
+      - name: Enregistrer les données
+        run: |
+          git config user.name "robot-veille"
+          git config user.email "robot-veille@users.noreply.github.com"
+          git add data/
+          git diff --cached --quiet || git commit -m "Veille du $(date +%F)"
+          git push
