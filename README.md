@@ -8,9 +8,11 @@ Veille personnelle : qui cite mes travaux, qui utilise Mountains (et les logicie
 |---|---|
 | `collector/collect.py` | Robot (Python, sans dépendance). Interroge OpenAlex, Europe PMC (plein texte, utile pour les sections Méthodes), arXiv et Google Actualités, note chaque élément, fusionne dans `data/items.json` |
 | `config.json` | Tout ce qui se règle : mots-clés, thèmes, constructeurs, logiciels suivis, revues majeures, fenêtres de temps |
-| `.github/workflows/collecte.yml` | Lance le robot chaque jour vers 5h et enregistre les données |
+| `.github/workflows/collecte.yml` | Lance le robot chaque nuit vers 2h20 et enregistre les données |
 | `index.html` + `sw.js` + `manifest.webmanifest` | L'appli, hébergée sur GitHub Pages, installable sur Android |
-| `data/synthese.md` | (facultatif) synthèse hebdomadaire affichée en tête de « À la une » |
+| `data/abstracts.json` | Résumés complets en anglais, écrits par le robot, lus par la tâche de nuit |
+| `data/resumes.json` | Résumés en français, titre traduit, infos utiles et accès libre, écrits chaque nuit par une tâche planifiée Claude (40 éléments par nuit, les plus importants d'abord) |
+| `data/synthese.md` | Synthèse hebdomadaire du lundi, affichée en tête de « À la une » et envoyée par mail |
 
 ### L'importance pour le PM AFM (Critique, Haute, Moyenne, Faible)
 Chaque élément reçoit un niveau et une phrase « Pour toi » qui dit pourquoi ça compte pour MountainsSPIP. Exemples : un constructeur qui annonce du logiciel ou de l'automatisation est Critique, un nouveau mode matériel est Haute (vérifier l'import des fichiers), un concurrent utilisé sur une analyse couverte par Mountains est Haute, des résultats financiers sont Faible. Les règles sont dans `importance_pm()` du robot. « À la une » affiche Haute et Critique des 14 derniers jours ; le bouton de niveau filtre tous les onglets.

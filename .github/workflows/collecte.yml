@@ -2,7 +2,7 @@ name: Collecte veille AFM
 
 on:
   schedule:
-    - cron: "17 4 * * *"   # tous les jours vers 5h-6h heure de Paris
+    - cron: "17 1 * * *"   # chaque nuit vers 2h-3h heure de Paris, avant les résumés
   workflow_dispatch:         # bouton "Run workflow" pour lancer à la main
 
 permissions:

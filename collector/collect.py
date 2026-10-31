@@ -23,8 +23,9 @@ RACINE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FICHIER_CONFIG = os.path.join(RACINE, "config.json")
 FICHIER_ITEMS = os.path.join(RACINE, "data", "items.json")
 FICHIER_META = os.path.join(RACINE, "data", "meta.json")
+FICHIER_RESUMES_EN = os.path.join(RACINE, "data", "abstracts.json")  # résumés complets pour la tâche de nuit
 
-VERSION_REQUETES = 3  # à incrémenter quand les requêtes changent
+VERSION_REQUETES = 4  # à incrémenter quand les requêtes changent
 UA = "veille-afm/1.0 (robot personnel de veille scientifique)"
 AUJOURDHUI = dt.date.today()
 erreurs = []
@@ -94,8 +95,11 @@ def item(cat, titre, url, date, source, **kw):
         "doi": norm_doi(kw.get("doi", "")),
         "cited_by": int(kw.get("cited_by") or 0),
         "group": kw.get("group", ""),
+        "oa": kw.get("oa"),            # True gratuit, False payant, None inconnu
+        "oa_url": kw.get("oa_url") or "",
     }
     it["id"] = cle(it)
+    it["_abs"] = propre(kw.get("abstract", ""), 2500)
     return it
 
 
@@ -122,7 +126,10 @@ def openalex_vers_item(w, cat, group):
     return item(cat, w.get("display_name") or "", url, w.get("publication_date"), "OpenAlex",
                 authors=auteurs, venue=src.get("display_name", ""),
                 abstract=resume_openalex(w.get("abstract_inverted_index")),
-                doi=w.get("doi"), cited_by=w.get("cited_by_count"), group=group)
+                doi=w.get("doi"), cited_by=w.get("cited_by_count"), group=group,
+                oa=(w.get("open_access") or {}).get("is_oa"),
+                oa_url=(w.get("open_access") or {}).get("oa_url")
+                or ((w.get("best_oa_location") or {}).get("pdf_url")))
 
 
 def europepmc_recherche(cfg, requete, depuis, cat, group):
@@ -135,10 +142,20 @@ def europepmc_recherche(cfg, requete, depuis, cat, group):
     for r in get_json(url).get("resultList", {}).get("result", []):
         doi = r.get("doi", "")
         lien = f"https://doi.org/{doi}" if doi else f"https://europepmc.org/article/{r.get('source')}/{r.get('id')}"
+        libre = r.get("isOpenAccess") == "Y" or r.get("inEPMC") == "Y"
+        oa_url = ""
+        for u in (r.get("fullTextUrlList") or {}).get("fullTextUrl", []):
+            if u.get("availabilityCode") in ("OA", "F"):
+                oa_url = u.get("url", "")
+                libre = True
+                break
+        if libre and not oa_url and r.get("pmcid"):
+            oa_url = f"https://europepmc.org/article/PMC/{r['pmcid']}"
         out.append(item(cat, r.get("title", ""), lien, r.get("firstPublicationDate"), "Europe PMC",
                         authors=r.get("authorString", ""), venue=r.get("journalTitle", ""),
                         abstract=r.get("abstractText", ""), doi=doi,
-                        cited_by=r.get("citedByCount"), group=group))
+                        cited_by=r.get("citedByCount"), group=group,
+                        oa=True if libre else None, oa_url=oa_url))
     return out
 
 
@@ -158,7 +175,8 @@ def arxiv_recherche(cfg, requete, depuis):
         out.append(item("litterature", e.findtext("a:title", "", ns), e.findtext("a:id", "", ns),
                         date, "arXiv", authors=aff, venue="arXiv (prépublication)",
                         abstract=e.findtext("a:summary", "", ns),
-                        doi=e.findtext("x:doi", "", ns), group="arXiv"))
+                        doi=e.findtext("x:doi", "", ns), group="arXiv",
+                        oa=True, oa_url=e.findtext("a:id", "", ns).replace("/abs/", "/pdf/")))
     return out
 
 
@@ -179,7 +197,7 @@ def gnews(requete, depuis, group):
         if media and titre.endswith(" - " + media):
             titre = titre[: -len(media) - 3]
         out.append(item("constructeurs", titre, it.findtext("link", ""), date, "Google Actualités",
-                        venue=media, group=group))
+                        venue=media, group=group, oa=True))
     return out
 
 
@@ -351,12 +369,19 @@ def main():
     print(f"Collecte depuis le {depuis}")
 
     par_id = {it["id"]: it for it in anciens}
+    resumes_en = {}
+    if os.path.exists(FICHIER_RESUMES_EN):
+        with open(FICHIER_RESUMES_EN, encoding="utf-8") as f:
+            resumes_en = json.load(f)
     nouveaux = 0
     priorite = {"citations": 0, "logiciels": 1, "constructeurs": 2, "litterature": 3}
     for it in collecter(cfg, depuis, depuis_logiciels):
         if not it["title"]:
             continue
         noter(it, cfg)
+        texte_complet = it.pop("_abs", "")
+        if len(texte_complet) > len(resumes_en.get(it["id"], "")):
+            resumes_en[it["id"]] = texte_complet
         ex = par_id.get(it["id"])
         if ex:
             # même publication trouvée par plusieurs requêtes : on garde la catégorie la plus forte
@@ -365,6 +390,11 @@ def main():
                 par_id[it["id"]] = it
             else:
                 ex["cited_by"] = max(ex.get("cited_by", 0), it["cited_by"])
+                # accès libre : on complète ce qu'on ne savait pas encore
+                if ex.get("oa") is not True and it.get("oa") is not None:
+                    ex["oa"] = it["oa"]
+                if not ex.get("oa_url") and it.get("oa_url"):
+                    ex["oa_url"] = it["oa_url"]
                 noter(ex, cfg)
             continue
         it["first_seen"] = AUJOURDHUI.isoformat()
@@ -380,6 +410,9 @@ def main():
     os.makedirs(os.path.dirname(FICHIER_ITEMS), exist_ok=True)
     with open(FICHIER_ITEMS, "w", encoding="utf-8") as f:
         json.dump(items, f, ensure_ascii=False, indent=0)
+    gardes = {i["id"] for i in items}
+    with open(FICHIER_RESUMES_EN, "w", encoding="utf-8") as f:
+        json.dump({k: v for k, v in resumes_en.items() if k in gardes and v}, f, ensure_ascii=False, indent=0)
     with open(FICHIER_META, "w", encoding="utf-8") as f:
         json.dump({"maj": dt.datetime.now(dt.timezone.utc).isoformat(timespec="minutes"),
                    "version_requetes": VERSION_REQUETES,
