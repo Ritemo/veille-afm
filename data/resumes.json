@@ -1,0 +1,483 @@
+{
+ "t:1fbb4537a9c3239c": {
+  "titre_fr": "Bruker élargit sa collaboration avec Atinary et prend une participation minoritaire dans cette société d'IA pour la R&D",
+  "resume": "Bruker annonce l'extension de son partenariat avec Atinary, entreprise spécialisée dans l'intelligence artificielle appliquée à la recherche et développement, et y investit en tant qu'actionnaire minoritaire. La page source n'a pas pu être lue lors de cette veille : la fiche est rédigée à partir du seul titre. Les montants, les divisions Bruker concernées et le périmètre exact de la collaboration ne sont donc pas connus ici.",
+  "points": [
+   "Acteur : Bruker, constructeur AFM concurrent",
+   "Partenaire : Atinary, IA pour la R&D",
+   "Nature : collaboration élargie et prise de participation minoritaire"
+  ],
+  "acces": "inconnu",
+  "acces_note": "Article de presse en ligne, page inaccessible lors de la veille",
+  "pour_toi": "Surveiller si Bruker intègre de l'IA de pilotage d'expériences dans ses AFM et NanoScope Analysis, ce qui renforcerait l'écosystème fermé face à MountainsSPIP."
+ },
+ "doi:10.1088/1402-4896/aea370": {
+  "titre_fr": "Segmentation automatique des artefacts de balayage dans les images AFM multimodales de cellules par réseau U-Net",
+  "resume": "Les auteurs proposent une méthode de segmentation automatique des artefacts d'imagerie dans les cartes AFM acquises sur des surfaces cellulaires. Elle repose sur un réseau de neurones convolutif de type U-Net. Le modèle exploite plusieurs canaux AFM à la fois : hauteur, adhésion et adhésion restaurée.",
+  "points": [
+   "Technique : AFM multicanal, apprentissage profond U-Net",
+   "Échantillon : surfaces de cellules",
+   "Logiciel : ancien SPIP cité par l'équipe"
+  ],
+  "acces": "inconnu",
+  "acces_note": "Accès non vérifié par la veille",
+  "pour_toi": "Équipe utilisatrice de l'ancien SPIP travaillant sur la détection d'artefacts par IA : bon contact pour une migration vers MountainsSPIP et un retour d'expérience sur une fonction de masquage automatique des artefacts."
+ },
+ "doi:10.64898/2026.10.19.760138": {
+  "titre_fr": "afMLevel : modèles U-Net d'apprentissage profond pour la mise à niveau des images et vidéos AFM",
+  "resume": "Les expériences AFM, et surtout l'AFM haute vitesse, produisent des centaines à des milliers d'images par séance, qui doivent toutes être redressées (inclinaison, courbure, bruit de ligne) avant mesure. Les routines automatiques actuelles dépendent de masques et de paramètres choisis par l'utilisateur. Les auteurs proposent afMLevel, des modèles U-Net entraînés pour effectuer cette mise à niveau automatiquement sur images et films.",
+  "points": [
+   "Technique : apprentissage profond U-Net appliqué au levelling",
+   "Échantillon : images et films AFM, y compris AFM haute vitesse",
+   "Logiciel : comparaison probable avec Gwyddion"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Prépublication bioRxiv en libre accès",
+  "pour_toi": "Concurrent direct d'une fonction cœur de MountainsSPIP : évaluer un redressement automatique sans masque par IA, notamment pour les séries HS-AFM."
+ },
+ "doi:10.1021/acs.langmuir.6c05228": {
+  "titre_fr": "Détection nanomolaire de biomarqueurs issus de métabolites végétaux activés chimiquement par capteurs à effet de champ, via une réaction de surface",
+  "resume": "L'étude vise la détection de la N,N-diméthyltryptamine (DMT), un alcaloïde psychédélique nocif à des concentrations nanomolaires dans les fluides biologiques. Les méthodes électrochimiques classiques n'atteignent pas cette sensibilité. Les auteurs utilisent des capteurs à effet de champ dont la surface réagit chimiquement avec la cible pour atteindre la gamme nanomolaire.",
+  "points": [
+   "Technique : capteurs à effet de champ fonctionnalisés",
+   "Échantillon : DMT en milieu biologique",
+   "Logiciel : NanoScope Analysis (Bruker)"
+  ],
+  "acces": "inconnu",
+  "acces_note": "Accès non vérifié par la veille",
+  "pour_toi": "NanoScope Analysis cité : laboratoire équipé Bruker, cible pour un argumentaire MountainsSPIP en complément ou remplacement."
+ },
+ "doi:10.48550/arxiv.2608.22343": {
+  "titre_fr": "UMEX Viewer : suite logicielle d'analyse des données d'AFM haute vitesse et ses applications",
+  "resume": "L'AFM haute vitesse permet de filmer à cadence vidéo la dynamique de biomolécules en solution, mais génère rapidement de très gros volumes de données. Les auteurs présentent UMEX Viewer, une suite logicielle dédiée au traitement et à l'analyse de ces données. L'article décrit l'outil et plusieurs exemples d'applications.",
+  "points": [
+   "Technique : AFM haute vitesse (HS-AFM)",
+   "Échantillon : biomolécules en solution",
+   "Logiciel : UMEX Viewer ; ancien SPIP mentionné"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Prépublication arXiv en libre accès",
+  "pour_toi": "Nouveau logiciel gratuit concurrent sur le créneau HS-AFM : comparer ses fonctions (suivi, filtrage, export vidéo) à MountainsSPIP et vérifier la lecture des formats HS-AFM japonais."
+ },
+ "doi:10.5281/zenodo.23645546": {
+  "titre_fr": "Microscopie à force atomique de films hôtes S1, S3 et S4",
+  "resume": "Jeu de données contenant les images AFM brutes de hauteur au format .nid de films minces de matériaux hôtes TADF bleu profond (S1, S3, S4) et de films de référence (alpha-NPD, Alq3). Il inclut aussi les exports XYZ archivés depuis Gwyddion, les fichiers de statistiques et les tableaux d'analyse de rugosité, de longueur de corrélation et de densité spectrale de puissance.",
+  "points": [
+   "Technique : AFM topographique",
+   "Échantillon : films minces de matériaux hôtes OLED",
+   "Logiciel : Gwyddion ; format .nid (Nanosurf)",
+   "Résultat : données brutes et tableaux de rugosité, corrélation et PSD publiés"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Jeu de données déposé publiquement sur Zenodo",
+  "pour_toi": "Fichiers .nid publics utilisables pour tester l'import Nanosurf et refaire l'analyse rugosité et PSD dans MountainsSPIP en vue d'une note d'application comparative."
+ },
+ "doi:10.3390/ma19204379": {
+  "titre_fr": "Amélioration de la résistance à l'arrachement d'un fil para-aramide revêtu de graphène grâce à un prétraitement laser",
+  "resume": "L'étude cherche à augmenter la force de rupture des jonctions de fils para-aramide revêtus de graphène dans un tissu. L'idée est d'accroître la rugosité de surface des fibres en créant des micro et nanostructures par irradiation laser, puis en déposant le graphène. Deux types de traitements sont comparés.",
+  "points": [
+   "Technique : texturation laser, revêtement graphène",
+   "Échantillon : fils para-aramide",
+   "Logiciel : Gwyddion pour la rugosité"
+  ],
+  "acces": "inconnu",
+  "acces_note": "Revue MDPI Materials publiée en libre accès, à confirmer sur la page de l'article",
+  "pour_toi": "Gwyddion utilisé ici : piste pour montrer à ce labo ce que MountainsSPIP apporte sur le même type de mesure."
+ },
+ "doi:10.1111/idh.70186": {
+  "titre_fr": "Les méthodes d'hygiène bucco-dentaire modifient-elles la surface des implants en titane ? Analyse in vitro de la rugosité",
+  "resume": "L'étude compare l'effet de trois protocoles simulés d'hygiène bucco-dentaire quotidienne sur la rugosité Ra de disques en alliage de titane Ti6Al4V. Vingt-quatre disques ont été répartis en deux groupes de douze selon leur état de surface initial. La rugosité est mesurée avant et après traitement.",
+  "points": [
+   "Technique : mesure de rugosité Ra",
+   "Échantillon : 24 disques Ti6Al4V",
+   "Logiciel : NanoScope Analysis (Bruker)"
+  ],
+  "acces": "inconnu",
+  "acces_note": "Accès non vérifié par la veille",
+  "pour_toi": "Étude dentaire limitée à Ra : argument pour proposer MountainsSPIP avec paramètres surfaciques ISO 25178 (Sa, Sdr) aux labos d'implantologie."
+ },
+ "doi:10.1021/acsomega.6c07293": {
+  "titre_fr": "Fonctionnalisation par polydopamine de microfibres alignées d'acide polylactique pour améliorer l'interaction avec les cellules neurales et limiter le stress oxydatif",
+  "resume": "Les lésions des nerfs périphériques posent un problème clinique majeur et les greffes autologues sont limitées. Les auteurs revêtent de polydopamine des microfibres alignées de PLA afin de favoriser l'adhésion et la croissance des cellules neurales. Le revêtement vise aussi à réduire le stress oxydatif.",
+  "points": [
+   "Technique : fonctionnalisation polydopamine, caractérisation de surface",
+   "Échantillon : microfibres de PLA alignées",
+   "Logiciel : NanoScope Analysis (Bruker)"
+  ],
+  "acces": "inconnu",
+  "acces_note": "Revue ACS Omega publiée en libre accès, à confirmer sur la page de l'article",
+  "pour_toi": "NanoScope Analysis cité : laboratoire équipé Bruker, cible pour un argumentaire MountainsSPIP en complément ou remplacement."
+ },
+ "doi:10.1002/smll.75086": {
+  "titre_fr": "Visualiser le vieillissement progressif d'hétérostructures latérales MoS2-WS2 sous vide par microscopie de phase hyperspectrale",
+  "resume": "Le vieillissement dégrade les dispositifs à base de dichalcogénures de métaux de transition 2D, mais il est mal connu pour un stockage sous vide primaire, notamment dans les hétérostructures latérales. Les auteurs suivent ce vieillissement sur des hétérostructures MoS2-WS2 par microscopie de phase hyperspectrale.",
+  "points": [
+   "Technique : microscopie de phase hyperspectrale",
+   "Échantillon : hétérostructures latérales MoS2-WS2",
+   "Logiciel : Gwyddion"
+  ],
+  "acces": "inconnu",
+  "acces_note": "Accès non vérifié par la veille",
+  "pour_toi": "Usage de Gwyddion sur matériaux 2D : suivre l'implantation de la concurrence dans ce segment."
+ },
+ "doi:10.1002/smll.76358": {
+  "titre_fr": "Films minces d'oxyde de titane à nanodisques métalliques : métamatériaux plasmoniques photocatalytiques pour la réduction du CO2 assistée par isopropanol",
+  "resume": "Les métaux plasmoniques peuvent renforcer les photocatalyseurs solaires, à condition de contrôler finement l'interaction lumière-matière à l'échelle nanométrique. Les auteurs fabriquent des feuilles de TiO2 intégrant des nanodisques métalliques et les testent pour la réduction du CO2 assistée par isopropanol.",
+  "points": [
+   "Technique : nanostructuration plasmonique",
+   "Échantillon : films de TiO2 avec nanodisques métalliques",
+   "Logiciel : Gwyddion"
+  ],
+  "acces": "inconnu",
+  "acces_note": "Accès non vérifié par la veille",
+  "pour_toi": "Usage de Gwyddion en photocatalyse : suivre l'implantation de la concurrence."
+ },
+ "doi:10.1063/5.0349056": {
+  "titre_fr": "Localisation de centres colorés du nitrure de bore hexagonal grâce à des couches diélectriques structurées sur graphène",
+  "resume": "Les centres colorés du hBN sont prometteurs pour les qubits de spin, les sources de photons uniques et les capteurs quantiques à température ambiante. Une condition clé est de pouvoir les positionner de façon contrôlée. Les auteurs utilisent des couches diélectriques structurées sur graphène pour localiser ces défauts.",
+  "points": [
+   "Technique : structuration diélectrique sur graphène",
+   "Échantillon : hBN",
+   "Logiciel : Gwyddion"
+  ],
+  "acces": "inconnu",
+  "acces_note": "Accès non vérifié par la veille",
+  "pour_toi": "Usage de Gwyddion en technologies quantiques : suivre l'implantation de la concurrence."
+ },
+ "doi:10.1038/s41467-026-77915-0": {
+  "titre_fr": "Cristaux d'halogénure métallique chiraux élastiquement pliables",
+  "resume": "Les monocristaux d'halogénures métalliques ont d'excellentes propriétés optoélectroniques mais sont fragiles, ce qui limite leur usage en électronique flexible. Les auteurs rapportent une flexion élastique dans une famille de cristaux chiraux d'iodure de plomb R-(AP)PbI3.",
+  "points": [
+   "Technique : caractérisation mécanique et optoélectronique",
+   "Échantillon : cristaux chiraux R-(AP)PbI3",
+   "Logiciel : NanoScope Analysis (Bruker)"
+  ],
+  "acces": "inconnu",
+  "acces_note": "Revue Nature Communications publiée en libre accès, à confirmer sur la page de l'article",
+  "pour_toi": "Usage de NanoScope Analysis dans une revue à forte visibilité : suivre l'implantation de Bruker en science des matériaux."
+ },
+ "t:a686615716d9bbbc": {
+  "titre_fr": "Park Systems étend sa présence nord-américaine avec un nouveau bureau régional à Hillsboro (Oregon)",
+  "resume": "Park Systems annonce l'ouverture d'un bureau régional à Hillsboro, dans l'Oregon, pour renforcer sa présence en Amérique du Nord. La page source n'a pas pu être lue lors de cette veille : la fiche est rédigée à partir du seul titre, sans détail sur les services ou les effectifs.",
+  "points": [
+   "Acteur : Park Systems",
+   "Lieu : Hillsboro, Oregon (États-Unis)"
+  ],
+  "acces": "inconnu",
+  "acces_note": "Article de presse en ligne, page inaccessible lors de la veille",
+  "pour_toi": "Hillsboro est un pôle semi-conducteurs : Park renforce sa proximité avec ces clients, à prendre en compte pour le partenariat et la distribution MountainsSPIP aux États-Unis."
+ },
+ "t:858914041ebe72ef": {
+  "titre_fr": "Jack Harlow présente les baskets New Balance « T500 Olmsted » à Cherokee Park",
+  "resume": "Article de presse people sur le lancement d'un modèle de baskets par un rappeur dans un parc de Louisville. Il a été capté par erreur à cause du mot « Park » et n'a aucun rapport avec Park Systems ni avec l'AFM. Fiche rédigée à partir du titre seul.",
+  "points": [
+   "Pertinence : hors sujet, faux positif de la veille",
+   "Source : presse locale (The Courier-Journal)"
+  ],
+  "acces": "inconnu",
+  "acces_note": "Article de presse, non consulté",
+  "pour_toi": "Rien à faire ; signale qu'il faut affiner le filtre « Park Systems » pour exclure les simples mentions de parcs."
+ },
+ "t:4dce7c0eef9e8455": {
+  "titre_fr": "Le Dublin Park Pass revient avec de nouvelles récompenses artistiques locales",
+  "resume": "Actualité locale de Dublin (Ohio) sur un programme de visite des parcs. Elle a été captée par erreur à cause du mot « Park » et n'a aucun lien avec Park Systems ni avec l'AFM. Fiche rédigée à partir du titre seul.",
+  "points": [
+   "Pertinence : hors sujet, faux positif de la veille",
+   "Source : presse locale (The Columbus Dispatch)"
+  ],
+  "acces": "inconnu",
+  "acces_note": "Article de presse, non consulté",
+  "pour_toi": "Rien à faire ; filtre « Park Systems » à resserrer."
+ },
+ "doi:10.1002/pro.70784": {
+  "titre_fr": "Le Seigneur des anneaux : des ponts cystéine réticulent la queue d'un siphovirus",
+  "resume": "Les siphovirus possèdent une longue queue tubulaire formée d'anneaux hexamériques de protéine. La protéine de tube gp39 contient deux cystéines par monomère et la cryo-microscopie électronique montre leur orientation vers l'anneau voisin. L'étude examine le rôle de ces ponts disulfure dans la réticulation de la queue.",
+  "points": [
+   "Technique : cryo-microscopie électronique, AFM probable",
+   "Échantillon : queue de siphovirus, protéine gp39",
+   "Logiciel : NanoScope Analysis (Bruker)"
+  ],
+  "acces": "inconnu",
+  "acces_note": "Accès non vérifié par la veille",
+  "pour_toi": "Usage de NanoScope Analysis en biologie structurale : suivre l'implantation de Bruker chez les virologues."
+ },
+ "doi:10.3762/bxiv.2026.41.v1": {
+  "titre_fr": "Nanostructures d'or élaborées par électrochimie pour la détection sélective du glucose et de l'acide ascorbique",
+  "resume": "Les auteurs modifient des électrodes de carbone sérigraphiées avec des nanoparticules d'or déposées par voltampérométrie cyclique. L'objectif est une détection simultanée et non enzymatique du glucose et de l'acide ascorbique. La morphologie des dépôts est caractérisée, notamment par microscopie.",
+  "points": [
+   "Technique : électrodépôt, caractérisation morphologique",
+   "Échantillon : électrodes carbone modifiées par nanoparticules d'or",
+   "Logiciel : Gwyddion"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Prépublication Beilstein Archives en libre accès",
+  "pour_toi": "Usage de Gwyddion en électrochimie : suivre l'implantation de la concurrence."
+ },
+ "doi:10.1038/s41418-026-01888-2": {
+  "titre_fr": "SMARCA5 favorise la localisation de la cohésine sur les boucles R pour éviter les collisions entre transcription et réplication",
+  "resume": "La cohésine maintient la cohésion des chromatides sœurs et organise le génome en boucles de chromatine. Elle peut aussi être détournée par les cellules cancéreuses pour faciliter la réparation de l'ADN. L'étude montre que SMARCA5 aide la cohésine à se placer sur les boucles R, ce qui limite les collisions transcription-réplication.",
+  "points": [
+   "Technique : biologie moléculaire, imagerie de molécules uniques probable",
+   "Échantillon : complexe cohésine, ADN",
+   "Logiciel : Gwyddion"
+  ],
+  "acces": "inconnu",
+  "acces_note": "Accès non vérifié par la veille",
+  "pour_toi": "Usage de Gwyddion en biologie de l'ADN : suivre l'implantation de la concurrence."
+ },
+ "doi:10.3389/fbioe.2026.1999697": {
+  "titre_fr": "Des formulations classiques aux formulations sensibles au pH : complexité croissante, caractérisation croissante",
+  "resume": "Les liposomes sensibles au pH à base de DOPE stabilisée par l'acide oléique libèrent leur contenu en milieu acide. L'étude compare ces formulations à des liposomes classiques et montre que leur complexité exige une caractérisation physico-chimique plus poussée.",
+  "points": [
+   "Technique : caractérisation multitechnique de liposomes",
+   "Échantillon : liposomes DOPE et acide oléique",
+   "Logiciel : Gwyddion"
+  ],
+  "acces": "inconnu",
+  "acces_note": "Revue Frontiers publiée en libre accès, à confirmer sur la page de l'article",
+  "pour_toi": "Usage de Gwyddion sur nanovecteurs : piste pour une note d'application MountainsSPIP sur l'analyse de particules molles."
+ },
+ "doi:10.1021/acs.langmuir.6c04082": {
+  "titre_fr": "Mouillage spatialement hétérogène sur surfaces stochastiques de nanofeuillets",
+  "resume": "Les régimes de Wenzel et de Cassie-Baxter sont bien connus sur surfaces texturées, mais leur répartition spatiale sur des nanotopographies aléatoires l'est moins. Les auteurs utilisent des surfaces de nanofeuillets de boehmite de morphologies variées pour observer localement quel régime de mouillage apparaît.",
+  "points": [
+   "Technique : mouillage résolu spatialement, topographie",
+   "Échantillon : surfaces de nanofeuillets de boehmite",
+   "Logiciel : Gwyddion"
+  ],
+  "acces": "inconnu",
+  "acces_note": "Accès non vérifié par la veille",
+  "pour_toi": "Lien topographie et mouillage : sujet où les paramètres ISO 25178 de MountainsSPIP apportent plus que Gwyddion, bon labo à contacter."
+ },
+ "doi:10.26434/chemrxiv.15011188/v1": {
+  "titre_fr": "Le moins ordonné de trois hôtes bleu profond à oxyde de phosphine conduit pourtant bien les trous",
+  "resume": "Les hôtes pour OLED bleu profond sont généralement comparés par niveaux d'énergie et photophysique, rarement par microstructure. Les auteurs comparent trois hôtes apparentés depuis les particules primaires jusqu'au relief des films, avec des protocoles documentés. Le titre indique que l'hôte le moins ordonné transporte pourtant correctement les trous.",
+  "points": [
+   "Technique : AFM et analyse de microstructure de films",
+   "Échantillon : trois hôtes à oxyde de phosphine",
+   "Logiciel : Gwyddion",
+   "Résultat : l'ordre structural n'est pas un bon indicateur du transport de trous"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Prépublication ChemRxiv en libre accès",
+  "pour_toi": "Même équipe que le jeu de données Zenodo S1/S3/S4 : contact intéressant pour montrer une analyse de films OLED dans MountainsSPIP."
+ },
+ "doi:10.1016/j.matchemphys.2026.133316": {
+  "titre_fr": "Améliorer la bioactivité du titane par ingénierie de surface au niobium",
+  "resume": "Le titane et ses alliages, très utilisés pour les implants, ont une surface plutôt bio-inerte. Les auteurs modifient la surface du titane avec du niobium pour la rendre plus bioactive et caractérisent les surfaces obtenues.",
+  "points": [
+   "Technique : ingénierie de surface",
+   "Échantillon : titane modifié au niobium",
+   "Logiciel : Gwyddion"
+  ],
+  "acces": "inconnu",
+  "acces_note": "Accès non vérifié par la veille",
+  "pour_toi": "Usage de Gwyddion sur biomatériaux : suivre l'implantation de la concurrence."
+ },
+ "doi:10.48550/arxiv.2610.35768": {
+  "titre_fr": "Carte des phases de croissance du tantale α et β en fonction de la température de croissance et de la pression partielle d'oxygène",
+  "resume": "Le tantale en couche mince sert aux circuits quantiques supraconducteurs à faibles pertes, mais les conditions qui sélectionnent les phases α-Ta(110), α-Ta(111) et β-Ta sur saphir restent incertaines. Les auteurs déposent des films de 100 nm par pulvérisation magnétron sur saphir entre 300 et 900 °C et établissent une carte des phases.",
+  "points": [
+   "Technique : pulvérisation magnétron DC",
+   "Échantillon : films de Ta de 100 nm sur Al2O3(0001)",
+   "Logiciel : Gwyddion"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Prépublication arXiv en libre accès",
+  "pour_toi": "Usage de Gwyddion en couches minces pour le quantique : suivre l'implantation de la concurrence."
+ },
+ "doi:10.48550/arxiv.2610.34924": {
+  "titre_fr": "Cartographie nanométrique des défauts natifs du Td-MoTe2 et de leur effet sur les hétérostructures van der Waals à base de graphène",
+  "resume": "Les auteurs étudient par microscopie et spectroscopie à effet tunnel les défauts natifs du Td-MoTe2 et des hétérostructures graphène/Td-MoTe2. Le STM révèle une forte densité de défauts de surface circulaires et creux, attribués à des lacunes de tellure. La spectroscopie évalue leur effet sur la structure électronique.",
+  "points": [
+   "Technique : STM et STS",
+   "Échantillon : Td-MoTe2, hétérostructures graphène/MoTe2",
+   "Logiciel : Gwyddion",
+   "Résultat : défauts attribués à des lacunes de tellure"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Prépublication arXiv en libre accès",
+  "pour_toi": "Usage de Gwyddion en STM : vérifier que MountainsSPIP gère bien les cartes de spectroscopie STS pour convaincre ces équipes."
+ },
+ "doi:10.1021/acsami.6c18985": {
+  "titre_fr": "Couplage électronique interfacial contrôlé dans des monocouches de WSe2 crûes par CVD sur Au(111)",
+  "resume": "Les auteurs font croître des monocouches de WSe2 de haute qualité sur Au(111) par CVD à pression ambiante, puis les caractérisent en ultravide par des techniques sensibles à la surface. Les films présentent une couche tampon de sélénium qui permet de contrôler le couplage électronique avec l'or.",
+  "points": [
+   "Technique : CVD, caractérisation de surface en ultravide",
+   "Échantillon : WSe2 monocouche sur Au(111)",
+   "Logiciel : Gwyddion"
+  ],
+  "acces": "inconnu",
+  "acces_note": "Accès non vérifié par la veille",
+  "pour_toi": "Usage de Gwyddion sur matériaux 2D : suivre l'implantation de la concurrence."
+ },
+ "doi:10.1002/admi.70713": {
+  "titre_fr": "Spectroscopie de fluorescence multiparamétrique pour détecter et caractériser les résidus de protéines végétales sur acier inoxydable 316L",
+  "resume": "L'adsorption de protéines sur l'acier inoxydable en agroalimentaire entraîne l'accumulation de résidus organiques qui dégradent les surfaces et favorisent les microbes. Les auteurs proposent la spectroscopie de fluorescence multiparamétrique pour détecter et caractériser ces résidus de protéines végétales sur acier 316L.",
+  "points": [
+   "Technique : spectroscopie de fluorescence multiparamétrique",
+   "Échantillon : acier 316L avec résidus de protéines végétales",
+   "Logiciel : Gwyddion"
+  ],
+  "acces": "inconnu",
+  "acces_note": "Accès non vérifié par la veille",
+  "pour_toi": "Contexte agroalimentaire et propreté de surface : marché industriel où MountainsSPIP est bien placé, labo à contacter."
+ },
+ "doi:10.1007/s00784-026-07231-w": {
+  "titre_fr": "Effet d'un dentifrice expérimental enrichi en phytosphingosine sur l'intégrité de l'émail : étude combinée in vitro et in situ",
+  "resume": "L'étude compare un dentifrice enrichi en phytosphingosine à un dentifrice du commerce sur l'émail dentaire. In vitro, des échantillons d'émail bovin sont brossés avec de la salive artificielle, un dentifrice commercial ou le dentifrice expérimental, puis une phase in situ complète l'évaluation.",
+  "points": [
+   "Technique : essais de brossage, caractérisation de surface",
+   "Échantillon : émail bovin",
+   "Logiciel : Gwyddion"
+  ],
+  "acces": "inconnu",
+  "acces_note": "Accès non vérifié par la veille",
+  "pour_toi": "Usage de Gwyddion en recherche dentaire : segment où MountainsSPIP peut proposer des paramètres de rugosité normalisés."
+ },
+ "doi:10.26434/chemrxiv.15010878/v1": {
+  "titre_fr": "Influence des cations divalents sur les propriétés mécaniques de faisceaux à six hélices en origami d'ADN",
+  "resume": "Le comportement mécanique des nanostructures d'origami d'ADN dépend de leur conception et de l'environnement ionique. Les auteurs utilisent l'analyse de contour sur images AFM pour mesurer la longueur de persistance, la longueur de contour et la distance bout à bout de faisceaux à six hélices selon les cations divalents présents.",
+  "points": [
+   "Technique : AFM, analyse de contour",
+   "Échantillon : origamis d'ADN à six hélices",
+   "Logiciel : Gwyddion",
+   "Résultat : rigidité mesurée selon les cations divalents"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Prépublication ChemRxiv en libre accès",
+  "pour_toi": "Analyse de contour et de longueur de persistance de filaments : vérifier que MountainsSPIP propose cet outil, demande récurrente en bio-AFM."
+ },
+ "doi:10.48550/arxiv.2610.31924": {
+  "titre_fr": "Suivi à l'échelle sub-monocouche des états moléculaires aux interfaces enfouies",
+  "resume": "Des états moléculaires nouveaux aux interfaces enfouies sont à l'origine de technologies émergentes, mais restent difficiles à quantifier. La diffusion résonante des rayons X mous (RSoXS) y est sensible mais manque de modèles précis. Les auteurs développent une approche pour suivre ces états jusqu'à l'échelle sub-monocouche.",
+  "points": [
+   "Technique : diffusion résonante des rayons X mous (RSoXS)",
+   "Échantillon : interfaces moléculaires enfouies",
+   "Logiciel : Gwyddion"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Prépublication arXiv en libre accès",
+  "pour_toi": "Usage marginal de Gwyddion en complément de rayons X : simple veille de la concurrence."
+ },
+ "doi:10.1021/jacs.6c09065": {
+  "titre_fr": "Découpler dissolution et oxydation de l'eau sur des électrodes de pérovskite à haute entropie monofacettées",
+  "resume": "Les oxydes à haute entropie sont des anodes prometteuses pour l'évolution d'oxygène, mais leur dissolution se produit en même temps que la réaction, ce qui empêche d'étudier séparément stabilité et cinétique de dissolution. Les auteurs utilisent des électrodes de pérovskite monofacettées pour découpler ces deux processus.",
+  "points": [
+   "Technique : électrochimie sur électrodes monocristallines",
+   "Échantillon : pérovskites à haute entropie",
+   "Logiciel : Gwyddion"
+  ],
+  "acces": "inconnu",
+  "acces_note": "Accès non vérifié par la veille",
+  "pour_toi": "Usage de Gwyddion en électrocatalyse : suivre l'implantation de la concurrence."
+ },
+ "doi:10.1021/acselectrochem.6c00252": {
+  "titre_fr": "Début des modifications de surface de catalyseurs pérovskites en conditions d'évolution d'oxygène révélé par microscopie de force de friction électrochimique",
+  "resume": "L'objectif est d'identifier le potentiel à partir duquel la surface des catalyseurs pérovskites commence à se modifier sous polarisation OER. Les auteurs suivent ces premières modifications par microscopie de force de friction en milieu électrochimique, ce qui permet de distinguer l'activité intrinsèque de l'évolution chimique de la surface.",
+  "points": [
+   "Technique : microscopie de force de friction électrochimique (EC-FFM)",
+   "Échantillon : catalyseurs pérovskites oxydes",
+   "Logiciel : Gwyddion"
+  ],
+  "acces": "inconnu",
+  "acces_note": "Accès non vérifié par la veille",
+  "pour_toi": "Mode AFM de friction en milieu liquide : vérifier le traitement des images de friction (trace et retrace) dans MountainsSPIP et contacter ce labo."
+ },
+ "doi:10.3390/antiox15101363": {
+  "titre_fr": "Des déchets agro-industriels aux nanomatériaux multifonctionnels : propriétés antioxydantes et catalytiques de nanoparticules bimétalliques à base de fer synthétisées avec un extrait de péricarpe de cajou",
+  "resume": "L'étude synthétise par voie verte des nanoparticules de fer associées à un second métal de transition, en utilisant un extrait de péricarpe d'Anacardium occidentale. Les auteurs examinent comment ce second métal modifie les nanostructures et évaluent leurs propriétés antioxydantes et catalytiques pour la dépollution de l'eau.",
+  "points": [
+   "Technique : synthèse verte, caractérisation de nanoparticules",
+   "Échantillon : nanoparticules bimétalliques à base de fer",
+   "Logiciel : Gwyddion"
+  ],
+  "acces": "inconnu",
+  "acces_note": "Revue MDPI Antioxidants publiée en libre accès, à confirmer sur la page de l'article",
+  "pour_toi": "Usage de Gwyddion pour des nanoparticules : suivre l'implantation de la concurrence."
+ },
+ "doi:10.26434/chemrxiv.15010683/v1": {
+  "titre_fr": "Vers la limite bidimensionnelle de l'aimant kagome S = 1/2 par exfoliation d'un réseau métallo-organique",
+  "resume": "Les réseaux métallo-organiques magnétiques en couches offrent une plateforme chimiquement programmable pour des matériaux magnétiques 2D. Les auteurs exfolient un tel MOF à réseau kagome de spin 1/2 pour approcher la limite bidimensionnelle.",
+  "points": [
+   "Technique : exfoliation, AFM d'épaisseur probable",
+   "Échantillon : MOF magnétique kagome",
+   "Logiciel : Gwyddion"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Prépublication ChemRxiv en libre accès",
+  "pour_toi": "Usage de Gwyddion pour des matériaux exfoliés : suivre l'implantation de la concurrence."
+ },
+ "doi:10.4121/abe01e5b-ad67-44a0-a9bb-fbb6b684bb7a": {
+  "titre_fr": "Données brutes et scripts sur les états de bord topologiquement triviaux du Bi(110) sur Ge(111)",
+  "resume": "Jeu de données de microscopie et spectroscopie à effet tunnel sur du Bi(110) déposé sur Ge(111). Il fournit les données brutes, les étapes de traitement et les scripts d'analyse, classés par figure. Les images de topographie STM peuvent être ouvertes avec Gwyddion.",
+  "points": [
+   "Technique : STM et STS",
+   "Échantillon : Bi(110) sur Ge(111)",
+   "Logiciel : Gwyddion et scripts fournis"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Jeu de données déposé publiquement sur 4TU.ResearchData",
+  "pour_toi": "Données STM brutes publiques : utiles pour tester l'import et le traitement STM/STS dans MountainsSPIP."
+ },
+ "doi:10.1021/acsanm.6c03660": {
+  "titre_fr": "Couplage interfacial piloté par la morphologie dans des monocouches de MoS2 sur or",
+  "resume": "Les propriétés des monocouches de dichalcogénures changent fortement sur un métal par rapport à un substrat peu interactif comme SiO2. Pour le MoS2 sur or, le spectre vibrationnel révèle le transfert de charge, la déformation et l'hybridation. Les auteurs montrent que la morphologie de l'or module ce couplage.",
+  "points": [
+   "Technique : spectroscopie vibrationnelle, topographie",
+   "Échantillon : MoS2 monocouche sur Au",
+   "Logiciel : Gwyddion"
+  ],
+  "acces": "inconnu",
+  "acces_note": "Accès non vérifié par la veille",
+  "pour_toi": "Corrélation topographie et spectroscopie : cas d'usage pour la colocalisation AFM-Raman de MountainsSPIP."
+ },
+ "doi:10.1016/j.diamond.2026.114302": {
+  "titre_fr": "Gravure de couches atomiques du diamant à l'argon et à l'oxygène",
+  "resume": "Retirer les défauts de surface du diamant par gravure sèche est important pour les applications utilisant des centres colorés peu profonds. Les auteurs présentent un procédé de gravure par couches atomiques avec l'oxygène comme gaz de dosage et l'argon comme gaz de gravure, pour un enlèvement contrôlé.",
+  "points": [
+   "Technique : gravure par couches atomiques (ALE)",
+   "Échantillon : diamant",
+   "Logiciel : Gwyddion"
+  ],
+  "acces": "inconnu",
+  "acces_note": "Accès non vérifié par la veille",
+  "pour_toi": "Usage de Gwyddion pour le contrôle de rugosité après gravure : suivre l'implantation de la concurrence."
+ },
+ "doi:10.1016/j.bioactmat.2026.06.017": {
+  "titre_fr": "Impression 4D programmable de photorésines durables multifonctionnelles aux propriétés mécaniques adaptées aux tissus pour la régénération d'interfaces tissulaires",
+  "resume": "Régénérer conjointement le cartilage articulaire et l'os sous-chondral reste difficile car il faut imiter la complexité spatiale et compositionnelle du tissu ostéochondral. Les auteurs développent des photorésines durables imprimables en 4D, dont la mécanique est ajustée à celle des tissus visés.",
+  "points": [
+   "Technique : impression 4D",
+   "Échantillon : photorésines pour implants ostéochondraux",
+   "Logiciel : Gwyddion"
+  ],
+  "acces": "inconnu",
+  "acces_note": "Revue Bioactive Materials publiée en libre accès, à confirmer sur la page de l'article",
+  "pour_toi": "Usage de Gwyddion en ingénierie tissulaire : suivre l'implantation de la concurrence."
+ },
+ "doi:10.1016/j.mbplus.2026.100205": {
+  "titre_fr": "Altérations structurales et nanomécaniques liées au génotype des microfibrilles de fibrilline-1 aortiques dans le syndrome de Marfan",
+  "resume": "Le syndrome de Marfan est dû à des mutations du gène FBN1 codant la fibrilline-1, principal constituant des microfibrilles qui assurent l'intégrité de la paroi aortique. L'étude compare la structure et les propriétés nanomécaniques de ces microfibrilles selon le génotype des patients. Les résultats chiffrés ne figurent pas dans l'extrait disponible.",
+  "points": [
+   "Technique : AFM structurale et nanomécanique",
+   "Échantillon : microfibrilles de fibrilline-1 aortiques humaines",
+   "Logiciel : Gwyddion"
+  ],
+  "acces": "inconnu",
+  "acces_note": "Revue Matrix Biology Plus publiée en libre accès, à confirmer sur la page de l'article",
+  "pour_toi": "Nanomécanique AFM sur tissus de patients (équipe Kellermayer) : contact pertinent pour les fonctions de cartographie mécanique de MountainsSPIP."
+ },
+ "doi:10.1039/d6ra07333f": {
+  "titre_fr": "Structure électronique et performances optoélectroniques d'un complexe nanostructuré de cuivre(II) et de pyranoquinoléine : apport de la DFT pour la mesure de température et la photodétection",
+  "resume": "Les auteurs synthétisent un complexe de cuivre et de pyranoquinoléine, Cu(HMDPQ), et l'intègrent dans un dispositif. Sa structure est caractérisée, sa structure électronique est étudiée par calculs DFT et ses performances sont évaluées pour la détection de température et la photodétection.",
+  "points": [
+   "Technique : DFT, caractérisation structurale, dispositifs",
+   "Échantillon : complexe Cu(HMDPQ) nanostructuré",
+   "Logiciel : Gwyddion"
+  ],
+  "acces": "inconnu",
+  "acces_note": "Revue RSC Advances publiée en libre accès, à confirmer sur la page de l'article",
+  "pour_toi": "Usage de Gwyddion en optoélectronique : suivre l'implantation de la concurrence."
+ }
+}
