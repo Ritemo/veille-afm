@@ -45,4 +45,6 @@ Base selon la catégorie (citation de mes travaux 60, logiciels 40, constructeur
 
 Les thèmes (Particules, Stitching, Courbes de force… et ceux que tu crées) se gèrent dans l'appli : bouton « Thèmes » sur une fiche pour la ranger (plusieurs thèmes possibles), « + » à côté de « Mes thèmes » pour en créer un, Renommer et Supprimer en haut de la vue d'un thème.
 
-Les statuts « lu », « à creuser » et les thèmes sont gardés dans le navigateur et, si un jeton GitHub est enregistré (Réglages), synchronisés entre appareils via `data/etat.json` (dernier changement gagnant, fiche par fiche).
+Chaque fiche a un état : **Nouvelle** (pas encore ouverte, liseré violet), **En cours** (lue ou annotée, pleine) ou **Archivée** (traitée, estompée, avec un motif : personne contactée, outil créé…). Les notes de suivi datées s'ajoutent dans la fiche. Les filtres « Nouvelles et en cours / Archivées / Toutes » marchent dans tous les onglets et thèmes.
+
+Les statuts « lu », « à creuser », le suivi et les thèmes sont gardés dans le navigateur et, si un jeton GitHub est enregistré (Réglages), synchronisés entre appareils via `data/etat.json` (dernier changement gagnant, fiche par fiche).

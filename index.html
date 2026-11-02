@@ -107,7 +107,31 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
 .card{background:var(--card);border-radius:var(--r);padding:18px 20px 12px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px;
   border-top:4px solid var(--c);transition:transform .15s,box-shadow .15s,opacity .2s}
 .card:hover{transform:translateY(-2px);box-shadow:0 2px 4px rgba(60,40,10,.06),0 14px 30px rgba(60,40,10,.1)}
-.card.lu{opacity:.55}
+/* trois états bien distincts : nouvelle (liseré violet), en cours (pleine), archivée (estompée) */
+.card.st-nouvelle{box-shadow:0 0 0 2px var(--violet),0 8px 22px rgba(109,92,232,.18)}
+.card.st-archivee{opacity:.5;filter:saturate(.35)}
+.card.st-archivee:hover{opacity:.85;filter:none}
+.pill.et{gap:5px}
+.pill.et svg{width:12px;height:12px}
+.et-nouvelle{background:var(--violet);color:#fff}
+.et-encours{background:var(--sun-l);color:#9a5d00;box-shadow:inset 0 0 0 1.5px #f0c060}
+.et-archivee{background:var(--grey-l);color:#5b6070}
+.suivi{font-size:13px;color:var(--ink2);background:var(--bg);border-radius:10px;padding:7px 11px;display:flex;gap:7px;align-items:flex-start}
+.suivi svg{width:15px;height:15px;flex:none;margin-top:2px;color:var(--ink3)}
+.suivi b{color:var(--ink)}
+.vues{display:flex;flex-wrap:wrap;gap:8px;margin:-4px 0 14px}
+.vues button{border-radius:999px;padding:5px 13px;font-size:12.5px;font-weight:700;border:1.5px solid var(--line);background:var(--card);color:var(--ink2)}
+.vues button.on{border-color:var(--ink);background:var(--ink);color:#fff}
+.vues button small{opacity:.65;margin-left:4px}
+.notes{display:flex;flex-direction:column;gap:6px}
+.note{display:flex;gap:10px;font-size:13.5px;background:var(--bg);border-radius:10px;padding:8px 12px}
+.note time{font-size:12px;color:var(--ink3);white-space:nowrap;padding-top:1px}
+.note span{flex:1}
+.note button{color:var(--ink3);font-size:12px}
+.motifs{display:flex;flex-wrap:wrap;gap:8px}
+.motifs button{border-radius:999px;padding:7px 13px;font-size:13.5px;font-weight:700;border:1.5px solid var(--line);background:var(--card);color:var(--ink2)}
+.motifs button.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.arch-box{border:1.5px dashed var(--line);border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:10px}
 .c-citations{--c:var(--violet);--cl:var(--violet-l)}
 .c-logiciels{--c:var(--teal);--cl:var(--teal-l)}
 .c-constructeurs{--c:var(--coral);--cl:var(--coral-l)}
@@ -263,7 +287,7 @@ aside{overflow-y:auto}
       <div class="seg" id="seg"><button data-l="1">Tout</button><button data-l="3">Haute et +</button><button data-l="4">Critique</button></div>
       <div class="seg" id="sort"><span class="seg-l">Tri</span><button data-s="imp">Importance</button><button data-s="date">Date</button></div>
       <div class="seg" id="per"><span class="seg-l">Publié</span><button data-p="7">7 j</button><button data-p="30">30 j</button><button data-p="0">Tout</button></div>
-      <button class="switch" id="hideRead"><i></i>Masquer les lus</button>
+      <button class="switch" id="hideRead"><i></i>Nouvelles seulement</button>
       <button class="switch" id="dataOnly" title="Seulement les articles dont les données sont téléchargeables"><i></i>Données libres</button>
       <button class="gear" id="gear" title="Réglages et synchronisation"></button>
     </div>
@@ -299,6 +323,10 @@ aside{overflow-y:auto}
     help:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 114 2c-.9.6-1.5 1.1-1.5 2.2M12 17h.01"/>',
     rocket:'<path d="M5 15c-1 1-1.5 3.5-1.5 5.5 2 0 4.5-.5 5.5-1.5M9 15l-3-3c1.5-4 5-8 11.5-8.5C17 10 13 13.5 9 15z"/><circle cx="14.5" cy="9.5" r="1.5"/>',
     db:'<ellipse cx="12" cy="5.5" rx="7.5" ry="2.8"/><path d="M4.5 5.5v13c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8v-13M4.5 12c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8"/>',
+    box:'<rect x="3.5" y="4" width="17" height="4.5" rx="1"/><path d="M5 8.5V19a1 1 0 001 1h12a1 1 0 001-1V8.5M10 12.5h4"/>',
+    undo:'<path d="M9 14L4.5 9.5 9 5"/><path d="M4.5 9.5H15a5 5 0 010 10h-3"/>',
+    pen:'<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/>',
+    spark:'<path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5L18 18M6 18l2.5-2.5M15.5 8.5L18 6"/>',
     tag:'<path d="M3.5 12.2V4.5a1 1 0 011-1h7.7l8.3 8.3a1.5 1.5 0 010 2.1l-6.1 6.1a1.5 1.5 0 01-2.1 0z"/><circle cx="8" cy="8" r="1.5"/>',
     ban:'<circle cx="12" cy="12" r="8.5"/><path d="M6 6l12 12"/>',
     cog:'<circle cx="12" cy="12" r="3"/><path d="M12 2.5v3M12 18.5v3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M2.5 12h3M18.5 12h3M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1"/>'
@@ -319,7 +347,7 @@ aside{overflow-y:auto}
 
   // état local
   const KEY = "veilleafm_v1";
-  let st = {lu:{}, creuser:{}, lastVisit:"", prevVisit:"", tab:"une", hideRead:false, dataOnly:false, minImp:1, sort:"imp", period:0, exclus:{}, aEnvoyer:[], jeton:"", marques:null};
+  let st = {lu:{}, creuser:{}, lastVisit:"", prevVisit:"", tab:"une", hideRead:false, dataOnly:false, vue:"actives", minImp:1, sort:"imp", period:0, exclus:{}, aEnvoyer:[], jeton:"", marques:null};
   try { Object.assign(st, JSON.parse(localStorage.getItem(KEY) || "{}")); } catch(e) {}
   // journal des marques (lu, à creuser) avec l'heure de chaque changement, pour fusionner entre appareils
   if (!st.marques) { st.marques = {lu:{}, creuser:{}}; ["lu","creuser"].forEach(k => Object.keys(st[k]).forEach(id => st.marques[k][id] = {v:1, t:0})); }
@@ -327,6 +355,12 @@ aside{overflow-y:auto}
   const THEMES_DEFAUT = [["particules","Particules"],["stitching","Stitching"],["courbes-force","Courbes de force"],["iv","I/V"],
     ["spectral","Spectral"],["afm-ir","AFM-IR"],["ndma","NDMA"],["clustering","Clustering"],["ia","IA"],["cd","Critical Dimension"]];
   if (!st.marques.themes) st.marques.themes = {};
+  if (!st.marques.archive) st.marques.archive = {};
+  if (!st.marques.notes) st.marques.notes = {};
+  const archive = id => { const a = st.marques.archive[id]; return a && a.v ? a : null; };
+  const etat = id => archive(id) ? "archivee" : st.lu[id] ? "encours" : "nouvelle";
+  const notesDe = id => Object.entries(st.marques.notes).filter(([k,n]) => n.v && k.startsWith(id+"|")).map(([k,n]) => ({k, ...n})).sort((a,b) => a.t-b.t);
+  const MOTIFS = ["Personne contactée","Outil ou fonction créé","Comparé à MountainsSPIP","Référence client ajoutée","Partagé à l'équipe","Sans suite"];
   if (!st.defs) { st.defs = {}; THEMES_DEFAUT.forEach(([id, nom], k) => st.defs[id] = {nom, t:0, o:k}); }
   const PAL = [["#6d5ce8","#efecfe"],["#11a69a","#e1f6f3"],["#f2604c","#fde9e5"],["#d98a00","#fdf2dc"],["#4a86e8","#e6efff"],
     ["#e5488d","#fde6f0"],["#3f8f3a","#e5f4e1"],["#8a5cc2","#f1e8fb"],["#c2621f","#fbeadd"],["#2f7f9e","#e0f1f7"]];
@@ -340,7 +374,7 @@ aside{overflow-y:auto}
   if (!TABS.some(t => t.id === st.tab) && !(st.tab.startsWith("th:") && st.defs[st.tab.slice(3)] && !st.defs[st.tab.slice(3)].del)) st.tab = "une";
   if (st.lastVisit !== today) { st.prevVisit = st.lastVisit || "0000"; st.lastVisit = today; save(); }
 
-  let resumes = {}, modalId = null;
+  let resumes = {}, modalId = null, compteVues = {};
   let items = [], meta = {}, synthese = "", group = "", q = "", shown = 30;
   const ouverts = {};
   const $ = s => document.querySelector(s);
@@ -377,6 +411,9 @@ aside{overflow-y:auto}
     if (group) l = l.filter(i => i.group === group);
     if (st.minImp > 1) l = l.filter(i => imp(i) >= st.minImp);
     if (st.dataOnly) l = l.filter(i => donnees(i).s === "libres");
+    compteVues = {actives: l.filter(i => !archive(i.id)).length, archivees: l.filter(i => archive(i.id)).length, toutes: l.length};
+    if (st.vue === "actives") l = l.filter(i => !archive(i.id));
+    else if (st.vue === "archivees") l = l.filter(i => archive(i.id));
     if (st.hideRead && st.tab !== "creuser" && !st.tab.startsWith("th:")) l = l.filter(i => !st.lu[i.id]);
     if (q) { const k = q.toLowerCase(); l = l.filter(i => (i.title+" "+i.authors+" "+i.venue+" "+i.abstract+" "+i.group+" "+(i.pm||"")).toLowerCase().includes(k)); }
     if (st.period) { const d = since(st.period); l = l.filter(i => (i.date || i.first_seen || "") >= d); }
@@ -431,13 +468,20 @@ aside{overflow-y:auto}
     const t = themesDe(id);
     return t.length ? `<div class="tchips">${t.map(x => `<span class="tchip" style="--tc:${x.c};--tc-l:${x.cl}">${esc(x.nom)}</span>`).join("")}</div>` : "";
   }
+  function pillEtat(id){
+    const e = etat(id);
+    if (e === "nouvelle") return `<span class="pill et et-nouvelle">${svg(P.spark)}Nouvelle</span>`;
+    if (e === "encours") return `<span class="pill et et-encours">${svg(P.dot,"currentColor")}En cours</span>`;
+    return `<span class="pill et et-archivee">${svg(P.box)}Archivée</span>`;
+  }
   function card(i){
     const [nl, ni] = NIV[imp(i)];
-    return `<article class="card c-${i.cat} ${st.lu[i.id]?"lu":""} ${ouverts[i.id]?"open":""}" data-id="${esc(i.id)}">
+    const e = etat(i.id), ar = archive(i.id), ns = notesDe(i.id), dn = ns[ns.length-1];
+    return `<article class="card c-${i.cat} st-${e} ${ouverts[i.id]?"open":""}" data-id="${esc(i.id)}">
       <div class="row">
         <span class="pill i${imp(i)}">${svg(ni, imp(i)>=3?"currentColor":"none")}${nl}</span>
         <span class="pill cat">${esc(i.group || CAT[i.cat])}</span>
-        ${isNew(i)?'<span class="pill new">NOUVEAU</span>':""}
+        ${pillEtat(i.id)}
         ${pillDonnees(i)}
         <span class="date">${fmt(i.date)}</span>
       </div>
@@ -445,11 +489,15 @@ aside{overflow-y:auto}
       <div class="sub">${esc([i.venue, i.authors].filter(Boolean).join(" · "))}${i.cited_by?` · ${i.cited_by} citation${i.cited_by>1?"s":""}`:""}</div>
       ${i.pm?`<div class="pm">${svg(P.bulb)}<span>${esc(i.pm)}</span></div>`:""}
       ${tchips(i.id)}
+      ${ar ? `<div class="suivi">${svg(P.box)}<span><b>Archivée le ${fmt(ar.le)}</b> : ${esc(ar.motif||"sans motif")}${ar.note?" · "+esc(ar.note):""}</span></div>`
+           : dn ? `<div class="suivi">${svg(P.pen)}<span><b>Suivi ${fmt(dn.le)}</b> : ${esc(dn.txt)}${ns.length>1?` <small>(+${ns.length-1})</small>`:""}</span></div>` : ""}
       ${i.abstract?`<div class="abs">${esc(i.abstract)}</div>`:""}
       <div class="foot">
         <span class="rel"><span class="bar"><i style="width:${i.score}%"></i></span>pertinence ${i.score}<span class="tt">${TT}</span></span>
         <button class="act" data-a="open">${svg(P.chev)}Détails</button>
-        <button class="act ${st.lu[i.id]?"on":""}" data-a="lu">${svg(P.check)}Lu</button>
+        ${ar ? `<button class="act" data-a="reactiver">${svg(P.undo)}Réactiver</button>`
+             : `<button class="act ${st.lu[i.id]?"on":""}" data-a="lu" title="${st.lu[i.id]?"Remettre en nouvelle":"Marquer lue (en cours)"}">${svg(P.check)}Lu</button>
+                <button class="act" data-a="archiver" title="Archiver : c'est traité">${svg(P.box)}Archiver</button>`}
         <button class="act star ${st.creuser[i.id]?"on":""}" data-a="creuser">${svg(P.mark, st.creuser[i.id]?"currentColor":"none")}À creuser</button>
         <button class="act" data-a="ranger" title="Ranger dans des thèmes">${svg(P.tag)}Thèmes</button>
         <button class="act" data-a="share" title="Partager">${svg(P.share)}</button>
@@ -511,8 +559,11 @@ aside{overflow-y:auto}
     const tri = st.sort === "date" ? "plus récents d'abord" : "plus importants d'abord";
     const sous = (st.tab === "une" ? "importance haute et critique, repérés ces 14 derniers jours" : `${l.length} élément${l.length>1?"s":""}`) + " · " + tri;
     const actsTh = th ? `<div class="th-acts"><button data-th-ren="${esc(th.id)}">Renommer</button><button data-th-del="${esc(th.id)}">Supprimer</button></div>` : "";
-    h += `<div class="sec-h"><h3>${titre}</h3><small>${sous}</small>${actsTh}</div>` + chips();
+    const vues = [["actives","Nouvelles et en cours"],["archivees","Archivées"],["toutes","Toutes"]];
+    h += `<div class="sec-h"><h3>${titre}</h3><small>${sous}</small>${actsTh}</div>` + chips()
+      + `<div class="vues">${vues.map(([k,lab]) => `<button class="${st.vue===k?"on":""}" data-vue="${k}">${lab}<small>${compteVues[k]||0}</small></button>`).join("")}</div>`;
     const vide = st.tab === "creuser" ? ["Rien à creuser pour l'instant", "Clique sur « À creuser » sur une carte pour la retrouver ici."]
+      : st.vue === "archivees" ? ["Aucune fiche archivée ici", "Archive une fiche quand elle est traitée : personne contactée, outil créé, comparaison faite…"]
       : th ? ["Ce thème est vide", "Clique sur « Thèmes » sur une carte pour la ranger ici. Une fiche peut aller dans plusieurs thèmes."]
       : ["Tout est calme par ici", "Change de filtre ou reviens après le prochain passage du robot."];
     if (!l.length) h += `<div class="empty">${EMPTY}<b>${vide[0]}</b>${vide[1]}</div>`;
@@ -536,6 +587,21 @@ aside{overflow-y:auto}
     const c = e.target.closest("[data-g]");
     if (c) { group = c.dataset.g; shown = 30; render(); return; }
     if (e.target.closest("#more")) { shown += 30; render(); return; }
+    const vu = e.target.closest("[data-vue]");
+    if (vu) { st.vue = vu.dataset.vue; shown = 30; save(); render(); return; }
+    const mo = e.target.closest("[data-motif]");
+    if (mo) { document.querySelectorAll("[data-motif]").forEach(b => b.classList.toggle("on", b === mo && !mo.classList.contains("on"))); return; }
+    const ag = e.target.closest("[data-archiver]");
+    if (ag) { const id = ag.dataset.archiver, m = document.querySelector("[data-motif].on");
+      archiver(id, m ? m.dataset.motif : "", ($("#arNote")||{}).value || ""); fermer(); render(); toast("Fiche archivée. Retrouve-la dans « Archivées »."); return; }
+    const re = e.target.closest("[data-reactiver]");
+    if (re) { reactiver(re.dataset.reactiver); ouvrir(re.dataset.reactiver); render(); return; }
+    const an = e.target.closest("[data-addnote]");
+    if (an) { const v = $("#noteTxt").value.trim(); if (v) { ajouterNote(an.dataset.addnote, v); ouvrir(an.dataset.addnote); render(); } return; }
+    const dn = e.target.closest("[data-delnote]");
+    if (dn) { st.marques.notes[dn.dataset.delnote] = {v:0, t:Date.now()}; changeEtat(); ouvrir(modalId); render(); return; }
+    const oa = e.target.closest("[data-ouvrarch]");
+    if (oa) { fenetreArchive(oa.dataset.ouvrarch); return; }
     if (e.target.closest("#dataOnly")) { st.dataOnly = !st.dataOnly; shown = 30; save(); render(); return; }
     if (e.target.closest("#hideRead")) { st.hideRead = !st.hideRead; save(); render(); return; }
     if (e.target.closest(".m-x") || e.target === $("#ov")) { fermer(); return; }
@@ -567,6 +633,8 @@ aside{overflow-y:auto}
     if (a.dataset.a === "open") { ouvrir(id); return; }
     if (a.dataset.a === "nope") { pasPertinent(id); return; }
     if (a.dataset.a === "ranger") { pickTheme(id); return; }
+    if (a.dataset.a === "archiver") { fenetreArchive(id); return; }
+    if (a.dataset.a === "reactiver") { reactiver(id); render(); return; }
     if (a.dataset.a === "share") {
       if (navigator.share) navigator.share({title: it.title, url: it.url}).catch(()=>{});
       else if (navigator.clipboard) { navigator.clipboard.writeText(it.title+"\n"+it.url); a.innerHTML = svg(P.check)+"Copié"; }
@@ -602,6 +670,7 @@ aside{overflow-y:auto}
       ${corps}
       ${tchips(id)}
       ${i.pm?`<div class="pm">${svg(P.bulb)}<span><b>Pour toi :</b> ${esc((r&&r.pour_toi)||i.pm)}</span></div>`:""}
+      ${blocSuivi(id)}
       <div class="m-meta">${esc([i.venue, i.authors].filter(Boolean).join(" · "))}${i.cited_by?` · ${i.cited_by} citation${i.cited_by>1?"s":""}`:""} · pertinence ${i.score}</div>
       <div class="m-acts">
         <a class="btn main" href="${esc(i.url)}" target="_blank" rel="noopener">${svg(P.open)}Ouvrir la source</a>
@@ -665,6 +734,39 @@ aside{overflow-y:auto}
     st.marques[k][id] = {v: v ? 1 : 0, t: Date.now()};
     changeEtat();
   }
+  function archiver(id, motif, note){
+    st.marques.archive[id] = {v:1, t:Date.now(), le:today, motif, note:note.trim().slice(0,200)};
+    if (!st.lu[id]) marquer("lu", id, true); else changeEtat();
+  }
+  function reactiver(id){ st.marques.archive[id] = {v:0, t:Date.now()}; changeEtat(); }
+  function ajouterNote(id, txt){
+    st.marques.notes[id+"|"+Date.now().toString(36)] = {v:1, t:Date.now(), le:today, txt:txt.slice(0,300)};
+    if (!st.lu[id]) marquer("lu", id, true); else changeEtat();
+  }
+  function fenetreArchive(id){
+    const i = items.find(x => x.id === id); if (!i) return;
+    modalId = null;
+    $("#modal").className = "modal c-" + i.cat;
+    $("#modal").innerHTML = `<div class="m-in set">
+      <div class="row"><div class="m-title" style="font-size:19px">Archiver cette fiche</div><button class="m-x" title="Fermer">${svg(P.x)}</button></div>
+      <p>${esc((resumes[id]&&resumes[id].titre_fr)||i.title)}</p>
+      <p>Elle reste dans ses thèmes, rangée dans « Archivées ». Qu'as-tu fait ?</p>
+      <div class="motifs">${MOTIFS.map(m => `<button data-motif="${esc(m)}">${esc(m)}</button>`).join("")}</div>
+      <input id="arNote" placeholder="Précision (facultatif) : qui, quoi, lien vers le ticket…" maxlength="200">
+      <div class="m-acts"><button class="btn main" data-archiver="${esc(id)}">${svg(P.box)}Archiver</button></div>
+    </div>`;
+    $("#ov").classList.add("on"); document.body.style.overflow = "hidden";
+  }
+  function blocSuivi(id){
+    const ar = archive(id), ns = notesDe(id);
+    const liste = ns.length ? `<div class="notes">${ns.map(n => `<div class="note"><time>${fmt(n.le)}</time><span>${esc(n.txt)}</span><button data-delnote="${esc(n.k)}" title="Supprimer">${svg(P.x)}</button></div>`).join("")}</div>` : "";
+    const arch = ar
+      ? `<div class="acc acc-no">${svg(P.box)}<div>Archivée le ${fmt(ar.le)}<small>${esc(ar.motif||"Sans motif")}${ar.note?" · "+esc(ar.note):""}</small></div><button class="go" style="border:0" data-reactiver="${esc(id)}">Réactiver</button></div>`
+      : `<button class="btn" data-ouvrarch="${esc(id)}" style="align-self:flex-start">${svg(P.box)}Archiver : c'est traité</button>`;
+    return `<div class="m-h">Suivi ${pillEtat(id)}</div>${liste}
+      <div class="newt"><input id="noteTxt" placeholder="Ajouter une note : mail envoyé à…, testé sur…, ticket…" maxlength="300"><button class="btn" data-addnote="${esc(id)}">${svg(P.pen)}Noter</button></div>
+      ${arch}`;
+  }
   function ranger(id, tid, v){ st.marques.themes[id+"|"+tid] = {v: v ? 1 : 0, t: Date.now()}; changeEtat(); }
   function creerTheme(nom){
     nom = nom.trim().slice(0, 40);
@@ -693,29 +795,29 @@ aside{overflow-y:auto}
     syncEnCours = true;
     try {
       const r = await gh("/contents/"+ETAT+"?ref=main&t="+Date.now());
-      let distant = {lu:{}, creuser:{}, themes:{}, defs:null}, sha;
+      let distant = {lu:{}, creuser:{}, themes:{}, archive:{}, notes:{}, defs:null}, sha;
       if (r.ok) { const j = await r.json(); sha = j.sha; Object.assign(distant, JSON.parse(b64d(j.content))); }
       else if (r.status !== 404) throw new Error(r.status);
       const stable = o => o && typeof o === "object" ? "{"+Object.keys(o).sort().map(k => JSON.stringify(k)+":"+stable(o[k])).join(",")+"}" : JSON.stringify(o);
-      const avant = stable({lu:distant.lu||{}, creuser:distant.creuser||{}, themes:distant.themes||{}, defs:distant.defs||{}});
+      const avant = stable({lu:distant.lu||{}, creuser:distant.creuser||{}, themes:distant.themes||{}, archive:distant.archive||{}, notes:distant.notes||{}, defs:distant.defs||{}});
       const limite = Date.now() - 120*864e5, connus = new Set(items.map(i => i.id));
       const plusRecent = (a, b) => !a ? b : !b ? a : (b.t > a.t ? b : a);
-      const fus = {lu:{}, creuser:{}, themes:{}, defs:{}};
+      const fus = {lu:{}, creuser:{}, themes:{}, archive:{}, notes:{}, defs:{}};
       // définitions des thèmes : la plus récente gagne, thème par thème
       new Set([...Object.keys(distant.defs||{}), ...Object.keys(st.defs)]).forEach(id => fus.defs[id] = plusRecent((distant.defs||{})[id], st.defs[id]));
-      ["lu","creuser","themes"].forEach(k => {
+      ["lu","creuser","themes","archive","notes"].forEach(k => {
         const ids = new Set([...Object.keys(distant[k]||{}), ...Object.keys(st.marques[k]||{})]);
         ids.forEach(cle => {
           const m = plusRecent((distant[k]||{})[cle], (st.marques[k]||{})[cle]);
-          const id = k === "themes" ? cle.split("|")[0] : cle;
+          const id = cle.split("|")[0];
           // on oublie les fiches disparues depuis longtemps et les retraits anciens (les fiches rangées restent)
           if (!m.v && m.t < limite) return;
           if (!connus.has(id) && m.t < limite && k === "lu") return;
           fus[k][cle] = m;
         });
-        if (k !== "themes") { st[k] = {}; Object.keys(fus[k]).forEach(id => { if (fus[k][id].v) st[k][id] = 1; }); }
+        if (k === "lu" || k === "creuser") { st[k] = {}; Object.keys(fus[k]).forEach(id => { if (fus[k][id].v) st[k][id] = 1; }); }
       });
-      st.defs = fus.defs; st.marques = {lu:fus.lu, creuser:fus.creuser, themes:fus.themes}; save(); render();
+      st.defs = fus.defs; st.marques = {lu:fus.lu, creuser:fus.creuser, themes:fus.themes, archive:fus.archive, notes:fus.notes}; save(); render();
       if (stable(fus) !== avant) {
         const w = await gh("/contents/"+ETAT, {method:"PUT", body:JSON.stringify({
           message:"Synchronisation lu, à creuser et thèmes", branch:"main", sha,
@@ -740,7 +842,7 @@ aside{overflow-y:auto}
       <div class="row"><div class="m-title">Réglages</div><button class="m-x" title="Fermer">${svg(P.x)}</button></div>
       <p>Avec un jeton GitHub, tes fiches <b>lues</b>, <b>À creuser</b> et tes <b>thèmes</b> sont partagés entre tous tes appareils (fichier data/etat.json du dépôt, public comme le reste : il ne contient que des identifiants de fiches).</p>
       <p>Le bouton <b>Pas pertinent</b> masque une fiche tout de suite. Pour que le robot l'écarte aussi (et écarte une revue ou un média après deux refus), l'appli doit pouvoir écrire dans ton dépôt GitHub.</p>
-      ${st.jeton ? `<div class="acc acc-ok">${svg(P.check)}<div>Connecté à GitHub<small>${st.aEnvoyer.length ? st.aEnvoyer.length+" fiche(s) en attente d'envoi" : (derniereSync ? "Lu, À creuser et thèmes synchronisés à "+derniereSync : "Synchronisation en cours…")}</small></div><button class="go" id="tokDel" style="border:0">Déconnecter</button></div>` : `
+      ${st.jeton ? `<div class="acc acc-ok">${svg(P.check)}<div>Connecté à GitHub<small>${st.aEnvoyer.length ? st.aEnvoyer.length+" fiche(s) en attente d'envoi" : (derniereSync ? "Lu, À creuser, thèmes et suivi synchronisés à "+derniereSync : "Synchronisation en cours…")}</small></div><button class="go" id="tokDel" style="border:0">Déconnecter</button></div>` : `
       <ol><li>Sur GitHub : Settings, Developer settings, Personal access tokens, <b>Fine-grained tokens</b>, Generate new token.</li>
       <li>Repository access : <b>Only select repositories</b>, choisis <b>Ritemo/veille-afm</b>.</li>
       <li>Permissions : <b>Contents</b> en <b>Read and write</b>. Rien d'autre.</li>
@@ -767,6 +869,7 @@ aside{overflow-y:auto}
   document.addEventListener("keydown", e => {
     if (e.key === "Escape" && $("#ov").classList.contains("on")) fermer();
     if (e.key === "Enter" && e.target.id === "ntNom") $("#ntGo").click();
+    if (e.key === "Enter" && e.target.id === "noteTxt") document.querySelector("[data-addnote]").click();
   });
 
   let tq; $("#q").addEventListener("input", e => { clearTimeout(tq); tq = setTimeout(() => { q = e.target.value.trim(); shown = 30; render(); }, 150); });
