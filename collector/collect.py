@@ -286,7 +286,7 @@ def importance_pm(it, texte, tags):
             return 2, "Mountains utilisé hors AFM (profilométrie, confocal, MEB…) : référence utile pour les autres produits de la gamme."
         if a(RE_FONCTION) or a(RE_ML):
             return 3, f"{grp} utilisé sur une analyse que MountainsSPIP couvre : à comparer, argumentaire de remplacement."
-        return 2, f"Usage de {grp} : suivre l'implantation de la concurrence."
+        return 1, f"Usage courant de {grp}, sans analyse que MountainsSPIP met en avant : simple suivi de la concurrence."
 
     if cat == "constructeurs":
         if grp == "Digital Surf":
@@ -308,6 +308,31 @@ def importance_pm(it, texte, tags):
     if a(RE_FONCTION) or majeure:
         return 2, "Tendance scientifique sur une analyse couverte par Mountains : veille de fond utile."
     return 1, "Veille scientifique générale."
+
+
+# ---------------------------------------------------------------- anti-bruit
+# « SPIP » est aussi un acronyme indonésien (contrôle interne de l'État) : on exige un vrai contexte AFM.
+RE_CTX_SPIP = (r"\bafm\b|atomic force|scanning probe|image metrology|spip software|nanoindent|kelvin probe|"
+               r"\bkpfm\b|cantilever|force spectroscopy|scanning tunnel")
+# « Park Systems » ramène des parcs publics : on garde la société, pas les parcs.
+RE_PARCS = r"(state|national|regional|city|county|solar|wind|energy|public|theme)\s+park systems"
+
+
+def pertinent(it, texte_complet=""):
+    """Faux si l'élément est un faux positif évident (à supprimer)."""
+    t = (it["title"] + " " + it.get("abstract", "") + " " + (texte_complet or "")).lower()
+    if it["cat"] == "logiciels" and it["group"].startswith("SPIP"):
+        return re.search(RE_CTX_SPIP, t) is not None
+    if it["cat"] == "constructeurs" and it["group"] == "Park Systems":
+        titre = it["title"]
+        if re.search(RE_AFM + r"|microscop|nanoscien", titre.lower()):
+            return True
+        return "Park Systems" in titre and not re.search(RE_PARCS, titre.lower())
+    return True
+
+
+def dans_periode(it, date_min):
+    return not date_min or not it.get("date") or it["date"] >= date_min
 
 
 # ---------------------------------------------------------------- principal
@@ -359,6 +384,7 @@ def main():
     if os.path.exists(FICHIER_META):
         with open(FICHIER_META, encoding="utf-8") as f:
             meta_avant = json.load(f)
+    hors_ligne = "--nettoyer" in sys.argv  # applique filtres et notation sans rien collecter
     # nouvelles règles de recherche : on refait un passage long pour rattraper
     rattrapage = meta_avant.get("version_requetes", 1) < VERSION_REQUETES
     jours = cfg["fenetre_jours_quotidienne"] if anciens and not rattrapage else cfg["fenetre_jours_premier_passage"]
@@ -366,6 +392,8 @@ def main():
     # les mentions de logiciels sont rares : au rattrapage on remonte plus loin
     jl = cfg["fenetre_jours_logiciels_rattrapage"] if (rattrapage or not anciens) else jours
     depuis_logiciels = (AUJOURDHUI - dt.timedelta(days=jl)).isoformat()
+    date_min = cfg.get("date_min", "")
+    depuis, depuis_logiciels = max(depuis, date_min), max(depuis_logiciels, date_min)
     print(f"Collecte depuis le {depuis}")
 
     par_id = {it["id"]: it for it in anciens}
@@ -375,8 +403,8 @@ def main():
             resumes_en = json.load(f)
     nouveaux = 0
     priorite = {"citations": 0, "logiciels": 1, "constructeurs": 2, "litterature": 3}
-    for it in collecter(cfg, depuis, depuis_logiciels):
-        if not it["title"]:
+    for it in ([] if hors_ligne else collecter(cfg, depuis, depuis_logiciels)):
+        if not it["title"] or not dans_periode(it, date_min) or not pertinent(it, it.get("_abs", "")):
             continue
         noter(it, cfg)
         texte_complet = it.pop("_abs", "")
@@ -402,7 +430,8 @@ def main():
         nouveaux += 1
 
     limite = (AUJOURDHUI - dt.timedelta(days=cfg["conservation_jours"])).isoformat()
-    items = [i for i in par_id.values() if i["first_seen"] >= limite]
+    items = [i for i in par_id.values() if i["first_seen"] >= limite and dans_periode(i, date_min)
+             and pertinent(i, resumes_en.get(i["id"], ""))]
     for i in items:  # les règles évoluent : on renote tout à chaque passage
         noter(i, cfg)
     items.sort(key=lambda i: (i["first_seen"], i["score"]), reverse=True)
@@ -413,6 +442,12 @@ def main():
     gardes = {i["id"] for i in items}
     with open(FICHIER_RESUMES_EN, "w", encoding="utf-8") as f:
         json.dump({k: v for k, v in resumes_en.items() if k in gardes and v}, f, ensure_ascii=False, indent=0)
+    if hors_ligne:
+        meta_avant.update({"total": len(items)})
+        with open(FICHIER_META, "w", encoding="utf-8") as f:
+            json.dump(meta_avant, f, ensure_ascii=False, indent=1)
+        print(f"Nettoyage : {len(anciens)} -> {len(items)} éléments")
+        return
     with open(FICHIER_META, "w", encoding="utf-8") as f:
         json.dump({"maj": dt.datetime.now(dt.timezone.utc).isoformat(timespec="minutes"),
                    "version_requetes": VERSION_REQUETES,

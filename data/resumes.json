@@ -167,28 +167,6 @@
   "acces_note": "Article de presse en ligne, page inaccessible lors de la veille",
   "pour_toi": "Hillsboro est un pôle semi-conducteurs : Park renforce sa proximité avec ces clients, à prendre en compte pour le partenariat et la distribution MountainsSPIP aux États-Unis."
  },
- "t:858914041ebe72ef": {
-  "titre_fr": "Jack Harlow présente les baskets New Balance « T500 Olmsted » à Cherokee Park",
-  "resume": "Article de presse people sur le lancement d'un modèle de baskets par un rappeur dans un parc de Louisville. Il a été capté par erreur à cause du mot « Park » et n'a aucun rapport avec Park Systems ni avec l'AFM. Fiche rédigée à partir du titre seul.",
-  "points": [
-   "Pertinence : hors sujet, faux positif de la veille",
-   "Source : presse locale (The Courier-Journal)"
-  ],
-  "acces": "inconnu",
-  "acces_note": "Article de presse, non consulté",
-  "pour_toi": "Rien à faire ; signale qu'il faut affiner le filtre « Park Systems » pour exclure les simples mentions de parcs."
- },
- "t:4dce7c0eef9e8455": {
-  "titre_fr": "Le Dublin Park Pass revient avec de nouvelles récompenses artistiques locales",
-  "resume": "Actualité locale de Dublin (Ohio) sur un programme de visite des parcs. Elle a été captée par erreur à cause du mot « Park » et n'a aucun lien avec Park Systems ni avec l'AFM. Fiche rédigée à partir du titre seul.",
-  "points": [
-   "Pertinence : hors sujet, faux positif de la veille",
-   "Source : presse locale (The Columbus Dispatch)"
-  ],
-  "acces": "inconnu",
-  "acces_note": "Article de presse, non consulté",
-  "pour_toi": "Rien à faire ; filtre « Park Systems » à resserrer."
- },
  "doi:10.1002/pro.70784": {
   "titre_fr": "Le Seigneur des anneaux : des ponts cystéine réticulent la queue d'un siphovirus",
   "resume": "Les siphovirus possèdent une longue queue tubulaire formée d'anneaux hexamériques de protéine. La protéine de tube gp39 contient deux cystéines par monomère et la cryo-microscopie électronique montre leur orientation vers l'anneau voisin. L'étude examine le rôle de ces ponts disulfure dans la réticulation de la queue.",
@@ -480,70 +458,6 @@
   "acces_note": "Revue RSC Advances publiée en libre accès, à confirmer sur la page de l'article",
   "pour_toi": "Usage de Gwyddion en optoélectronique : suivre l'implantation de la concurrence."
  },
- "doi:10.1063/5.0317307": {
-  "titre_fr": "AFM-IR en mode force volume à balayage de fréquence : découpler la cartographie infrarouge des propriétés mécaniques",
-  "resume": "L'AFM-IR couple un microscope à force atomique à un laser infrarouge accordable pour cartographier la signature chimique à l'échelle nanométrique. Le mode force volume à balayage de fréquence mesure la réponse en fréquence complète du levier en chaque point, sans asservissement actif de la résonance. Les auteurs le comparent aux modes contact et force volume à résonance renforcée sur des polymères étalons. Ils montrent que les spectres en fréquence sont indispensables pour choisir le bon mode de résonance et que l'intégration de la réponse améliore le contraste IR sur les zones hétérogènes.",
-  "points": [
-   "Technique : AFM-IR force volume à balayage de fréquence",
-   "Échantillon : polymères de référence mécaniquement hétérogènes",
-   "Logiciel : Mountains cité",
-   "Résultat : meilleur contraste IR sans suivi de résonance"
-  ],
-  "acces": "gratuit",
-  "acces_note": "Article en accès libre chez l'éditeur (Journal of Applied Physics)",
-  "pour_toi": "Publication visible citant Mountains en AFM-IR : bonne référence client, et ces cubes de données fréquence x position sont un format à vérifier dans MountainsSPIP."
- },
- "doi:10.1021/acsomega.5c11732": {
-  "titre_fr": "Remodelage de la paroi cellulaire et réorganisation des protéines chez Candida auris comparé à Candida albicans, vus par AFM-IR",
-  "resume": "Les auteurs combinent spectroscopie FTIR et AFM-IR pour étudier des levures pathogènes de l'échelle de la colonie à celle de la cellule unique. Ils valident d'abord une fixation à l'éthanol sur C. albicans : elle modifie un peu lipides, glucanes et protéines mais conserve la morphologie et réduit les artefacts topographiques. Comparé à C. albicans, C. auris présente un réseau de polysaccharides plus dense et hétérogène, davantage de lipides à chaînes longues et plus de feuillets bêta antiparallèles à l'échelle nanométrique.",
-  "points": [
-   "Technique : FTIR et AFM-IR",
-   "Échantillon : cellules fixées de Candida auris et C. albicans",
-   "Logiciel : Mountains cité",
-   "Résultat : signatures chimiques nanométriques propres à C. auris"
-  ],
-  "acces": "gratuit",
-  "acces_note": "Article en accès libre chez l'éditeur (ACS Omega)",
-  "pour_toi": "Équipe de Bialystok (Bucki) utilisant Mountains en AFM-IR sur cellules : référence client à collecter et cas d'usage pour l'analyse spectrale par zone."
- },
- "doi:10.1039/d5an01298h": {
-  "titre_fr": "Nanospectroscopie AFM-IR multimodale et microscopie optique non linéaire pour détecter les altérations de la matrice de collagène",
-  "resume": "L'étude associe AFM-IR et microscopie optique non linéaire pour repérer des altérations de la matrice de collagène. L'extrait disponible indique qu'une bande IR du collagène provient d'une estérification locale d'origine thermique. Cette bande sert de marqueur d'une altération moléculaire irréversible, liée à une déstabilisation structurale. Le résumé complet n'est pas disponible, les autres résultats ne sont donc pas détaillés ici.",
-  "points": [
-   "Technique : AFM-IR et microscopie optique non linéaire",
-   "Échantillon : matrices de collagène",
-   "Logiciel : Mountains cité",
-   "Résultat : bande IR marqueur d'estérification thermique"
-  ],
-  "acces": "gratuit",
-  "acces_note": "Article en accès libre chez l'éditeur (The Analyst)",
-  "pour_toi": "Équipe Dazzi (Université Paris-Saclay), pionnière de l'AFM-IR, utilisant Mountains : contact français prioritaire pour une note d'application AFM-IR."
- },
- "doi:10.1038/s41467-025-65579-1": {
-  "titre_fr": "AFM multi-échelle à haute bande passante grâce à un nanopositionneur à inertie (stick-slip)",
-  "resume": "Les AFM actuels utilisent des nanopositionneurs à entraînement direct qui offrent soit une grande course, soit une grande bande passante. Les auteurs montrent qu'avec un contrôleur triphasé, un positionneur stick-slip classique peut balayer avec précision nanométrique jusqu'à 363 Hz. En cumulant les pas, la même platine couvre 3 mm x 3 mm, une à deux décades de plus que les systèmes de bande passante comparable. Un AFM complet est démontré, avec une imagerie à 40 Hz par ligne sur des zones millimétriques.",
-  "points": [
-   "Technique : AFM à nanopositionneur stick-slip",
-   "Résultat : balayage jusqu'à 363 Hz sur 3 mm x 3 mm",
-   "Logiciel : Mountains cité"
-  ],
-  "acces": "gratuit",
-  "acces_note": "Article en accès libre (Nature Communications, PMC)",
-  "pour_toi": "Images AFM millimétriques à haute résolution : vérifier que MountainsSPIP gère bien ces très grandes images et le raccordement de zones."
- },
- "doi:10.1021/acsmeasuresciau.5c00178": {
-  "titre_fr": "Techniques actuelles et perspectives pour l'analyse de surface des comprimés pharmaceutiques",
-  "resume": "L'auteur applique ToF-SIMS, XPS, AFM et profilométrie 3D de façon complémentaire à des comprimés pharmaceutiques, avec deux familles de formulations. L'AFM et la profilométrie servent à mesurer la topographie, la rugosité et la profondeur des cratères creusés par abrasion ionique par agrégats gazeux. Le ToF-SIMS fournit des cartes et profils en profondeur moléculairement spécifiques, l'XPS la composition élémentaire et les états chimiques. L'ensemble révèle ségrégation de surface et stratification des principes actifs et excipients.",
-  "points": [
-   "Technique : ToF-SIMS, XPS, AFM, profilométrie 3D",
-   "Échantillon : comprimés pharmaceutiques mono et multi principes actifs",
-   "Logiciel : Mountains cité",
-   "Résultat : localisation des actifs et excipients en surface et en profondeur"
-  ],
-  "acces": "gratuit",
-  "acces_note": "Article en accès libre chez l'éditeur (ACS Measurement Science Au)",
-  "pour_toi": "Laboratoire de Maribor (Finšgar) utilisant Mountains en AFM et profilométrie : référence client et bon cas d'usage multi-instruments en pharmacie."
- },
  "doi:10.1016/j.apsusc.2026.167902": {
   "titre_fr": "Affinité d'un médicament pour des nanoparticules d'or fonctionnalisées : étude par AFM-SEIRA et SERS",
   "resume": "L'étude examine l'adsorption de l'afatinib sur des monocouches de nanoparticules d'or de deux tailles, obtenues avec deux réducteurs différents. L'AFM-SEIRA montre que la molécule se lie surtout par son cycle quinazoline, son groupe amide et son amine, avec une géométrie qui dépend du type de nanoparticule. Le SERS résolu en temps révèle une adsorption dynamique avec réorientation puis désorption progressive, accélérée à 37 °C. En présence d'acide phénylboronique, l'afatinib domine mais la co-adsorption déstabilise les deux espèces.",
@@ -569,19 +483,6 @@
   "acces_note": "Document en libre accès sur le dépôt institutionnel KITopen",
   "pour_toi": "Équipe KIT/Fribourg (Esser, Cramer) utilisant Mountains en EC-AFM : référence client et cas d'usage pour le suivi de séries temporelles de gonflement."
  },
- "doi:10.3390/ma18235465": {
-  "titre_fr": "Topographie et résistance à la corrosion de l'alliage Fe40Al5Cr0.2ZrB et de l'acier X18CrN28",
-  "resume": "Les auteurs comparent la résistance à la corrosion des deux matériaux dans une solution de NaCl à 5 % par spectroscopie d'impédance et polarisation potentiodynamique. La topographie confocale et AFM montre une forte hausse locale de la rugosité de l'alliage FeAl, avec un Sa atteignant environ 1,63 µm, contre seulement 13 à 19 nm pour l'acier. Le MEB-EDS confirme des oxydes chlorés sur l'alliage et une fine couche passive riche en chrome sur l'acier, nettement plus résistant.",
-  "points": [
-   "Technique : confocal, AFM, EIS, MEB-EDS",
-   "Échantillon : alliage Fe40Al5Cr0.2ZrB et acier X18CrN28",
-   "Logiciel : Mountains cité",
-   "Résultat : Sa jusqu'à 1,63 µm sur FeAl contre 13 à 19 nm sur l'acier"
-  ],
-  "acces": "gratuit",
-  "acces_note": "Article en accès libre chez l'éditeur (MDPI Materials)",
-  "pour_toi": "Équipe de Katowice (Cebulski) combinant confocal et AFM dans Mountains avec des paramètres ISO 25178 : bon exemple d'analyse multi-échelle à valoriser."
- },
  "doi:10.1021/acsomega.6c03637": {
   "titre_fr": "Effet antimicrobien renforcé de matériaux composites cuivre/chitosane sur Escherichia coli",
   "resume": "Les auteurs préparent des films cuivre-chitosane et les caractérisent par spectroscopies et AFM, en lien avec le relargage d'ions Cu2+. L'AFM suit la morphologie, la rugosité et l'intégrité de bactéries E. coli après 2 h et 20 h de contact. Les cellules passent d'une forme en bâtonnet à une forme sphérique, forment des protubérances membranaires puis se lysent. L'effet combine le relargage de cuivre (220 ppb en 24 h) et l'activité propre du chitosane.",
@@ -595,66 +496,6 @@
   "acces_note": "Article en accès libre chez l'éditeur (ACS Omega)",
   "pour_toi": "Équipe Bari/Ulm (Cioffi, Mizaikoff, Kranz) utilisant Mountains pour la rugosité de bactéries : référence client en microbiologie."
  },
- "doi:10.1016/j.mex.2026.103855": {
-  "titre_fr": "Protocole pour mesurer la force d'adhésion de cellules fluorescentes isolées sur une monocouche cellulaire non fluorescente par microscopie de force fluidique",
-  "resume": "La microscopie de force fluidique (FluidFM) associe microfluidique et AFM pour décrocher des cellules avec des forces de plusieurs centaines de nanonewtons, sans colle. Il est difficile d'identifier une cellule posée sur une autre couche cellulaire en lumière blanche. Les auteurs détaillent un protocole qui repère des cellules fluorescentes sur une monocouche non fluorescente puis mesure leur détachement. Le protocole est transposable à d'autres lignées adhérentes.",
-  "points": [
-   "Technique : FluidFM et fluorescence",
-   "Échantillon : cellules fluorescentes sur monocouche cellulaire",
-   "Logiciel : Mountains cité",
-   "Résultat : forces d'adhésion de l'ordre de la centaine de nN"
-  ],
-  "acces": "gratuit",
-  "acces_note": "Article en accès libre chez l'éditeur (MethodsX)",
-  "pour_toi": "Équipe de Homburg (Bischoff, Metzger) analysant des courbes FluidFM avec Mountains : vérifier l'import des fichiers FluidFM et le calcul des forces d'adhésion."
- },
- "doi:10.1016/j.hcc.2026.100423": {
-  "titre_fr": "Analyse complète des techniques d'apprentissage automatique explicables pour la détection d'intrusions réseau",
-  "resume": "Cette revue fait le point sur l'IA explicable appliquée aux systèmes de détection d'intrusions fondés sur l'apprentissage automatique. Elle propose une taxonomie des méthodes, passe en revue SHAP, LIME, l'attention ou l'extraction de règles, et discute métriques, jeux de données et vulnérabilités aux attaques. Elle conclut sur les pistes ouvertes comme l'explicabilité robuste et l'humain dans la boucle.",
-  "points": [
-   "Technique : revue de littérature en cybersécurité"
-  ],
-  "acces": "gratuit",
-  "acces_note": "Article en accès libre chez l'éditeur (High-Confidence Computing)",
-  "pour_toi": "Probable faux positif : aucun usage d'AFM ni de logiciel d'analyse de surface dans le résumé, la mention de SPIP vient sans doute d'un homonyme. À écarter de la veille."
- },
- "doi:10.21203/rs.3.rs-10165264/v1": {
-  "titre_fr": "Curvana : un package R et une application web Shiny pour analyser les courbes de force AFM",
-  "resume": "Les auteurs présentent Curvana, un logiciel libre en R pour traiter les courbes force-distance AFM de bout en bout. Il convertit les courbes déflexion-déplacement en force-séparation, calcule les métriques clés dont l'énergie et la distance d'interaction, produit des figures et des statistiques. L'outil existe en package R et en application Shiny utilisable en ligne sans installation.",
-  "points": [
-   "Technique : spectroscopie de force AFM",
-   "Logiciel : Curvana (R/Shiny), NanoScope Analysis cité",
-   "Résultat : chaîne complète d'analyse de courbes en accès web"
-  ],
-  "acces": "gratuit",
-  "acces_note": "Prépublication Research Square en libre accès",
-  "pour_toi": "Nouvel outil libre et gratuit d'analyse de courbes de force, accessible dans le navigateur : concurrent à surveiller, et l'énergie d'interaction est un paramètre à vérifier dans MountainsSPIP."
- },
- "doi:10.1038/s41467-025-65178-0": {
-  "titre_fr": "Une plateforme multiplexée de protéotoxicité des maladies neurodégénératives montre que DNAJB6 favorise une gélification non toxique des condensats de FUS et limite la neurotoxicité",
-  "resume": "Les auteurs construisent un crible génétique chez la levure confrontant 32 protéines liées aux maladies neurodégénératives à 132 chaperons et environ 900 protéines humaines. Le chaperon humain DNAJB6 ressort comme modulateur puissant de plusieurs protéines liées à la SLA et à la démence frontotemporale. Il se co-condense avec FUS et fige ses condensats dans un état de gel lâche qui empêche la formation de fibrilles. Sa surexpression protège les motoneurones dans un modèle murin de SLA liée à FUS.",
-  "points": [
-   "Technique : crible génétique, biophysique des condensats",
-   "Échantillon : protéines FUS et chaperon DNAJB6",
-   "Résultat : prévention de la fibrillation et de la perte de motoneurones"
-  ],
-  "acces": "gratuit",
-  "acces_note": "Article en accès libre chez l'éditeur (Nature Communications)",
-  "pour_toi": "L'AFM n'apparaît pas dans le résumé : vérifier dans le texte si SPIP sert à l'imagerie des condensats ou des fibrilles avant de contacter l'équipe."
- },
- "doi:10.1002/smll.74244": {
-  "titre_fr": "Détection nanoélectronique d'opioïdes : criblage par apprentissage automatique avec une matrice de capteurs à transistors à nanotubes de carbone",
-  "resume": "Les auteurs détectent le fentanyl et trois autres opioïdes avec une matrice de transistors à nanotubes de carbone décorés d'or et de platine. Des centaines d'échantillons sont mesurés, en partie avec un banc automatisé de 96 capteurs. Des modèles classiques atteignent 82,6 % de bonne classification, un réseau convolutif 98,3 % sur le groupe manuel. L'analyse révèle le rôle clé du courant grille-source dans la discrimination des molécules.",
-  "points": [
-   "Technique : transistors à effet de champ, apprentissage automatique",
-   "Échantillon : nanotubes de carbone décorés Au et Pt",
-   "Logiciel : Gwyddion cité",
-   "Résultat : 98,3 % de classification par réseau convolutif"
-  ],
-  "acces": "gratuit",
-  "acces_note": "Article en accès libre (Small, PMC)",
-  "pour_toi": "Gwyddion utilisé pour caractériser des nanotubes décorés (équipe Star, Pittsburgh) : usage de la concurrence en nanoélectronique à suivre."
- },
  "doi:10.1016/j.mtcomm.2026.116039": {
   "titre_fr": "Analyse nanomécanique automatisée de couches minces par spectroscopie de force AFM avec modèle d'épaisseur finie",
   "resume": "Les auteurs présentent MechLayer Suite, un logiciel qui détecte automatiquement les événements d'indentation et extrait propriétés élastiques et plastiques de grands jeux de courbes de force. Il repère seul le point de contact, l'intervalle d'ajustement élastique et le point de rupture, ce qui réduit la part de choix de l'opérateur. Il est validé sur bicouches lipidiques, polydiacétylène et mélanges de polymères couvrant trois ordres de grandeur de rigidité. La comparaison avec des simulations par éléments finis donne une erreur quadratique normalisée de 0,52 à 7,05 %.",
@@ -667,19 +508,6 @@
   "acces": "gratuit",
   "acces_note": "Article en accès libre chez l'éditeur (Materials Today Communications)",
   "pour_toi": "Concurrent direct sur la nanomécanique des couches minces : comparer la correction d'épaisseur finie et la détection automatique du point de contact avec MountainsSPIP, et proposer la migration aux utilisateurs de l'ancien SPIP."
- },
- "doi:10.1088/2515-7647/ae82a1": {
-  "titre_fr": "Imagerie corrélative confocale et AFM pour la métrologie de particules : théorie et mesures",
-  "resume": "L'AFM offre la plus faible incertitude pour calibrer la taille de particules mais reste limitée en champ et peine au-delà d'environ 10 µm. Les auteurs proposent un cadre corrélatif qui transfère l'étalonnage AFM vers la microscopie confocale pour des microparticules translucides. Ils combinent modélisation physique de l'imagerie et inférence bayésienne pour corriger les biais optiques. Des étalons de polystyrène sont mesurés de façon traçable de 3 à 20 µm, avec calcul de l'incertitude élargie.",
-  "points": [
-   "Technique : AFM et microscopie confocale corrélatives, inférence bayésienne",
-   "Échantillon : particules étalons de polystyrène de 3 à 20 µm",
-   "Logiciel : SPIP cité",
-   "Résultat : métrologie traçable au-delà des limites de chaque instrument"
-  ],
-  "acces": "gratuit",
-  "acces_note": "Article en accès libre chez l'éditeur (Journal of Physics: Photonics)",
-  "pour_toi": "Équipe du DFM danois (Hansen, Aslan), utilisateur historique de SPIP en métrologie : cible prioritaire de migration, avec un intérêt pour la corrélation AFM-confocal dans MountainsSPIP."
  },
  "doi:10.1007/s10853-026-13831-4": {
   "titre_fr": "Étude complète de nanocomposites Mn-ZnO/SiO2 : de la colorimétrie numérique à la photocatalyse en lumière visible",
@@ -719,77 +547,6 @@
   "acces_note": "Article en accès libre chez l'éditeur (RSC Advances)",
   "pour_toi": "Usage de Gwyddion pour la rugosité de matériaux 2D : suivre l'implantation de la concurrence."
  },
- "doi:10.1186/s12964-025-02502-7": {
-  "titre_fr": "Les vésicules extracellulaires de patients atteints de COVID long favorisent un stress cellulaire médié par RUNX2 via une dérégulation de miR-204 et l'activation de la voie p53",
-  "resume": "Les auteurs caractérisent des vésicules extracellulaires de patients atteints de COVID long par suivi de nanoparticules, AFM, MET et cytométrie. Appliquées à des cellules pulmonaires, souches et vasculaires, elles induisent une expression anormale de RUNX2 et activent la voie p53/p21. Elles altèrent aussi la fonction mitochondriale et réduisent la production d'ATP sous stress métabolique.",
-  "points": [
-   "Technique : AFM, NTA, MET, cytométrie",
-   "Échantillon : vésicules extracellulaires de patients",
-   "Logiciel : SPIP cité",
-   "Résultat : stress cellulaire et dysfonction mitochondriale"
-  ],
-  "acces": "gratuit",
-  "acces_note": "Article en accès libre chez l'éditeur (Cell Communication and Signaling)",
-  "pour_toi": "Équipe de Vérone (Dalle Carbonare) utilisant SPIP pour la taille de vésicules : cible de migration, avec la détection de particules de MountainsSPIP comme argument."
- },
- "doi:10.1038/s41598-025-23355-7": {
-  "titre_fr": "Réarrangements structuraux et conformationnels de l'albumine sérique, de la transferrine et du plasma induits par un dendrimère carbosilane de délivrance thérapeutique",
-  "resume": "L'étude porte sur un dendrimère carbosilane pégylé conçu pour transporter des ARN interférents à travers la barrière hémato-encéphalique. Fluorescence, dichroïsme circulaire, calorimétrie, AFM et MET caractérisent sa liaison aux protéines plasmatiques. Le dendrimère modifie la structure secondaire et tertiaire de l'albumine et de la transferrine, avec une liaison surtout entropique et multivalente. Il semble aussi réorganiser le plasma vers des agrégats rappelant des fibrilles.",
-  "points": [
-   "Technique : AFM, MET, spectroscopies, calorimétrie",
-   "Échantillon : albumine, transferrine, plasma et dendrimère",
-   "Logiciel : SPIP cité",
-   "Résultat : agrégation évoquant une formation de fibrilles"
-  ],
-  "acces": "gratuit",
-  "acces_note": "Article en accès libre chez l'éditeur (Scientific Reports)",
-  "pour_toi": "Équipe de Lodz (Michlewska, Ionov) utilisant SPIP : cible de migration vers MountainsSPIP."
- },
- "doi:10.1016/j.ijbiomac.2025.149332": {
-  "titre_fr": "Comparaison des hydrolyses enzymatique et acide sur la structure des segments RG-I de la pectine soluble en alcali dilué de marc de pomme et de carotte",
-  "resume": "Les fractions de pectine soluble en alcali dilué de pomme et de carotte sont extraites puis modifiées par enzymes ou hydrolyse acide. Les deux traitements changent composition, taille moléculaire, ramification et viscosité, et l'AFM confirme des réarrangements structuraux distincts. Pour la pomme, la masse molaire chute de 213 kDa à 5,9 kDa par voie enzymatique et à 13,2 kDa par voie acide. La carotte suit la même tendance, de 656 kDa à 61,5 et 17,4 kDa.",
-  "points": [
-   "Technique : AFM, chimie analytique, rhéologie",
-   "Échantillon : pectines de pomme et de carotte",
-   "Logiciel : SPIP cité",
-   "Résultat : forte baisse de masse molaire et de viscosité"
-  ],
-  "acces": "gratuit",
-  "acces_note": "Article en accès libre chez l'éditeur (International Journal of Biological Macromolecules)",
-  "pour_toi": "Équipe de Lublin (Cybulska) imageant des polysaccharides avec SPIP : cible de migration, l'analyse de fibres et chaînes de MountainsSPIP est un argument."
- },
- "doi:10.1038/s41590-026-02581-9": {
-  "titre_fr": "La mécanosensibilité des lymphocytes T favorise un programme transcriptionnel de mémoire résidente dans les tissus",
-  "resume": "Les lymphocytes T doivent se déplacer dans des tissus de rigidités très différentes. Les auteurs montrent que les lymphocytes T activés perçoivent ces signaux mécaniques et modifient leur morphologie, leur enveloppe nucléaire et activent la réparation de l'ADN. Une contrainte mécanique accrue réoriente aussi leur transcription vers le programme des cellules mémoire résidentes, via Klf2, Runx3 et Hic1.",
-  "points": [
-   "Technique : mécanobiologie cellulaire",
-   "Échantillon : lymphocytes T activés",
-   "Résultat : la rigidité oriente le devenir des lymphocytes T"
-  ],
-  "acces": "gratuit",
-  "acces_note": "Article en accès libre (Nature Immunology, PMC)",
-  "pour_toi": "L'AFM n'apparaît pas dans le résumé : vérifier dans le texte si SPIP sert à mesurer la rigidité des substrats avant de classer l'équipe comme cible."
- },
- "doi:10.1016/j.omton.2026.201152": {
-  "titre_fr": "Renforcer la destruction des cellules cancéreuses et la persistance des cellules NK en ciblant NOXA, prédicteur d'une mauvaise survie",
-  "resume": "Les auteurs relient une forte expression de BIM et NOXA dans les cellules NK à une survie plus faible dans plusieurs cancers. Ils suppriment NOXA par CRISPR-Cas9, ce qui améliore la destruction répétée de cellules tumorales, y compris dans des organoïdes de patients. Les cellules NK sans NOXA gardent aussi leur cytotoxicité après congélation et prolifèrent plus longtemps.",
-  "points": [
-   "Technique : CRISPR-Cas9, immunothérapie"
-  ],
-  "acces": "gratuit",
-  "acces_note": "Article en accès libre (Molecular Therapy Oncology, PMC)",
-  "pour_toi": "Probable faux positif : aucun usage d'AFM ni de logiciel d'analyse de surface dans le résumé, la mention de SPIP vient sans doute d'un homonyme. À écarter de la veille."
- },
- "doi:10.1182/bloodadvances.2025017092": {
-  "titre_fr": "Essai multicentrique de phase 1/2 associant lénalidomide et DA-EPOCH-R dans les lymphomes B diffus à grandes cellules associés à MYC",
-  "resume": "Cet essai évalue le lénalidomide ajouté à la chimio-immunothérapie DA-EPOCH-R chez 55 patients atteints de lymphomes double hit ou double expresseurs. Le taux de réponse global atteint 90,9 % et la survie sans progression à 2 ans 78,2 %. Les effets indésirables graves sont surtout hématologiques.",
-  "points": [
-   "Technique : essai clinique en hématologie"
-  ],
-  "acces": "gratuit",
-  "acces_note": "Article en accès libre chez l'éditeur (Blood Advances)",
-  "pour_toi": "Probable faux positif : aucun usage d'AFM ni de logiciel d'analyse de surface dans le résumé, la mention de SPIP vient sans doute d'un homonyme. À écarter de la veille."
- },
  "doi:10.82444/warw.33738856": {
   "titre_fr": "Études quantitatives de cristaux : dissolution de surface et processus de nucléation",
   "resume": "Cette thèse de Warwick combine microscopie à cellule électrochimique à balayage (SECCM) et AFM pour étudier la dissolution de l'émail dentaire sous flux de protons contrôlé. Les cuvettes gravées localement sont mesurées par AFM (volume et dimensions), ce qui permet plusieurs mesures indépendantes sur un même échantillon. Une modélisation par éléments finis donne une constante de vitesse de dissolution, et l'effet du fluor, du zinc et d'un silicate de calcium est testé. Une seconde partie étudie la nucléation du carbonate de calcium avec une nanopipette.",
@@ -802,162 +559,5 @@
   "acces": "gratuit",
   "acces_note": "Thèse en libre accès sur le dépôt de l'Université de Warwick",
   "pour_toi": "Thèse de 2016 (Unwin, Warwick) avec mesure de volumes de cuvettes par SPIP : cas d'usage classique de MountainsSPIP, groupe à recontacter pour la migration."
- },
- "doi:10.3390/ijms27083572": {
-  "titre_fr": "Identification et correction ciblée d'un variant intronique profond pathogène de PMP22",
-  "resume": "Les auteurs décrivent un variant intronique profond du gène PMP22 identifié chez neuf patients de deux familles avares du Daghestan. À l'état hétérozygote il cause une neuropathie héréditaire avec hypersensibilité à la pression, à l'état homozygote une forme sévère. L'analyse fonctionnelle permet de proposer une thérapie antisens personnalisée.",
-  "points": [
-   "Technique : génétique médicale"
-  ],
-  "acces": "gratuit",
-  "acces_note": "Article en accès libre chez l'éditeur (IJMS)",
-  "pour_toi": "Probable faux positif : aucun usage d'AFM ni de logiciel d'analyse de surface dans le résumé, la mention de SPIP vient sans doute d'un homonyme. À écarter de la veille."
- },
- "doi:10.46576/wjs.v5i2.8453": {
-  "titre_fr": "Effet de la planification budgétaire, de l'exécution budgétaire et de la qualité des ressources humaines sur le taux d'absorption budgétaire d'une direction générale en 2024",
-  "resume": "Étude quantitative menée auprès de 70 agents financiers d'une administration indonésienne, analysée par régression linéaire multiple. Planification, exécution budgétaire et qualité des ressources humaines expliquent ensemble 81,8 % de l'absorption budgétaire, l'exécution étant le facteur dominant.",
-  "points": [
-   "Technique : enquête et régression statistique"
-  ],
-  "acces": "gratuit",
-  "acces_note": "Article en accès libre chez l'éditeur",
-  "pour_toi": "Probable faux positif : aucun usage d'AFM ni de logiciel d'analyse de surface dans le résumé, la mention de SPIP vient sans doute d'un homonyme. À écarter de la veille."
- },
- "doi:10.3389/fphar.2026.1723499": {
-  "titre_fr": "Uncaria rhynchophylla : revue ethnopharmacologique reliant les usages de la médecine traditionnelle chinoise aux données phytochimiques et pharmacologiques",
-  "resume": "Cette revue de 78 études fait le point sur la composition chimique, les mécanismes pharmacologiques et le potentiel thérapeutique d'une plante de la pharmacopée chinoise. Les effets neuroprotecteurs, antihypertenseurs et anti-inflammatoires restent surtout démontrés sur cellules et rongeurs. Biodisponibilité orale faible et manque d'essais cliniques sont les principaux freins.",
-  "points": [
-   "Technique : revue de littérature en pharmacologie"
-  ],
-  "acces": "gratuit",
-  "acces_note": "Article en accès libre chez l'éditeur (Frontiers in Pharmacology)",
-  "pour_toi": "Probable faux positif : aucun usage d'AFM ni de logiciel d'analyse de surface dans le résumé, la mention de SPIP vient sans doute d'un homonyme. À écarter de la veille."
- },
- "doi:10.1002/bse.70611": {
-  "titre_fr": "Taxonomie des capacités organisationnelles nécessaires à une gestion de projet durable dans les PME : revue systématique",
-  "resume": "À partir de 54 articles, les auteurs construisent une taxonomie à trois niveaux des capacités qui permettent aux petites entreprises d'intégrer la durabilité dans leurs projets. Ils s'appuient sur la théorie des ressources et le cadre des capacités dynamiques. Ici, SPM désigne la gestion de projet durable.",
-  "points": [
-   "Technique : revue systématique en management"
-  ],
-  "acces": "gratuit",
-  "acces_note": "Article en accès libre chez l'éditeur (Business Strategy and the Environment)",
-  "pour_toi": "Probable faux positif : aucun usage d'AFM ni de logiciel d'analyse de surface dans le résumé, la mention de SPIP vient sans doute d'un homonyme. À écarter de la veille."
- },
- "doi:10.1002/aic.70276": {
-  "titre_fr": "Revêtement aqueux transparent anti-salissures et refroidissant par ingénierie moléculaire",
-  "resume": "Les auteurs combinent une émulsion d'acrylate modifié silicone et un sol de silice pour obtenir un revêtement aqueux à double réseau organique-inorganique. Il est transparent, laisse glisser eau et huiles sans résidu et reste durable sur divers substrats. Son émissivité dépasse 87 % dans les fenêtres atmosphériques, ce qui refroidit de 5,5 °C en extérieur et de 3 °C sur panneaux solaires.",
-  "points": [
-   "Technique : formulation de revêtements, essais optiques et thermiques",
-   "Échantillon : revêtement acrylate-silicone et silice",
-   "Logiciel : SPIP cité",
-   "Résultat : refroidissement moyen de 5,5 °C"
-  ],
-  "acces": "gratuit",
-  "acces_note": "Article en accès libre chez l'éditeur (AIChE Journal)",
-  "pour_toi": "Le résumé ne mentionne pas l'AFM : vérifier si SPIP sert à la rugosité du revêtement avant d'en faire une cible de migration."
- },
- "doi:10.3389/frfst.2025.1719309": {
-  "titre_fr": "Revêtement en émulsion de Pickering chitosane-huile essentielle pour améliorer la sécurité microbiologique d'emballages alimentaires traditionnels en feuilles de bananier",
-  "resume": "Des revêtements de chitosane avec huiles essentielles de cannelle ou de citronnelle, stabilisés par nanocellulose ou Tween 80, sont testés contre quatre bactéries. L'émulsion de Pickering à la cannelle donne les plus grandes zones d'inhibition, jusqu'à 27,42 mm sur S. aureus. Sur des feuilles de bananier enveloppant un gâteau traditionnel, elle maintient la conservation 12 h sans altérer le goût.",
-  "points": [
-   "Technique : microbiologie, formulation d'émulsions",
-   "Échantillon : feuilles de bananier enrobées",
-   "Résultat : inhibition jusqu'à 27,42 mm sur S. aureus"
-  ],
-  "acces": "gratuit",
-  "acces_note": "Article en accès libre chez l'éditeur (Frontiers in Food Science and Technology)",
-  "pour_toi": "Aucune AFM visible dans le résumé : lien avec SPIP probablement fortuit, faible priorité."
- },
- "doi:10.20885/jaai.vol29.iss2.art11": {
-  "titre_fr": "Redevabilité de la performance publique : rôle des technologies de l'information, du contrôle interne, du budget par la performance et de l'engagement organisationnel",
-  "resume": "Étude par questionnaire auprès de 350 fonctionnaires d'une ville indonésienne, analysée par modèle d'équations structurelles. Technologies de l'information, contrôle interne et budgétisation par la performance améliorent la redevabilité. L'engagement organisationnel ne modère pas ces effets.",
-  "points": [
-   "Technique : enquête et modélisation SEM-PLS"
-  ],
-  "acces": "gratuit",
-  "acces_note": "Article en accès libre chez l'éditeur",
-  "pour_toi": "Probable faux positif : aucun usage d'AFM ni de logiciel d'analyse de surface dans le résumé, la mention de SPIP vient sans doute d'un homonyme. À écarter de la veille."
- },
- "doi:10.1002/aelm.202500706": {
-  "titre_fr": "Propriétés électroniques et optoélectroniques de MoS2 ajustables par dopage au polyoxométallate selon le taux de couverture moléculaire",
-  "resume": "Des films de MoS2 déposés par ALD, bruts ou recuits, sont fonctionnalisés par un polyoxométallate V12-DyPc. Le dépôt réduit l'émission de l'exciton A et fait apparaître un trion chargé, signe d'un transfert de charge proportionnel à la couverture. Par microscopie à sonde locale, la distribution électronique latérale de la molécule est de 3 nm sur MoS2 contre 7 nm sur graphite, avec un potentiel de réduction décalé de 2,1 à 3,1 V. Les auteurs attribuent ces écarts à la rugosité bien plus forte du MoS2 et à son environnement chimique.",
-  "points": [
-   "Technique : microscopie à sonde locale, photoluminescence, DFT",
-   "Échantillon : films MoS2 ALD fonctionnalisés par polyoxométallate",
-   "Logiciel : SPIP cité",
-   "Résultat : distribution électronique de 3 nm sur MoS2 contre 7 nm sur HOPG"
-  ],
-  "acces": "gratuit",
-  "acces_note": "Article en accès libre chez l'éditeur (Advanced Electronic Materials)",
-  "pour_toi": "Équipe de Jülich et Iéna (Moors) utilisant SPIP en sonde locale sur matériaux 2D : cible de migration vers MountainsSPIP."
- },
- "doi:10.3390/jmmp9120409": {
-  "titre_fr": "Tête d'impression FFF à chauffage par induction, rotation illimitée et buse à fente rectangulaire",
-  "resume": "Les auteurs conçoivent une tête d'impression 3D par dépôt de filament avec un axe de rotation illimité, une buse à sortie rectangulaire et un manchon chauffé par induction sans fils traversant la partie tournante. La température est mesurée sans contact et régulée en modulant la fréquence de l'onduleur. Face à une tête classique, elle imprime le PLA à 170 °C et réduit le temps de fabrication de 22 à 49 % et l'énergie par pièce de 9 à 39 %.",
-  "points": [
-   "Technique : fabrication additive par dépôt de filament",
-   "Échantillon : pièces en PLA",
-   "Logiciel : SPIP cité",
-   "Résultat : jusqu'à 49 % de temps d'impression en moins"
-  ],
-  "acces": "gratuit",
-  "acces_note": "Article en accès libre chez l'éditeur (MDPI JMMP)",
-  "pour_toi": "Pas d'AFM dans le résumé : SPIP sert peut-être à l'état de surface des pièces imprimées, à vérifier avant contact (Université d'Oviedo)."
- },
- "doi:10.1057/s41599-025-06327-0": {
-  "titre_fr": "Facteurs de motivation des jeunes professionnels dans les projets de systèmes d'information",
-  "resume": "Enquête qualitative auprès d'étudiants de master engagés dans un cours par projets sur les systèmes d'information. Les traits de personnalité, comme l'empathie ou le goût des échanges, ressortent comme moteurs principaux, et le rôle tenu dans l'équipe apparaît comme un nouveau facteur.",
-  "points": [
-   "Technique : enquête qualitative en management"
-  ],
-  "acces": "gratuit",
-  "acces_note": "Article en accès libre chez l'éditeur (Humanities and Social Sciences Communications)",
-  "pour_toi": "Probable faux positif : aucun usage d'AFM ni de logiciel d'analyse de surface dans le résumé, la mention de SPIP vient sans doute d'un homonyme. À écarter de la veille."
- },
- "doi:10.1038/s41598-025-30490-8": {
-  "titre_fr": "Effet de fibres cellulosiques sur le frottement à l'interface céramique-verre",
-  "resume": "Les auteurs étudient comment la cellulose microfibrillée modifie le frottement entre céramique et verre selon la charge, la rugosité, la distance et la vitesse de glissement. Sous 4 N, le frottement reste élevé avec peu d'usure. Passer d'une rugosité Ra de 0,99 à 3,01 µm augmente peu le coefficient de frottement (0,36 à 0,46) mais beaucoup l'usure (0,27 à 1,31 µm de profondeur). Une comparaison avec la gomme xanthane montre que c'est la présence physique des fibres qui lubrifie.",
-  "points": [
-   "Technique : tribologie et profilométrie",
-   "Échantillon : céramique et verre avec cellulose microfibrillée",
-   "Logiciel : SPIP cité",
-   "Résultat : usure multipliée par près de 5 avec la rugosité"
-  ],
-  "acces": "gratuit",
-  "acces_note": "Article en accès libre chez l'éditeur (Scientific Reports)",
-  "pour_toi": "Tribologie avec mesures de rugosité et de traces d'usure (Warwick et FiberLean) : cas d'usage typique de Mountains, cible de migration à qualifier."
- },
- "doi:10.1186/s12951-026-04616-7": {
-  "titre_fr": "Liposomes théranostiques multimodaux pour les pathologies osseuses : de la délivrance ciblée et biomimétique à la translation clinique",
-  "resume": "Cette revue fait le point sur les liposomes pour le diagnostic et le traitement des maladies osseuses. Elle couvre le ciblage osseux, la libération sur stimulus, les liposomes camouflés par membranes cellulaires et leurs usages dans l'ostéomyélite, l'arthrose, l'ostéoporose ou les tumeurs osseuses. Elle discute enfin les obstacles à la translation clinique.",
-  "points": [
-   "Technique : revue de nanomédecine"
-  ],
-  "acces": "gratuit",
-  "acces_note": "Article en accès libre chez l'éditeur (Journal of Nanobiotechnology)",
-  "pour_toi": "Revue sans AFM visible dans le résumé : lien avec SPIP probablement fortuit, faible priorité."
- },
- "doi:10.1002/arch.70140": {
-  "titre_fr": "Snustorr détermine l'élasticité de la cuticule chez Drosophila melanogaster",
-  "resume": "Les auteurs testent l'idée ancienne que les lipides durcissent la cuticule des insectes. Ils mesurent par nanoindentation AFM la cuticule de larves privées du transporteur de lipides Snustorr. Le module d'Young y est dix fois plus faible que chez les larves sauvages, ce qui confirme le rôle des lipides dans la dureté de la cuticule.",
-  "points": [
-   "Technique : nanoindentation AFM",
-   "Échantillon : cuticule de larves de drosophile",
-   "Logiciel : SPIP cité",
-   "Résultat : module d'Young divisé par 10 chez le mutant"
-  ],
-  "acces": "gratuit",
-  "acces_note": "Article en accès libre (Archives of Insect Biochemistry and Physiology, PMC)",
-  "pour_toi": "Équipe de Kiel (Kovalev, Gorb), utilisatrice de SPIP en nanoindentation : cible de migration prioritaire, la nanomécanique de MountainsSPIP est l'argument."
- },
- "doi:10.1093/brain/awaf223": {
-  "titre_fr": "Spectre clinique et pronostic à long terme des maladies neuromusculaires liées à BAG3 en Europe",
-  "resume": "Étude rétrospective multicentrique de 26 patients issus de 35 centres de 17 pays. Le variant récurrent p.(Pro209Leu) entraîne un tableau sévère et homogène, débutant dans l'enfance par une faiblesse des membres inférieurs ou une insuffisance cardiaque. Au dernier suivi, la majorité avait perdu la marche et présentait une insuffisance respiratoire.",
-  "points": [
-   "Technique : étude clinique rétrospective"
-  ],
-  "acces": "gratuit",
-  "acces_note": "Article en accès libre (Brain, PMC)",
-  "pour_toi": "Probable faux positif : aucun usage d'AFM ni de logiciel d'analyse de surface dans le résumé, la mention de SPIP vient sans doute d'un homonyme. À écarter de la veille."
  }
 }

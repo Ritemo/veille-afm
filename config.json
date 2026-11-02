@@ -1,4 +1,5 @@
 {
+  "date_min": "2026-07-01",
   "fenetre_jours_premier_passage": 90,
   "fenetre_jours_quotidienne": 14,
   "conservation_jours": 400,
@@ -42,7 +43,7 @@
   ],
   "constructeurs": {
     "Bruker": "Bruker AFM",
-    "Park Systems": "\"Park Systems\"",
+    "Park Systems": "\"Park Systems\" (AFM OR microscope OR microscopy OR nanoscience OR semiconductor OR metrology)",
     "Oxford Instruments Asylum": "\"Asylum Research\" OR \"Oxford Instruments\" AFM",
     "Nanosurf": "Nanosurf",
     "HORIBA": "HORIBA AFM OR nanoGPS",

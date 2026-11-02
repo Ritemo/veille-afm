@@ -50,13 +50,14 @@ aside{position:sticky;top:0;height:100vh;padding:26px 18px 20px;display:flex;fle
 
 /* contenu */
 main{padding:26px 34px 50px;max-width:1500px;width:100%}
-.topbar{display:flex;gap:12px;align-items:center;margin-bottom:22px}
-.search{flex:1;max-width:460px;display:flex;align-items:center;gap:9px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:0 14px;box-shadow:var(--shadow)}
+.topbar{display:flex;gap:10px 12px;align-items:center;flex-wrap:wrap;margin-bottom:22px}
+.search{flex:1 1 260px;max-width:460px;min-height:42px;display:flex;align-items:center;gap:9px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:0 14px;box-shadow:var(--shadow)}
 .search svg{width:18px;height:18px;color:var(--ink3);flex:none}
 .search input{border:0;outline:0;background:none;font:inherit;padding:11px 0;width:100%;color:var(--ink)}
 .seg{display:flex;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:4px;box-shadow:var(--shadow)}
 .seg button{padding:7px 14px;border-radius:10px;font-size:13.5px;font-weight:600;color:var(--ink2)}
 .seg button.on{background:var(--ink);color:#fff}
+.seg-l{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--ink3);align-self:center;padding:0 6px 0 8px}
 .switch{display:flex;align-items:center;gap:9px;font-size:13.5px;font-weight:600;color:var(--ink2);padding:0 6px}
 .switch i{width:38px;height:22px;border-radius:999px;background:#ddd5c6;position:relative;transition:background .2s}
 .switch i::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:left .2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
@@ -195,8 +196,14 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
   .navi{width:auto;flex:none;padding:6px 10px}
   main{padding:18px 16px 40px}
   .topbar{flex-wrap:wrap}
+  main{min-width:0}
+  .seg button{padding:7px 10px}
+  .seg-l{display:none}
   .kpis{grid-template-columns:repeat(2,1fr)}
-  .grid{grid-template-columns:1fr}
+  .grid{grid-template-columns:minmax(0,1fr)}
+  .card{min-width:0;overflow-wrap:anywhere}
+  .foot{flex-wrap:wrap}
+  .rel{flex-basis:100%}
   .hero svg.tip{display:none}
 }
 </style>
@@ -217,6 +224,8 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
       <label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
         <input id="q" type="search" placeholder="Chercher un titre, un auteur, une revue…"></label>
       <div class="seg" id="seg"><button data-l="1">Tout</button><button data-l="3">Haute et +</button><button data-l="4">Critique</button></div>
+      <div class="seg" id="sort"><span class="seg-l">Tri</span><button data-s="imp">Importance</button><button data-s="date">Date</button></div>
+      <div class="seg" id="per"><span class="seg-l">Publié</span><button data-p="7">7 j</button><button data-p="30">30 j</button><button data-p="0">Tout</button></div>
       <button class="switch" id="hideRead"><i></i>Masquer les lus</button>
     </div>
     <div id="view"></div>
@@ -266,7 +275,7 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
 
   // état local
   const KEY = "veilleafm_v1";
-  let st = {lu:{}, creuser:{}, lastVisit:"", prevVisit:"", tab:"une", hideRead:false, minImp:1};
+  let st = {lu:{}, creuser:{}, lastVisit:"", prevVisit:"", tab:"une", hideRead:false, minImp:1, sort:"imp", period:0};
   try { Object.assign(st, JSON.parse(localStorage.getItem(KEY) || "{}")); } catch(e) {}
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch(e) {} };
   const today = new Date().toISOString().slice(0,10);
@@ -297,7 +306,7 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
 
   function pool(){
     if (st.tab === "creuser") return items.filter(i => st.creuser[i.id]);
-    if (st.tab === "une") return items.filter(i => i.first_seen >= since(14) && imp(i) >= 3).sort((a,b)=>imp(b)-imp(a) || b.score-a.score);
+    if (st.tab === "une") return items.filter(i => i.first_seen >= since(14) && imp(i) >= 3);
     return items.filter(i => i.cat === st.tab);
   }
   function filtered(){
@@ -306,7 +315,11 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
     if (st.minImp > 1) l = l.filter(i => imp(i) >= st.minImp);
     if (st.hideRead && st.tab !== "creuser") l = l.filter(i => !st.lu[i.id]);
     if (q) { const k = q.toLowerCase(); l = l.filter(i => (i.title+" "+i.authors+" "+i.venue+" "+i.abstract+" "+i.group+" "+(i.pm||"")).toLowerCase().includes(k)); }
-    return l;
+    if (st.period) { const d = since(st.period); l = l.filter(i => (i.date || i.first_seen || "") >= d); }
+    const parDate = (a,b) => (b.date||"").localeCompare(a.date||"");
+    return l.slice().sort(st.sort === "date"
+      ? (a,b) => parDate(a,b) || imp(b)-imp(a) || b.score-a.score
+      : (a,b) => imp(b)-imp(a) || b.score-a.score || parDate(a,b));
   }
 
   function renderNav(){
@@ -318,6 +331,8 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
       return `<button class="navi ${st.tab===t.id?"on":""}" data-tab="${t.id}"><span class="ic" style="background:${t.cl};color:${t.c}">${svg(t.icon)}</span>${t.label}${badge}</button>`;
     }).join("");
     document.querySelectorAll("#seg button").forEach(b => b.classList.toggle("on", +b.dataset.l === st.minImp));
+    document.querySelectorAll("#sort button").forEach(b => b.classList.toggle("on", b.dataset.s === st.sort));
+    document.querySelectorAll("#per button").forEach(b => b.classList.toggle("on", +b.dataset.p === st.period));
     $("#hideRead").classList.toggle("on", st.hideRead);
   }
 
@@ -392,7 +407,8 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
     const l = filtered();
     let h = st.tab === "une" ? hero() : "";
     const titre = st.tab === "une" ? "À traiter en priorité" : t.label;
-    const sous = st.tab === "une" ? "importance haute et critique, 14 derniers jours" : `${l.length} élément${l.length>1?"s":""}`;
+    const tri = st.sort === "date" ? "plus récents d'abord" : "plus importants d'abord";
+    const sous = (st.tab === "une" ? "importance haute et critique, repérés ces 14 derniers jours" : `${l.length} élément${l.length>1?"s":""}`) + " · " + tri;
     h += `<div class="sec-h"><h3>${titre}</h3><small>${sous}</small></div>` + chips();
     if (!l.length) h += `<div class="empty">${EMPTY}<b>${st.tab==="creuser"?"Rien à creuser pour l'instant":"Tout est calme par ici"}</b>${st.tab==="creuser"?"Clique sur « À creuser » sur une carte pour la retrouver ici.":"Change de filtre ou reviens après le prochain passage du robot."}</div>`;
     else h += `<div class="grid">${l.slice(0, shown).map(card).join("")}</div>`;
@@ -408,6 +424,10 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
     if (t) { st.tab = t.dataset.tab; group = ""; shown = 30; save(); render(); scrollTo({top:0,behavior:"smooth"}); return; }
     const s = e.target.closest("#seg button");
     if (s) { st.minImp = +s.dataset.l; save(); render(); return; }
+    const so = e.target.closest("#sort button");
+    if (so) { st.sort = so.dataset.s; shown = 30; save(); render(); return; }
+    const pe = e.target.closest("#per button");
+    if (pe) { st.period = +pe.dataset.p; shown = 30; save(); render(); return; }
     const c = e.target.closest("[data-g]");
     if (c) { group = c.dataset.g; shown = 30; render(); return; }
     if (e.target.closest("#more")) { shown += 30; render(); return; }

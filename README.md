@@ -30,6 +30,10 @@ Base selon la catégorie (citation de mes travaux 60, logiciels 40, constructeur
 
 ## Réglages courants
 
+- `date_min` (dans `config.json`) : rien d'antérieur à cette date de publication n'est collecté ni gardé. Pour appliquer un changement de règles aux données sans relancer la collecte : `python collector/collect.py --nettoyer`.
+- Anti-bruit : « SPIP » n'est gardé qu'avec un vrai contexte AFM, « Park Systems » seulement pour la société (pas les parcs). Gwyddion et NanoScope Analysis sans analyse que MountainsSPIP met en avant passent en Faible.
+- Dans l'appli : tri par importance ou par date de publication, et filtre de période (7 j, 30 j, tout).
+
 - Ajouter un thème : une ligne dans `themes_afm` (nom affiché : requête OpenAlex).
 - Suivre un article précis (par exemple la lettre MRS Communications une fois publiée) : ajouter son DOI dans `dois_suivis`.
 - Trop de bruit sur un logiciel (Gwyddion est très cité) : le retirer de `logiciels` ou baisser `max_par_requete`.
