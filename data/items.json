@@ -18,7 +18,8 @@
 "tags": [],
 "imp": 2,
 "pm": "Version corrective de TopoStats : rien d'urgent, juste noter le rythme de sortie.",
-"first_seen": "2026-11-02"
+"first_seen": "2026-11-02",
+"themes_sugg": []
 },
 {
 "cat": "sorties",
@@ -39,7 +40,8 @@
 "tags": [],
 "imp": 2,
 "pm": "Version corrective de TopoStats : rien d'urgent, juste noter le rythme de sortie.",
-"first_seen": "2026-11-02"
+"first_seen": "2026-11-02",
+"themes_sugg": []
 },
 {
 "cat": "sorties",
@@ -60,7 +62,8 @@
 "tags": [],
 "imp": 2,
 "pm": "Version corrective de PyJibe : rien d'urgent, juste noter le rythme de sortie.",
-"first_seen": "2026-11-02"
+"first_seen": "2026-11-02",
+"themes_sugg": []
 },
 {
 "cat": "litterature",
@@ -87,7 +90,8 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02"
+"donnees_verif": "2026-11-02",
+"themes_sugg": []
 },
 {
 "cat": "constructeurs",
@@ -108,7 +112,8 @@
 "tags": [],
 "imp": 2,
 "pm": "Actualité Park Systems : contexte marché.",
-"first_seen": "2026-11-02"
+"first_seen": "2026-11-02",
+"themes_sugg": []
 },
 {
 "cat": "logiciels",
@@ -133,7 +138,10 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02"
+"donnees_verif": "2026-11-02",
+"themes_sugg": [
+"particules"
+]
 },
 {
 "cat": "logiciels",
@@ -158,7 +166,8 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02"
+"donnees_verif": "2026-11-02",
+"themes_sugg": []
 },
 {
 "cat": "logiciels",
@@ -183,7 +192,11 @@
 "donnees": "annexes",
 "donnees_note": "Dans l'article ou ses fichiers supplémentaires",
 "donnees_url": "",
-"donnees_verif": "2026-11-02"
+"donnees_verif": "2026-11-02",
+"themes_sugg": [
+"spectral",
+"clustering"
+]
 },
 {
 "cat": "logiciels",
@@ -210,7 +223,10 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02"
+"donnees_verif": "2026-11-02",
+"themes_sugg": [
+"courbes-force"
+]
 },
 {
 "cat": "logiciels",
@@ -235,7 +251,8 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02"
+"donnees_verif": "2026-11-02",
+"themes_sugg": []
 },
 {
 "cat": "logiciels",
@@ -260,7 +277,10 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02"
+"donnees_verif": "2026-11-02",
+"themes_sugg": [
+"particules"
+]
 },
 {
 "cat": "logiciels",
@@ -285,7 +305,11 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02"
+"donnees_verif": "2026-11-02",
+"themes_sugg": [
+"spectral",
+"afm-ir"
+]
 },
 {
 "cat": "logiciels",
@@ -310,7 +334,10 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02"
+"donnees_verif": "2026-11-02",
+"themes_sugg": [
+"spectral"
+]
 },
 {
 "cat": "logiciels",
@@ -335,7 +362,8 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02"
+"donnees_verif": "2026-11-02",
+"themes_sugg": []
 },
 {
 "cat": "logiciels",
@@ -360,7 +388,10 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02"
+"donnees_verif": "2026-11-02",
+"themes_sugg": [
+"spectral"
+]
 },
 {
 "cat": "logiciels",
@@ -385,7 +416,8 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02"
+"donnees_verif": "2026-11-02",
+"themes_sugg": []
 },
 {
 "cat": "logiciels",
@@ -410,7 +442,10 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02"
+"donnees_verif": "2026-11-02",
+"themes_sugg": [
+"clustering"
+]
 },
 {
 "cat": "logiciels",
@@ -435,7 +470,8 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02"
+"donnees_verif": "2026-11-02",
+"themes_sugg": []
 },
 {
 "cat": "logiciels",
@@ -460,7 +496,8 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02"
+"donnees_verif": "2026-11-02",
+"themes_sugg": []
 },
 {
 "cat": "logiciels",
@@ -485,7 +522,10 @@
 "donnees": "demande",
 "donnees_note": "Sur demande aux auteurs (déclaration de l'article)",
 "donnees_url": "",
-"donnees_verif": "2026-11-02"
+"donnees_verif": "2026-11-02",
+"themes_sugg": [
+"spectral"
+]
 },
 {
 "cat": "logiciels",
@@ -512,7 +552,12 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02"
+"donnees_verif": "2026-11-02",
+"themes_sugg": [
+"courbes-force",
+"clustering",
+"ia"
+]
 },
 {
 "cat": "logiciels",
@@ -539,7 +584,10 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02"
+"donnees_verif": "2026-11-02",
+"themes_sugg": [
+"ia"
+]
 },
 {
 "cat": "logiciels",
@@ -566,7 +614,10 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02"
+"donnees_verif": "2026-11-02",
+"themes_sugg": [
+"courbes-force"
+]
 },
 {
 "cat": "constructeurs",
@@ -588,7 +639,8 @@
 "imp": 2,
 "pm": "Actualité Park Systems : contexte marché.",
 "first_seen": "2026-10-31",
-"oa": true
+"oa": true,
+"themes_sugg": []
 },
 {
 "cat": "logiciels",
@@ -613,7 +665,8 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02"
+"donnees_verif": "2026-11-02",
+"themes_sugg": []
 },
 {
 "cat": "logiciels",
@@ -638,7 +691,8 @@
 "donnees": "libres",
 "donnees_note": "Jeu de données public sur Zenodo",
 "donnees_url": "https://doi.org/10.5281/zenodo.23645547",
-"donnees_verif": "2026-11-02"
+"donnees_verif": "2026-11-02",
+"themes_sugg": []
 },
 {
 "cat": "logiciels",
@@ -663,7 +717,8 @@
 "donnees": "annexes",
 "donnees_note": "Dans l'article ou ses fichiers supplémentaires",
 "donnees_url": "",
-"donnees_verif": "2026-11-02"
+"donnees_verif": "2026-11-02",
+"themes_sugg": []
 },
 {
 "cat": "logiciels",
@@ -688,7 +743,8 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02"
+"donnees_verif": "2026-11-02",
+"themes_sugg": []
 },
 {
 "cat": "constructeurs",
@@ -709,7 +765,8 @@
 "tags": [],
 "imp": 4,
 "pm": "Mouvement stratégique chez Bruker : impact possible sur le partenariat et la distribution.",
-"first_seen": "2026-10-31"
+"first_seen": "2026-10-31",
+"themes_sugg": []
 },
 {
 "cat": "litterature",
@@ -736,7 +793,13 @@
 "donnees": "libres",
 "donnees_note": "Jeu de données public sur Zenodo",
 "donnees_url": "https://doi.org/10.5281/zenodo.23023404",
-"donnees_verif": "2026-11-02"
+"donnees_verif": "2026-11-02",
+"themes_sugg": [
+"courbes-force",
+"spectral",
+"afm-ir",
+"ndma"
+]
 },
 {
 "cat": "litterature",
@@ -763,7 +826,10 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02"
+"donnees_verif": "2026-11-02",
+"themes_sugg": [
+"particules"
+]
 },
 {
 "cat": "litterature",
@@ -790,7 +856,10 @@
 "donnees": "demande",
 "donnees_note": "Sur demande aux auteurs (déclaration de l'article)",
 "donnees_url": "",
-"donnees_verif": "2026-11-02"
+"donnees_verif": "2026-11-02",
+"themes_sugg": [
+"iv"
+]
 },
 {
 "cat": "litterature",
@@ -817,7 +886,10 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02"
+"donnees_verif": "2026-11-02",
+"themes_sugg": [
+"courbes-force"
+]
 },
 {
 "cat": "litterature",
@@ -844,7 +916,8 @@
 "donnees": "demande",
 "donnees_note": "Sur demande aux auteurs (déclaration de l'article)",
 "donnees_url": "",
-"donnees_verif": "2026-11-02"
+"donnees_verif": "2026-11-02",
+"themes_sugg": []
 },
 {
 "cat": "litterature",
@@ -871,7 +944,11 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02"
+"donnees_verif": "2026-11-02",
+"themes_sugg": [
+"spectral",
+"cd"
+]
 },
 {
 "cat": "litterature",
@@ -898,7 +975,10 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02"
+"donnees_verif": "2026-11-02",
+"themes_sugg": [
+"iv"
+]
 },
 {
 "cat": "litterature",
@@ -924,7 +1004,10 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02"
+"donnees_verif": "2026-11-02",
+"themes_sugg": [
+"cd"
+]
 },
 {
 "cat": "constructeurs",
@@ -944,7 +1027,8 @@
 "imp": 2,
 "pm": "Actualité Park Systems : contexte marché.",
 "first_seen": "2026-10-31",
-"oa": true
+"oa": true,
+"themes_sugg": []
 },
 {
 "cat": "constructeurs",
@@ -964,7 +1048,8 @@
 "imp": 2,
 "pm": "Actualité Park Systems : contexte marché.",
 "first_seen": "2026-10-31",
-"oa": true
+"oa": true,
+"themes_sugg": []
 },
 {
 "cat": "constructeurs",
@@ -984,7 +1069,8 @@
 "imp": 2,
 "pm": "Actualité Oxford Instruments Asylum : contexte marché.",
 "first_seen": "2026-10-31",
-"oa": true
+"oa": true,
+"themes_sugg": []
 },
 {
 "cat": "litterature",
@@ -1009,6 +1095,9 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02"
+"donnees_verif": "2026-11-02",
+"themes_sugg": [
+"courbes-force"
+]
 }
 ]

@@ -117,5 +117,17 @@
       "Nanosurf Studio": "\"Nanosurf Studio\" OR (Nanosurf software)"
     }
   },
-  "mots_exclus": []
+  "mots_exclus": [],
+  "themes_mots": {
+    "particules": "\\bparticle|nanoparticle|particulate|grain size|grain boundar|aggregat|nanosphere|colloid",
+    "stitching": "stitch|mosaic|large[- ]area (?:imag|scan|map)|tiling|panoram",
+    "courbes-force": "force[- ]curve|force[- ]distance|force spectroscop|force map|force volume|indentation|young'?s modulus|elastic modulus|adhesion force|peakforce|nanomechanic|\\bjkr\\b|\\bdmt\\b|hertz",
+    "iv": "\\bi[-/]v\\b|current[- ]voltage|conductive (?:afm|atomic force)|\\bc-afm\\b|tunneling current|resistive switching|current map|photocurrent|\\bkpfm\\b|kelvin probe",
+    "spectral": "(?<!force )spectroscop|raman|tip-enhanced|\\bters\\b|s-snom|infrared|nano-?ftir|hyperspectral|photoluminescence",
+    "afm-ir": "afm[-–]ir|nano-?ir|photothermal[- ]induced|\\bptir\\b|infrared nanospectroscop",
+    "ndma": "nano-?dma|viscoelast|loss modulus|storage modulus|dynamic mechanical|contact resonance|loss tangent",
+    "clustering": "cluster|k-means|segmentation|unsupervised|principal component|\\bpca\\b|classification",
+    "ia": "machine learning|deep learning|neural network|u-net|convolutional|artificial intelligence|random forest|\\btransformer\\b|\\bai[- ](?:driven|guided|based|powered)",
+    "cd": "critical dimension|line ?width|line[- ]edge roughness|sidewall|trench|overlay metrology|cd-afm|semiconductor metrology|wafer"
+  }
 }

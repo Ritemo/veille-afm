@@ -414,6 +414,57 @@ def section_disponibilite(xml):
     return propre(txt, 1200) + (" " + " ".join(liens) if liens else "")
 
 
+_CACHE_XML = {}
+
+
+def texte_integral(doi):
+    """Texte intégral JATS d'Europe PMC (articles en accès libre), mis en cache pour ce passage."""
+    if doi in _CACHE_XML:
+        return _CACHE_XML[doi]
+    xml = ""
+    r = _get_json_quiet("https://www.ebi.ac.uk/europepmc/webservices/rest/search?" + urllib.parse.urlencode(
+        {"query": f'DOI:"{doi}"', "format": "json", "resultType": "lite"}))
+    res = ((r or {}).get("resultList") or {}).get("result") or []
+    pmcid = next((x.get("pmcid") for x in res if x.get("pmcid")), "")
+    if pmcid:
+        try:
+            xml = http_get(f"https://www.ebi.ac.uk/europepmc/webservices/rest/{pmcid}/fullTextXML").decode("utf-8", "ignore")
+        except Exception:  # noqa: BLE001
+            xml = ""
+    _CACHE_XML[doi] = xml
+    return xml
+
+
+def contact_auteur(it):
+    """Auteur correspondant : nom, institution, ORCID (OpenAlex) et e-mail publié dans l'article (Europe PMC)."""
+    doi = it.get("doi", "")
+    if not doi:
+        return {}
+    w = _get_json_quiet("https://api.openalex.org/works/doi:" + urllib.parse.quote(doi)) or {}
+    auteurs = w.get("authorships") or []
+    corr = [a for a in auteurs if a.get("is_corresponding")] or auteurs[-1:]  # à défaut, le dernier auteur
+    c = {}
+    if corr:
+        a = corr[0]
+        c = {"nom": (a.get("author") or {}).get("display_name", ""),
+             "orcid": (a.get("author") or {}).get("orcid") or "",
+             "institution": ", ".join(i.get("display_name", "") for i in (a.get("institutions") or [])[:1]),
+             "certain": bool(a.get("is_corresponding"))}
+    xml = texte_integral(doi)
+    if xml:
+        m = re.search(r"<corresp[^>]*>(.*?)</corresp>", xml, re.S) or re.search(r"<contrib[^>]*corresp=\"yes\"[^>]*>(.*?)</contrib>", xml, re.S)
+        em = re.search(r"<email[^>]*>([^<]+)</email>", m.group(1) if m else xml)
+        if em and re.match(r"^[^@\s]+@[^@\s]+\.[a-z]{2,}$", em.group(1).strip(), re.I):
+            c["email"] = em.group(1).strip()
+    return {k: v for k, v in c.items() if v not in ("", None)} if c.get("nom") or c.get("email") else {}
+
+
+# ---------------------------------------------------------------- thèmes suggérés
+def themes_suggeres(it, cfg, texte_complet=""):
+    t = (it["title"] + " " + it.get("abstract", "") + " " + (texte_complet or "")).lower()
+    return [tid for tid, motif in cfg.get("themes_mots", {}).items() if re.search(motif, t)]
+
+
 def donnees_sources(it, texte_complet=""):
     """Cherche si les données de l'article sont récupérables : DataCite, Crossref, Europe PMC, texte du résumé."""
     doi = it.get("doi", "")
@@ -443,15 +494,8 @@ def donnees_sources(it, texte_complet=""):
             if x.get("id-type") == "doi":
                 return libres("https://doi.org/" + x["id"], "Données complémentaires déclarées par l'éditeur")
         # 3. Europe PMC : déclaration de disponibilité dans le texte intégral libre
-        r = _get_json_quiet("https://www.ebi.ac.uk/europepmc/webservices/rest/search?" + urllib.parse.urlencode(
-            {"query": f'DOI:"{doi}"', "format": "json", "resultType": "lite"}))
-        res = ((r or {}).get("resultList") or {}).get("result") or []
-        pmcid = next((x.get("pmcid") for x in res if x.get("pmcid")), "")
-        if pmcid:
-            try:
-                xml = http_get(f"https://www.ebi.ac.uk/europepmc/webservices/rest/{pmcid}/fullTextXML").decode("utf-8", "ignore")
-            except Exception:  # noqa: BLE001
-                xml = ""
+        xml = texte_integral(doi)
+        if xml:
             dispo = section_disponibilite(xml) if xml else ""
             if dispo:
                 t = dispo.lower()
@@ -482,6 +526,14 @@ def verifier_donnees(items, resumes_en, hors_ligne=False):
     for it in items:
         if it["cat"] not in ("logiciels", "litterature"):
             continue
+        if not it.get("contact_verif"):
+            try:
+                ct = contact_auteur(it)
+                if ct:
+                    it["contact"] = ct
+                it["contact_verif"] = AUJOURDHUI.isoformat()
+            except Exception as e:  # noqa: BLE001
+                erreurs.append(f"Contact {it['id']} : {e}")
         deja = it.get("donnees_verif")
         a_revoir = (deja and it.get("donnees") in ("inconnu", "demande") and deja < il_y_a_14j
                     and it.get("date", "") >= il_y_a_120j)
@@ -672,7 +724,7 @@ def main():
             # même publication trouvée par plusieurs requêtes : on garde la catégorie la plus forte
             if priorite[it["cat"]] < priorite[ex["cat"]]:
                 it["first_seen"] = ex["first_seen"]
-                for k in ("donnees", "donnees_note", "donnees_url", "donnees_verif"):
+                for k in ("donnees", "donnees_note", "donnees_url", "donnees_verif", "contact", "contact_verif"):
                     if k in ex:
                         it[k] = ex[k]
                 par_id[it["id"]] = it
@@ -697,7 +749,10 @@ def main():
     # on ne garde que l'essentiel : niveau minimal, pas de citations, pas de doublons
     items = sans_doublons([i for i in items if i["cat"] != "citations" and i["imp"] >= cfg.get("imp_min", 1)])
     items.sort(key=lambda i: (i["first_seen"], i["score"]), reverse=True)
+    for i in items:
+        i["themes_sugg"] = themes_suggeres(i, cfg, resumes_en.get(i["id"], "")) if i["cat"] != "sorties" else []
     nd = verifier_donnees(items, resumes_en, hors_ligne)
+    print(f"Contacts trouvés : {sum(1 for i in items if i.get('contact'))}, dont e-mail : {sum(1 for i in items if (i.get('contact') or {}).get('email'))}")
     print(f"Données sources vérifiées pour {nd} article(s) : "
           + ", ".join(f"{k} {sum(1 for i in items if i.get('donnees') == k)}" for k in ("libres", "annexes", "demande", "non", "inconnu")))
 

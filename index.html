@@ -129,6 +129,15 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
 .b-new{background:var(--violet-l)}.b-new .ic{background:var(--violet);color:#fff}.b-new .n{color:var(--violet)}
 .b-cours{background:var(--sun-l)}.b-cours .ic{background:#f0c060;color:#7a4a00}.b-cours .n{color:#9a5d00}
 .b-arch{background:var(--grey-l)}.b-arch .ic{background:#d5d7de;color:#5b6070}.b-arch .n{color:#5b6070}
+.sugg{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12px;color:var(--ink3)}
+.sugg button.sg{display:inline-flex;align-items:center;gap:4px;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:700;border:1.5px dashed var(--tc);color:var(--tc);background:transparent}
+.sugg button.sg:hover{background:var(--tc-l)}
+.sugg button.nx{color:var(--ink3);padding:0 4px;font-size:15px;line-height:1}
+.ct{display:flex;flex-direction:column;gap:8px;background:var(--bg);border-radius:14px;padding:12px 14px}
+.ct b{font-size:15px}
+.ct small{display:block;color:var(--ink3);font-size:12.5px}
+.ct .m-acts .btn{padding:7px 13px;font-size:13px}
+.exp{display:flex;flex-wrap:wrap;gap:10px}
 .bloc-vide{font-size:13.5px;color:var(--ink3);padding:4px 6px 8px}
 .vues{display:flex;flex-wrap:wrap;gap:8px;margin:-4px 0 14px}
 .vues button{border-radius:999px;padding:5px 13px;font-size:12.5px;font-weight:700;border:1.5px solid var(--line);background:var(--card);color:var(--ink2)}
@@ -338,6 +347,10 @@ aside{overflow-y:auto}
     undo:'<path d="M9 14L4.5 9.5 9 5"/><path d="M4.5 9.5H15a5 5 0 010 10h-3"/>',
     pen:'<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/>',
     spark:'<path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5L18 18M6 18l2.5-2.5M15.5 8.5L18 6"/>',
+    mail:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5L12 13l8.5-6.5"/>',
+    user:'<circle cx="12" cy="8" r="4"/><path d="M4.5 20c1-4 4-6 7.5-6s6.5 2 7.5 6"/>',
+    down:'<path d="M12 4v11M7.5 10.5L12 15l4.5-4.5M5 19.5h14"/>',
+    search:'<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>',
     tag:'<path d="M3.5 12.2V4.5a1 1 0 011-1h7.7l8.3 8.3a1.5 1.5 0 010 2.1l-6.1 6.1a1.5 1.5 0 01-2.1 0z"/><circle cx="8" cy="8" r="1.5"/>',
     ban:'<circle cx="12" cy="12" r="8.5"/><path d="M6 6l12 12"/>',
     cog:'<circle cx="12" cy="12" r="3"/><path d="M12 2.5v3M12 18.5v3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M2.5 12h3M18.5 12h3M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1"/>'
@@ -477,6 +490,19 @@ aside{overflow-y:auto}
     if (d.s === "non") return `<div class="acc acc-no">${svg(P.db)}<div>Données non partagées<small>${esc(d.note||"")}</small></div></div>`;
     return `<div class="acc acc-nsp" style="background:var(--bg);color:var(--ink3)">${svg(P.db)}<div>Données sources : pas encore d'information<small>Aucun dépôt ni déclaration de disponibilité trouvés pour l'instant</small></div></div>`;
   }
+  function suggestions(i){
+    const dispo = themes(), defaut = new Set(THEMES_DEFAUT.map(x => x[0]));
+    const texte = (i.title+" "+(i.abstract||"")+" "+((resumes[i.id]||{}).titre_fr||"")+" "+((resumes[i.id]||{}).resume||"")).toLowerCase();
+    return dispo.filter(t => {
+      if (st.marques.themes[i.id+"|"+t.id]) return false;  // déjà rangée, ou suggestion refusée
+      if ((i.themes_sugg||[]).includes(t.id)) return true;
+      return !defaut.has(t.id) && t.nom.length >= 3 && texte.includes(t.nom.toLowerCase());
+    });
+  }
+  function suggChips(i){
+    const sg = suggestions(i); if (!sg.length || archive(i.id)) return "";
+    return `<div class="sugg">Suggéré :${sg.map(t => `<button class="sg" style="--tc:${t.c};--tc-l:${t.cl}" data-sugg="${esc(t.id)}" data-item="${esc(i.id)}" title="Ranger dans ${esc(t.nom)}">+ ${esc(t.nom)}</button>`).join("")}<button class="nx" data-nosugg="${esc(i.id)}" title="Ignorer ces suggestions">×</button></div>`;
+  }
   function tchips(id){
     const t = themesDe(id);
     return t.length ? `<div class="tchips">${t.map(x => `<span class="tchip" style="--tc:${x.c};--tc-l:${x.cl}">${esc(x.nom)}</span>`).join("")}</div>` : "";
@@ -502,6 +528,7 @@ aside{overflow-y:auto}
       <div class="sub">${esc([i.venue, i.authors].filter(Boolean).join(" · "))}${i.cited_by?` · ${i.cited_by} citation${i.cited_by>1?"s":""}`:""}</div>
       ${i.pm?`<div class="pm">${svg(P.bulb)}<span>${esc(i.pm)}</span></div>`:""}
       ${tchips(i.id)}
+      ${suggChips(i)}
       ${ar ? `<div class="suivi">${svg(P.box)}<span><b>Archivée le ${fmt(ar.le)}</b> : ${esc(ar.motif||"sans motif")}${ar.note?" · "+esc(ar.note):""}</span></div>`
            : dn ? `<div class="suivi">${svg(P.pen)}<span><b>Suivi ${fmt(dn.le)}</b> : ${esc(dn.txt)}${ns.length>1?` <small>(+${ns.length-1})</small>`:""}</span></div>` : ""}
       ${i.abstract?`<div class="abs">${esc(i.abstract)}</div>`:""}
@@ -571,7 +598,8 @@ aside{overflow-y:auto}
     const titre = st.tab === "une" ? "À traiter en priorité" : esc(t.label);
     const tri = st.sort === "date" ? "plus récents d'abord" : "plus importants d'abord";
     const sous = (st.tab === "une" ? `${l.length} fiche${l.length>1?"s":""}` : `${l.length} élément${l.length>1?"s":""}`) + " · " + tri;
-    const actsTh = th ? `<div class="th-acts"><button data-th-ren="${esc(th.id)}">Renommer</button><button data-th-del="${esc(th.id)}">Supprimer</button></div>` : "";
+    const actsTh = th ? `<div class="th-acts"><button data-export="1">Exporter</button><button data-th-ren="${esc(th.id)}">Renommer</button><button data-th-del="${esc(th.id)}">Supprimer</button></div>`
+      : st.tab === "creuser" ? `<div class="th-acts"><button data-export="1">Exporter</button></div>` : "";
     const vues = [["actives","Nouvelles et en cours"],["archivees","Archivées"],["toutes","Toutes"]];
     h += `<div class="sec-h"><h3>${titre}</h3><small>${sous}</small>${actsTh}</div>` + chips()
       + `<div class="vues">${vues.map(([k,lab]) => `<button class="${st.vue===k?"on":""}" data-vue="${k}">${lab}<small>${compteVues[k]||0}</small></button>`).join("")}</div>`;
@@ -609,6 +637,15 @@ aside{overflow-y:auto}
     const c = e.target.closest("[data-g]");
     if (c) { group = c.dataset.g; shown = 30; render(); return; }
     if (e.target.closest("#more")) { shown += 30; render(); return; }
+    const sg = e.target.closest("[data-sugg]");
+    if (sg) { ranger(sg.dataset.item, sg.dataset.sugg, true); if (modalId) ouvrir(modalId); render(); return; }
+    const nx = e.target.closest("[data-nosugg]");
+    if (nx) { const i = items.find(x => x.id === nx.dataset.nosugg); suggestions(i).forEach(t => ranger(i.id, t.id, false)); if (modalId) ouvrir(modalId); render(); return; }
+    if (e.target.closest("[data-export]")) { fenetreExport(); return; }
+    const ex = e.target.closest("[data-exp]");
+    if (ex) { const k = ex.dataset.exp; if (k === "csv") exportCSV(); else exportMD(k === "copie"); return; }
+    const ct = e.target.closest("[data-contacte]");
+    if (ct) { const i = items.find(x => x.id === ct.dataset.contacte); ajouterNote(i.id, "Contacté " + ((i.contact||{}).nom || "l'auteur")); ouvrir(i.id); render(); toast("Note ajoutée. Archive la fiche avec « Personne contactée » quand c'est réglé."); return; }
     const vu = e.target.closest("[data-vue]");
     if (vu) { st.vue = vu.dataset.vue; shown = 30; save(); render(); return; }
     const mo = e.target.closest("[data-motif]");
@@ -691,7 +728,9 @@ aside{overflow-y:auto}
       ${blocDonnees(i)}
       ${corps}
       ${tchips(id)}
+      ${suggChips(i)}
       ${i.pm?`<div class="pm">${svg(P.bulb)}<span><b>Pour toi :</b> ${esc((r&&r.pour_toi)||i.pm)}</span></div>`:""}
+      ${blocContact(i)}
       ${blocSuivi(id)}
       <div class="m-meta">${esc([i.venue, i.authors].filter(Boolean).join(" · "))}${i.cited_by?` · ${i.cited_by} citation${i.cited_by>1?"s":""}`:""} · pertinence ${i.score}</div>
       <div class="m-acts">
@@ -778,6 +817,71 @@ aside{overflow-y:auto}
       <div class="m-acts"><button class="btn main" data-archiver="${esc(id)}">${svg(P.box)}Archiver</button></div>
     </div>`;
     $("#ov").classList.add("on"); document.body.style.overflow = "hidden";
+  }
+  // ---- export d'un thème (ou de « À creuser ») en tableau CSV ou en note Markdown
+  function ficheExport(i){
+    const r = resumes[i.id] || {}, ar = archive(i.id), d = donnees(i), c = i.contact || {};
+    return {titre: i.title, titre_fr: r.titre_fr || "", lien: i.url, date: i.date || "", source: i.venue || "", groupe: i.group || CAT[i.cat],
+      importance: NIV[imp(i)][0], etat: {nouvelle:"Nouvelle", encours:"En cours", archivee:"Archivée"}[etat(i.id)],
+      archive: ar ? `${ar.le} : ${ar.motif||""}${ar.note?" ("+ar.note+")":""}` : "",
+      suivi: notesDe(i.id).map(n => `${n.le} : ${n.txt}`).join(" | "),
+      themes: themesDe(i.id).map(t => t.nom).join(", "), donnees: d.s && d.s !== "inconnu" ? (DAT[d.s]||[d.s])[0] : "", lien_donnees: d.url || "",
+      contact: [c.nom, c.institution, c.email].filter(Boolean).join(" · "), pour_toi: r.pour_toi || i.pm || ""};
+  }
+  const listeExport = () => pool();  // tout le thème, archivées comprises
+  function nomExport(){ const th = themes().find(x => "th:"+x.id === st.tab); return (th ? th.nom : "A creuser"); }
+  function telecharger(nom, contenu, type){
+    const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([contenu], {type})); a.download = nom;
+    document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+  }
+  function exportCSV(){
+    const l = listeExport().map(ficheExport); if (!l.length) return;
+    const cols = [["titre","Titre"],["titre_fr","Titre (FR)"],["lien","Lien"],["date","Date"],["source","Revue ou source"],["groupe","Groupe"],["importance","Importance"],
+      ["etat","État"],["archive","Archivage"],["suivi","Notes de suivi"],["themes","Thèmes"],["donnees","Données"],["lien_donnees","Lien données"],["contact","Contact"],["pour_toi","Pour MountainsSPIP"]];
+    const q = v => '"' + String(v||"").replace(/"/g,'""').replace(/\r?\n/g," ") + '"';
+    const csv = "\ufeff" + [cols.map(c => q(c[1])).join(";")].concat(l.map(f => cols.map(c => q(f[c[0]])).join(";"))).join("\r\n");
+    telecharger(`veille-afm-${nomExport().replace(/[^\w-]+/g,"-")}-${today}.csv`, csv, "text/csv;charset=utf-8");
+  }
+  function exportMD(copier){
+    const l = listeExport(); if (!l.length) return;
+    const ligne = i => { const f = ficheExport(i);
+      return `- **[${f.titre_fr || f.titre}](${f.lien})** (${[f.source, f.date].filter(Boolean).join(", ")}) · ${f.importance}`
+        + (f.pour_toi ? `\n  - ${f.pour_toi}` : "") + (f.suivi ? `\n  - Suivi : ${f.suivi}` : "") + (f.archive ? `\n  - Archivée le ${f.archive}` : "")
+        + (f.donnees ? `\n  - Données : ${f.donnees}${f.lien_donnees ? " ("+f.lien_donnees+")" : ""}` : "") + (f.contact ? `\n  - Contact : ${f.contact}` : ""); };
+    const ec = l.filter(i => !archive(i.id)), ar = l.filter(i => archive(i.id));
+    const md = `# Veille AFM : ${nomExport()}\n\n_Export du ${fmt(today)}, ${l.length} fiche${l.length>1?"s":""}_\n\n`
+      + (ec.length ? `## Nouvelles et en cours\n\n${ec.map(ligne).join("\n")}\n\n` : "") + (ar.length ? `## Archivées\n\n${ar.map(ligne).join("\n")}\n` : "");
+    if (copier && navigator.clipboard) { navigator.clipboard.writeText(md).then(() => toast("Note copiée : colle-la dans un ticket, un mail ou Teams.")); }
+    else telecharger(`veille-afm-${nomExport().replace(/[^\w-]+/g,"-")}-${today}.md`, md, "text/markdown;charset=utf-8");
+  }
+  function fenetreExport(){
+    const n = listeExport().length;
+    modalId = null;
+    $("#modal").className = "modal c-sorties";
+    $("#modal").innerHTML = `<div class="m-in set">
+      <div class="row"><div class="m-title" style="font-size:19px">Exporter « ${esc(nomExport())} »</div><button class="m-x" title="Fermer">${svg(P.x)}</button></div>
+      <p>${n} fiche${n>1?"s":""} (archivées comprises), avec l'état, les notes de suivi, les thèmes, les données et le contact.</p>
+      <div class="exp">
+        <button class="btn main" data-exp="csv">${svg(P.down)}Tableau Excel (CSV)</button>
+        <button class="btn" data-exp="md">${svg(P.down)}Note Markdown</button>
+        <button class="btn" data-exp="copie">${svg(P.share)}Copier la note</button>
+      </div></div>`;
+    $("#ov").classList.add("on"); document.body.style.overflow = "hidden";
+  }
+  function blocContact(i){
+    const c = i.contact; if (!c || !(c.nom || c.email)) return "";
+    const titre = (resumes[i.id]&&resumes[i.id].titre_fr) || i.title;
+    const sujet = encodeURIComponent("Votre article : " + i.title.slice(0, 120));
+    const corps = encodeURIComponent(`Bonjour ${c.nom||""},\n\nJ'ai lu avec intérêt votre article « ${i.title} » (${i.url}).\n\n\nBien cordialement,\nMathieu Cognard\nProduct Manager MountainsSPIP, Digital Surf`);
+    const cherche = "https://www.google.com/search?q=" + encodeURIComponent(`"${c.nom||""}" ${c.institution||""} email`);
+    return `<div class="m-h">Contact</div><div class="ct">
+      <div>${svg(P.user).replace("<svg","<svg style=\"width:16px;height:16px;vertical-align:-3px;margin-right:6px\"")}<b>${esc(c.nom||"Auteur correspondant")}</b>
+        <small>${esc(c.institution||"")}${c.certain===false?" · dernier auteur, l'auteur correspondant n'est pas indiqué":" · auteur correspondant"}${c.email?" · "+esc(c.email):""}</small></div>
+      <div class="m-acts">
+        ${c.email ? `<a class="btn main" href="mailto:${esc(c.email)}?subject=${sujet}&body=${corps}">${svg(P.mail)}Écrire</a>` : `<a class="btn" href="${cherche}" target="_blank" rel="noopener">${svg(P.search)}Chercher l'e-mail</a>`}
+        ${c.orcid ? `<a class="btn" href="${esc(c.orcid)}" target="_blank" rel="noopener">${svg(P.open)}ORCID</a>` : ""}
+        <button class="btn" data-contacte="${esc(i.id)}">${svg(P.check)}Noter : contacté</button>
+      </div></div>`;
   }
   function blocSuivi(id){
     const ar = archive(id), ns = notesDe(id);

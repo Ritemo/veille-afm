@@ -30,6 +30,10 @@ Base selon la catégorie (citation de mes travaux 60, logiciels 40, constructeur
 
 ## Réglages courants
 
+- Thèmes suggérés : `themes_mots` dans `config.json` (identifiant de thème : expression régulière). Pour un thème créé dans l'appli, la suggestion se fait sur son nom. « + Thème » accepte, « × » ignore.
+- Contact : le robot récupère l'auteur correspondant (OpenAlex : nom, institution, ORCID) et l'e-mail publié dans l'article quand le texte intégral est libre (Europe PMC).
+- Export : bouton « Exporter » dans un thème ou « À creuser » (tableau CSV pour Excel, ou note Markdown à télécharger ou copier).
+
 - Données sources : pour chaque article, le robot cherche si les données sont récupérables (jeux de données DataCite liés au DOI, relation Crossref, déclaration « Data availability » du texte intégral Europe PMC, lien de dépôt dans le résumé). Statuts : libres, annexes, sur demande, non partagées, inconnu. La tâche de nuit complète les cas inconnus en lisant l'article. Interrupteur « Données libres » dans l'appli.
 
 - Sorties logicielles : `sorties_logicielles` dans `config.json` (dépôts GitHub suivis, versions de Gwyddion, requêtes d'actualités pour NanoScope Analysis, SmartScan, Ergo, Nanosurf Studio).
