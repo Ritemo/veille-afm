@@ -30,6 +30,8 @@ Base selon la catégorie (citation de mes travaux 60, logiciels 40, constructeur
 
 ## Réglages courants
 
+- Données sources : pour chaque article, le robot cherche si les données sont récupérables (jeux de données DataCite liés au DOI, relation Crossref, déclaration « Data availability » du texte intégral Europe PMC, lien de dépôt dans le résumé). Statuts : libres, annexes, sur demande, non partagées, inconnu. La tâche de nuit complète les cas inconnus en lisant l'article. Interrupteur « Données libres » dans l'appli.
+
 - Sorties logicielles : `sorties_logicielles` dans `config.json` (dépôts GitHub suivis, versions de Gwyddion, requêtes d'actualités pour NanoScope Analysis, SmartScan, Ergo, Nanosurf Studio).
 - « Pas pertinent » : masque la fiche dans l'appli et, si un jeton GitHub est enregistré (Réglages, roue dentée), l'ajoute à `data/exclusions.json`. Le robot écarte ces fiches, et une revue ou un média refusé deux fois. `mots_exclus` dans `config.json` écarte les titres contenant ces mots.
 

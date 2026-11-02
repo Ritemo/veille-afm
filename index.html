@@ -148,6 +148,12 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
 .empty b{display:block;font-family:"Nunito";font-size:19px;color:var(--ink);margin-bottom:4px}
 .err{font-size:13px;color:var(--coral);margin:-10px 2px 18px}
 .c-sorties{--c:var(--blue);--cl:var(--blue-l)}
+.pill.dat{gap:5px;text-decoration:none}
+.pill.dat svg{width:13px;height:13px}
+.dat-libres{background:#e3f7ec;color:#167a45}
+.dat-annexes{background:#e9f4ef;color:#3e7a5c}
+.dat-demande{background:var(--blue-l);color:#2f62b8}
+.dat-non{background:var(--grey-l);color:#6b7080}
 .nav-h{display:flex;align-items:center;justify-content:space-between;font-family:"Nunito";font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.8px;color:var(--ink3);padding:14px 10px 4px}
 .nav-h button{font-size:20px;line-height:1;color:var(--violet);font-weight:700;padding:0 4px}
 .navi .tdot{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;flex:none;font-family:"Nunito";font-weight:900;font-size:14px}
@@ -258,6 +264,7 @@ aside{overflow-y:auto}
       <div class="seg" id="sort"><span class="seg-l">Tri</span><button data-s="imp">Importance</button><button data-s="date">Date</button></div>
       <div class="seg" id="per"><span class="seg-l">Publié</span><button data-p="7">7 j</button><button data-p="30">30 j</button><button data-p="0">Tout</button></div>
       <button class="switch" id="hideRead"><i></i>Masquer les lus</button>
+      <button class="switch" id="dataOnly" title="Seulement les articles dont les données sont téléchargeables"><i></i>Données libres</button>
       <button class="gear" id="gear" title="Réglages et synchronisation"></button>
     </div>
     <div id="view"></div>
@@ -291,6 +298,7 @@ aside{overflow-y:auto}
     lock:'<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/>',
     help:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 114 2c-.9.6-1.5 1.1-1.5 2.2M12 17h.01"/>',
     rocket:'<path d="M5 15c-1 1-1.5 3.5-1.5 5.5 2 0 4.5-.5 5.5-1.5M9 15l-3-3c1.5-4 5-8 11.5-8.5C17 10 13 13.5 9 15z"/><circle cx="14.5" cy="9.5" r="1.5"/>',
+    db:'<ellipse cx="12" cy="5.5" rx="7.5" ry="2.8"/><path d="M4.5 5.5v13c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8v-13M4.5 12c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8"/>',
     tag:'<path d="M3.5 12.2V4.5a1 1 0 011-1h7.7l8.3 8.3a1.5 1.5 0 010 2.1l-6.1 6.1a1.5 1.5 0 01-2.1 0z"/><circle cx="8" cy="8" r="1.5"/>',
     ban:'<circle cx="12" cy="12" r="8.5"/><path d="M6 6l12 12"/>',
     cog:'<circle cx="12" cy="12" r="3"/><path d="M12 2.5v3M12 18.5v3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M2.5 12h3M18.5 12h3M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1"/>'
@@ -311,7 +319,7 @@ aside{overflow-y:auto}
 
   // état local
   const KEY = "veilleafm_v1";
-  let st = {lu:{}, creuser:{}, lastVisit:"", prevVisit:"", tab:"une", hideRead:false, minImp:1, sort:"imp", period:0, exclus:{}, aEnvoyer:[], jeton:"", marques:null};
+  let st = {lu:{}, creuser:{}, lastVisit:"", prevVisit:"", tab:"une", hideRead:false, dataOnly:false, minImp:1, sort:"imp", period:0, exclus:{}, aEnvoyer:[], jeton:"", marques:null};
   try { Object.assign(st, JSON.parse(localStorage.getItem(KEY) || "{}")); } catch(e) {}
   // journal des marques (lu, à creuser) avec l'heure de chaque changement, pour fusionner entre appareils
   if (!st.marques) { st.marques = {lu:{}, creuser:{}}; ["lu","creuser"].forEach(k => Object.keys(st[k]).forEach(id => st.marques[k][id] = {v:1, t:0})); }
@@ -368,6 +376,7 @@ aside{overflow-y:auto}
     let l = pool();
     if (group) l = l.filter(i => i.group === group);
     if (st.minImp > 1) l = l.filter(i => imp(i) >= st.minImp);
+    if (st.dataOnly) l = l.filter(i => donnees(i).s === "libres");
     if (st.hideRead && st.tab !== "creuser" && !st.tab.startsWith("th:")) l = l.filter(i => !st.lu[i.id]);
     if (q) { const k = q.toLowerCase(); l = l.filter(i => (i.title+" "+i.authors+" "+i.venue+" "+i.abstract+" "+i.group+" "+(i.pm||"")).toLowerCase().includes(k)); }
     if (st.period) { const d = since(st.period); l = l.filter(i => (i.date || i.first_seen || "") >= d); }
@@ -393,8 +402,31 @@ aside{overflow-y:auto}
     document.querySelectorAll("#sort button").forEach(b => b.classList.toggle("on", b.dataset.s === st.sort));
     document.querySelectorAll("#per button").forEach(b => b.classList.toggle("on", +b.dataset.p === st.period));
     $("#hideRead").classList.toggle("on", st.hideRead);
+    $("#dataOnly").classList.toggle("on", st.dataOnly);
   }
 
+  // données sources : vérifiées par le robot, complétées la nuit par la lecture de l'article
+  const DAT = {libres:["Données libres","dat-libres"], annexes:["Données en annexe","dat-annexes"], demande:["Données sur demande","dat-demande"], non:["Données non partagées","dat-non"]};
+  function donnees(i){
+    const r = resumes[i.id] || {};
+    if (i.donnees && i.donnees !== "inconnu") return {s:i.donnees, note:i.donnees_note||"", url:i.donnees_url||""};
+    if (r.donnees && r.donnees !== "inconnu") return {s:r.donnees, note:r.donnees_note||"", url:r.donnees_url||""};
+    return {s: (i.cat === "logiciels" || i.cat === "litterature") ? "inconnu" : "", note:"", url:""};
+  }
+  function pillDonnees(i){
+    const d = donnees(i), x = DAT[d.s]; if (!x) return "";
+    const t = esc(d.note || x[0]);
+    return d.url ? `<a class="pill dat ${x[1]}" href="${esc(d.url)}" target="_blank" rel="noopener" title="${t}">${svg(P.db)}${x[0]}</a>`
+                 : `<span class="pill dat ${x[1]}" title="${t}">${svg(P.db)}${x[0]}</span>`;
+  }
+  function blocDonnees(i){
+    const d = donnees(i); if (!d.s) return "";
+    if (d.s === "libres") return `<div class="acc acc-ok">${svg(P.db)}<div>Données sources téléchargeables<small>${esc(d.note||"Dépôt public trouvé")}</small></div>${d.url?`<a class="go" href="${esc(d.url)}" target="_blank" rel="noopener">Récupérer les données</a>`:""}</div>`;
+    if (d.s === "annexes") return `<div class="acc acc-ok" style="background:#e9f4ef;color:#3e7a5c">${svg(P.db)}<div>Données dans l'article ou ses annexes<small>${esc(d.note||"Souvent des données déjà traitées, rarement les fichiers bruts")}</small></div></div>`;
+    if (d.s === "demande") return `<div class="acc acc-nsp">${svg(P.db)}<div>Données sur demande aux auteurs<small>${esc(d.note||"À demander à l'auteur correspondant")}</small></div></div>`;
+    if (d.s === "non") return `<div class="acc acc-no">${svg(P.db)}<div>Données non partagées<small>${esc(d.note||"")}</small></div></div>`;
+    return `<div class="acc acc-nsp" style="background:var(--bg);color:var(--ink3)">${svg(P.db)}<div>Données sources : pas encore d'information<small>Aucun dépôt ni déclaration de disponibilité trouvés pour l'instant</small></div></div>`;
+  }
   function tchips(id){
     const t = themesDe(id);
     return t.length ? `<div class="tchips">${t.map(x => `<span class="tchip" style="--tc:${x.c};--tc-l:${x.cl}">${esc(x.nom)}</span>`).join("")}</div>` : "";
@@ -406,6 +438,7 @@ aside{overflow-y:auto}
         <span class="pill i${imp(i)}">${svg(ni, imp(i)>=3?"currentColor":"none")}${nl}</span>
         <span class="pill cat">${esc(i.group || CAT[i.cat])}</span>
         ${isNew(i)?'<span class="pill new">NOUVEAU</span>':""}
+        ${pillDonnees(i)}
         <span class="date">${fmt(i.date)}</span>
       </div>
       <a class="title" href="${esc(i.url)}" data-m="1">${esc((resumes[i.id]&&resumes[i.id].titre_fr)||i.title)}</a>
@@ -503,6 +536,7 @@ aside{overflow-y:auto}
     const c = e.target.closest("[data-g]");
     if (c) { group = c.dataset.g; shown = 30; render(); return; }
     if (e.target.closest("#more")) { shown += 30; render(); return; }
+    if (e.target.closest("#dataOnly")) { st.dataOnly = !st.dataOnly; shown = 30; save(); render(); return; }
     if (e.target.closest("#hideRead")) { st.hideRead = !st.hideRead; save(); render(); return; }
     if (e.target.closest(".m-x") || e.target === $("#ov")) { fermer(); return; }
     if (e.target.closest("#gear")) { reglages(); return; }
@@ -564,6 +598,7 @@ aside{overflow-y:auto}
       <div class="m-title">${esc((r&&r.titre_fr)||i.title)}</div>
       ${r&&r.titre_fr?`<div class="m-orig">${esc(i.title)}</div>`:""}
       ${acces(i, r)}
+      ${blocDonnees(i)}
       ${corps}
       ${tchips(id)}
       ${i.pm?`<div class="pm">${svg(P.bulb)}<span><b>Pour toi :</b> ${esc((r&&r.pour_toi)||i.pm)}</span></div>`:""}

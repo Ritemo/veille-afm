@@ -377,6 +377,127 @@ def importance_pm(it, texte, tags):
     return 1, "Veille scientifique générale."
 
 
+# ---------------------------------------------------------------- données sources
+# Peut-on récupérer gratuitement les données brutes de l'article ? Statuts :
+#   libres (dépôt public trouvé), annexes (dans les fichiers supplémentaires), demande (sur demande aux auteurs),
+#   non (pas partagées), inconnu (rien trouvé)
+RE_DEPOT = (r"https?://(?:www\.)?(?:doi\.org/10\.5281/zenodo\.\d+|zenodo\.org/[^\s<>\"')\]]+|[a-z0-9.-]*figshare\.com/[^\s<>\"')\]]+|"
+            r"(?:www\.)?datadryad\.org/[^\s<>\"')\]]+|osf\.io/[^\s<>\"')\]]+|github\.com/[^\s<>\"')\]]+|gitlab\.com/[^\s<>\"')\]]+|"
+            r"data\.mendeley\.com/[^\s<>\"')\]]+|[a-z0-9.-]*dataverse[a-z0-9.-]*/[^\s<>\"')\]]+|doi\.pangaea\.de/[^\s<>\"')\]]+|"
+            r"archive\.materialscloud\.org/[^\s<>\"')\]]+|huggingface\.co/datasets/[^\s<>\"')\]]+|doi\.org/10\.6084/m9\.figshare[^\s<>\"')\]]*|"
+            r"doi\.org/10\.5061/dryad[^\s<>\"')\]]*|doi\.org/10\.17605/osf[^\s<>\"')\]]*)")
+RE_DEMANDE = r"upon (?:reasonable )?request|on (?:reasonable )?request|from the corresponding author|contact the (?:corresponding )?author|sur demande"
+RE_ANNEXES = r"within the (?:article|paper|manuscript)|in the (?:article|paper|main text)|supplementary (?:information|material|data|file)|supporting information|included in (?:this|the)"
+RE_NON = r"not (?:publicly )?(?:be )?(?:available|shared)|cannot be shared|proprietary|confidential|no (?:new )?data (?:were|was) (?:generated|created)"
+RE_TITRE_DISPO = r"data (?:and (?:code|materials?) )?availab|availability of (?:data|supporting data)|data access|code availab|data sharing"
+
+
+def _get_json_quiet(url):
+    try:
+        return get_json(url)
+    except Exception:  # noqa: BLE001
+        return None
+
+
+def section_disponibilite(xml):
+    """Texte de la déclaration « Data availability » d'un article JATS (Europe PMC)."""
+    m = re.search(r"<(sec|notes)[^>]*(?:data-availability|data_availability)[^>]*>(.*?)</\1>", xml, re.S | re.I)
+    if not m:
+        m = re.search(r"<title>[^<]*(?:" + RE_TITRE_DISPO + r")[^<]*</title>(.{0,4000}?)</(?:sec|notes)>", xml, re.S | re.I)
+        txt = m.group(1) if m else ""
+    else:
+        txt = m.group(2)
+    if not txt:
+        m = re.search(r"<meta-name>[^<]*(?:" + RE_TITRE_DISPO + r")[^<]*</meta-name>\s*<meta-value>(.*?)</meta-value>", xml, re.S | re.I)
+        txt = m.group(1) if m else ""
+    liens = re.findall(r'xlink:href="([^"]+)"', txt)
+    return propre(txt, 1200) + (" " + " ".join(liens) if liens else "")
+
+
+def donnees_sources(it, texte_complet=""):
+    """Cherche si les données de l'article sont récupérables : DataCite, Crossref, Europe PMC, texte du résumé."""
+    doi = it.get("doi", "")
+    trouve = {"donnees": "inconnu", "donnees_note": "", "donnees_url": ""}
+
+    def libres(url, note):
+        if re.search(r"github\.com|gitlab\.com", url):
+            note = "Code (et parfois données) en accès libre sur " + ("GitHub" if "github" in url else "GitLab")
+        trouve.update(donnees="libres", donnees_url=url, donnees_note=note)
+        return trouve
+
+    if doi:
+        # 1. jeux de données déposés (Zenodo, Figshare, Dryad…) qui déclarent compléter cet article
+        q = urllib.parse.quote(f'relatedIdentifiers.relatedIdentifier:"{doi}"')
+        r = _get_json_quiet(f"https://api.datacite.org/dois?query={q}&page[size]=10")
+        for d in (r or {}).get("data", []):
+            a = d.get("attributes", {})
+            genre = (a.get("types") or {}).get("resourceTypeGeneral", "")
+            lie = any(norm_doi(x.get("relatedIdentifier", "")) == doi for x in a.get("relatedIdentifiers") or [])
+            if lie and genre in ("Dataset", "Image", "Collection", "Software", "Other"):
+                depot = (a.get("publisher") or {}).get("name") if isinstance(a.get("publisher"), dict) else a.get("publisher")
+                return libres("https://doi.org/" + d["id"], f"Jeu de données public{(' sur ' + depot) if depot else ''}")
+        # 2. Crossref : relation « is-supplemented-by »
+        r = _get_json_quiet("https://api.crossref.org/works/" + urllib.parse.quote(doi))
+        rel = ((r or {}).get("message") or {}).get("relation") or {}
+        for x in rel.get("is-supplemented-by", []):
+            if x.get("id-type") == "doi":
+                return libres("https://doi.org/" + x["id"], "Données complémentaires déclarées par l'éditeur")
+        # 3. Europe PMC : déclaration de disponibilité dans le texte intégral libre
+        r = _get_json_quiet("https://www.ebi.ac.uk/europepmc/webservices/rest/search?" + urllib.parse.urlencode(
+            {"query": f'DOI:"{doi}"', "format": "json", "resultType": "lite"}))
+        res = ((r or {}).get("resultList") or {}).get("result") or []
+        pmcid = next((x.get("pmcid") for x in res if x.get("pmcid")), "")
+        if pmcid:
+            try:
+                xml = http_get(f"https://www.ebi.ac.uk/europepmc/webservices/rest/{pmcid}/fullTextXML").decode("utf-8", "ignore")
+            except Exception:  # noqa: BLE001
+                xml = ""
+            dispo = section_disponibilite(xml) if xml else ""
+            if dispo:
+                t = dispo.lower()
+                url = re.search(RE_DEPOT, dispo, re.I)
+                if url:
+                    return libres(url.group(0).rstrip(".,;"), "Dépôt public cité dans la déclaration de disponibilité")
+                if re.search(RE_DEMANDE, t):
+                    trouve.update(donnees="demande", donnees_note="Sur demande aux auteurs (déclaration de l'article)")
+                elif re.search(RE_ANNEXES, t):
+                    trouve.update(donnees="annexes", donnees_note="Dans l'article ou ses fichiers supplémentaires")
+                elif re.search(RE_NON, t):
+                    trouve.update(donnees="non", donnees_note="Données non partagées d'après l'article")
+                return trouve
+    # 4. un lien de dépôt dans le résumé ou le texte connu
+    url = re.search(RE_DEPOT, (it.get("abstract", "") + " " + (texte_complet or "")), re.I)
+    if url:
+        return libres(url.group(0).rstrip(".,;"), "Lien vers un dépôt cité dans le résumé")
+    return trouve
+
+
+def verifier_donnees(items, resumes_en, hors_ligne=False):
+    """Vérifie les articles jamais vus, et revérifie de temps en temps les récents encore sans réponse."""
+    if hors_ligne:
+        return 0
+    n = 0
+    il_y_a_14j = (AUJOURDHUI - dt.timedelta(days=14)).isoformat()
+    il_y_a_120j = (AUJOURDHUI - dt.timedelta(days=120)).isoformat()
+    for it in items:
+        if it["cat"] not in ("logiciels", "litterature"):
+            continue
+        deja = it.get("donnees_verif")
+        a_revoir = (deja and it.get("donnees") in ("inconnu", "demande") and deja < il_y_a_14j
+                    and it.get("date", "") >= il_y_a_120j)
+        if deja and not a_revoir:
+            continue
+        try:
+            it.update(donnees_sources(it, resumes_en.get(it["id"], "")))
+        except Exception as e:  # noqa: BLE001
+            erreurs.append(f"Données {it['id']} : {e}")
+            continue
+        it["donnees_verif"] = AUJOURDHUI.isoformat()
+        n += 1
+        time.sleep(0.3)
+    return n
+
+
 # ---------------------------------------------------------------- anti-bruit
 # « SPIP » est aussi un acronyme indonésien (contrôle interne de l'État) : on exige un vrai contexte AFM.
 RE_CTX_SPIP = (r"\bafm\b|atomic force|scanning probe|image metrology|spip software|nanoindent|kelvin probe|"
@@ -551,6 +672,9 @@ def main():
             # même publication trouvée par plusieurs requêtes : on garde la catégorie la plus forte
             if priorite[it["cat"]] < priorite[ex["cat"]]:
                 it["first_seen"] = ex["first_seen"]
+                for k in ("donnees", "donnees_note", "donnees_url", "donnees_verif"):
+                    if k in ex:
+                        it[k] = ex[k]
                 par_id[it["id"]] = it
             else:
                 ex["cited_by"] = max(ex.get("cited_by", 0), it["cited_by"])
@@ -573,6 +697,9 @@ def main():
     # on ne garde que l'essentiel : niveau minimal, pas de citations, pas de doublons
     items = sans_doublons([i for i in items if i["cat"] != "citations" and i["imp"] >= cfg.get("imp_min", 1)])
     items.sort(key=lambda i: (i["first_seen"], i["score"]), reverse=True)
+    nd = verifier_donnees(items, resumes_en, hors_ligne)
+    print(f"Données sources vérifiées pour {nd} article(s) : "
+          + ", ".join(f"{k} {sum(1 for i in items if i.get('donnees') == k)}" for k in ("libres", "annexes", "demande", "non", "inconnu")))
 
     os.makedirs(os.path.dirname(FICHIER_ITEMS), exist_ok=True)
     with open(FICHIER_ITEMS, "w", encoding="utf-8") as f:
