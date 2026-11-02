@@ -129,7 +129,7 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
 .pm svg{width:18px;height:18px;color:var(--c);flex:none;margin-top:1px}
 .abs{font-size:13.5px;color:var(--ink2);display:none}
 .card.open .abs{display:block}
-.foot{display:flex;align-items:center;gap:4px;margin-top:auto;padding-top:9px;border-top:1px dashed var(--line)}
+.foot{display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin-top:auto;padding-top:9px;border-top:1px dashed var(--line)}
 .rel{display:flex;align-items:center;gap:7px;font-size:12px;white-space:nowrap;color:var(--ink3);margin-right:auto;cursor:help;position:relative}
 .rel .bar{width:64px;height:7px;border-radius:999px;background:var(--grey-l);overflow:hidden}
 .rel .bar i{display:block;height:100%;border-radius:999px;background:var(--c)}
@@ -148,6 +148,23 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
 .empty b{display:block;font-family:"Nunito";font-size:19px;color:var(--ink);margin-bottom:4px}
 .err{font-size:13px;color:var(--coral);margin:-10px 2px 18px}
 .c-sorties{--c:var(--blue);--cl:var(--blue-l)}
+.nav-h{display:flex;align-items:center;justify-content:space-between;font-family:"Nunito";font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.8px;color:var(--ink3);padding:14px 10px 4px}
+.nav-h button{font-size:20px;line-height:1;color:var(--violet);font-weight:700;padding:0 4px}
+.navi .tdot{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;flex:none;font-family:"Nunito";font-weight:900;font-size:14px}
+aside{overflow-y:auto}
+.navi .cnt.t{background:var(--grey-l);color:var(--ink2)}
+.tchips{display:flex;flex-wrap:wrap;gap:6px}
+.tchip{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:3px 10px;font-size:12px;font-weight:700;background:var(--tc-l);color:var(--tc)}
+.tchip::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--tc)}
+.pick{display:flex;flex-wrap:wrap;gap:8px}
+.pick button{display:inline-flex;align-items:center;gap:7px;border-radius:999px;padding:8px 14px;font-size:14px;font-weight:700;border:2px solid var(--tc-l);background:var(--card);color:var(--ink2)}
+.pick button.on{background:var(--tc);border-color:var(--tc);color:#fff}
+.pick button svg{width:15px;height:15px}
+.newt{display:flex;gap:8px}
+.newt input{flex:1;font:inherit;font-size:14px;padding:9px 14px;border-radius:12px;border:1px solid var(--line);background:var(--bg)}
+.th-acts{margin-left:auto;display:flex;gap:6px}
+.th-acts button{font-size:12.5px;font-weight:700;color:var(--ink3);padding:5px 10px;border-radius:9px}
+.th-acts button:hover{background:var(--card);color:var(--ink)}
 .act.nope:hover{color:var(--coral)}
 .gear{width:42px;height:42px;border-radius:14px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);display:grid;place-items:center;color:var(--ink2);position:relative}
 .gear svg{width:20px;height:20px}
@@ -205,6 +222,7 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
   .app{grid-template-columns:1fr}
   aside{position:sticky;height:auto;flex-direction:row;overflow-x:auto;padding:10px;gap:4px;z-index:5;border-right:0;border-bottom:1px solid var(--line)}
   #nav{display:flex;gap:4px}
+  .nav-h{padding:0 6px;flex:none;align-self:center}
   .brand,.side-foot{display:none}
   .navi{width:auto;flex:none;padding:6px 10px}
   main{padding:18px 16px 40px}
@@ -273,6 +291,7 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
     lock:'<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/>',
     help:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 114 2c-.9.6-1.5 1.1-1.5 2.2M12 17h.01"/>',
     rocket:'<path d="M5 15c-1 1-1.5 3.5-1.5 5.5 2 0 4.5-.5 5.5-1.5M9 15l-3-3c1.5-4 5-8 11.5-8.5C17 10 13 13.5 9 15z"/><circle cx="14.5" cy="9.5" r="1.5"/>',
+    tag:'<path d="M3.5 12.2V4.5a1 1 0 011-1h7.7l8.3 8.3a1.5 1.5 0 010 2.1l-6.1 6.1a1.5 1.5 0 01-2.1 0z"/><circle cx="8" cy="8" r="1.5"/>',
     ban:'<circle cx="12" cy="12" r="8.5"/><path d="M6 6l12 12"/>',
     cog:'<circle cx="12" cy="12" r="3"/><path d="M12 2.5v3M12 18.5v3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M2.5 12h3M18.5 12h3M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1"/>'
   };
@@ -296,9 +315,21 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
   try { Object.assign(st, JSON.parse(localStorage.getItem(KEY) || "{}")); } catch(e) {}
   // journal des marques (lu, à creuser) avec l'heure de chaque changement, pour fusionner entre appareils
   if (!st.marques) { st.marques = {lu:{}, creuser:{}}; ["lu","creuser"].forEach(k => Object.keys(st[k]).forEach(id => st.marques[k][id] = {v:1, t:0})); }
+  // thèmes : définitions (id -> {nom, t, del}) et rangement (clé "fiche|thème" -> {v, t})
+  const THEMES_DEFAUT = [["particules","Particules"],["stitching","Stitching"],["courbes-force","Courbes de force"],["iv","I/V"],
+    ["spectral","Spectral"],["afm-ir","AFM-IR"],["ndma","NDMA"],["clustering","Clustering"],["ia","IA"],["cd","Critical Dimension"]];
+  if (!st.marques.themes) st.marques.themes = {};
+  if (!st.defs) { st.defs = {}; THEMES_DEFAUT.forEach(([id, nom], k) => st.defs[id] = {nom, t:0, o:k}); }
+  const PAL = [["#6d5ce8","#efecfe"],["#11a69a","#e1f6f3"],["#f2604c","#fde9e5"],["#d98a00","#fdf2dc"],["#4a86e8","#e6efff"],
+    ["#e5488d","#fde6f0"],["#3f8f3a","#e5f4e1"],["#8a5cc2","#f1e8fb"],["#c2621f","#fbeadd"],["#2f7f9e","#e0f1f7"]];
+  const themes = () => Object.entries(st.defs).filter(([,d]) => !d.del)
+    .sort((a,b) => (a[1].o ?? 999) - (b[1].o ?? 999) || a[1].nom.localeCompare(b[1].nom, "fr"))
+    .map(([id,d], k) => ({id, nom:d.nom, c:PAL[k % PAL.length][0], cl:PAL[k % PAL.length][1]}));
+  const dansTheme = (id, tid) => { const m = st.marques.themes[id+"|"+tid]; return !!(m && m.v); };
+  const themesDe = id => themes().filter(t => dansTheme(id, t.id));
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch(e) {} };
   const today = new Date().toISOString().slice(0,10);
-  if (!TABS.some(t => t.id === st.tab)) st.tab = "une";
+  if (!TABS.some(t => t.id === st.tab) && !(st.tab.startsWith("th:") && st.defs[st.tab.slice(3)] && !st.defs[st.tab.slice(3)].del)) st.tab = "une";
   if (st.lastVisit !== today) { st.prevVisit = st.lastVisit || "0000"; st.lastVisit = today; save(); }
 
   let resumes = {}, modalId = null;
@@ -329,6 +360,7 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
   }
   function pool0(){
     if (st.tab === "creuser") return items.filter(i => st.creuser[i.id]);
+    if (st.tab.startsWith("th:")) return items.filter(i => dansTheme(i.id, st.tab.slice(3)));
     if (st.tab === "une") return items.filter(i => i.first_seen >= since(14) && imp(i) >= 3);
     return items.filter(i => i.cat === st.tab);
   }
@@ -336,7 +368,7 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
     let l = pool();
     if (group) l = l.filter(i => i.group === group);
     if (st.minImp > 1) l = l.filter(i => imp(i) >= st.minImp);
-    if (st.hideRead && st.tab !== "creuser") l = l.filter(i => !st.lu[i.id]);
+    if (st.hideRead && st.tab !== "creuser" && !st.tab.startsWith("th:")) l = l.filter(i => !st.lu[i.id]);
     if (q) { const k = q.toLowerCase(); l = l.filter(i => (i.title+" "+i.authors+" "+i.venue+" "+i.abstract+" "+i.group+" "+(i.pm||"")).toLowerCase().includes(k)); }
     if (st.period) { const d = since(st.period); l = l.filter(i => (i.date || i.first_seen || "") >= d); }
     const parDate = (a,b) => (b.date||"").localeCompare(a.date||"");
@@ -352,6 +384,10 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
       else if (t.id !== "une") n = items.filter(i => i.cat===t.id && isNew(i) && !st.lu[i.id] && !st.exclus[i.id]).length;
       const badge = n ? `<span class="cnt" style="${t.id==="creuser"?"background:var(--pink)":""}">${n>99?"99+":n}</span>` : "";
       return `<button class="navi ${st.tab===t.id?"on":""}" data-tab="${t.id}"><span class="ic" style="background:${t.cl};color:${t.c}">${svg(t.icon)}</span>${t.label}${badge}</button>`;
+    }).join("") + `<div class="nav-h">Mes thèmes<button id="newTheme" title="Créer un thème">+</button></div>` +
+    themes().map(t => {
+      const n = items.filter(i => dansTheme(i.id, t.id) && !st.exclus[i.id]).length;
+      return `<button class="navi ${st.tab==="th:"+t.id?"on":""}" data-tab="th:${esc(t.id)}"><span class="tdot" style="background:${t.cl};color:${t.c}">${esc(t.nom.slice(0,1).toUpperCase())}</span>${esc(t.nom)}${n?`<span class="cnt t">${n}</span>`:""}</button>`;
     }).join("");
     document.querySelectorAll("#seg button").forEach(b => b.classList.toggle("on", +b.dataset.l === st.minImp));
     document.querySelectorAll("#sort button").forEach(b => b.classList.toggle("on", b.dataset.s === st.sort));
@@ -359,6 +395,10 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
     $("#hideRead").classList.toggle("on", st.hideRead);
   }
 
+  function tchips(id){
+    const t = themesDe(id);
+    return t.length ? `<div class="tchips">${t.map(x => `<span class="tchip" style="--tc:${x.c};--tc-l:${x.cl}">${esc(x.nom)}</span>`).join("")}</div>` : "";
+  }
   function card(i){
     const [nl, ni] = NIV[imp(i)];
     return `<article class="card c-${i.cat} ${st.lu[i.id]?"lu":""} ${ouverts[i.id]?"open":""}" data-id="${esc(i.id)}">
@@ -371,12 +411,14 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
       <a class="title" href="${esc(i.url)}" data-m="1">${esc((resumes[i.id]&&resumes[i.id].titre_fr)||i.title)}</a>
       <div class="sub">${esc([i.venue, i.authors].filter(Boolean).join(" · "))}${i.cited_by?` · ${i.cited_by} citation${i.cited_by>1?"s":""}`:""}</div>
       ${i.pm?`<div class="pm">${svg(P.bulb)}<span>${esc(i.pm)}</span></div>`:""}
+      ${tchips(i.id)}
       ${i.abstract?`<div class="abs">${esc(i.abstract)}</div>`:""}
       <div class="foot">
         <span class="rel"><span class="bar"><i style="width:${i.score}%"></i></span>pertinence ${i.score}<span class="tt">${TT}</span></span>
         <button class="act" data-a="open">${svg(P.chev)}Détails</button>
         <button class="act ${st.lu[i.id]?"on":""}" data-a="lu">${svg(P.check)}Lu</button>
         <button class="act star ${st.creuser[i.id]?"on":""}" data-a="creuser">${svg(P.mark, st.creuser[i.id]?"currentColor":"none")}À creuser</button>
+        <button class="act" data-a="ranger" title="Ranger dans des thèmes">${svg(P.tag)}Thèmes</button>
         <button class="act" data-a="share" title="Partager">${svg(P.share)}</button>
         <button class="act nope" data-a="nope" title="Pas pertinent : retirer et apprendre">${svg(P.ban)}</button>
       </div></article>`;
@@ -427,14 +469,20 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
 
   function render(){
     renderNav();
-    const t = TABS.find(x => x.id === st.tab);
+    const th = st.tab.startsWith("th:") ? themes().find(x => "th:"+x.id === st.tab) : null;
+    if (st.tab.startsWith("th:") && !th) st.tab = "une";
+    const t = TABS.find(x => x.id === st.tab) || {label: th ? th.nom : ""};
     const l = filtered();
     let h = st.tab === "une" ? hero() : "";
-    const titre = st.tab === "une" ? "À traiter en priorité" : t.label;
+    const titre = st.tab === "une" ? "À traiter en priorité" : esc(t.label);
     const tri = st.sort === "date" ? "plus récents d'abord" : "plus importants d'abord";
     const sous = (st.tab === "une" ? "importance haute et critique, repérés ces 14 derniers jours" : `${l.length} élément${l.length>1?"s":""}`) + " · " + tri;
-    h += `<div class="sec-h"><h3>${titre}</h3><small>${sous}</small></div>` + chips();
-    if (!l.length) h += `<div class="empty">${EMPTY}<b>${st.tab==="creuser"?"Rien à creuser pour l'instant":"Tout est calme par ici"}</b>${st.tab==="creuser"?"Clique sur « À creuser » sur une carte pour la retrouver ici.":"Change de filtre ou reviens après le prochain passage du robot."}</div>`;
+    const actsTh = th ? `<div class="th-acts"><button data-th-ren="${esc(th.id)}">Renommer</button><button data-th-del="${esc(th.id)}">Supprimer</button></div>` : "";
+    h += `<div class="sec-h"><h3>${titre}</h3><small>${sous}</small>${actsTh}</div>` + chips();
+    const vide = st.tab === "creuser" ? ["Rien à creuser pour l'instant", "Clique sur « À creuser » sur une carte pour la retrouver ici."]
+      : th ? ["Ce thème est vide", "Clique sur « Thèmes » sur une carte pour la ranger ici. Une fiche peut aller dans plusieurs thèmes."]
+      : ["Tout est calme par ici", "Change de filtre ou reviens après le prochain passage du robot."];
+    if (!l.length) h += `<div class="empty">${EMPTY}<b>${vide[0]}</b>${vide[1]}</div>`;
     else h += `<div class="grid">${l.slice(0, shown).map(card).join("")}</div>`;
     if (l.length > shown) h += `<button class="more" id="more">Voir ${Math.min(30, l.length-shown)} de plus · ${l.length-shown} restants</button>`;
     $("#view").innerHTML = h;
@@ -458,6 +506,16 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
     if (e.target.closest("#hideRead")) { st.hideRead = !st.hideRead; save(); render(); return; }
     if (e.target.closest(".m-x") || e.target === $("#ov")) { fermer(); return; }
     if (e.target.closest("#gear")) { reglages(); return; }
+    if (e.target.closest("#newTheme")) { const n = prompt("Nom du nouveau thème :"); if (n && n.trim()) { const id = creerTheme(n); st.tab = "th:"+id; save(); render(); } return; }
+    const tr = e.target.closest("[data-th-ren]");
+    if (tr) { const d = st.defs[tr.dataset.thRen]; const n = prompt("Nouveau nom du thème :", d.nom); if (n && n.trim()) { d.nom = n.trim(); d.t = Date.now(); changeEtat(); render(); } return; }
+    const td = e.target.closest("[data-th-del]");
+    if (td) { const d = st.defs[td.dataset.thDel]; if (confirm(`Supprimer le thème « ${d.nom} » ? Les fiches restent dans la veille, elles sont juste retirées de ce thème.`)) { d.del = 1; d.t = Date.now(); st.tab = "une"; changeEtat(); render(); } return; }
+    const pk = e.target.closest("[data-pick]");
+    if (pk) { const id = pk.dataset.item, tid = pk.dataset.pick; ranger(id, tid, !dansTheme(id, tid)); pickTheme(id); render(); return; }
+    if (e.target.closest("#ntGo")) { const n = $("#ntNom").value; const id = $("#ntNom").dataset.item; if (n.trim()) { ranger(id, creerTheme(n), true); pickTheme(id); render(); } return; }
+    const rg = e.target.closest("[data-ranger]");
+    if (rg) { pickTheme(rg.dataset.ranger); return; }
     if (e.target.closest("#tokSave")) { st.jeton = $("#tok").value.trim(); save(); verifier(); return; }
     if (e.target.closest("#tokDel")) { st.jeton = ""; save(); reglages(); renderGear(); return; }
     if (e.target.closest("#undo")) { annuler(); return; }
@@ -474,6 +532,7 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
     const el = a.closest(".card"), id = el.dataset.id, it = items.find(i => i.id === id);
     if (a.dataset.a === "open") { ouvrir(id); return; }
     if (a.dataset.a === "nope") { pasPertinent(id); return; }
+    if (a.dataset.a === "ranger") { pickTheme(id); return; }
     if (a.dataset.a === "share") {
       if (navigator.share) navigator.share({title: it.title, url: it.url}).catch(()=>{});
       else if (navigator.clipboard) { navigator.clipboard.writeText(it.title+"\n"+it.url); a.innerHTML = svg(P.check)+"Copié"; }
@@ -506,12 +565,14 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
       ${r&&r.titre_fr?`<div class="m-orig">${esc(i.title)}</div>`:""}
       ${acces(i, r)}
       ${corps}
+      ${tchips(id)}
       ${i.pm?`<div class="pm">${svg(P.bulb)}<span><b>Pour toi :</b> ${esc((r&&r.pour_toi)||i.pm)}</span></div>`:""}
       <div class="m-meta">${esc([i.venue, i.authors].filter(Boolean).join(" · "))}${i.cited_by?` · ${i.cited_by} citation${i.cited_by>1?"s":""}`:""} · pertinence ${i.score}</div>
       <div class="m-acts">
         <a class="btn main" href="${esc(i.url)}" target="_blank" rel="noopener">${svg(P.open)}Ouvrir la source</a>
         <button class="btn star ${st.creuser[id]?"on":""}" data-ma="creuser">${svg(P.mark, st.creuser[id]?"currentColor":"none")}À creuser</button>
         <button class="btn ${st.lu[id]?"on":""}" data-ma="lu">${svg(P.check)}${st.lu[id]?"Marqué lu":"Marquer lu"}</button>
+        <button class="btn" data-ranger="${esc(id)}">${svg(P.tag)}Thèmes</button>
         <button class="btn" data-nope="${esc(id)}">${svg(P.ban)}Pas pertinent</button>
       </div></div>`;
     $("#ov").classList.add("on");
@@ -563,38 +624,66 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
   // ---- synchronisation des marques entre appareils (data/etat.json dans le dépôt)
   const ETAT = "data/etat.json";
   let syncT, syncEnCours = false, derniereSync = "";
+  function changeEtat(){ save(); clearTimeout(syncT); syncT = setTimeout(synchroniser, 8000); }
   function marquer(k, id, v){
     if (v) st[k][id] = 1; else delete st[k][id];
     st.marques[k][id] = {v: v ? 1 : 0, t: Date.now()};
-    save(); clearTimeout(syncT); syncT = setTimeout(synchroniser, 8000);
+    changeEtat();
+  }
+  function ranger(id, tid, v){ st.marques.themes[id+"|"+tid] = {v: v ? 1 : 0, t: Date.now()}; changeEtat(); }
+  function creerTheme(nom){
+    nom = nom.trim().slice(0, 40);
+    const exist = themes().find(t => t.nom.toLowerCase() === nom.toLowerCase());
+    if (exist) return exist.id;
+    const id = nom.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 24)
+      + "-" + Math.random().toString(36).slice(2, 6);
+    st.defs[id] = {nom, t: Date.now()}; changeEtat(); return id;
+  }
+  function pickTheme(id){
+    const i = items.find(x => x.id === id); if (!i) return;
+    modalId = null;
+    $("#modal").className = "modal c-" + i.cat;
+    $("#modal").innerHTML = `<div class="m-in set">
+      <div class="row"><div class="m-title" style="font-size:19px">Ranger dans mes thèmes</div><button class="m-x" title="Fermer">${svg(P.x)}</button></div>
+      <p>${esc((resumes[id]&&resumes[id].titre_fr)||i.title)}</p>
+      <div class="pick">${themes().map(t => { const on = dansTheme(id, t.id);
+        return `<button class="${on?"on":""}" style="--tc:${t.c};--tc-l:${t.cl}" data-pick="${esc(t.id)}" data-item="${esc(id)}">${on?svg(P.check):""}${esc(t.nom)}</button>`; }).join("")}</div>
+      <div class="m-h">Nouveau thème</div>
+      <div class="newt"><input id="ntNom" data-item="${esc(id)}" placeholder="Par exemple : Rugosité, Électrochimie…" maxlength="40"><button class="btn main" id="ntGo">Créer et ranger</button></div>
+    </div>`;
+    $("#ov").classList.add("on"); document.body.style.overflow = "hidden";
   }
   async function synchroniser(essai=0){
     if (!st.jeton || syncEnCours) return;
     syncEnCours = true;
     try {
       const r = await gh("/contents/"+ETAT+"?ref=main&t="+Date.now());
-      let distant = {lu:{}, creuser:{}}, sha;
+      let distant = {lu:{}, creuser:{}, themes:{}, defs:null}, sha;
       if (r.ok) { const j = await r.json(); sha = j.sha; Object.assign(distant, JSON.parse(b64d(j.content))); }
       else if (r.status !== 404) throw new Error(r.status);
-      const avant = JSON.stringify({lu:distant.lu, creuser:distant.creuser});
+      const stable = o => o && typeof o === "object" ? "{"+Object.keys(o).sort().map(k => JSON.stringify(k)+":"+stable(o[k])).join(",")+"}" : JSON.stringify(o);
+      const avant = stable({lu:distant.lu||{}, creuser:distant.creuser||{}, themes:distant.themes||{}, defs:distant.defs||{}});
       const limite = Date.now() - 120*864e5, connus = new Set(items.map(i => i.id));
-      const fus = {lu:{}, creuser:{}};
-      ["lu","creuser"].forEach(k => {
-        const ids = new Set([...Object.keys(distant[k]||{}), ...Object.keys(st.marques[k])]);
-        ids.forEach(id => {
-          const a = (distant[k]||{})[id], b = st.marques[k][id];
-          const m = !a ? b : !b ? a : (b.t > a.t ? b : a);
-          // on oublie les fiches disparues depuis longtemps et les « non lu » anciens
-          if (!connus.has(id) && m.t < limite) return;
+      const plusRecent = (a, b) => !a ? b : !b ? a : (b.t > a.t ? b : a);
+      const fus = {lu:{}, creuser:{}, themes:{}, defs:{}};
+      // définitions des thèmes : la plus récente gagne, thème par thème
+      new Set([...Object.keys(distant.defs||{}), ...Object.keys(st.defs)]).forEach(id => fus.defs[id] = plusRecent((distant.defs||{})[id], st.defs[id]));
+      ["lu","creuser","themes"].forEach(k => {
+        const ids = new Set([...Object.keys(distant[k]||{}), ...Object.keys(st.marques[k]||{})]);
+        ids.forEach(cle => {
+          const m = plusRecent((distant[k]||{})[cle], (st.marques[k]||{})[cle]);
+          const id = k === "themes" ? cle.split("|")[0] : cle;
+          // on oublie les fiches disparues depuis longtemps et les retraits anciens (les fiches rangées restent)
           if (!m.v && m.t < limite) return;
-          fus[k][id] = m;
+          if (!connus.has(id) && m.t < limite && k === "lu") return;
+          fus[k][cle] = m;
         });
-        st[k] = {}; Object.keys(fus[k]).forEach(id => { if (fus[k][id].v) st[k][id] = 1; });
+        if (k !== "themes") { st[k] = {}; Object.keys(fus[k]).forEach(id => { if (fus[k][id].v) st[k][id] = 1; }); }
       });
-      st.marques = fus; save(); render();
-      if (JSON.stringify(fus) !== avant) {
+      st.defs = fus.defs; st.marques = {lu:fus.lu, creuser:fus.creuser, themes:fus.themes}; save(); render();
+      if (stable(fus) !== avant) {
         const w = await gh("/contents/"+ETAT, {method:"PUT", body:JSON.stringify({
-          message:"Synchronisation lu / à creuser", branch:"main", sha,
+          message:"Synchronisation lu, à creuser et thèmes", branch:"main", sha,
           content:b64e(JSON.stringify({maj:new Date().toISOString(), ...fus}))})});
         if (w.status === 409 && essai < 2) { syncEnCours = false; return synchroniser(essai+1); }
         if (!w.ok) throw new Error(w.status);
@@ -614,9 +703,9 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
     $("#modal").className = "modal c-sorties";
     $("#modal").innerHTML = `<div class="m-in set">
       <div class="row"><div class="m-title">Réglages</div><button class="m-x" title="Fermer">${svg(P.x)}</button></div>
-      <p>Avec un jeton GitHub, tes fiches <b>lues</b> et <b>À creuser</b> sont partagées entre tous tes appareils (fichier data/etat.json du dépôt, public comme le reste : il ne contient que des identifiants de fiches).</p>
+      <p>Avec un jeton GitHub, tes fiches <b>lues</b>, <b>À creuser</b> et tes <b>thèmes</b> sont partagés entre tous tes appareils (fichier data/etat.json du dépôt, public comme le reste : il ne contient que des identifiants de fiches).</p>
       <p>Le bouton <b>Pas pertinent</b> masque une fiche tout de suite. Pour que le robot l'écarte aussi (et écarte une revue ou un média après deux refus), l'appli doit pouvoir écrire dans ton dépôt GitHub.</p>
-      ${st.jeton ? `<div class="acc acc-ok">${svg(P.check)}<div>Connecté à GitHub<small>${st.aEnvoyer.length ? st.aEnvoyer.length+" fiche(s) en attente d'envoi" : (derniereSync ? "Lu et À creuser synchronisés à "+derniereSync : "Synchronisation en cours…")}</small></div><button class="go" id="tokDel" style="border:0">Déconnecter</button></div>` : `
+      ${st.jeton ? `<div class="acc acc-ok">${svg(P.check)}<div>Connecté à GitHub<small>${st.aEnvoyer.length ? st.aEnvoyer.length+" fiche(s) en attente d'envoi" : (derniereSync ? "Lu, À creuser et thèmes synchronisés à "+derniereSync : "Synchronisation en cours…")}</small></div><button class="go" id="tokDel" style="border:0">Déconnecter</button></div>` : `
       <ol><li>Sur GitHub : Settings, Developer settings, Personal access tokens, <b>Fine-grained tokens</b>, Generate new token.</li>
       <li>Repository access : <b>Only select repositories</b>, choisis <b>Ritemo/veille-afm</b>.</li>
       <li>Permissions : <b>Contents</b> en <b>Read and write</b>. Rien d'autre.</li>
@@ -640,7 +729,10 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
   }
 
   function fermer(){ $("#ov").classList.remove("on"); document.body.style.overflow = ""; modalId = null; }
-  document.addEventListener("keydown", e => { if (e.key === "Escape" && modalId) fermer(); });
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && $("#ov").classList.contains("on")) fermer();
+    if (e.key === "Enter" && e.target.id === "ntNom") $("#ntGo").click();
+  });
 
   let tq; $("#q").addEventListener("input", e => { clearTimeout(tq); tq = setTimeout(() => { q = e.target.value.trim(); shown = 30; render(); }, 150); });
 

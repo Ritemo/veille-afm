@@ -41,4 +41,6 @@ Base selon la catégorie (citation de mes travaux 60, logiciels 40, constructeur
 - Ajouter un thème : une ligne dans `themes_afm` (nom affiché : requête OpenAlex).
 - Trop de bruit sur un logiciel (Gwyddion est très cité) : le retirer de `logiciels` ou baisser `max_par_requete`.
 
-Les statuts « lu » et « à creuser » sont gardés dans le navigateur et, si un jeton GitHub est enregistré (Réglages), synchronisés entre appareils via `data/etat.json` (dernier changement gagnant, fiche par fiche).
+Les thèmes (Particules, Stitching, Courbes de force… et ceux que tu crées) se gèrent dans l'appli : bouton « Thèmes » sur une fiche pour la ranger (plusieurs thèmes possibles), « + » à côté de « Mes thèmes » pour en créer un, Renommer et Supprimer en haut de la vue d'un thème.
+
+Les statuts « lu », « à creuser » et les thèmes sont gardés dans le navigateur et, si un jeton GitHub est enregistré (Réglages), synchronisés entre appareils via `data/etat.json` (dernier changement gagnant, fiche par fiche).
