@@ -1,11 +1,10 @@
 {
   "date_min": "2026-07-01",
+  "imp_min": 2,
   "fenetre_jours_premier_passage": 90,
   "fenetre_jours_quotidienne": 14,
   "conservation_jours": 400,
   "max_par_requete": 25,
-  "auteur_suivi": "Mathieu Cognard",
-  "dois_suivis": [],
   "termes_afm": "\"atomic force\" OR AFM OR \"scanning probe\" OR SPM OR nanoindentation OR KPFM OR \"force spectroscopy\"",
   "logiciels": {
     "Mountains": [

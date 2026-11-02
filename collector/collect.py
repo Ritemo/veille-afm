@@ -258,7 +258,8 @@ def noter(it, cfg):
 RE_LOGICIEL = r"software|analysis|analytics|automat|\bai\b|artificial intelligence|machine learning|data|algorithm|platform"
 RE_MATERIEL = r"\bafm\b|atomic force|microscop|probe|cantilever|\bmode\b|nanoir|afm-ir|s-snom|scanner"
 RE_STRATEGIE = r"acqui|merger|partner|collaborat|agreement|rachat|partenariat"
-RE_FINANCE = r"results|revenue|earnings|quarter|dividend|stock|shares|guidance|résultats"
+RE_FINANCE = (r"results|revenue|earnings|quarter|dividend|stock|shares|guidance|résultats|estimates|"
+              r"\(brkr\)|krx:|wall street|market (size|analysis|report|share|trends)|quote, rfq")
 RE_FONCTION = (r"force curve|force-distance|nanodma|viscoelast|contact resonance|maugis|\bjkr\b|\bdmt\b|hertz|"
                r"critical dimension|roughness|correlative|multichannel|multi-channel|segmentation")
 RE_AFM = r"\bafm\b|atomic force|scanning probe|\bspm\b|nanoindent|kelvin probe|\bkpfm\b|force spectroscopy|cantilever"
@@ -283,7 +284,7 @@ def importance_pm(it, texte, tags):
                 if majeure or it["cited_by"] >= 10:
                     return 4, "MountainsSPIP ou Mountains en AFM dans une publication visible : référence client, argument commercial, note d'application."
                 return 3, "Mountains utilisé en AFM : référence client MountainsSPIP à collecter."
-            return 2, "Mountains utilisé hors AFM (profilométrie, confocal, MEB…) : référence utile pour les autres produits de la gamme."
+            return 1, "Mountains utilisé hors AFM (profilométrie, confocal, MEB…) : référence pour les autres produits de la gamme."
         if a(RE_FONCTION) or a(RE_ML):
             return 3, f"{grp} utilisé sur une analyse que MountainsSPIP couvre : à comparer, argumentaire de remplacement."
         return 1, f"Usage courant de {grp}, sans analyse que MountainsSPIP met en avant : simple suivi de la concurrence."
@@ -291,10 +292,10 @@ def importance_pm(it, texte, tags):
     if cat == "constructeurs":
         if grp == "Digital Surf":
             return 3, "On parle de Digital Surf : à relayer ou à surveiller."
+        if a(RE_FINANCE):
+            return 1, "Information financière ou étude de marché : peu d'impact produit."
         if a(RE_STRATEGIE):
             return 4, f"Mouvement stratégique chez {grp} : impact possible sur le partenariat et la distribution."
-        if a(RE_FINANCE):
-            return 1, "Information financière : peu d'impact produit."
         annonce = "annonce" in tags
         if annonce and a(RE_LOGICIEL):
             return 4, f"{grp} avance côté logiciel ou analyse : à confronter à la feuille de route MountainsSPIP."
@@ -323,12 +324,42 @@ def pertinent(it, texte_complet=""):
     t = (it["title"] + " " + it.get("abstract", "") + " " + (texte_complet or "")).lower()
     if it["cat"] == "logiciels" and it["group"].startswith("SPIP"):
         return re.search(RE_CTX_SPIP, t) is not None
+    if it["cat"] == "litterature":
+        # les requêtes thématiques sont larges : on exige que l'AFM (ou le champ proche) soit vraiment là
+        return re.search(RE_AFM + r"|s-snom|afm-ir|nanoir|tip-enhanced|near-field microscop|piezoresponse", t) is not None
+    if it["cat"] == "constructeurs" and it["group"] != "Park Systems":
+        # l'actu doit parler de la société ou de l'AFM, pas d'un article qui la cite en passant
+        noms = r"bruker|oxford instruments|asylum|nanosurf|horiba|nt-mdt|digital surf|mountains"
+        return re.search(noms + "|" + RE_AFM, it["title"].lower()) is not None
     if it["cat"] == "constructeurs" and it["group"] == "Park Systems":
         titre = it["title"]
         if re.search(RE_AFM + r"|microscop|nanoscien", titre.lower()):
             return True
         return "Park Systems" in titre and not re.search(RE_PARCS, titre.lower())
     return True
+
+
+RE_PREPRINT = r"rxiv|research square|preprint|prépublication|ssrn|preprints\.org"
+
+
+def sans_doublons(items):
+    """Même article vu deux fois (prépublication puis revue, ou deux sources) : on garde le meilleur."""
+    def cle_titre(i):
+        return re.sub(r"[^a-z0-9]", "", i["title"].lower())[:60]
+
+    def qualite(i):
+        return (i.get("imp", 0), not re.search(RE_PREPRINT, (i.get("venue") or "").lower()),
+                bool(i.get("doi")), i.get("score", 0), i.get("date", ""))
+    meilleur = {}
+    for i in items:
+        k = cle_titre(i)
+        if k not in meilleur or qualite(i) > qualite(meilleur[k]):
+            if k in meilleur:  # on garde la date de première détection la plus ancienne
+                i["first_seen"] = min(i["first_seen"], meilleur[k]["first_seen"])
+            meilleur[k] = i
+        else:
+            meilleur[k]["first_seen"] = min(i["first_seen"], meilleur[k]["first_seen"])
+    return list(meilleur.values())
 
 
 def dans_periode(it, date_min):
@@ -350,7 +381,6 @@ def collecter(cfg, depuis, depuis_logiciels=None):
             print(f"  {nom} : ERREUR {e}", file=sys.stderr)
         time.sleep(1)
 
-    essai("Citations", citations, cfg, depuis)
     for logiciel, termes in cfg["logiciels"].items():
         req = " OR ".join(f'"{t}"' if '"' not in t and " " in t else t for t in termes)
         afm = cfg["termes_afm"]
@@ -434,6 +464,8 @@ def main():
              and pertinent(i, resumes_en.get(i["id"], ""))]
     for i in items:  # les règles évoluent : on renote tout à chaque passage
         noter(i, cfg)
+    # on ne garde que l'essentiel : niveau minimal, pas de citations, pas de doublons
+    items = sans_doublons([i for i in items if i["cat"] != "citations" and i["imp"] >= cfg.get("imp_min", 1)])
     items.sort(key=lambda i: (i["first_seen"], i["score"]), reverse=True)
 
     os.makedirs(os.path.dirname(FICHIER_ITEMS), exist_ok=True)

@@ -263,7 +263,6 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
 
   const TABS = [
     {id:"une", label:"À la une", icon:P.star, c:"var(--violet)", cl:"var(--violet-l)"},
-    {id:"citations", label:"Mes citations", icon:P.quote, c:"var(--violet)", cl:"var(--violet-l)"},
     {id:"logiciels", label:"Logiciels", icon:P.soft, c:"var(--teal)", cl:"var(--teal-l)"},
     {id:"constructeurs", label:"Constructeurs", icon:P.fact, c:"var(--coral)", cl:"var(--coral-l)"},
     {id:"litterature", label:"Littérature", icon:P.book, c:"var(--sun)", cl:"var(--sun-l)"},
@@ -279,6 +278,7 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
   try { Object.assign(st, JSON.parse(localStorage.getItem(KEY) || "{}")); } catch(e) {}
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch(e) {} };
   const today = new Date().toISOString().slice(0,10);
+  if (!TABS.some(t => t.id === st.tab)) st.tab = "une";
   if (st.lastVisit !== today) { st.prevVisit = st.lastVisit || "0000"; st.lastVisit = today; save(); }
 
   let resumes = {}, modalId = null;
@@ -370,7 +370,7 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
     const k = [
       {n:sem.length, l:"nouveautés sur 7 jours", ic:P.news, c:"var(--violet)", cl:"var(--violet-l)", go:"une"},
       {n:crit, l:"critiques à traiter", ic:P.fire, c:"var(--coral)", cl:"var(--coral-l)", go:"une"},
-      {n:items.filter(i=>i.cat==="citations").length, l:"travaux qui te citent", ic:P.quote, c:"var(--violet)", cl:"var(--violet-l)", go:"citations"},
+      {n:items.filter(i=>i.cat==="logiciels"&&i.group!=="Mountains").length, l:"usages concurrents à étudier", ic:P.soft, c:"var(--teal)", cl:"var(--teal-l)", go:"logiciels"},
       {n:items.filter(i=>i.cat==="logiciels"&&i.group==="Mountains").length, l:"publications avec Mountains", ic:P.mtn, c:"var(--teal)", cl:"var(--teal-l)", go:"logiciels"}
     ];
     return `<section class="hero">
