@@ -91,7 +91,14 @@
 "donnees_note": "",
 "donnees_url": "",
 "donnees_verif": "2026-11-02",
-"themes_sugg": []
+"themes_sugg": [],
+"contact": {
+"nom": "Sujit Das",
+"orcid": "https://orcid.org/0000-0001-9823-0207",
+"institution": "Indian Institute of Science Bangalore",
+"certain": false
+},
+"contact_verif": "2026-11-02"
 },
 {
 "cat": "constructeurs",
@@ -141,7 +148,14 @@
 "donnees_verif": "2026-11-02",
 "themes_sugg": [
 "particules"
-]
+],
+"contact": {
+"nom": "Natalia Piergies",
+"orcid": "https://orcid.org/0000-0003-4899-3534",
+"institution": "Institute of Nuclear Physics, Polish Academy of Sciences",
+"certain": true
+},
+"contact_verif": "2026-11-02"
 },
 {
 "cat": "logiciels",
@@ -167,7 +181,13 @@
 "donnees_note": "",
 "donnees_url": "",
 "donnees_verif": "2026-11-02",
-"themes_sugg": []
+"themes_sugg": [],
+"contact": {
+"nom": "Christine Kranz",
+"orcid": "https://orcid.org/0000-0002-6001-0580",
+"certain": false
+},
+"contact_verif": "2026-11-02"
 },
 {
 "cat": "logiciels",
@@ -196,7 +216,15 @@
 "themes_sugg": [
 "spectral",
 "clustering"
-]
+],
+"contact": {
+"nom": "Maria Chiara Sportelli",
+"orcid": "https://orcid.org/0000-0002-8832-2770",
+"institution": "University of Bari Aldo Moro",
+"certain": true,
+"email": "maria.sportelli@uniba.it"
+},
+"contact_verif": "2026-11-02"
 },
 {
 "cat": "logiciels",
@@ -226,7 +254,14 @@
 "donnees_verif": "2026-11-02",
 "themes_sugg": [
 "courbes-force"
-]
+],
+"contact": {
+"nom": "Massimiliano Galluzzi",
+"orcid": "https://orcid.org/0000-0003-0404-4783",
+"institution": "Shenzhen University",
+"certain": true
+},
+"contact_verif": "2026-11-02"
 },
 {
 "cat": "logiciels",
@@ -252,7 +287,13 @@
 "donnees_note": "",
 "donnees_url": "",
 "donnees_verif": "2026-11-02",
-"themes_sugg": []
+"themes_sugg": [],
+"contact": {
+"nom": "Alexander S. Parker",
+"orcid": "https://orcid.org/0000-0002-2474-2645",
+"certain": true
+},
+"contact_verif": "2026-11-02"
 },
 {
 "cat": "logiciels",
@@ -280,7 +321,15 @@
 "donnees_verif": "2026-11-02",
 "themes_sugg": [
 "particules"
-]
+],
+"contact": {
+"nom": "Christina M. Graf",
+"orcid": "https://orcid.org/0000-0002-3308-5640",
+"institution": "Darmstadt University of Applied Sciences",
+"certain": true,
+"email": "christina.graf@h-da.de"
+},
+"contact_verif": "2026-11-02"
 },
 {
 "cat": "logiciels",
@@ -309,7 +358,14 @@
 "themes_sugg": [
 "spectral",
 "afm-ir"
-]
+],
+"contact": {
+"nom": "Ewelina W. Lipiec",
+"orcid": "https://orcid.org/0000-0003-2946-7387",
+"institution": "Jagiellonian University",
+"certain": true
+},
+"contact_verif": "2026-11-02"
 },
 {
 "cat": "logiciels",
@@ -337,7 +393,13 @@
 "donnees_verif": "2026-11-02",
 "themes_sugg": [
 "spectral"
-]
+],
+"contact": {
+"nom": "Elizabeth E. Oseland",
+"orcid": "https://orcid.org/0009-0005-8956-0382",
+"certain": true
+},
+"contact_verif": "2026-11-02"
 },
 {
 "cat": "logiciels",
@@ -363,7 +425,12 @@
 "donnees_note": "",
 "donnees_url": "",
 "donnees_verif": "2026-11-02",
-"themes_sugg": []
+"themes_sugg": [],
+"contact": {
+"nom": "Khalid Thamer Althagafy",
+"certain": true
+},
+"contact_verif": "2026-11-02"
 },
 {
 "cat": "logiciels",
@@ -391,7 +458,14 @@
 "donnees_verif": "2026-11-02",
 "themes_sugg": [
 "spectral"
-]
+],
+"contact": {
+"nom": "Steven De Feyter",
+"orcid": "https://orcid.org/0000-0002-0909-9292",
+"institution": "KU Leuven",
+"certain": true
+},
+"contact_verif": "2026-11-02"
 },
 {
 "cat": "logiciels",
@@ -417,7 +491,15 @@
 "donnees_note": "",
 "donnees_url": "",
 "donnees_verif": "2026-11-02",
-"themes_sugg": []
+"themes_sugg": [],
+"contact": {
+"nom": "Kazukuni Tahara",
+"orcid": "https://orcid.org/0000-0002-3634-541X",
+"institution": "Meiji University",
+"certain": true,
+"email": "tahara@meiji.ac.jp"
+},
+"contact_verif": "2026-11-02"
 },
 {
 "cat": "logiciels",
@@ -445,7 +527,14 @@
 "donnees_verif": "2026-11-02",
 "themes_sugg": [
 "clustering"
-]
+],
+"contact": {
+"nom": "Jula C. Schroeder",
+"orcid": "https://orcid.org/0009-0001-9846-0309",
+"institution": "University of Bristol",
+"certain": true
+},
+"contact_verif": "2026-11-02"
 },
 {
 "cat": "logiciels",
@@ -471,7 +560,13 @@
 "donnees_note": "",
 "donnees_url": "",
 "donnees_verif": "2026-11-02",
-"themes_sugg": []
+"themes_sugg": [],
+"contact": {
+"nom": "Chandra Sekhar Rakurty",
+"orcid": "https://orcid.org/0000-0002-0040-8466",
+"certain": true
+},
+"contact_verif": "2026-11-02"
 },
 {
 "cat": "logiciels",
@@ -497,7 +592,14 @@
 "donnees_note": "",
 "donnees_url": "",
 "donnees_verif": "2026-11-02",
-"themes_sugg": []
+"themes_sugg": [],
+"contact": {
+"nom": "Özge Sağlam",
+"orcid": "https://orcid.org/0000-0002-5583-3662",
+"institution": "İzmir University of Economics",
+"certain": true
+},
+"contact_verif": "2026-11-02"
 },
 {
 "cat": "logiciels",
@@ -525,7 +627,14 @@
 "donnees_verif": "2026-11-02",
 "themes_sugg": [
 "spectral"
-]
+],
+"contact": {
+"nom": "Katharina Landfester",
+"orcid": "https://orcid.org/0000-0001-9591-4638",
+"institution": "Max Planck Institute for Polymer Research",
+"certain": true
+},
+"contact_verif": "2026-11-02"
 },
 {
 "cat": "logiciels",
@@ -557,7 +666,14 @@
 "courbes-force",
 "clustering",
 "ia"
-]
+],
+"contact": {
+"nom": "Maxim Dokukin",
+"orcid": "https://orcid.org/0000-0001-6856-1953",
+"institution": "V.A. Negovsky Scientific Research Institute of General Reanimatology",
+"certain": false
+},
+"contact_verif": "2026-11-02"
 },
 {
 "cat": "logiciels",
@@ -587,7 +703,14 @@
 "donnees_verif": "2026-11-02",
 "themes_sugg": [
 "ia"
-]
+],
+"contact": {
+"nom": "George R. Heath",
+"orcid": "https://orcid.org/0000-0001-6431-2191",
+"institution": "University of Leeds",
+"certain": true
+},
+"contact_verif": "2026-11-02"
 },
 {
 "cat": "logiciels",
@@ -617,7 +740,14 @@
 "donnees_verif": "2026-11-02",
 "themes_sugg": [
 "courbes-force"
-]
+],
+"contact": {
+"nom": "Vladimir V. Tsukruk",
+"orcid": "https://orcid.org/0000-0001-5489-0967",
+"institution": "Georgia Institute of Technology",
+"certain": true
+},
+"contact_verif": "2026-11-02"
 },
 {
 "cat": "constructeurs",
@@ -666,7 +796,14 @@
 "donnees_note": "",
 "donnees_url": "",
 "donnees_verif": "2026-11-02",
-"themes_sugg": []
+"themes_sugg": [],
+"contact": {
+"nom": "Noriyuki Kodera",
+"orcid": "https://orcid.org/0000-0003-4880-8423",
+"institution": "Kanazawa University",
+"certain": false
+},
+"contact_verif": "2026-11-02"
 },
 {
 "cat": "logiciels",
@@ -692,7 +829,14 @@
 "donnees_note": "Jeu de données public sur Zenodo",
 "donnees_url": "https://doi.org/10.5281/zenodo.23645547",
 "donnees_verif": "2026-11-02",
-"themes_sugg": []
+"themes_sugg": [],
+"contact": {
+"nom": "M. N. Satyanarayan",
+"orcid": "https://orcid.org/0000-0003-3917-5249",
+"institution": "National Institute of Technology Karnataka",
+"certain": false
+},
+"contact_verif": "2026-11-02"
 },
 {
 "cat": "logiciels",
@@ -718,7 +862,15 @@
 "donnees_note": "Dans l'article ou ses fichiers supplémentaires",
 "donnees_url": "",
 "donnees_verif": "2026-11-02",
-"themes_sugg": []
+"themes_sugg": [],
+"contact": {
+"nom": "Ieva Baķe",
+"orcid": "https://orcid.org/0000-0002-3268-2865",
+"institution": "Riga Technical University",
+"certain": true,
+"email": "ieva.bake@rtu.lv"
+},
+"contact_verif": "2026-11-02"
 },
 {
 "cat": "logiciels",
@@ -744,7 +896,14 @@
 "donnees_note": "",
 "donnees_url": "",
 "donnees_verif": "2026-11-02",
-"themes_sugg": []
+"themes_sugg": [],
+"contact": {
+"nom": "Rupali Agnihotri",
+"orcid": "https://orcid.org/0000-0003-1964-2719",
+"institution": "Manipal Academy of Higher Education",
+"certain": true
+},
+"contact_verif": "2026-11-02"
 },
 {
 "cat": "constructeurs",
@@ -799,7 +958,14 @@
 "spectral",
 "afm-ir",
 "ndma"
-]
+],
+"contact": {
+"nom": "Lukas Felix Michalek",
+"orcid": "https://orcid.org/0000-0002-2257-5038",
+"institution": "Stanford University",
+"certain": false
+},
+"contact_verif": "2026-11-02"
 },
 {
 "cat": "litterature",
@@ -829,7 +995,14 @@
 "donnees_verif": "2026-11-02",
 "themes_sugg": [
 "particules"
-]
+],
+"contact": {
+"nom": "Ehsan Rahimi",
+"orcid": "https://orcid.org/0000-0002-7128-8940",
+"institution": "Delft University of Technology",
+"certain": true
+},
+"contact_verif": "2026-11-02"
 },
 {
 "cat": "litterature",
@@ -859,7 +1032,15 @@
 "donnees_verif": "2026-11-02",
 "themes_sugg": [
 "iv"
-]
+],
+"contact": {
+"nom": "Zijian Hong",
+"orcid": "https://orcid.org/0000-0002-3491-0884",
+"institution": "Zhejiang University",
+"certain": true,
+"email": "hongzijian100@zju.edu.cn"
+},
+"contact_verif": "2026-11-02"
 },
 {
 "cat": "litterature",
@@ -889,7 +1070,12 @@
 "donnees_verif": "2026-11-02",
 "themes_sugg": [
 "courbes-force"
-]
+],
+"contact": {
+"nom": "Sergio Santos",
+"certain": false
+},
+"contact_verif": "2026-11-02"
 },
 {
 "cat": "litterature",
@@ -917,7 +1103,14 @@
 "donnees_note": "Sur demande aux auteurs (déclaration de l'article)",
 "donnees_url": "",
 "donnees_verif": "2026-11-02",
-"themes_sugg": []
+"themes_sugg": [],
+"contact": {
+"nom": "Jan Schultheiß",
+"orcid": "https://orcid.org/0000-0001-7389-1295",
+"institution": "University of Oslo",
+"certain": true
+},
+"contact_verif": "2026-11-02"
 },
 {
 "cat": "litterature",
@@ -948,7 +1141,14 @@
 "themes_sugg": [
 "spectral",
 "cd"
-]
+],
+"contact": {
+"nom": "Muhammad Sabbtain Abbas",
+"orcid": "https://orcid.org/0000-0001-7652-9566",
+"institution": "Seoul National University",
+"certain": true
+},
+"contact_verif": "2026-11-02"
 },
 {
 "cat": "litterature",
@@ -978,7 +1178,15 @@
 "donnees_verif": "2026-11-02",
 "themes_sugg": [
 "iv"
-]
+],
+"contact": {
+"nom": "Yen‐Po Liu",
+"orcid": "https://orcid.org/0000-0003-0144-0991",
+"institution": "Forschungszentrum Jülich",
+"certain": true,
+"email": "yen.liu@fz-juelich.de"
+},
+"contact_verif": "2026-11-02"
 },
 {
 "cat": "litterature",
@@ -1007,7 +1215,13 @@
 "donnees_verif": "2026-11-02",
 "themes_sugg": [
 "cd"
-]
+],
+"contact": {
+"nom": "Paul Nyhus",
+"institution": "Intel (United States)",
+"certain": false
+},
+"contact_verif": "2026-11-02"
 },
 {
 "cat": "constructeurs",
@@ -1098,6 +1312,13 @@
 "donnees_verif": "2026-11-02",
 "themes_sugg": [
 "courbes-force"
-]
+],
+"contact": {
+"nom": "Sebastian Hahnel",
+"orcid": "https://orcid.org/0000-0002-5290-3979",
+"institution": "University Hospital Regensburg",
+"certain": true
+},
+"contact_verif": "2026-11-02"
 }
 ]
