@@ -100,5 +100,22 @@
     "nouveau"
   ],
   "fenetre_jours_logiciels_rattrapage": 365,
-  "max_par_requete_logiciels": 100
+  "max_par_requete_logiciels": 100,
+  "sorties_logicielles": {
+    "gwyddion": true,
+    "github": {
+      "TopoStats": "AFM-SPM/TopoStats",
+      "nanite": "AFM-analysis/nanite",
+      "afmformats": "AFM-analysis/afmformats",
+      "PyJibe": "AFM-analysis/PyJibe",
+      "pySPM": "scholi/pySPM"
+    },
+    "actus": {
+      "NanoScope Analysis (Bruker)": "\"NanoScope Analysis\" OR (Bruker AFM software)",
+      "Park SmartScan / SmartAnalysis": "SmartScan OR SmartAnalysis \"Park Systems\"",
+      "Asylum Ergo / AR": "\"Asylum Research\" software OR Ergo",
+      "Nanosurf Studio": "\"Nanosurf Studio\" OR (Nanosurf software)"
+    }
+  },
+  "mots_exclus": []
 }

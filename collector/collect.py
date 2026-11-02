@@ -24,6 +24,7 @@ FICHIER_CONFIG = os.path.join(RACINE, "config.json")
 FICHIER_ITEMS = os.path.join(RACINE, "data", "items.json")
 FICHIER_META = os.path.join(RACINE, "data", "meta.json")
 FICHIER_RESUMES_EN = os.path.join(RACINE, "data", "abstracts.json")  # résumés complets pour la tâche de nuit
+FICHIER_EXCLUS = os.path.join(RACINE, "data", "exclusions.json")  # fiches marquées « Pas pertinent » dans l'appli
 
 VERSION_REQUETES = 4  # à incrémenter quand les requêtes changent
 UA = "veille-afm/1.0 (robot personnel de veille scientifique)"
@@ -201,6 +202,53 @@ def gnews(requete, depuis, group):
     return out
 
 
+def github_releases(depot, depuis, nom):
+    """Versions publiées d'un logiciel libre hébergé sur GitHub."""
+    req = urllib.request.Request(f"https://api.github.com/repos/{depot}/releases?per_page=10",
+                                 headers={"User-Agent": UA, "Accept": "application/vnd.github+json",
+                                          **({"Authorization": "Bearer " + os.environ["GITHUB_TOKEN"]}
+                                             if os.environ.get("GITHUB_TOKEN") else {})})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        rels = json.loads(r.read().decode("utf-8"))
+    out = []
+    for rel in rels:
+        date = (rel.get("published_at") or "")[:10]
+        if rel.get("draft") or not date or date < depuis:
+            continue
+        version = rel.get("tag_name") or rel.get("name") or ""
+        titre = f"{nom} {version}" + (f" : {rel['name']}" if rel.get("name") and rel["name"] != version else "")
+        out.append(item("sorties", titre, rel.get("html_url"), date, "GitHub",
+                        venue=f"github.com/{depot}", abstract=rel.get("body") or "", group=nom, oa=True))
+    return out
+
+
+def gwyddion_versions(depuis):
+    """Nouvelles versions de Gwyddion (fichiers publiés sur SourceForge)."""
+    racine = ET.fromstring(http_get("https://sourceforge.net/projects/gwyddion/rss?path=/gwyddion"))
+    vues, out = set(), []
+    for it in racine.iter("item"):
+        m = re.search(r"/gwyddion/(\d+\.\d+(?:\.\d+)?)/", it.findtext("title", "") + "/")
+        if not m or m.group(1) in vues:
+            continue
+        try:
+            date = email.utils.parsedate_to_datetime(it.findtext("pubDate")).date().isoformat()
+        except Exception:  # noqa: BLE001
+            continue
+        if date < depuis:
+            continue
+        vues.add(m.group(1))
+        out.append(item("sorties", f"Gwyddion {m.group(1)}", f"https://sourceforge.net/projects/gwyddion/files/gwyddion/{m.group(1)}/",
+                        date, "SourceForge", venue="gwyddion.net", group="Gwyddion", oa=True))
+    return out
+
+
+def gnews_sorties(requete, depuis, group):
+    out = gnews(requete, depuis, group)
+    for it in out:
+        it["cat"] = "sorties"
+    return out
+
+
 def citations(cfg, depuis):
     """Travaux qui citent les articles de l'auteur suivi (ou des DOI listés)."""
     works = []
@@ -231,7 +279,7 @@ def citations(cfg, depuis):
 
 # ---------------------------------------------------------------- notation
 def noter(it, cfg):
-    base = {"citations": 60, "logiciels": 40, "constructeurs": 30, "litterature": 20}[it["cat"]]
+    base = {"citations": 60, "sorties": 50, "logiciels": 40, "constructeurs": 30, "litterature": 20}[it["cat"]]
     texte = (it["title"] + " " + it["abstract"]).lower()
     tags = [m for m in cfg["mots_cles_prioritaires"] if m.lower() in texte]
     s = base + min(30, 10 * len(tags))
@@ -242,7 +290,7 @@ def noter(it, cfg):
     if any(r.lower() == it["venue"].lower() for r in cfg["revues_majeures"]):
         s += 10
         tags.append("revue majeure")
-    if it["cat"] == "constructeurs":
+    if it["cat"] in ("constructeurs", "sorties"):
         mots = re.findall(r"[a-zà-ÿ]+", it["title"].lower())
         if any(m in mots for m in cfg["mots_annonce_produit"]):
             s += 20
@@ -263,6 +311,8 @@ RE_FINANCE = (r"results|revenue|earnings|quarter|dividend|stock|shares|guidance|
 RE_FONCTION = (r"force curve|force-distance|nanodma|viscoelast|contact resonance|maugis|\bjkr\b|\bdmt\b|hertz|"
                r"critical dimension|roughness|correlative|multichannel|multi-channel|segmentation")
 RE_AFM = r"\bafm\b|atomic force|scanning probe|\bspm\b|nanoindent|kelvin probe|\bkpfm\b|force spectroscopy|cantilever"
+RE_ML_AFM = (r"afm (image|data|map|topograph)|atomic force microscop[a-z]* (image|data|map)|force curve|"
+             r"force-distance|force map|height map|topograph|cantilever")
 RE_ML = r"machine learning|deep learning|neural|random forest|automat|artificial intelligence"
 
 
@@ -285,9 +335,24 @@ def importance_pm(it, texte, tags):
                     return 4, "MountainsSPIP ou Mountains en AFM dans une publication visible : référence client, argument commercial, note d'application."
                 return 3, "Mountains utilisé en AFM : référence client MountainsSPIP à collecter."
             return 1, "Mountains utilisé hors AFM (profilométrie, confocal, MEB…) : référence pour les autres produits de la gamme."
-        if a(RE_FONCTION) or a(RE_ML):
+        if a(RE_FONCTION):
             return 3, f"{grp} utilisé sur une analyse que MountainsSPIP couvre : à comparer, argumentaire de remplacement."
+        if a(RE_ML) and a(RE_ML_AFM):
+            return 3, f"{grp} et apprentissage automatique sur des données AFM : piste de fonctionnalité à comparer."
         return 1, f"Usage courant de {grp}, sans analyse que MountainsSPIP met en avant : simple suivi de la concurrence."
+
+    if cat == "sorties":
+        if it["source"] in ("GitHub", "SourceForge"):
+            v = re.search(r"(\d+)\.(\d+)(?:\.(\d+))?", it["title"])
+            correctif = v and v.group(3) not in (None, "0")
+            if correctif:
+                return 2, f"Version corrective de {grp} : rien d'urgent, juste noter le rythme de sortie."
+            return 3, f"Nouvelle version de {grp} : lire les nouveautés, comparer avec MountainsSPIP, vérifier les formats de fichiers."
+        if a(RE_FINANCE):
+            return 1, "Information financière : peu d'impact produit."
+        if a(RE_LOGICIEL) and ("annonce" in tags or a(r"version|update|release|mise à jour")):
+            return 4, f"{grp} annonce du nouveau côté logiciel : à confronter à la feuille de route MountainsSPIP."
+        return 2, f"On parle de {grp} : à vérifier s'il y a une nouveauté fonctionnelle."
 
     if cat == "constructeurs":
         if grp == "Digital Surf":
@@ -327,6 +392,8 @@ def pertinent(it, texte_complet=""):
     if it["cat"] == "litterature":
         # les requêtes thématiques sont larges : on exige que l'AFM (ou le champ proche) soit vraiment là
         return re.search(RE_AFM + r"|s-snom|afm-ir|nanoir|tip-enhanced|near-field microscop|piezoresponse", t) is not None
+    if it["cat"] == "sorties" and it["source"] == "Google Actualités":
+        return re.search(r"software|logiciel|analysis|nanoscope|smartscan|smartanalysis|ergo|studio|release|version|ai\b", it["title"].lower()) is not None
     if it["cat"] == "constructeurs" and it["group"] != "Park Systems":
         # l'actu doit parler de la société ou de l'AFM, pas d'un article qui la cite en passant
         noms = r"bruker|oxford instruments|asylum|nanosurf|horiba|nt-mdt|digital surf|mountains"
@@ -360,6 +427,33 @@ def sans_doublons(items):
         else:
             meilleur[k]["first_seen"] = min(i["first_seen"], meilleur[k]["first_seen"])
     return list(meilleur.values())
+
+
+def charger_exclusions(cfg):
+    """Fiches marquées « Pas pertinent » : on les retire, et on apprend les sources et mots à éviter."""
+    ex = {"ids": [], "fiches": []}
+    if os.path.exists(FICHIER_EXCLUS):
+        with open(FICHIER_EXCLUS, encoding="utf-8") as f:
+            ex.update(json.load(f))
+    ids = set(ex.get("ids", [])) | {x.get("id") for x in ex.get("fiches", [])}
+    # une revue ou un média écarté deux fois est écarté pour la suite (sauf serveurs de prépublication et revues majeures)
+    proteges = {r.lower() for r in cfg.get("revues_majeures", [])}
+    compte = {}
+    for x in ex.get("fiches", []):
+        v = (x.get("venue") or "").strip().lower()
+        if v and v not in proteges and not re.search(RE_PREPRINT, v):
+            compte[v] = compte.get(v, 0) + 1
+    venues = {v for v, n in compte.items() if n >= 2}
+    mots = [m.lower() for m in cfg.get("mots_exclus", [])]
+    return ids, venues, mots
+
+
+def exclu(it, regles):
+    ids, venues, mots = regles
+    if it["id"] in ids or (it.get("venue") or "").strip().lower() in venues:
+        return True
+    t = it["title"].lower()
+    return any(m in t for m in mots)
 
 
 def dans_periode(it, date_min):
@@ -400,6 +494,15 @@ def collecter(cfg, depuis, depuis_logiciels=None):
         essai(f"arXiv {req[:40]}", arxiv_recherche, cfg, req, depuis)
     for nom, req in cfg["constructeurs"].items():
         essai(f"Actus {nom}", gnews, req, depuis, nom)
+    # sorties logicielles des concurrents : on remonte toujours jusqu'à date_min
+    ds = cfg.get("date_min") or depuis
+    sl = cfg.get("sorties_logicielles", {})
+    for nom, depot in sl.get("github", {}).items():
+        essai(f"Versions {nom}", github_releases, depot, ds, nom)
+    if sl.get("gwyddion"):
+        essai("Versions Gwyddion", gwyddion_versions, ds)
+    for nom, req in sl.get("actus", {}).items():
+        essai(f"Annonces {nom}", gnews_sorties, req, ds, nom)
     return lots
 
 
@@ -423,6 +526,7 @@ def main():
     jl = cfg["fenetre_jours_logiciels_rattrapage"] if (rattrapage or not anciens) else jours
     depuis_logiciels = (AUJOURDHUI - dt.timedelta(days=jl)).isoformat()
     date_min = cfg.get("date_min", "")
+    regles = charger_exclusions(cfg)
     depuis, depuis_logiciels = max(depuis, date_min), max(depuis_logiciels, date_min)
     print(f"Collecte depuis le {depuis}")
 
@@ -432,9 +536,9 @@ def main():
         with open(FICHIER_RESUMES_EN, encoding="utf-8") as f:
             resumes_en = json.load(f)
     nouveaux = 0
-    priorite = {"citations": 0, "logiciels": 1, "constructeurs": 2, "litterature": 3}
+    priorite = {"citations": 0, "sorties": 1, "logiciels": 1, "constructeurs": 2, "litterature": 3}
     for it in ([] if hors_ligne else collecter(cfg, depuis, depuis_logiciels)):
-        if not it["title"] or not dans_periode(it, date_min) or not pertinent(it, it.get("_abs", "")):
+        if not it["title"] or not dans_periode(it, date_min) or exclu(it, regles) or not pertinent(it, it.get("_abs", "")):
             continue
         noter(it, cfg)
         texte_complet = it.pop("_abs", "")
@@ -460,7 +564,7 @@ def main():
         nouveaux += 1
 
     limite = (AUJOURDHUI - dt.timedelta(days=cfg["conservation_jours"])).isoformat()
-    items = [i for i in par_id.values() if i["first_seen"] >= limite and dans_periode(i, date_min)
+    items = [i for i in par_id.values() if i["first_seen"] >= limite and dans_periode(i, date_min) and not exclu(i, regles)
              and pertinent(i, resumes_en.get(i["id"], ""))]
     for i in items:  # les règles évoluent : on renote tout à chaque passage
         noter(i, cfg)

@@ -147,6 +147,19 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
 .empty svg{width:140px;margin-bottom:10px}
 .empty b{display:block;font-family:"Nunito";font-size:19px;color:var(--ink);margin-bottom:4px}
 .err{font-size:13px;color:var(--coral);margin:-10px 2px 18px}
+.c-sorties{--c:var(--blue);--cl:var(--blue-l)}
+.act.nope:hover{color:var(--coral)}
+.gear{width:42px;height:42px;border-radius:14px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);display:grid;place-items:center;color:var(--ink2);position:relative}
+.gear svg{width:20px;height:20px}
+.gear .dot{position:absolute;top:7px;right:7px;width:8px;height:8px;border-radius:50%;background:var(--coral)}
+.gear .dot.ok{background:var(--teal)}
+.set p{font-size:14px;color:var(--ink2);line-height:1.55}
+.set ol{font-size:13.5px;color:var(--ink2);padding-left:20px;display:flex;flex-direction:column;gap:4px}
+.set input{width:100%;font:inherit;font-size:14px;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:var(--bg)}
+.set .msg{font-size:13px;font-weight:600}
+.set .msg.ok{color:#167a45}.set .msg.ko{color:var(--coral)}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:#fff;border-radius:999px;padding:10px 18px;font-size:13.5px;font-weight:600;z-index:30;box-shadow:var(--shadow);display:flex;gap:12px;align-items:center}
+.toast button{color:#ffd36b;font-weight:700}
 
 
 /* fenêtre de détail */
@@ -227,6 +240,7 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
       <div class="seg" id="sort"><span class="seg-l">Tri</span><button data-s="imp">Importance</button><button data-s="date">Date</button></div>
       <div class="seg" id="per"><span class="seg-l">Publié</span><button data-p="7">7 j</button><button data-p="30">30 j</button><button data-p="0">Tout</button></div>
       <button class="switch" id="hideRead"><i></i>Masquer les lus</button>
+      <button class="gear" id="gear" title="Réglages et synchronisation"></button>
     </div>
     <div id="view"></div>
   </main>
@@ -257,24 +271,28 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
     open:'<path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1h5"/>',
     unlock:'<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 017.5-2"/>',
     lock:'<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/>',
-    help:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 114 2c-.9.6-1.5 1.1-1.5 2.2M12 17h.01"/>'
+    help:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 114 2c-.9.6-1.5 1.1-1.5 2.2M12 17h.01"/>',
+    rocket:'<path d="M5 15c-1 1-1.5 3.5-1.5 5.5 2 0 4.5-.5 5.5-1.5M9 15l-3-3c1.5-4 5-8 11.5-8.5C17 10 13 13.5 9 15z"/><circle cx="14.5" cy="9.5" r="1.5"/>',
+    ban:'<circle cx="12" cy="12" r="8.5"/><path d="M6 6l12 12"/>',
+    cog:'<circle cx="12" cy="12" r="3"/><path d="M12 2.5v3M12 18.5v3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M2.5 12h3M18.5 12h3M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1"/>'
   };
   const svg = (p, fill) => `<svg viewBox="0 0 24 24" fill="${fill||"none"}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${p}</svg>`;
 
   const TABS = [
     {id:"une", label:"À la une", icon:P.star, c:"var(--violet)", cl:"var(--violet-l)"},
+    {id:"sorties", label:"Sorties logicielles", icon:P.rocket, c:"var(--blue)", cl:"var(--blue-l)"},
     {id:"logiciels", label:"Logiciels", icon:P.soft, c:"var(--teal)", cl:"var(--teal-l)"},
     {id:"constructeurs", label:"Constructeurs", icon:P.fact, c:"var(--coral)", cl:"var(--coral-l)"},
     {id:"litterature", label:"Littérature", icon:P.book, c:"var(--sun)", cl:"var(--sun-l)"},
     {id:"creuser", label:"À creuser", icon:P.mark, c:"var(--pink)", cl:"var(--pink-l)"}
   ];
-  const CAT = {citations:"Citation", logiciels:"Logiciel", constructeurs:"Constructeur", litterature:"Littérature"};
+  const CAT = {citations:"Citation", sorties:"Sortie logicielle", logiciels:"Logiciel", constructeurs:"Constructeur", litterature:"Littérature"};
   const NIV = {4:["Critique",P.fire], 3:["Haute",P.up], 2:["Moyenne",P.dot], 1:["Faible",P.dot]};
   const TT = "Pertinence thématique (0 à 100), calculée par le robot : base selon la catégorie, +10 par mot-clé prioritaire, +20 si Mountains est cité, +10 revue majeure, bonus selon les citations, +20 pour une annonce produit. L'importance (Critique, Haute…) dit, elle, ce que ça change pour toi en tant que PM.";
 
   // état local
   const KEY = "veilleafm_v1";
-  let st = {lu:{}, creuser:{}, lastVisit:"", prevVisit:"", tab:"une", hideRead:false, minImp:1, sort:"imp", period:0};
+  let st = {lu:{}, creuser:{}, lastVisit:"", prevVisit:"", tab:"une", hideRead:false, minImp:1, sort:"imp", period:0, exclus:{}, aEnvoyer:[], jeton:""};
   try { Object.assign(st, JSON.parse(localStorage.getItem(KEY) || "{}")); } catch(e) {}
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch(e) {} };
   const today = new Date().toISOString().slice(0,10);
@@ -305,6 +323,9 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
   }
 
   function pool(){
+    return pool0().filter(i => !st.exclus[i.id]);
+  }
+  function pool0(){
     if (st.tab === "creuser") return items.filter(i => st.creuser[i.id]);
     if (st.tab === "une") return items.filter(i => i.first_seen >= since(14) && imp(i) >= 3);
     return items.filter(i => i.cat === st.tab);
@@ -326,7 +347,7 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
     $("#nav").innerHTML = TABS.map(t => {
       let n = 0;
       if (t.id === "creuser") n = Object.keys(st.creuser).length;
-      else if (t.id !== "une") n = items.filter(i => i.cat===t.id && isNew(i) && !st.lu[i.id]).length;
+      else if (t.id !== "une") n = items.filter(i => i.cat===t.id && isNew(i) && !st.lu[i.id] && !st.exclus[i.id]).length;
       const badge = n ? `<span class="cnt" style="${t.id==="creuser"?"background:var(--pink)":""}">${n>99?"99+":n}</span>` : "";
       return `<button class="navi ${st.tab===t.id?"on":""}" data-tab="${t.id}"><span class="ic" style="background:${t.cl};color:${t.c}">${svg(t.icon)}</span>${t.label}${badge}</button>`;
     }).join("");
@@ -355,6 +376,7 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
         <button class="act ${st.lu[i.id]?"on":""}" data-a="lu">${svg(P.check)}Lu</button>
         <button class="act star ${st.creuser[i.id]?"on":""}" data-a="creuser">${svg(P.mark, st.creuser[i.id]?"currentColor":"none")}À creuser</button>
         <button class="act" data-a="share" title="Partager">${svg(P.share)}</button>
+        <button class="act nope" data-a="nope" title="Pas pertinent : retirer et apprendre">${svg(P.ban)}</button>
       </div></article>`;
   }
 
@@ -370,7 +392,7 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
     const k = [
       {n:sem.length, l:"nouveautés sur 7 jours", ic:P.news, c:"var(--violet)", cl:"var(--violet-l)", go:"une"},
       {n:crit, l:"critiques à traiter", ic:P.fire, c:"var(--coral)", cl:"var(--coral-l)", go:"une"},
-      {n:items.filter(i=>i.cat==="logiciels"&&i.group!=="Mountains").length, l:"usages concurrents à étudier", ic:P.soft, c:"var(--teal)", cl:"var(--teal-l)", go:"logiciels"},
+      {n:items.filter(i=>i.cat==="sorties").length, l:"sorties logicielles concurrentes", ic:P.rocket, c:"var(--blue)", cl:"var(--blue-l)", go:"sorties"},
       {n:items.filter(i=>i.cat==="logiciels"&&i.group==="Mountains").length, l:"publications avec Mountains", ic:P.mtn, c:"var(--teal)", cl:"var(--teal-l)", go:"logiciels"}
     ];
     return `<section class="hero">
@@ -433,6 +455,12 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
     if (e.target.closest("#more")) { shown += 30; render(); return; }
     if (e.target.closest("#hideRead")) { st.hideRead = !st.hideRead; save(); render(); return; }
     if (e.target.closest(".m-x") || e.target === $("#ov")) { fermer(); return; }
+    if (e.target.closest("#gear")) { reglages(); return; }
+    if (e.target.closest("#tokSave")) { st.jeton = $("#tok").value.trim(); save(); verifier(); return; }
+    if (e.target.closest("#tokDel")) { st.jeton = ""; save(); reglages(); renderGear(); return; }
+    if (e.target.closest("#undo")) { annuler(); return; }
+    const np = e.target.closest("[data-nope]");
+    if (np) { fermer(); pasPertinent(np.dataset.nope); return; }
     const ma = e.target.closest("[data-ma]");
     if (ma) { const k = ma.dataset.ma; if (st[k][modalId]) delete st[k][modalId]; else st[k][modalId] = 1; save(); ouvrir(modalId); render(); return; }
     const a = e.target.closest("[data-a]");
@@ -443,6 +471,7 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
     }
     const el = a.closest(".card"), id = el.dataset.id, it = items.find(i => i.id === id);
     if (a.dataset.a === "open") { ouvrir(id); return; }
+    if (a.dataset.a === "nope") { pasPertinent(id); return; }
     if (a.dataset.a === "share") {
       if (navigator.share) navigator.share({title: it.title, url: it.url}).catch(()=>{});
       else if (navigator.clipboard) { navigator.clipboard.writeText(it.title+"\n"+it.url); a.innerHTML = svg(P.check)+"Copié"; }
@@ -482,10 +511,87 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
         <a class="btn main" href="${esc(i.url)}" target="_blank" rel="noopener">${svg(P.open)}Ouvrir la source</a>
         <button class="btn star ${st.creuser[id]?"on":""}" data-ma="creuser">${svg(P.mark, st.creuser[id]?"currentColor":"none")}À creuser</button>
         <button class="btn ${st.lu[id]?"on":""}" data-ma="lu">${svg(P.check)}${st.lu[id]?"Marqué lu":"Marquer lu"}</button>
+        <button class="btn" data-nope="${esc(id)}">${svg(P.ban)}Pas pertinent</button>
       </div></div>`;
     $("#ov").classList.add("on");
     document.body.style.overflow = "hidden";
   }
+  // ---- « Pas pertinent » : masqué tout de suite, puis envoyé au robot via GitHub
+  const DEPOT = "Ritemo/veille-afm", CHEMIN = "data/exclusions.json";
+  let dernierExclu = null, toastT;
+  function toast(html){
+    let t = $("#toast"); if (!t) { t = document.createElement("div"); t.id = "toast"; t.className = "toast"; document.body.appendChild(t); }
+    t.innerHTML = html; t.style.display = "flex"; clearTimeout(toastT); toastT = setTimeout(() => t.style.display = "none", 6000);
+  }
+  function pasPertinent(id){
+    const i = items.find(x => x.id === id); if (!i) return;
+    st.exclus[id] = 1; dernierExclu = id;
+    st.aEnvoyer = st.aEnvoyer.filter(x => x.id !== id).concat([{id, title:i.title, venue:i.venue||"", group:i.group||"", cat:i.cat, le:today}]);
+    save(); render();
+    toast(`Fiche retirée${st.jeton ? "" : " sur cet appareil"}. <button id="undo">Annuler</button>`);
+    setTimeout(envoyer, 6500);
+  }
+  function annuler(){
+    if (!dernierExclu) return;
+    delete st.exclus[dernierExclu]; st.aEnvoyer = st.aEnvoyer.filter(x => x.id !== dernierExclu); dernierExclu = null;
+    save(); render(); const t = $("#toast"); if (t) t.style.display = "none";
+  }
+  const b64e = s => btoa(unescape(encodeURIComponent(s)));
+  const b64d = s => decodeURIComponent(escape(atob(s.replace(/\n/g, ""))));
+  const gh = (url, opt={}) => fetch("https://api.github.com/repos/"+DEPOT+url, {...opt, headers:{Authorization:"Bearer "+st.jeton, Accept:"application/vnd.github+json", ...(opt.headers||{})}});
+  let envoiEnCours = false;
+  async function envoyer(essai=0){
+    if (!st.jeton || !st.aEnvoyer.length || envoiEnCours) return;
+    envoiEnCours = true;
+    try {
+      const r = await gh("/contents/"+CHEMIN+"?ref=main&t="+Date.now());
+      let data = {ids:[], fiches:[]}, sha;
+      if (r.ok) { const j = await r.json(); sha = j.sha; data = Object.assign(data, JSON.parse(b64d(j.content))); }
+      else if (r.status !== 404) throw new Error(r.status);
+      const lot = st.aEnvoyer.slice(), deja = new Set(data.fiches.map(x => x.id));
+      lot.forEach(x => { if (!deja.has(x.id)) data.fiches.push(x); });
+      const w = await gh("/contents/"+CHEMIN, {method:"PUT", body:JSON.stringify({
+        message:`Pas pertinent : ${lot.length} fiche${lot.length>1?"s":""}`, branch:"main", sha,
+        content:b64e(JSON.stringify(data, null, 1))})});
+      if (w.status === 409 && essai < 2) { envoiEnCours = false; return envoyer(essai+1); }
+      if (!w.ok) throw new Error(w.status);
+      const env = new Set(lot.map(x => x.id)); st.aEnvoyer = st.aEnvoyer.filter(x => !env.has(x.id)); save();
+    } catch(e) { /* on réessaiera au prochain chargement */ }
+    envoiEnCours = false; renderGear();
+  }
+  function renderGear(){
+    const g = $("#gear"); if (!g) return;
+    g.innerHTML = svg(P.cog) + `<span class="dot ${st.jeton && !st.aEnvoyer.length ? "ok" : ""}" style="${!st.jeton && !st.aEnvoyer.length ? "display:none" : ""}"></span>`;
+  }
+  function reglages(){
+    modalId = null;
+    $("#modal").className = "modal c-sorties";
+    $("#modal").innerHTML = `<div class="m-in set">
+      <div class="row"><div class="m-title">Réglages</div><button class="m-x" title="Fermer">${svg(P.x)}</button></div>
+      <p>Le bouton <b>Pas pertinent</b> masque une fiche tout de suite. Pour que le robot l'écarte aussi (et écarte une revue ou un média après deux refus), l'appli doit pouvoir écrire dans ton dépôt GitHub.</p>
+      ${st.jeton ? `<div class="acc acc-ok">${svg(P.check)}<div>Connecté à GitHub<small>${st.aEnvoyer.length ? st.aEnvoyer.length+" fiche(s) en attente d'envoi" : "Tout est synchronisé"}</small></div><button class="go" id="tokDel" style="border:0">Déconnecter</button></div>` : `
+      <ol><li>Sur GitHub : Settings, Developer settings, Personal access tokens, <b>Fine-grained tokens</b>, Generate new token.</li>
+      <li>Repository access : <b>Only select repositories</b>, choisis <b>Ritemo/veille-afm</b>.</li>
+      <li>Permissions : <b>Contents</b> en <b>Read and write</b>. Rien d'autre.</li>
+      <li>Colle le jeton ici. Il reste dans ce navigateur, à refaire sur chaque appareil.</li></ol>
+      <input id="tok" type="password" placeholder="github_pat_…" autocomplete="off">
+      <div class="m-acts"><button class="btn main" id="tokSave">${svg(P.check)}Enregistrer</button></div>`}
+      <div class="msg" id="tokMsg"></div>
+      ${Object.keys(st.exclus).length ? `<p>${Object.keys(st.exclus).length} fiche(s) marquée(s) pas pertinente(s) sur cet appareil.</p>` : ""}
+    </div>`;
+    $("#ov").classList.add("on"); document.body.style.overflow = "hidden";
+  }
+  async function verifier(){
+    const m = $("#tokMsg"); m.className = "msg"; m.textContent = "Vérification…";
+    try {
+      const r = await gh("");
+      const j = r.ok ? await r.json() : null;
+      if (!j || !j.permissions || !j.permissions.push) throw 0;
+      reglages(); renderGear(); envoyer();
+      const m2 = $("#tokMsg"); m2.className = "msg ok"; m2.textContent = "C'est bon : les prochains « Pas pertinent » iront au robot.";
+    } catch(e) { st.jeton = ""; save(); m.className = "msg ko"; m.textContent = "Ce jeton ne permet pas d'écrire dans Ritemo/veille-afm. Vérifie l'accès au dépôt et la permission Contents."; renderGear(); }
+  }
+
   function fermer(){ $("#ov").classList.remove("on"); document.body.style.overflow = ""; modalId = null; }
   document.addEventListener("keydown", e => { if (e.key === "Escape" && modalId) fermer(); });
 
@@ -498,7 +604,7 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
     fetch("data/meta.json"+v).then(r => r.ok ? r.json() : {}).catch(() => ({})),
     fetch("data/synthese.md"+v).then(r => r.ok ? r.text() : "").catch(() => ""),
     fetch("data/resumes.json"+v).then(r => r.ok ? r.json() : {}).catch(() => ({}))
-  ]).then(([a, m, s, rs]) => { items = a; meta = m; synthese = s.trim(); resumes = rs || {}; render(); });
+  ]).then(([a, m, s, rs]) => { items = a; meta = m; synthese = s.trim(); resumes = rs || {}; render(); renderGear(); envoyer(); });
 
   if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(()=>{});
 })();

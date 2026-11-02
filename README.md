@@ -30,6 +30,9 @@ Base selon la catégorie (citation de mes travaux 60, logiciels 40, constructeur
 
 ## Réglages courants
 
+- Sorties logicielles : `sorties_logicielles` dans `config.json` (dépôts GitHub suivis, versions de Gwyddion, requêtes d'actualités pour NanoScope Analysis, SmartScan, Ergo, Nanosurf Studio).
+- « Pas pertinent » : masque la fiche dans l'appli et, si un jeton GitHub est enregistré (Réglages, roue dentée), l'ajoute à `data/exclusions.json`. Le robot écarte ces fiches, et une revue ou un média refusé deux fois. `mots_exclus` dans `config.json` écarte les titres contenant ces mots.
+
 - `imp_min` (dans `config.json`) : niveau minimal gardé (2 = Moyenne). Les fiches Faible, les doublons (même titre, prépublication puis revue) et les citations ne sont plus conservés.
 - `date_min` (dans `config.json`) : rien d'antérieur à cette date de publication n'est collecté ni gardé. Pour appliquer un changement de règles aux données sans relancer la collecte : `python collector/collect.py --nettoyer`.
 - Anti-bruit : « SPIP » n'est gardé qu'avec un vrai contexte AFM, « Park Systems » seulement pour la société (pas les parcs). Gwyddion et NanoScope Analysis sans analyse que MountainsSPIP met en avant passent en Faible.

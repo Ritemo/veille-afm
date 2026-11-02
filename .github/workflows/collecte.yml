@@ -18,10 +18,13 @@ jobs:
           python-version: "3.12"
       - name: Collecter
         run: python collector/collect.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Enregistrer les données
         run: |
           git config user.name "robot-veille"
           git config user.email "robot-veille@users.noreply.github.com"
           git add data/
           git diff --cached --quiet || git commit -m "Veille du $(date +%F)"
+          git pull --rebase origin main
           git push
