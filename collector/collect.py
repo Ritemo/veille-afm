@@ -216,7 +216,8 @@ def github_releases(depot, depuis, nom):
         if rel.get("draft") or not date or date < depuis:
             continue
         version = rel.get("tag_name") or rel.get("name") or ""
-        titre = f"{nom} {version}" + (f" : {rel['name']}" if rel.get("name") and rel["name"] != version else "")
+        extra = (rel.get("name") or "").strip()
+        titre = f"{nom} {version}" + (f" : {extra}" if extra and version not in extra else "")
         out.append(item("sorties", titre, rel.get("html_url"), date, "GitHub",
                         venue=f"github.com/{depot}", abstract=rel.get("body") or "", group=nom, oa=True))
     return out
@@ -536,7 +537,8 @@ def main():
         with open(FICHIER_RESUMES_EN, encoding="utf-8") as f:
             resumes_en = json.load(f)
     nouveaux = 0
-    priorite = {"citations": 0, "sorties": 1, "logiciels": 1, "constructeurs": 2, "litterature": 3}
+    # une actu déjà classée chez un constructeur y reste (sa règle d'importance est plus fine)
+    priorite = {"citations": 0, "logiciels": 1, "constructeurs": 2, "sorties": 2.5, "litterature": 3}
     for it in ([] if hors_ligne else collecter(cfg, depuis, depuis_logiciels)):
         if not it["title"] or not dans_periode(it, date_min) or exclu(it, regles) or not pertinent(it, it.get("_abs", "")):
             continue
