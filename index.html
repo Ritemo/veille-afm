@@ -292,8 +292,10 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
 
   // état local
   const KEY = "veilleafm_v1";
-  let st = {lu:{}, creuser:{}, lastVisit:"", prevVisit:"", tab:"une", hideRead:false, minImp:1, sort:"imp", period:0, exclus:{}, aEnvoyer:[], jeton:""};
+  let st = {lu:{}, creuser:{}, lastVisit:"", prevVisit:"", tab:"une", hideRead:false, minImp:1, sort:"imp", period:0, exclus:{}, aEnvoyer:[], jeton:"", marques:null};
   try { Object.assign(st, JSON.parse(localStorage.getItem(KEY) || "{}")); } catch(e) {}
+  // journal des marques (lu, à creuser) avec l'heure de chaque changement, pour fusionner entre appareils
+  if (!st.marques) { st.marques = {lu:{}, creuser:{}}; ["lu","creuser"].forEach(k => Object.keys(st[k]).forEach(id => st.marques[k][id] = {v:1, t:0})); }
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch(e) {} };
   const today = new Date().toISOString().slice(0,10);
   if (!TABS.some(t => t.id === st.tab)) st.tab = "une";
@@ -462,7 +464,7 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
     const np = e.target.closest("[data-nope]");
     if (np) { fermer(); pasPertinent(np.dataset.nope); return; }
     const ma = e.target.closest("[data-ma]");
-    if (ma) { const k = ma.dataset.ma; if (st[k][modalId]) delete st[k][modalId]; else st[k][modalId] = 1; save(); ouvrir(modalId); render(); return; }
+    if (ma) { const k = ma.dataset.ma; marquer(k, modalId, !st[k][modalId]); ouvrir(modalId); render(); return; }
     const a = e.target.closest("[data-a]");
     if (!a) {
       const cd = e.target.closest(".card");
@@ -478,8 +480,7 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
       return;
     }
     const k = a.dataset.a;
-    if (st[k][id]) delete st[k][id]; else st[k][id] = 1;
-    save(); render();
+    marquer(k, id, !st[k][id]); render();
   });
   function acces(i, r){
     const lien = i.oa_url || i.url;
@@ -493,7 +494,7 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
     const i = items.find(x => x.id === id); if (!i) return;
     modalId = id;
     const r = resumes[id], [nl, ni] = NIV[imp(i)];
-    if (!st.lu[id]) { st.lu[id] = 1; save(); render(); }
+    if (!st.lu[id]) { marquer("lu", id, true); render(); }
     const pts = r && r.points && r.points.length ? `<div class="m-h">Infos utiles</div><ul class="m-pts">${r.points.map(p => { const k = p.indexOf(":"); return k>0 && k<30 ? `<li><b>${esc(p.slice(0,k))}</b>${esc(p.slice(k+1).trim())}</li>` : `<li>${esc(p)}</li>`; }).join("")}</ul>` : "";
     const corps = r && r.resume
       ? `<div class="m-h">En bref</div><div class="m-sum">${esc(r.resume)}</div>${pts}`
@@ -559,6 +560,51 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
     } catch(e) { /* on réessaiera au prochain chargement */ }
     envoiEnCours = false; renderGear();
   }
+  // ---- synchronisation des marques entre appareils (data/etat.json dans le dépôt)
+  const ETAT = "data/etat.json";
+  let syncT, syncEnCours = false, derniereSync = "";
+  function marquer(k, id, v){
+    if (v) st[k][id] = 1; else delete st[k][id];
+    st.marques[k][id] = {v: v ? 1 : 0, t: Date.now()};
+    save(); clearTimeout(syncT); syncT = setTimeout(synchroniser, 8000);
+  }
+  async function synchroniser(essai=0){
+    if (!st.jeton || syncEnCours) return;
+    syncEnCours = true;
+    try {
+      const r = await gh("/contents/"+ETAT+"?ref=main&t="+Date.now());
+      let distant = {lu:{}, creuser:{}}, sha;
+      if (r.ok) { const j = await r.json(); sha = j.sha; Object.assign(distant, JSON.parse(b64d(j.content))); }
+      else if (r.status !== 404) throw new Error(r.status);
+      const avant = JSON.stringify({lu:distant.lu, creuser:distant.creuser});
+      const limite = Date.now() - 120*864e5, connus = new Set(items.map(i => i.id));
+      const fus = {lu:{}, creuser:{}};
+      ["lu","creuser"].forEach(k => {
+        const ids = new Set([...Object.keys(distant[k]||{}), ...Object.keys(st.marques[k])]);
+        ids.forEach(id => {
+          const a = (distant[k]||{})[id], b = st.marques[k][id];
+          const m = !a ? b : !b ? a : (b.t > a.t ? b : a);
+          // on oublie les fiches disparues depuis longtemps et les « non lu » anciens
+          if (!connus.has(id) && m.t < limite) return;
+          if (!m.v && m.t < limite) return;
+          fus[k][id] = m;
+        });
+        st[k] = {}; Object.keys(fus[k]).forEach(id => { if (fus[k][id].v) st[k][id] = 1; });
+      });
+      st.marques = fus; save(); render();
+      if (JSON.stringify(fus) !== avant) {
+        const w = await gh("/contents/"+ETAT, {method:"PUT", body:JSON.stringify({
+          message:"Synchronisation lu / à creuser", branch:"main", sha,
+          content:b64e(JSON.stringify({maj:new Date().toISOString(), ...fus}))})});
+        if (w.status === 409 && essai < 2) { syncEnCours = false; return synchroniser(essai+1); }
+        if (!w.ok) throw new Error(w.status);
+      }
+      derniereSync = new Date().toLocaleTimeString("fr-FR",{hour:"2-digit",minute:"2-digit"});
+    } catch(e) { derniereSync = ""; }
+    syncEnCours = false; renderGear();
+  }
+  document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") synchroniser(); });
+
   function renderGear(){
     const g = $("#gear"); if (!g) return;
     g.innerHTML = svg(P.cog) + `<span class="dot ${st.jeton && !st.aEnvoyer.length ? "ok" : ""}" style="${!st.jeton && !st.aEnvoyer.length ? "display:none" : ""}"></span>`;
@@ -568,8 +614,9 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
     $("#modal").className = "modal c-sorties";
     $("#modal").innerHTML = `<div class="m-in set">
       <div class="row"><div class="m-title">Réglages</div><button class="m-x" title="Fermer">${svg(P.x)}</button></div>
+      <p>Avec un jeton GitHub, tes fiches <b>lues</b> et <b>À creuser</b> sont partagées entre tous tes appareils (fichier data/etat.json du dépôt, public comme le reste : il ne contient que des identifiants de fiches).</p>
       <p>Le bouton <b>Pas pertinent</b> masque une fiche tout de suite. Pour que le robot l'écarte aussi (et écarte une revue ou un média après deux refus), l'appli doit pouvoir écrire dans ton dépôt GitHub.</p>
-      ${st.jeton ? `<div class="acc acc-ok">${svg(P.check)}<div>Connecté à GitHub<small>${st.aEnvoyer.length ? st.aEnvoyer.length+" fiche(s) en attente d'envoi" : "Tout est synchronisé"}</small></div><button class="go" id="tokDel" style="border:0">Déconnecter</button></div>` : `
+      ${st.jeton ? `<div class="acc acc-ok">${svg(P.check)}<div>Connecté à GitHub<small>${st.aEnvoyer.length ? st.aEnvoyer.length+" fiche(s) en attente d'envoi" : (derniereSync ? "Lu et À creuser synchronisés à "+derniereSync : "Synchronisation en cours…")}</small></div><button class="go" id="tokDel" style="border:0">Déconnecter</button></div>` : `
       <ol><li>Sur GitHub : Settings, Developer settings, Personal access tokens, <b>Fine-grained tokens</b>, Generate new token.</li>
       <li>Repository access : <b>Only select repositories</b>, choisis <b>Ritemo/veille-afm</b>.</li>
       <li>Permissions : <b>Contents</b> en <b>Read and write</b>. Rien d'autre.</li>
@@ -587,7 +634,7 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
       const r = await gh("");
       const j = r.ok ? await r.json() : null;
       if (!j || !j.permissions || !j.permissions.push) throw 0;
-      reglages(); renderGear(); envoyer();
+      reglages(); renderGear(); envoyer(); synchroniser();
       const m2 = $("#tokMsg"); m2.className = "msg ok"; m2.textContent = "C'est bon : les prochains « Pas pertinent » iront au robot.";
     } catch(e) { st.jeton = ""; save(); m.className = "msg ko"; m.textContent = "Ce jeton ne permet pas d'écrire dans Ritemo/veille-afm. Vérifie l'accès au dépôt et la permission Contents."; renderGear(); }
   }
@@ -603,8 +650,14 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
     fetch("data/items.json"+v).then(r => r.ok ? r.json() : []).catch(() => []),
     fetch("data/meta.json"+v).then(r => r.ok ? r.json() : {}).catch(() => ({})),
     fetch("data/synthese.md"+v).then(r => r.ok ? r.text() : "").catch(() => ""),
-    fetch("data/resumes.json"+v).then(r => r.ok ? r.json() : {}).catch(() => ({}))
-  ]).then(([a, m, s, rs]) => { items = a; meta = m; synthese = s.trim(); resumes = rs || {}; render(); renderGear(); envoyer(); });
+    fetch("data/resumes.json"+v).then(r => r.ok ? r.json() : {}).catch(() => ({})),
+    fetch("data/exclusions.json"+v).then(r => r.ok ? r.json() : {}).catch(() => ({}))
+  ]).then(([a, m, s, rs, ex]) => {
+    items = a; meta = m; synthese = s.trim(); resumes = rs || {};
+    ((ex && ex.fiches) || []).forEach(x => { if (x.id) st.exclus[x.id] = 1; });
+    ((ex && ex.ids) || []).forEach(id => st.exclus[id] = 1);
+    render(); renderGear(); envoyer(); synchroniser();
+  });
 
   if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(()=>{});
 })();
