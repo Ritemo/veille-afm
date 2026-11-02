@@ -83,7 +83,11 @@
 ],
 "imp": 2,
 "pm": "Tendance scientifique sur une analyse couverte par Mountains : veille de fond utile.",
-"first_seen": "2026-11-02"
+"first_seen": "2026-11-02",
+"donnees": "inconnu",
+"donnees_note": "",
+"donnees_url": "",
+"donnees_verif": "2026-11-02"
 },
 {
 "cat": "constructeurs",
@@ -125,7 +129,11 @@
 "tags": [],
 "imp": 3,
 "pm": "Mountains utilisé en AFM : référence client MountainsSPIP à collecter.",
-"first_seen": "2026-11-01"
+"first_seen": "2026-11-01",
+"donnees": "inconnu",
+"donnees_note": "",
+"donnees_url": "",
+"donnees_verif": "2026-11-02"
 },
 {
 "cat": "logiciels",
@@ -146,7 +154,11 @@
 "tags": [],
 "imp": 3,
 "pm": "Mountains utilisé en AFM : référence client MountainsSPIP à collecter.",
-"first_seen": "2026-11-01"
+"first_seen": "2026-11-01",
+"donnees": "inconnu",
+"donnees_note": "",
+"donnees_url": "",
+"donnees_verif": "2026-11-02"
 },
 {
 "cat": "logiciels",
@@ -167,7 +179,11 @@
 "tags": [],
 "imp": 3,
 "pm": "Mountains utilisé en AFM : référence client MountainsSPIP à collecter.",
-"first_seen": "2026-11-01"
+"first_seen": "2026-11-01",
+"donnees": "annexes",
+"donnees_note": "Dans l'article ou ses fichiers supplémentaires",
+"donnees_url": "",
+"donnees_verif": "2026-11-02"
 },
 {
 "cat": "logiciels",
@@ -190,7 +206,11 @@
 ],
 "imp": 3,
 "pm": "Utilisateur de l'ancien SPIP : cible de migration vers MountainsSPIP, contact ou argumentaire de mise à jour.",
-"first_seen": "2026-11-01"
+"first_seen": "2026-11-01",
+"donnees": "inconnu",
+"donnees_note": "",
+"donnees_url": "",
+"donnees_verif": "2026-11-02"
 },
 {
 "cat": "logiciels",
@@ -211,7 +231,11 @@
 "tags": [],
 "imp": 3,
 "pm": "Utilisateur de l'ancien SPIP : cible de migration vers MountainsSPIP, contact ou argumentaire de mise à jour.",
-"first_seen": "2026-11-01"
+"first_seen": "2026-11-01",
+"donnees": "inconnu",
+"donnees_note": "",
+"donnees_url": "",
+"donnees_verif": "2026-11-02"
 },
 {
 "cat": "logiciels",
@@ -232,7 +256,11 @@
 "tags": [],
 "imp": 3,
 "pm": "Gwyddion utilisé sur une analyse que MountainsSPIP couvre : à comparer, argumentaire de remplacement.",
-"first_seen": "2026-11-01"
+"first_seen": "2026-11-01",
+"donnees": "inconnu",
+"donnees_note": "",
+"donnees_url": "",
+"donnees_verif": "2026-11-02"
 },
 {
 "cat": "logiciels",
@@ -253,7 +281,11 @@
 "tags": [],
 "imp": 3,
 "pm": "Utilisateur de l'ancien SPIP : cible de migration vers MountainsSPIP, contact ou argumentaire de mise à jour.",
-"first_seen": "2026-11-01"
+"first_seen": "2026-11-01",
+"donnees": "inconnu",
+"donnees_note": "",
+"donnees_url": "",
+"donnees_verif": "2026-11-02"
 },
 {
 "cat": "logiciels",
@@ -274,7 +306,11 @@
 "tags": [],
 "imp": 3,
 "pm": "Utilisateur de l'ancien SPIP : cible de migration vers MountainsSPIP, contact ou argumentaire de mise à jour.",
-"first_seen": "2026-11-01"
+"first_seen": "2026-11-01",
+"donnees": "inconnu",
+"donnees_note": "",
+"donnees_url": "",
+"donnees_verif": "2026-11-02"
 },
 {
 "cat": "logiciels",
@@ -295,7 +331,11 @@
 "tags": [],
 "imp": 3,
 "pm": "Utilisateur de l'ancien SPIP : cible de migration vers MountainsSPIP, contact ou argumentaire de mise à jour.",
-"first_seen": "2026-11-01"
+"first_seen": "2026-11-01",
+"donnees": "inconnu",
+"donnees_note": "",
+"donnees_url": "",
+"donnees_verif": "2026-11-02"
 },
 {
 "cat": "logiciels",
@@ -316,7 +356,11 @@
 "tags": [],
 "imp": 3,
 "pm": "Utilisateur de l'ancien SPIP : cible de migration vers MountainsSPIP, contact ou argumentaire de mise à jour.",
-"first_seen": "2026-11-01"
+"first_seen": "2026-11-01",
+"donnees": "inconnu",
+"donnees_note": "",
+"donnees_url": "",
+"donnees_verif": "2026-11-02"
 },
 {
 "cat": "logiciels",
@@ -337,7 +381,11 @@
 "tags": [],
 "imp": 3,
 "pm": "Utilisateur de l'ancien SPIP : cible de migration vers MountainsSPIP, contact ou argumentaire de mise à jour.",
-"first_seen": "2026-11-01"
+"first_seen": "2026-11-01",
+"donnees": "inconnu",
+"donnees_note": "",
+"donnees_url": "",
+"donnees_verif": "2026-11-02"
 },
 {
 "cat": "logiciels",
@@ -358,7 +406,11 @@
 "tags": [],
 "imp": 3,
 "pm": "Gwyddion utilisé sur une analyse que MountainsSPIP couvre : à comparer, argumentaire de remplacement.",
-"first_seen": "2026-11-01"
+"first_seen": "2026-11-01",
+"donnees": "inconnu",
+"donnees_note": "",
+"donnees_url": "",
+"donnees_verif": "2026-11-02"
 },
 {
 "cat": "logiciels",
@@ -379,7 +431,11 @@
 "tags": [],
 "imp": 3,
 "pm": "Gwyddion utilisé sur une analyse que MountainsSPIP couvre : à comparer, argumentaire de remplacement.",
-"first_seen": "2026-11-01"
+"first_seen": "2026-11-01",
+"donnees": "inconnu",
+"donnees_note": "",
+"donnees_url": "",
+"donnees_verif": "2026-11-02"
 },
 {
 "cat": "logiciels",
@@ -400,7 +456,11 @@
 "tags": [],
 "imp": 3,
 "pm": "Gwyddion utilisé sur une analyse que MountainsSPIP couvre : à comparer, argumentaire de remplacement.",
-"first_seen": "2026-11-01"
+"first_seen": "2026-11-01",
+"donnees": "inconnu",
+"donnees_note": "",
+"donnees_url": "",
+"donnees_verif": "2026-11-02"
 },
 {
 "cat": "logiciels",
@@ -421,7 +481,11 @@
 "tags": [],
 "imp": 3,
 "pm": "NanoScope Analysis utilisé sur une analyse que MountainsSPIP couvre : à comparer, argumentaire de remplacement.",
-"first_seen": "2026-11-01"
+"first_seen": "2026-11-01",
+"donnees": "demande",
+"donnees_note": "Sur demande aux auteurs (déclaration de l'article)",
+"donnees_url": "",
+"donnees_verif": "2026-11-02"
 },
 {
 "cat": "logiciels",
@@ -444,7 +508,11 @@
 "pm": "Utilisateur de l'ancien SPIP : cible de migration vers MountainsSPIP, contact ou argumentaire de mise à jour.",
 "first_seen": "2026-10-31",
 "oa": true,
-"oa_url": "https://iopscience.iop.org/article/10.1088/1402-4896/aea370/pdf"
+"oa_url": "https://iopscience.iop.org/article/10.1088/1402-4896/aea370/pdf",
+"donnees": "inconnu",
+"donnees_note": "",
+"donnees_url": "",
+"donnees_verif": "2026-11-02"
 },
 {
 "cat": "logiciels",
@@ -467,7 +535,11 @@
 "pm": "Gwyddion et apprentissage automatique sur des données AFM : piste de fonctionnalité à comparer.",
 "first_seen": "2026-10-31",
 "oa": true,
-"oa_url": "https://www.biorxiv.org/content/biorxiv/early/2026/10/21/2026.10.19.760138.full.pdf"
+"oa_url": "https://www.biorxiv.org/content/biorxiv/early/2026/10/21/2026.10.19.760138.full.pdf",
+"donnees": "inconnu",
+"donnees_note": "",
+"donnees_url": "",
+"donnees_verif": "2026-11-02"
 },
 {
 "cat": "logiciels",
@@ -490,7 +562,11 @@
 "pm": "NanoScope Analysis utilisé sur une analyse que MountainsSPIP couvre : à comparer, argumentaire de remplacement.",
 "first_seen": "2026-10-31",
 "oa": true,
-"oa_url": "https://pubs.acs.org/langd5/article-pdf/doi/10.1021/acs.langmuir.6c05228/69021123/acs.langmuir.6c05228.pdf"
+"oa_url": "https://pubs.acs.org/langd5/article-pdf/doi/10.1021/acs.langmuir.6c05228/69021123/acs.langmuir.6c05228.pdf",
+"donnees": "inconnu",
+"donnees_note": "",
+"donnees_url": "",
+"donnees_verif": "2026-11-02"
 },
 {
 "cat": "constructeurs",
@@ -533,7 +609,11 @@
 "pm": "Utilisateur de l'ancien SPIP : cible de migration vers MountainsSPIP, contact ou argumentaire de mise à jour.",
 "first_seen": "2026-10-31",
 "oa": true,
-"oa_url": "https://arxiv.org/pdf/2608.22343"
+"oa_url": "https://arxiv.org/pdf/2608.22343",
+"donnees": "inconnu",
+"donnees_note": "",
+"donnees_url": "",
+"donnees_verif": "2026-11-02"
 },
 {
 "cat": "logiciels",
@@ -554,7 +634,11 @@
 "pm": "Gwyddion utilisé sur une analyse que MountainsSPIP couvre : à comparer, argumentaire de remplacement.",
 "first_seen": "2026-10-31",
 "oa": true,
-"oa_url": "https://doi.org/10.5281/zenodo.23645546"
+"oa_url": "https://doi.org/10.5281/zenodo.23645546",
+"donnees": "libres",
+"donnees_note": "Jeu de données public sur Zenodo",
+"donnees_url": "https://doi.org/10.5281/zenodo.23645547",
+"donnees_verif": "2026-11-02"
 },
 {
 "cat": "logiciels",
@@ -575,7 +659,11 @@
 "pm": "Gwyddion utilisé sur une analyse que MountainsSPIP couvre : à comparer, argumentaire de remplacement.",
 "first_seen": "2026-10-31",
 "oa": true,
-"oa_url": "https://europepmc.org/articles/PMC13707052"
+"oa_url": "https://europepmc.org/articles/PMC13707052",
+"donnees": "annexes",
+"donnees_note": "Dans l'article ou ses fichiers supplémentaires",
+"donnees_url": "",
+"donnees_verif": "2026-11-02"
 },
 {
 "cat": "logiciels",
@@ -596,7 +684,11 @@
 "pm": "NanoScope Analysis utilisé sur une analyse que MountainsSPIP couvre : à comparer, argumentaire de remplacement.",
 "first_seen": "2026-10-31",
 "oa": true,
-"oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/idh.70186"
+"oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/idh.70186",
+"donnees": "inconnu",
+"donnees_note": "",
+"donnees_url": "",
+"donnees_verif": "2026-11-02"
 },
 {
 "cat": "constructeurs",
@@ -640,7 +732,11 @@
 "pm": "Tendance scientifique sur une analyse couverte par Mountains : veille de fond utile.",
 "first_seen": "2026-10-31",
 "oa": true,
-"oa_url": "https://chemrxiv.org/doi/pdf/10.26434/chemrxiv.15000735/v4"
+"oa_url": "https://chemrxiv.org/doi/pdf/10.26434/chemrxiv.15000735/v4",
+"donnees": "libres",
+"donnees_note": "Jeu de données public sur Zenodo",
+"donnees_url": "https://doi.org/10.5281/zenodo.23023404",
+"donnees_verif": "2026-11-02"
 },
 {
 "cat": "litterature",
@@ -663,7 +759,11 @@
 "pm": "Tendance scientifique sur une analyse couverte par Mountains : veille de fond utile.",
 "first_seen": "2026-10-31",
 "oa": true,
-"oa_url": "https://pubs.acs.org/ancac3/article-pdf/doi/10.1021/acsnano.6c16183/68972811/acsnano.6c16183.pdf"
+"oa_url": "https://pubs.acs.org/ancac3/article-pdf/doi/10.1021/acsnano.6c16183/68972811/acsnano.6c16183.pdf",
+"donnees": "inconnu",
+"donnees_note": "",
+"donnees_url": "",
+"donnees_verif": "2026-11-02"
 },
 {
 "cat": "litterature",
@@ -686,7 +786,11 @@
 "pm": "Tendance scientifique sur une analyse couverte par Mountains : veille de fond utile.",
 "first_seen": "2026-10-31",
 "oa": true,
-"oa_url": "https://www.nature.com/articles/s41467-026-78049-z_reference.pdf"
+"oa_url": "https://www.nature.com/articles/s41467-026-78049-z_reference.pdf",
+"donnees": "demande",
+"donnees_note": "Sur demande aux auteurs (déclaration de l'article)",
+"donnees_url": "",
+"donnees_verif": "2026-11-02"
 },
 {
 "cat": "litterature",
@@ -709,7 +813,11 @@
 "pm": "Tendance scientifique sur une analyse couverte par Mountains : veille de fond utile.",
 "first_seen": "2026-10-31",
 "oa": true,
-"oa_url": "https://www.researchsquare.com/article/rs-10778520/latest.pdf"
+"oa_url": "https://www.researchsquare.com/article/rs-10778520/latest.pdf",
+"donnees": "inconnu",
+"donnees_note": "",
+"donnees_url": "",
+"donnees_verif": "2026-11-02"
 },
 {
 "cat": "litterature",
@@ -732,7 +840,11 @@
 "pm": "Tendance scientifique sur une analyse couverte par Mountains : veille de fond utile.",
 "first_seen": "2026-10-31",
 "oa": true,
-"oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/smll.75372"
+"oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/smll.75372",
+"donnees": "demande",
+"donnees_note": "Sur demande aux auteurs (déclaration de l'article)",
+"donnees_url": "",
+"donnees_verif": "2026-11-02"
 },
 {
 "cat": "litterature",
@@ -755,7 +867,11 @@
 "pm": "Tendance scientifique sur une analyse couverte par Mountains : veille de fond utile.",
 "first_seen": "2026-10-31",
 "oa": true,
-"oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adma.75569"
+"oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/adma.75569",
+"donnees": "inconnu",
+"donnees_note": "",
+"donnees_url": "",
+"donnees_verif": "2026-11-02"
 },
 {
 "cat": "litterature",
@@ -778,7 +894,11 @@
 "pm": "Tendance scientifique sur une analyse couverte par Mountains : veille de fond utile.",
 "first_seen": "2026-10-31",
 "oa": true,
-"oa_url": "https://pubs.acs.org/nalefd/article-pdf/doi/10.1021/acs.nanolett.6c04262/68677706/acs.nanolett.6c04262.pdf"
+"oa_url": "https://pubs.acs.org/nalefd/article-pdf/doi/10.1021/acs.nanolett.6c04262/68677706/acs.nanolett.6c04262.pdf",
+"donnees": "inconnu",
+"donnees_note": "",
+"donnees_url": "",
+"donnees_verif": "2026-11-02"
 },
 {
 "cat": "litterature",
@@ -800,7 +920,11 @@
 "imp": 2,
 "pm": "Tendance scientifique sur une analyse couverte par Mountains : veille de fond utile.",
 "first_seen": "2026-10-31",
-"oa": false
+"oa": false,
+"donnees": "inconnu",
+"donnees_note": "",
+"donnees_url": "",
+"donnees_verif": "2026-11-02"
 },
 {
 "cat": "constructeurs",
@@ -881,6 +1005,10 @@
 "pm": "Tendance scientifique sur une analyse couverte par Mountains : veille de fond utile.",
 "first_seen": "2026-10-31",
 "oa": true,
-"oa_url": "https://www.sciencedirect.com/science/article/pii/S0927776526008404/pdf"
+"oa_url": "https://www.sciencedirect.com/science/article/pii/S0927776526008404/pdf",
+"donnees": "inconnu",
+"donnees_note": "",
+"donnees_url": "",
+"donnees_verif": "2026-11-02"
 }
 ]
