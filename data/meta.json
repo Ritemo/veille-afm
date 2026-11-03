@@ -1,7 +1,9 @@
 {
- "maj": "2026-11-02T11:37+00:00",
+ "maj": "2026-11-03T07:59+00:00",
  "version_requetes": 4,
- "nouveaux": 58,
- "total": 41,
- "erreurs": []
+ "nouveaux": 52,
+ "total": 42,
+ "erreurs": [
+  "OpenAlex Résonance de contact : HTTP Error 429: Too Many Requests"
+ ]
 }
