@@ -70,7 +70,10 @@
   ],
   "acces": "gratuit",
   "acces_note": "Jeu de données déposé publiquement sur Zenodo",
-  "pour_toi": "Fichiers .nid publics utilisables pour tester l'import Nanosurf et refaire l'analyse rugosité et PSD dans MountainsSPIP en vue d'une note d'application comparative."
+  "pour_toi": "Fichiers .nid publics utilisables pour tester l'import Nanosurf et refaire l'analyse rugosité et PSD dans MountainsSPIP en vue d'une note d'application comparative.",
+  "donnees": "libres",
+  "donnees_note": "Jeu de données public sur Zenodo",
+  "donnees_url": "https://doi.org/10.5281/zenodo.23645547"
  },
  "doi:10.3390/ma19204379": {
   "titre_fr": "Amélioration de la résistance à l'arrachement d'un fil para-aramide revêtu de graphène grâce à un prétraitement laser",
@@ -82,7 +85,10 @@
   ],
   "acces": "inconnu",
   "acces_note": "Revue MDPI Materials publiée en libre accès, à confirmer sur la page de l'article",
-  "pour_toi": "Gwyddion utilisé ici : piste pour montrer à ce labo ce que MountainsSPIP apporte sur le même type de mesure."
+  "pour_toi": "Gwyddion utilisé ici : piste pour montrer à ce labo ce que MountainsSPIP apporte sur le même type de mesure.",
+  "donnees": "annexes",
+  "donnees_note": "Dans l'article ou ses fichiers supplémentaires",
+  "donnees_url": ""
  },
  "doi:10.1111/idh.70186": {
   "titre_fr": "Les méthodes d'hygiène bucco-dentaire modifient-elles la surface des implants en titane ? Analyse in vitro de la rugosité",
@@ -95,18 +101,6 @@
   "acces": "inconnu",
   "acces_note": "Accès non vérifié par la veille",
   "pour_toi": "Étude dentaire limitée à Ra : argument pour proposer MountainsSPIP avec paramètres surfaciques ISO 25178 (Sa, Sdr) aux labos d'implantologie."
- },
- "doi:10.1021/acsomega.6c07293": {
-  "titre_fr": "Fonctionnalisation par polydopamine de microfibres alignées d'acide polylactique pour améliorer l'interaction avec les cellules neurales et limiter le stress oxydatif",
-  "resume": "Les lésions des nerfs périphériques posent un problème clinique majeur et les greffes autologues sont limitées. Les auteurs revêtent de polydopamine des microfibres alignées de PLA afin de favoriser l'adhésion et la croissance des cellules neurales. Le revêtement vise aussi à réduire le stress oxydatif.",
-  "points": [
-   "Technique : fonctionnalisation polydopamine, caractérisation de surface",
-   "Échantillon : microfibres de PLA alignées",
-   "Logiciel : NanoScope Analysis (Bruker)"
-  ],
-  "acces": "inconnu",
-  "acces_note": "Revue ACS Omega publiée en libre accès, à confirmer sur la page de l'article",
-  "pour_toi": "NanoScope Analysis cité : laboratoire équipé Bruker, cible pour un argumentaire MountainsSPIP en complément ou remplacement."
  },
  "t:a686615716d9bbbc": {
   "titre_fr": "Park Systems étend sa présence nord-américaine avec un nouveau bureau régional à Hillsboro (Oregon)",
@@ -155,7 +149,10 @@
   ],
   "acces": "gratuit",
   "acces_note": "Article en accès libre chez l'éditeur (ACS Omega)",
-  "pour_toi": "Équipe Bari/Ulm (Cioffi, Mizaikoff, Kranz) utilisant Mountains pour la rugosité de bactéries : référence client en microbiologie."
+  "pour_toi": "Équipe Bari/Ulm (Cioffi, Mizaikoff, Kranz) utilisant Mountains pour la rugosité de bactéries : référence client en microbiologie.",
+  "donnees": "annexes",
+  "donnees_note": "Dans l'article ou ses fichiers supplémentaires",
+  "donnees_url": ""
  },
  "doi:10.1016/j.mtcomm.2026.116039": {
   "titre_fr": "Analyse nanomécanique automatisée de couches minces par spectroscopie de force AFM avec modèle d'épaisseur finie",
@@ -170,44 +167,6 @@
   "acces_note": "Article en accès libre chez l'éditeur (Materials Today Communications)",
   "pour_toi": "Concurrent direct sur la nanomécanique des couches minces : comparer la correction d'épaisseur finie et la détection automatique du point de contact avec MountainsSPIP, et proposer la migration aux utilisateurs de l'ancien SPIP."
  },
- "doi:10.1007/s10853-026-13831-4": {
-  "titre_fr": "Étude complète de nanocomposites Mn-ZnO/SiO2 : de la colorimétrie numérique à la photocatalyse en lumière visible",
-  "resume": "Des nanocomposites ZnO dopé au manganèse sur silice sont préparés à trois teneurs puis caractérisés par DRX, Raman, MEB avec segmentation assistée par IA, adsorption d'azote, AFM et spectroscopies optiques. L'étude teste aussi si la colorimétrie numérique, la chimiométrie et l'apprentissage automatique permettent un contrôle rapide et non destructif de la composition. Le ZnO wurtzite a des cristallites de 27,7 à 31,0 nm et les solides ont 110 à 160 m²/g de surface spécifique. La classification par images distingue bien les échantillons.",
-  "points": [
-   "Technique : AFM parmi DRX, Raman, MEB, spectroscopies",
-   "Échantillon : nanocomposites Mn-ZnO/SiO2",
-   "Logiciel : Gwyddion cité",
-   "Résultat : contrôle de composition par images et spectres"
-  ],
-  "acces": "gratuit",
-  "acces_note": "Article en accès libre chez l'éditeur (Journal of Materials Science)",
-  "pour_toi": "Usage de Gwyddion en caractérisation de photocatalyseurs : suivre l'implantation de la concurrence."
- },
- "doi:10.3390/bios16090502": {
-  "titre_fr": "Détection de marqueurs polysaccharidiques d'infections fongiques par diffusion Raman exaltée de surface et apprentissage automatique",
-  "resume": "Les auteurs mesurent pour la première fois par SERS les spectres de quatre polysaccharides marqueurs d'infections fongiques, de 10 pg/mL à 100 µg/mL. Des méthodes d'apprentissage (ACP, moindres carrés partiels régularisés) permettent de reconnaître les molécules et d'établir un étalonnage stable. En présence d'albumine à concentration sanguine, la détection reste précise de 10 pg/mL à 100 ng/mL.",
-  "points": [
-   "Technique : SERS et apprentissage automatique",
-   "Échantillon : glucanes, mannane et galactomannane fongiques",
-   "Logiciel : Gwyddion cité"
-  ],
-  "acces": "gratuit",
-  "acces_note": "Article en accès libre (Biosensors, PMC)",
-  "pour_toi": "Gwyddion probablement utilisé pour caractériser les substrats SERS : usage marginal de la concurrence, faible priorité."
- },
- "doi:10.1039/d6ra04549a": {
-  "titre_fr": "Synthèse à plus grande échelle, caractérisation et modélisation DFT et apprentissage automatique de points quantiques de MXène Ti3C2",
-  "resume": "Les auteurs proposent un protocole de synthèse à l'échelle du laboratoire de points quantiques de MXène avec TMAOH. La taille des cristallites passe de 8,68 nm à environ 2 nm, la bande interdite de 1,77 à 2,32 eV et la surface spécifique de 31,8 à 140,6 m²/g. Les points quantiques montrent un meilleur transfert de charge, ce que confirment la rugosité mesurée par AFM et l'impédance. Calculs DFT et modèles d'apprentissage complètent l'étude.",
-  "points": [
-   "Technique : AFM parmi DRX, XPS, Raman, électrochimie, DFT",
-   "Échantillon : points quantiques de MXène Ti3C2Tx",
-   "Logiciel : Gwyddion cité",
-   "Résultat : bande interdite élargie à 2,32 eV"
-  ],
-  "acces": "gratuit",
-  "acces_note": "Article en accès libre chez l'éditeur (RSC Advances)",
-  "pour_toi": "Usage de Gwyddion pour la rugosité de matériaux 2D : suivre l'implantation de la concurrence."
- },
  "doi:10.82444/warw.33738856": {
   "titre_fr": "Études quantitatives de cristaux : dissolution de surface et processus de nucléation",
   "resume": "Cette thèse de Warwick combine microscopie à cellule électrochimique à balayage (SECCM) et AFM pour étudier la dissolution de l'émail dentaire sous flux de protons contrôlé. Les cuvettes gravées localement sont mesurées par AFM (volume et dimensions), ce qui permet plusieurs mesures indépendantes sur un même échantillon. Une modélisation par éléments finis donne une constante de vitesse de dissolution, et l'effet du fluor, du zinc et d'un silicate de calcium est testé. Une seconde partie étudie la nucléation du carbonate de calcium avec une nanopipette.",
@@ -220,5 +179,398 @@
   "acces": "gratuit",
   "acces_note": "Thèse en libre accès sur le dépôt de l'Université de Warwick",
   "pour_toi": "Thèse de 2016 (Unwin, Warwick) avec mesure de volumes de cuvettes par SPIP : cas d'usage classique de MountainsSPIP, groupe à recontacter pour la migration."
+ },
+ "doi:10.1021/acsomega.6c04722": {
+  "titre_fr": "Jouer sur la rugosité des particules et du substrat pour moduler l'arrangement de réseaux colloïdaux non compacts",
+  "resume": "Les auteurs étudient comment la rugosité des particules et celle du substrat, combinées à la répulsion électrostatique, pilotent la formation de structures colloïdales non compactes. Ils synthétisent des particules de silice lisses, moyennement rugueuses et rugueuses de type virus (Rq de 1,4 à 5,1 nm, polydispersité d'environ 5 %), puis les déposent sur de l'or de deux rugosités. Plus les particules sont rugueuses, moins la hausse de force ionique réduit les distances interparticulaires, et un substrat lisse favorise la mobilité latérale. La rugosité apparaît ainsi comme un levier de contrôle de l'arrangement, via des forces de frottement à courte distance.",
+  "points": [
+   "Technique : AFM pour la rugosité des particules et des substrats",
+   "Échantillon : particules de silice aminées sur or (Rq substrat 0,57 et 1,62 nm)",
+   "Logiciel : Gwyddion (repéré par la veille)",
+   "Résultat : la rugosité limite l'effet de la force ionique sur les distances entre particules"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Article en accès libre chez l'éditeur",
+  "pour_toi": "Cas typique de rugosité de particules et de substrat traité sous Gwyddion : bon exemple pour un argumentaire MountainsSPIP (analyse de particules et paramètres ISO 25178), contact possible avec Christina Graf à Darmstadt.",
+  "donnees": "inconnu",
+  "donnees_note": "Article non consulté lors de cette veille (accès web indisponible) : déclaration de données à vérifier.",
+  "donnees_url": ""
+ },
+ "doi:10.64898/2026.09.13.751252": {
+  "titre_fr": "Regard nanométrique sur les réarrangements moléculaires de la chromatine lors de la réponse aux dommages de l'ADN",
+  "resume": "L'étude combine la spectroscopie AFM-IR et la microscopie confocale de fluorescence pour suivre les modifications chimiques locales de l'ADN et de la chromatine dans des chromosomes métaphasiques issus de cellules traitées à la bléomycine. Les spectres révèlent des changements de structure secondaire des protéines, signe de l'arrivée de protéines de réparation riches en feuillets bêta. La cartographie nanospectroscopique résout les variations de condensation de l'ADN le long des chromosomes et montre une déméthylation globale (5mC vers 5hmC) corrélée aux cassures double brin.",
+  "points": [
+   "Technique : AFM-IR couplé à la microscopie confocale",
+   "Échantillon : chromosomes métaphasiques et aberrations après bléomycine",
+   "Logiciel : SPIP ancien (repéré par la veille)",
+   "Résultat : relâchement de la chromatine lié aux changements de conformation et de méthylation"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Prépublication bioRxiv en libre accès",
+  "pour_toi": "Groupe de Cracovie (Ewelina Lipiec) qui utilise l'ancien SPIP et fait de l'AFM-IR : cible idéale pour une migration vers MountainsSPIP avec ses outils de cartes spectrales.",
+  "donnees": "inconnu",
+  "donnees_note": "Article non consulté lors de cette veille (accès web indisponible) : déclaration de données à vérifier.",
+  "donnees_url": ""
+ },
+ "doi:10.82444/warw.33740293": {
+  "titre_fr": "Études électrochimiques des procédés de polymérisation interfaciale",
+  "resume": "Cette thèse de Warwick utilise des techniques électrochimiques pour comprendre la polymérisation interfaciale employée en agrochimie pour fabriquer des microcapsules. Elle combine microscopie en accéléré de gouttelettes d'époxyde, mesures microélectrochimiques et modélisation par éléments finis pour quantifier le transfert d'amine, ainsi que la spectroscopie d'impédance pour suivre la croissance d'un film de polyurée. La dernière partie examine la polymérisation d'acrylamide sur surface solide par MEB et AFM.",
+  "points": [
+   "Technique : électrochimie, impédance, MEB et AFM",
+   "Échantillon : émulsions époxy-amine, films de polyurée, greffage d'acrylamide",
+   "Logiciel : SPIP ancien (repéré par la veille)"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Thèse en libre accès sur le dépôt de l'université de Warwick",
+  "pour_toi": "Thèse ancienne (2016) remise en ligne : faible priorité commerciale, mais elle confirme un parc SPIP historique à Warwick à vérifier côté base clients.",
+  "donnees": "inconnu",
+  "donnees_note": "Article non consulté lors de cette veille (accès web indisponible) : déclaration de données à vérifier.",
+  "donnees_url": ""
+ },
+ "doi:10.82444/warw.33709720": {
+  "titre_fr": "Modélisation des interactions sonde-surface dans les mesures nanotopographiques",
+  "resume": "Cette thèse développe un programme de simulation pour étudier comment la forme d'un stylet (conique, pyramidal, sphérique) influence la mesure de la rugosité fine de surfaces d'acier rectifié. Les cartes de référence sont acquises par AFM, puis contrôlées et interpolées sous SPIP pour combler les données manquantes. L'auteur propose un « seuillage » qui enfonce virtuellement la pointe dans la surface pour comparer les zones de contact au contact cinématique : un seuil de 5 nm change peu les contacts, alors que 50 nm les fait croître de façon asymétrique.",
+  "points": [
+   "Technique : AFM et simulation de contact stylet-surface",
+   "Échantillon : acier rectifié (variation de hauteur de 500 nm à 1 µm)",
+   "Logiciel : SPIP pour le contrôle et l'interpolation des données manquantes",
+   "Résultat : le seuillage révèle les aspérités qui interagissent le plus avec la pointe"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Thèse en libre accès sur le dépôt de l'université de Warwick",
+  "pour_toi": "Le sujet (effet de la forme de pointe, données manquantes) rejoint les fonctions de déconvolution de pointe et de remplissage de MountainsSPIP : bon cas d'usage métrologique à citer.",
+  "donnees": "inconnu",
+  "donnees_note": "Article non consulté lors de cette veille (accès web indisponible) : déclaration de données à vérifier.",
+  "donnees_url": ""
+ },
+ "doi:10.1021/acs.langmuir.6c02763": {
+  "titre_fr": "Greffage électrochimique du graphite par des sels d'aryldiazonium modulé par les cyclodextrines",
+  "resume": "Les auteurs montrent que la complexation hôte-invité avec des cyclodextrines modifie le greffage électrochimique de trois ions aryldiazonium sur le plan basal du graphite. La RMN confirme les complexes d'inclusion pour deux d'entre eux, dont l'efficacité de greffage augmente, comme le montrent Raman, STM et AFM. L'effet reste limité pour le dérivé nitro, faiblement complexé. Les cyclodextrines empêcheraient la formation d'une couche auto-assemblée ou réduiraient les réactions parasites.",
+  "points": [
+   "Technique : STM, AFM, Raman et RMN",
+   "Échantillon : graphite HOPG greffé par des aryldiazoniums",
+   "Logiciel : SPIP ancien (repéré par la veille)",
+   "Résultat : meilleure densité de greffage avec complexation par cyclodextrine"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Article en accès libre chez l'éditeur",
+  "pour_toi": "Le laboratoire de Steven De Feyter (KU Leuven), gros utilisateur de STM, travaille sous l'ancien SPIP : prospect prioritaire pour une mise à jour vers MountainsSPIP.",
+  "donnees": "inconnu",
+  "donnees_note": "Article non consulté lors de cette veille (accès web indisponible) : déclaration de données à vérifier.",
+  "donnees_url": ""
+ },
+ "doi:10.1021/acsomega.6c07826": {
+  "titre_fr": "Auto-assemblage de molécules isomères en triangle isocèle à l'interface liquide-solide",
+  "resume": "Par STM à l'interface 1-phényloctane/graphite, les auteurs comparent l'auto-assemblage de deux dérivés isomères de déhydrobenzoannulène portant six chaînes décyloxy. Le dérivé [15]-DBA forme une structure Trimère+Tétramère avec une très grande maille de 12 molécules, tandis que le [14]-DBA donne un simple Dimère. Les concentrations minimales de formation diffèrent d'un facteur 5 environ, et le mélange des deux isomères produit une co-assemblée régulière, interprétée par des simulations de mécanique moléculaire.",
+  "points": [
+   "Technique : STM à l'interface liquide-solide",
+   "Échantillon : réseaux moléculaires de DBA sur graphite",
+   "Logiciel : SPIP ancien (repéré par la veille)",
+   "Résultat : une petite modification du cœur triangulaire change fortement l'assemblage"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Article en accès libre (Europe PMC)",
+  "pour_toi": "Autre équipe STM (Kazukuni Tahara, Université Meiji) sous l'ancien SPIP : vérifier les outils de mesure de maille et de FFT 2D de MountainsSPIP pour l'argumentaire de migration.",
+  "donnees": "inconnu",
+  "donnees_note": "Article non consulté lors de cette veille (accès web indisponible) : déclaration de données à vérifier.",
+  "donnees_url": ""
+ },
+ "doi:10.1016/j.compscitech.2026.111885": {
+  "titre_fr": "Un modèle moléculaire représentatif de l'interphase PEEK renforcé carbone avec défauts lacunaires stochastiques",
+  "resume": "Les auteurs génèrent, par bruit de Perlin, des renforts à base de graphène porteurs de lacunes spatialement corrélées, en s'appuyant sur la rugosité nanométrique de fibres IM7-GP observée au MEB et en AFM haute vitesse. Les modules d'Young et de cisaillement chutent de plus de 80 % entre l'état parfait et le seuil de défauts le plus élevé. Couplé à une matrice PEEK, le modèle montre que de grands amas de lacunes connectés augmentent la contrainte de cisaillement interfaciale de 37 à 44 %, par ancrage mécanique des chaînes.",
+  "points": [
+   "Technique : dynamique moléculaire, MEB et AFM haute vitesse",
+   "Échantillon : fibre de carbone IM7-GP et matrice PEEK",
+   "Logiciel : Gwyddion (repéré par la veille)",
+   "Résultat : ISS de 63 ± 4 MPa sans défaut, hausse de 37 à 44 % avec amas de lacunes"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Article en accès libre chez l'éditeur",
+  "pour_toi": "Usage de Gwyddion pour caractériser la rugosité de fibres en AFM haute vitesse : piste de contact à Bristol et rappel que l'analyse de rugosité de surfaces courbes est un point fort à mettre en avant.",
+  "donnees": "inconnu",
+  "donnees_note": "Article non consulté lors de cette veille (accès web indisponible) : déclaration de données à vérifier.",
+  "donnees_url": ""
+ },
+ "doi:10.1016/j.mfglet.2026.08.076": {
+  "titre_fr": "Évaluation intégrée de la performance et de la durabilité de l'électroérosion et de la rectification assistée par fluide vert pour l'Hastelloy C-276",
+  "resume": "L'étude optimise par plan composite centré les paramètres d'électroérosion (tension, courant de crête, durée d'impulsion) sur l'Hastelloy C-276, avec des erreurs de validation de 5,6 %, 4,2 % et 7,6 % pour l'enlèvement de matière, l'usure d'électrode et la rugosité. Le courant de crête est le facteur dominant. Les surfaces rectifiées avec un fluide à base de jatropha surpassent celles obtenues par électroérosion et obtiennent un meilleur indice de durabilité.",
+  "points": [
+   "Technique : mesure de rugosité et caractérisation de surface",
+   "Échantillon : superalliage Hastelloy C-276",
+   "Logiciel : Gwyddion (repéré par la veille)",
+   "Résultat : la rectification au fluide vert donne de meilleures surfaces que l'électroérosion"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Article en accès libre chez l'éditeur",
+  "pour_toi": "Usinage et rugosité analysés sous Gwyddion : marché plutôt MountainsMap que SPIP, à relayer à l'équipe commerciale profilométrie.",
+  "donnees": "inconnu",
+  "donnees_note": "Article non consulté lors de cette veille (accès web indisponible) : déclaration de données à vérifier.",
+  "donnees_url": ""
+ },
+ "doi:10.7240/jeps.1904563": {
+  "titre_fr": "Évaluation quantitative par AFM de la rugosité de films de nanofeuillets Ca2NaNb4O13 assemblés par goutte unique",
+  "resume": "L'auteure suit l'évolution morphologique de nanofilms diélectriques de nanofeuillets Ca2NaNb4O13 déposés par goutte unique, en fonction d'un traitement thermique de l'ambiante à 450 °C. Sa, Sq, le rapport Sq/Sa et la distribution des pentes sont extraits des images AFM et comparés par tests de Kruskal-Wallis et de Dunn. Le rapport Sq/Sa culmine à 350 °C (1,97 ± 0,33), signe d'une irrégularité transitoire, tandis que 450 °C donne la surface la plus uniforme (Sa = 2,75 ± 0,89, pente moyenne 3,15°).",
+  "points": [
+   "Technique : AFM et paramètres surfaciques ISO 25178",
+   "Échantillon : nanofilms de nanofeuillets Ca2NaNb4O13",
+   "Logiciel : Gwyddion (repéré par la veille)",
+   "Résultat : le recuit à 450 °C donne la surface la plus lisse et homogène"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Article en accès libre chez l'éditeur",
+  "pour_toi": "Analyse de rugosité ISO 25178 avec statistiques sous Gwyddion : MountainsSPIP fait la même chose avec des rapports et une analyse statistique multi-images, bon exemple d'argumentaire de remplacement.",
+  "donnees": "inconnu",
+  "donnees_note": "Article non consulté lors de cette veille (accès web indisponible) : déclaration de données à vérifier.",
+  "donnees_url": ""
+ },
+ "doi:10.1038/s41586-026-11016-2": {
+  "titre_fr": "Réseaux hexagonaux codés par la séquence dans des nanofibrilles peptidiques multicanaux",
+  "resume": "Les auteurs montrent que des peptides de neuf résidus peuvent coder des motifs d'interaction latérale qui organisent des pores hexagonaux et s'assemblent en nanofibrilles multicanaux. La combinaison d'un dimère cross-bêta, d'un point d'inversion et d'une jonction trimérique produit des réseaux en nid d'abeilles avec des nanocanaux d'environ 5 nm accessibles au solvant. La cryo-microscopie électronique, la dynamique moléculaire et la spectroscopie vibrationnelle établissent des règles reliant séquence et symétrie supramoléculaire.",
+  "points": [
+   "Technique : cryo-ME, dynamique moléculaire, spectroscopie vibrationnelle, AFM",
+   "Échantillon : nanofibrilles de peptides à neuf résidus",
+   "Logiciel : NanoScope Analysis (repéré par la veille)",
+   "Résultat : canaux d'environ 5 nm à hydratation réglable par la séquence"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Article en accès libre (Europe PMC)",
+  "pour_toi": "Publication Nature d'un institut Max Planck (Mayence) qui analyse ses images AFM sous NanoScope Analysis : exemple de dépendance à Bruker à cibler avec MountainsSPIP multi-constructeurs.",
+  "donnees": "demande",
+  "donnees_note": "Sur demande aux auteurs (déclaration de l'article)",
+  "donnees_url": ""
+ },
+ "t:42b57e9740bdf768": {
+  "titre_fr": "TopoStats v2.4.2",
+  "resume": "Version corrective très courte de TopoStats, l'outil libre de traitement d'images AFM. Elle permet simplement de faire tourner un modèle d'apprentissage profond particulier. Aucune autre nouveauté n'est annoncée.",
+  "points": [
+   "Logiciel : TopoStats (open source, Python)",
+   "Nature : correctif pour un modèle d'apprentissage profond"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Logiciel libre publié sur GitHub",
+  "pour_toi": "Rien à faire, si ce n'est noter que TopoStats embarque désormais des modèles d'apprentissage profond, un sujet à suivre pour la feuille de route MountainsSPIP."
+ },
+ "t:97490e5227c9bac4": {
+  "titre_fr": "TopoStats v2.4.1",
+  "resume": "Cette version de TopoStats enrichit les statistiques de grains (données de tracé désordonné, nombre de nœuds) et révise le traitement de courbure avec un nouveau paramètre d'épaisseur de tracé. Elle ajoute la reconnexion d'extrémités de brins proches et une configuration pour d'autres modules AFM. La documentation passe de Sphinx à MkDocs et plusieurs bogues liés à la refonte sont corrigés.",
+  "points": [
+   "Logiciel : TopoStats (open source, Python)",
+   "Nouveautés : statistiques de grains et de courbure, reconnexion de brins",
+   "Cible : analyse de molécules d'ADN et de filaments en AFM"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Logiciel libre publié sur GitHub",
+  "pour_toi": "TopoStats progresse sur le traçage de brins d'ADN et la courbure : comparer avec les outils d'analyse de fibres de MountainsSPIP pour ne pas perdre les laboratoires de biophysique de l'ADN."
+ },
+ "t:63ac210726973589": {
+  "titre_fr": "PyJibe 0.16.4",
+  "resume": "Version corrective de PyJibe, logiciel libre d'ajustement de courbes de force AFM. Elle corrige la gestion des paramètres lors d'un changement de modèle et garantit des résultats identiques entre calcul fichier par fichier et calcul global. Elle ajoute l'affichage du chi² et la possibilité de masquer la courbe ajustée, et met à jour les dépendances Python, matplotlib et afmformats 0.18.7.",
+  "points": [
+   "Logiciel : PyJibe (open source, courbes de force)",
+   "Nouveautés : annotation du chi², bascule d'affichage de l'ajustement",
+   "Formats : afmformats passe en 0.18.7"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Logiciel libre publié sur GitHub",
+  "pour_toi": "L'affichage de la qualité d'ajustement (chi²) est une petite fonction utile à vérifier dans le module courbes de force de MountainsSPIP."
+ },
+ "doi:10.1002/smll.76586": {
+  "titre_fr": "Contrôle mécanique de l'état polaire dans un ordre antiferroélectrique",
+  "resume": "Dans des couches minces épitaxiées de PbHfO3, les auteurs écrivent électriquement un état polaire métastable puis l'effacent de façon déterministe par une force appliquée avec la pointe AFM. La force fait progressivement disparaître le contraste de piézoréponse et de potentiel de surface, ce qui indique un retour vers l'état antiferroélectrique. Sans perturbation, l'état écrit ne relaxe que lentement. Ils proposent ainsi un schéma écriture électrique et effacement mécanique.",
+  "points": [
+   "Technique : PFM, KPFM et lithographie mécanique par pointe",
+   "Échantillon : couches minces épitaxiées de PbHfO3",
+   "Résultat : effacement mécanique déterministe d'un état polaire écrit électriquement"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Article en accès libre chez l'éditeur",
+  "pour_toi": "Les mesures PFM et KPFM avant et après sollicitation mécanique sont un bon cas d'usage pour les comparaisons d'images différentielles et l'analyse de domaines dans MountainsSPIP.",
+  "donnees": "inconnu",
+  "donnees_note": "Article non consulté lors de cette veille (accès web indisponible) : déclaration de données à vérifier.",
+  "donnees_url": ""
+ },
+ "t:4d40e5754c9871ea": {
+  "titre_fr": "Le fonds de l'Université nationale de Séoul investit dans Multiscale Instruments, start-up de l'AFM",
+  "resume": "Le fonds de valorisation de l'Université nationale de Séoul soutient financièrement Multiscale Instruments, jeune entreprise d'instrumentation AFM. La page source n'a pas pu être lue lors de cette veille : la fiche est rédigée à partir du seul titre. Le montant, la technologie et le positionnement de la start-up ne sont donc pas connus ici.",
+  "points": [
+   "Acteur : Multiscale Instruments, start-up AFM coréenne",
+   "Financeur : fonds de l'Université nationale de Séoul",
+   "Contexte : écosystème coréen où domine Park Systems"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Actualité en ligne, page non consultée lors de cette veille",
+  "pour_toi": "Nouvel entrant AFM coréen à surveiller : un petit constructeur sans logiciel d'analyse maison est un partenaire OEM potentiel pour MountainsSPIP."
+ },
+ "doi:10.26434/chemrxiv.15000735/v4": {
+  "titre_fr": "Réponse viscoélastique résolue spatialement par AFM-IR",
+  "resume": "Les auteurs couplent le chauffage photothermique local par laser infrarouge pulsé à l'analyse mécanique dynamique nanométrique (nDMA) en AFM, la température étant réglée par la cadence du laser. Sur un copolymère homogène, ils obtiennent une réponse des modules de conservation et de perte typique de la transition vitreuse. En modulant la sonde entre 5 et 100 Hz, ils construisent des courbes maîtresses par superposition temps-température (WLF) et estiment la température de surface. La méthode est ensuite appliquée à un mélange de polymères à phases séparées.",
+  "points": [
+   "Technique : AFM-IR couplé à la nDMA",
+   "Échantillon : copolymère homogène et mélange de polymères",
+   "Résultat : courbes maîtresses viscoélastiques locales par chauffage IR",
+   "Données : jeu de données public sur Zenodo"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Prépublication ChemRxiv en libre accès",
+  "pour_toi": "Travail cosigné par Bruker (nDMA et AFM-IR) : la construction de courbes maîtresses WLF à partir de cartes nDMA est une fonction à envisager dans MountainsSPIP, avec des données Zenodo pour tester.",
+  "donnees": "libres",
+  "donnees_note": "Jeu de données public sur Zenodo",
+  "donnees_url": "https://doi.org/10.5281/zenodo.23023404"
+ },
+ "doi:10.1021/acsnano.6c16183": {
+  "titre_fr": "Observer les interfaces électrochimiques en mouvement par microscopie à force atomique à haute vitesse",
+  "resume": "Cette perspective fait le point sur l'usage de l'AFM haute vitesse en électrochimie, avec des cadences d'environ 0,1 à 5 s par image. L'auteur passe en revue l'électrodéposition, la dissolution de nanoparticules, la corrosion, l'évolution morphologique liée à la lithiation, l'adsorption de protéines et la dynamique de nanobulles. Il souligne que la compréhension des mécanismes passe souvent par des chemins transitoires hors équilibre plutôt que par des structures à l'équilibre.",
+  "points": [
+   "Technique : AFM haute vitesse en conditions operando",
+   "Applications : électrodéposition, corrosion, batteries, nanobulles",
+   "Type : article de perspective"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Article en accès libre chez l'éditeur",
+  "pour_toi": "Les séquences HS-AFM operando demandent du suivi temporel de particules et de la correction de dérive sur de longues séries : vérifier que MountainsSPIP gère bien ces films d'images.",
+  "donnees": "inconnu",
+  "donnees_note": "Article non consulté lors de cette veille (accès web indisponible) : déclaration de données à vérifier.",
+  "donnees_url": ""
+ },
+ "doi:10.1038/s41467-026-78049-z": {
+  "titre_fr": "Mouvement contrôlé des frontières de vortex polaires dans des hétérostructures d'oxydes",
+  "resume": "Les auteurs observent en temps réel le déplacement des frontières de vortex polaires dans des hétérostructures PbTiO3/SrTiO3 sous l'effet d'un champ électrique traînant appliqué par une pointe AFM conductrice. Le mouvement est réversible et dépend de la polarité du champ et de la trajectoire de la pointe, ce qui permet un déplacement reconfigurable et stable dans le temps. La STEM in situ le confirme, et des simulations de champ de phase l'attribuent au basculement d'un motif en zigzag au cœur du vortex.",
+  "points": [
+   "Technique : AFM conductrice, PFM, STEM in situ",
+   "Échantillon : hétérostructures PbTiO3/SrTiO3",
+   "Résultat : déplacement réversible et pilotable des frontières de vortex"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Article en accès libre chez l'éditeur",
+  "pour_toi": "Recherche ferroélectrique très active (Zhejiang) : les séries d'images PFM suivant un déplacement de domaines sont un cas d'usage pour le suivi d'évolution et la superposition d'images de MountainsSPIP.",
+  "donnees": "demande",
+  "donnees_note": "Sur demande aux auteurs (déclaration de l'article)",
+  "donnees_url": ""
+ },
+ "doi:10.21203/rs.3.rs-10778520/v1": {
+  "titre_fr": "L'information cachée des courbes de force : dynamique transitoire et brownienne",
+  "resume": "Avec une détection interférométrique à large bande, les auteurs mesurent des courbes de force rapides et y voient des oscillations brèves du levier au contact, à l'accrochage et au décollement. Deux sources coexistent : les fluctuations thermiques et les transitoires dus aux changements brusques des conditions aux limites pointe-échantillon. Des estimateurs de fréquence et d'amplitude cycle par cycle créent un canal de contraste mécanique pixel par pixel sans excitation externe, et un modèle d'oscillateur découpe chaque courbe en cinq régimes d'interaction.",
+  "points": [
+   "Technique : courbes de force rapides, détection interférométrique",
+   "Méthode : estimation de fréquence et d'amplitude cycle par cycle",
+   "Résultat : cartes de raideur cohérentes avec la mécanique du contact"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Prépublication Research Square en libre accès",
+  "pour_toi": "Roger Proksch est un des fondateurs d'Asylum Research (Oxford Instruments) : ce nouveau canal tiré des courbes de force pourrait arriver dans leurs instruments, à anticiper dans le module courbes de force de MountainsSPIP.",
+  "donnees": "inconnu",
+  "donnees_note": "Article non consulté lors de cette veille (accès web indisponible) : déclaration de données à vérifier.",
+  "donnees_url": ""
+ },
+ "doi:10.1002/smll.75372": {
+  "titre_fr": "PFM vectorielle interférométrique pour cartographier à la fois domaines ferroélectriques et orientation cristalline dans des polycristaux uniaxiaux",
+  "resume": "Les auteurs utilisent la PFM vectorielle interférométrique pour obtenir simultanément la structure en domaines et l'orientation cristallographique des grains d'un polycristal ferroélectrique uniaxial, sans recourir à l'EBSD. En déplaçant le faisceau laser sur le levier, ils obtiennent des signaux de piézoréponse directionnels sans tourner l'échantillon. Les vecteurs reconstruits correspondent un à un aux orientations des grains micrométriques, ce qui ouvre la voie à une reconstruction automatisée à haut débit.",
+  "points": [
+   "Technique : PFM vectorielle interférométrique",
+   "Échantillon : polycristal ferroélectrique uniaxial",
+   "Résultat : orientation des grains et polarisation sans EBSD"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Article en accès libre chez l'éditeur",
+  "pour_toi": "Technique propre aux instruments Asylum (Oxford Instruments) : la reconstruction vectorielle de piézoréponse à partir de plusieurs canaux serait une fonction différenciante à étudier pour MountainsSPIP.",
+  "donnees": "demande",
+  "donnees_note": "Sur demande aux auteurs (déclaration de l'article)",
+  "donnees_url": ""
+ },
+ "doi:10.1002/adma.75569": {
+  "titre_fr": "Croissance directe à l'échelle de la plaquette d'un carbone amorphe monocouche ultrapropre sur saphir c par déshydrogénation catalytique à distance",
+  "resume": "Les auteurs font croître par CVD thermique une monocouche de carbone amorphe sur une plaquette de saphir de 2 pouces, avec un catalyseur placé à distance qui décompose le précurseur sans contaminer le substrat. La XPS ne détecte aucun résidu de catalyseur et confirme un réseau très hybridé sp2, tandis que la microscopie électronique montre un réseau polygonal sans ordre à longue distance. Les cartographies Raman et AFM confirment une couverture monocouche uniforme et atomiquement lisse, isolante avec un transport par sauts modulable par grille.",
+  "points": [
+   "Technique : CVD, XPS, Raman, cartographie AFM",
+   "Échantillon : carbone amorphe monocouche sur saphir 2 pouces",
+   "Résultat : film uniforme, lisse et sans résidu métallique"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Article en accès libre chez l'éditeur",
+  "pour_toi": "La cartographie AFM d'uniformité sur plaquette entière est un besoin récurrent des matériaux 2D : argument pour les fonctions de mosaïque et de statistiques multi-sites de MountainsSPIP.",
+  "donnees": "inconnu",
+  "donnees_note": "Article non consulté lors de cette veille (accès web indisponible) : déclaration de données à vérifier.",
+  "donnees_url": ""
+ },
+ "doi:10.1021/acs.nanolett.6c04262": {
+  "titre_fr": "Évolution nanométrique des filaments et commutation résistive locale dans des couches minces d'oxyde d'yttrium sous-stœchiométrique",
+  "resume": "Par AFM conductrice in situ à courant limité, les auteurs visualisent et modulent la formation des filaments conducteurs dans des couches de Y2O3-x pour mémoires résistives. Le seuil de commutation augmente avec la teneur en oxygène, et l'évolution des filaments dépend de la tension appliquée. Les premiers grands filaments persistent et dominent les cycles suivants. En utilisant la pointe comme électrode mobile, ils mesurent une influence latérale d'environ 20 nm, qui fixe une échelle de diaphonie.",
+  "points": [
+   "Technique : AFM conductrice in situ avec limitation de courant",
+   "Échantillon : couches minces de Y2O3-x",
+   "Résultat : portée latérale de commutation d'environ 20 nm"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Article en accès libre chez l'éditeur",
+  "pour_toi": "Groupe de Jülich très actif en c-AFM sur mémoires résistives : les séries de cartes de courant et les statistiques de filaments sont un cas d'usage à proposer, avec un contact direct possible (Yen-Po Liu).",
+  "donnees": "inconnu",
+  "donnees_note": "Article non consulté lors de cette veille (accès web indisponible) : déclaration de données à vérifier.",
+  "donnees_url": ""
+ },
+ "doi:10.1117/1.jmm.25.4.041805": {
+  "titre_fr": "Maîtrise de la topographie pour la lithographie grâce à la planarisation adaptative par jet d'encre",
+  "resume": "L'étude évalue la planarisation adaptative par jet d'encre (IAP) développée par Canon face aux masques durs carbone classiques, dont l'épaisseur et la topographie varient à travers le champ et la plaquette. Des scans AFM sur des zones à 15 % et 75 % de densité de motifs montrent une topographie divisée par 10 avec l'IAP. L'interférométrie plein champ (pixel d'environ 2,5 µm) indique une topographie de champ dans ±5 nm, et les données de lithographie confirment une fenêtre de procédé élargie.",
+  "points": [
+   "Technique : AFM et interférométrie plein champ",
+   "Échantillon : plaquettes planarisées par IAP et masques durs carbone",
+   "Résultat : topographie réduite d'un facteur 10 avec l'IAP"
+  ],
+  "acces": "payant",
+  "acces_note": "Article sous abonnement chez SPIE",
+  "pour_toi": "Planarisation et dimension critique en semi-conducteur, avec Canon et Intel parmi les acteurs : à suivre pour les fonctions de fusion de données AFM et interférométrie de Mountains.",
+  "donnees": "inconnu",
+  "donnees_note": "Article payant non consulté : disponibilité des données inconnue.",
+  "donnees_url": ""
+ },
+ "t:cbe9b22dbb639c98": {
+  "titre_fr": "Faire progresser la microscopie à force atomique avec une stabilité sub-angström",
+  "resume": "Article d'AZoNano lié à Park Systems sur la stabilité sub-angström en AFM. La page source n'a pas pu être lue lors de cette veille : la fiche est rédigée à partir du seul titre. Le produit ou la technologie concernés et les performances annoncées ne sont donc pas connus ici.",
+  "points": [
+   "Acteur : Park Systems (repéré par la veille)",
+   "Thème : stabilité et bruit sub-angström",
+   "Support : AZoNano, contenu souvent sponsorisé"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Actualité en ligne, page non consultée lors de cette veille",
+  "pour_toi": "Si Park met en avant la stabilité sub-angström, vérifier que MountainsSPIP traite bien les images atomiques à très faible bruit (filtrage, FFT, mesure de réseau) issues de leurs fichiers."
+ },
+ "t:eb9044f93d3b1edc": {
+  "titre_fr": "NANOscientific 2026 s'ouvre en Corée et s'élargit au-delà de l'AFM",
+  "resume": "Le symposium NANOscientific 2026, organisé dans l'écosystème de Park Systems, démarre en Corée avec une ambition qui dépasse l'AFM. La page source n'a pas pu être lue lors de cette veille : la fiche est rédigée à partir du seul titre. Le programme, les dates précises et les nouvelles techniques abordées ne sont donc pas connus ici.",
+  "points": [
+   "Acteur : Park Systems (repéré par la veille)",
+   "Événement : symposium NANOscientific 2026 en Corée",
+   "Tendance : ouverture à d'autres techniques que l'AFM"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Actualité en ligne, page non consultée lors de cette veille",
+  "pour_toi": "Park élargit son positionnement au-delà de l'AFM : surveiller s'il étoffe aussi son logiciel d'analyse, et envisager une présence Digital Surf aux prochaines éditions de ce symposium."
+ },
+ "t:c008df77b41f4880": {
+  "titre_fr": "Oxford Instruments ouvre à Bristol une salle blanche de 1 200 m² pour des démonstrations semi-conducteurs",
+  "resume": "Oxford Instruments inaugure à Bristol une salle blanche de 1 200 m² destinée aux démonstrations pour l'industrie des semi-conducteurs. La page source n'a pas pu être lue lors de cette veille : la fiche est rédigée à partir du seul titre. Les équipements présentés, dont la part éventuelle d'AFM Asylum, ne sont donc pas connus ici.",
+  "points": [
+   "Acteur : Oxford Instruments (Asylum Research)",
+   "Site : Bristol, salle blanche de 1 200 m²",
+   "Cible : démonstrations pour les semi-conducteurs"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Actualité en ligne, page non consultée lors de cette veille",
+  "pour_toi": "Oxford Instruments renforce sa présence semi-conducteur : un client démo potentiel pour montrer MountainsSPIP sur des données Asylum en contexte industriel."
+ },
+ "doi:10.1016/j.colsurfb.2026.116252": {
+  "titre_fr": "Interaction moléculaire de Candida albicans avec des matériaux polymères : forces d'adhésion cellulaire, expression génique et propriétés de surface",
+  "resume": "L'étude analyse l'adhésion de Candida albicans sur du PVC et du PTFE de deux rugosités (Ra de 0,2 et 0,04 µm), avec ou sans salive. La surface est caractérisée par profilométrie et angle de contact, et les forces d'adhésion par spectroscopie de force sur cellule unique en AFM à différentes forces de contact. Les surfaces rugueuses donnent une adhésion plus forte et plus de points de contact, alors qu'une énergie de surface plus élevée la réduit. L'expression de gènes d'adhésion montre une régulation précoce surtout liée aux signaux de surface du polymère.",
+  "points": [
+   "Technique : spectroscopie de force sur cellule unique (SCFS), profilométrie",
+   "Échantillon : C. albicans sur PVC et PTFE, avec salive",
+   "Résultat : rugosité accrue, adhésion plus forte"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Article en accès libre chez l'éditeur",
+  "pour_toi": "Combinaison rugosité et courbes de force d'adhésion sur cellule unique : un flux de travail que MountainsSPIP peut couvrir de bout en bout, à montrer aux équipes dentaires (Hanovre, Ratisbonne).",
+  "donnees": "inconnu",
+  "donnees_note": "Article non consulté lors de cette veille (accès web indisponible) : déclaration de données à vérifier.",
+  "donnees_url": ""
  }
 }
