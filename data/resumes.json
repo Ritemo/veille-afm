@@ -21,7 +21,10 @@
   ],
   "acces": "inconnu",
   "acces_note": "Accès non vérifié par la veille",
-  "pour_toi": "Équipe utilisatrice de l'ancien SPIP travaillant sur la détection d'artefacts par IA : bon contact pour une migration vers MountainsSPIP et un retour d'expérience sur une fonction de masquage automatique des artefacts."
+  "pour_toi": "Équipe utilisatrice de l'ancien SPIP travaillant sur la détection d'artefacts par IA : bon contact pour une migration vers MountainsSPIP et un retour d'expérience sur une fonction de masquage automatique des artefacts.",
+  "donnees": "inconnu",
+  "donnees_note": "Article non consulté lors de cette veille (accès web indisponible) : déclaration de données à vérifier.",
+  "donnees_url": ""
  },
  "doi:10.64898/2026.10.19.760138": {
   "titre_fr": "afMLevel : modèles U-Net d'apprentissage profond pour la mise à niveau des images et vidéos AFM",
@@ -33,7 +36,10 @@
   ],
   "acces": "gratuit",
   "acces_note": "Prépublication bioRxiv en libre accès",
-  "pour_toi": "Concurrent direct d'une fonction cœur de MountainsSPIP : évaluer un redressement automatique sans masque par IA, notamment pour les séries HS-AFM."
+  "pour_toi": "Concurrent direct d'une fonction cœur de MountainsSPIP : évaluer un redressement automatique sans masque par IA, notamment pour les séries HS-AFM.",
+  "donnees": "inconnu",
+  "donnees_note": "Article non consulté lors de cette veille (accès web indisponible) : déclaration de données à vérifier.",
+  "donnees_url": ""
  },
  "doi:10.1021/acs.langmuir.6c05228": {
   "titre_fr": "Détection nanomolaire de biomarqueurs issus de métabolites végétaux activés chimiquement par capteurs à effet de champ, via une réaction de surface",
@@ -45,7 +51,10 @@
   ],
   "acces": "inconnu",
   "acces_note": "Accès non vérifié par la veille",
-  "pour_toi": "NanoScope Analysis cité : laboratoire équipé Bruker, cible pour un argumentaire MountainsSPIP en complément ou remplacement."
+  "pour_toi": "NanoScope Analysis cité : laboratoire équipé Bruker, cible pour un argumentaire MountainsSPIP en complément ou remplacement.",
+  "donnees": "inconnu",
+  "donnees_note": "Article non consulté lors de cette veille (accès web indisponible) : déclaration de données à vérifier.",
+  "donnees_url": ""
  },
  "doi:10.48550/arxiv.2608.22343": {
   "titre_fr": "UMEX Viewer : suite logicielle d'analyse des données d'AFM haute vitesse et ses applications",
@@ -57,7 +66,10 @@
   ],
   "acces": "gratuit",
   "acces_note": "Prépublication arXiv en libre accès",
-  "pour_toi": "Nouveau logiciel gratuit concurrent sur le créneau HS-AFM : comparer ses fonctions (suivi, filtrage, export vidéo) à MountainsSPIP et vérifier la lecture des formats HS-AFM japonais."
+  "pour_toi": "Nouveau logiciel gratuit concurrent sur le créneau HS-AFM : comparer ses fonctions (suivi, filtrage, export vidéo) à MountainsSPIP et vérifier la lecture des formats HS-AFM japonais.",
+  "donnees": "inconnu",
+  "donnees_note": "Article non consulté lors de cette veille (accès web indisponible) : déclaration de données à vérifier.",
+  "donnees_url": ""
  },
  "doi:10.5281/zenodo.23645546": {
   "titre_fr": "Microscopie à force atomique de films hôtes S1, S3 et S4",
@@ -100,7 +112,10 @@
   ],
   "acces": "inconnu",
   "acces_note": "Accès non vérifié par la veille",
-  "pour_toi": "Étude dentaire limitée à Ra : argument pour proposer MountainsSPIP avec paramètres surfaciques ISO 25178 (Sa, Sdr) aux labos d'implantologie."
+  "pour_toi": "Étude dentaire limitée à Ra : argument pour proposer MountainsSPIP avec paramètres surfaciques ISO 25178 (Sa, Sdr) aux labos d'implantologie.",
+  "donnees": "inconnu",
+  "donnees_note": "Article non consulté lors de cette veille (accès web indisponible) : déclaration de données à vérifier.",
+  "donnees_url": ""
  },
  "t:a686615716d9bbbc": {
   "titre_fr": "Park Systems étend sa présence nord-américaine avec un nouveau bureau régional à Hillsboro (Oregon)",
@@ -124,7 +139,10 @@
   ],
   "acces": "gratuit",
   "acces_note": "Article en accès libre chez l'éditeur (Applied Surface Science)",
-  "pour_toi": "Équipe de Cracovie (Piergies) utilisant Mountains en nanospectroscopie AFM : référence client à collecter."
+  "pour_toi": "Équipe de Cracovie (Piergies) utilisant Mountains en nanospectroscopie AFM : référence client à collecter.",
+  "donnees": "inconnu",
+  "donnees_note": "Article non consulté lors de cette veille (accès web indisponible) : déclaration de données à vérifier.",
+  "donnees_url": ""
  },
  "doi:10.5445/ir/1000194526": {
   "titre_fr": "AFM électrochimique in situ d'une batterie aluminium-organique à haute capacité : visualiser le gonflement induit par les anions dans des électrodes polymères redox",
@@ -136,7 +154,10 @@
   ],
   "acces": "gratuit",
   "acces_note": "Document en libre accès sur le dépôt institutionnel KITopen",
-  "pour_toi": "Équipe KIT/Fribourg (Esser, Cramer) utilisant Mountains en EC-AFM : référence client et cas d'usage pour le suivi de séries temporelles de gonflement."
+  "pour_toi": "Équipe KIT/Fribourg (Esser, Cramer) utilisant Mountains en EC-AFM : référence client et cas d'usage pour le suivi de séries temporelles de gonflement.",
+  "donnees": "inconnu",
+  "donnees_note": "Article non consulté lors de cette veille (accès web indisponible) : déclaration de données à vérifier.",
+  "donnees_url": ""
  },
  "doi:10.1021/acsomega.6c03637": {
   "titre_fr": "Effet antimicrobien renforcé de matériaux composites cuivre/chitosane sur Escherichia coli",
@@ -165,7 +186,10 @@
   ],
   "acces": "gratuit",
   "acces_note": "Article en accès libre chez l'éditeur (Materials Today Communications)",
-  "pour_toi": "Concurrent direct sur la nanomécanique des couches minces : comparer la correction d'épaisseur finie et la détection automatique du point de contact avec MountainsSPIP, et proposer la migration aux utilisateurs de l'ancien SPIP."
+  "pour_toi": "Concurrent direct sur la nanomécanique des couches minces : comparer la correction d'épaisseur finie et la détection automatique du point de contact avec MountainsSPIP, et proposer la migration aux utilisateurs de l'ancien SPIP.",
+  "donnees": "inconnu",
+  "donnees_note": "Article non consulté lors de cette veille (accès web indisponible) : déclaration de données à vérifier.",
+  "donnees_url": ""
  },
  "doi:10.82444/warw.33738856": {
   "titre_fr": "Études quantitatives de cristaux : dissolution de surface et processus de nucléation",
@@ -178,7 +202,10 @@
   ],
   "acces": "gratuit",
   "acces_note": "Thèse en libre accès sur le dépôt de l'Université de Warwick",
-  "pour_toi": "Thèse de 2016 (Unwin, Warwick) avec mesure de volumes de cuvettes par SPIP : cas d'usage classique de MountainsSPIP, groupe à recontacter pour la migration."
+  "pour_toi": "Thèse de 2016 (Unwin, Warwick) avec mesure de volumes de cuvettes par SPIP : cas d'usage classique de MountainsSPIP, groupe à recontacter pour la migration.",
+  "donnees": "inconnu",
+  "donnees_note": "Article non consulté lors de cette veille (accès web indisponible) : déclaration de données à vérifier.",
+  "donnees_url": ""
  },
  "doi:10.1021/acsomega.6c04722": {
   "titre_fr": "Jouer sur la rugosité des particules et du substrat pour moduler l'arrangement de réseaux colloïdaux non compacts",
@@ -572,5 +599,17 @@
   "donnees": "inconnu",
   "donnees_note": "Article non consulté lors de cette veille (accès web indisponible) : déclaration de données à vérifier.",
   "donnees_url": ""
+ },
+ "t:0d43830d8f6db351": {
+  "titre_fr": "Panorama du marché de la microscopie assistée par intelligence artificielle : croissance, tendances et perspectives",
+  "resume": "Communiqué publié sur openPR.com consacré au marché de la microscopie dopée à l'intelligence artificielle, rattaché dans la veille à Park Systems. La page source n'a pas pu être consultée lors de cette veille : cette fiche est rédigée à partir du seul titre. Ce type de communiqué présente en général des projections de croissance et une liste d'acteurs du secteur, sans résultats techniques vérifiables.",
+  "points": [
+   "Type : étude de marché diffusée par communiqué (openPR.com)",
+   "Thème : intelligence artificielle appliquée à la microscopie",
+   "Limite : contenu non consulté, aucun chiffre repris ici"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Communiqué en accès libre sur openPR.com, non consulté lors de cette veille.",
+  "pour_toi": "Signal de contexte à garder en tête : l'IA devient un argument marketing des constructeurs comme Park Systems, ce qui conforte la place des fonctions d'analyse automatisée dans la feuille de route de MountainsSPIP."
  }
 }
