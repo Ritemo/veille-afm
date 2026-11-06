@@ -1,13 +1,7 @@
 {
- "maj": "2026-11-05T07:58+00:00",
+ "maj": "2026-11-06T07:59+00:00",
  "version_requetes": 4,
- "nouveaux": 56,
- "total": 42,
- "erreurs": [
-  "OpenAlex SPIP (ancien) : HTTP Error 429: Too Many Requests",
-  "OpenAlex nanoDMA / viscoélasticité : HTTP Error 429: Too Many Requests",
-  "OpenAlex AFM-IR / nanoIR : HTTP Error 429: Too Many Requests",
-  "OpenAlex Champ proche (s-SNOM, TERS) : HTTP Error 429: Too Many Requests",
-  "OpenAlex AFM critical dimension : HTTP Error 429: Too Many Requests"
- ]
+ "nouveaux": 57,
+ "total": 43,
+ "erreurs": []
 }
