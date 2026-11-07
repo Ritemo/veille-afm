@@ -611,5 +611,21 @@
   "acces": "gratuit",
   "acces_note": "Communiqué en accès libre sur openPR.com, non consulté lors de cette veille.",
   "pour_toi": "Signal de contexte à garder en tête : l'IA devient un argument marketing des constructeurs comme Park Systems, ce qui conforte la place des fonctions d'analyse automatisée dans la feuille de route de MountainsSPIP."
+ },
+ "doi:10.1038/s41467-026-78843-9": {
+  "titre_fr": "La dimérisation de Ku70/Ku80 guidée par l'ADN régule le rapprochement des cassures double brin par APLF",
+  "resume": "L'étude cherche à comprendre comment le facteur de réparation APLF relie les deux extrémités d'une cassure double brin de l'ADN avec l'hétérodimère Ku70/Ku80. En combinant photométrie de masse, AFM et pinces magnétiques et optiques sur molécules uniques, les auteurs montrent que ce pontage exige au moins deux hétérodimères Ku70/Ku80 enfilés sur chaque extrémité d'ADN. Ce besoin vient de l'interaction simultanée de deux doigts de zinc d'APLF avec des Ku70/Ku80 poly(ADP-ribosyl)és. L'ARN non codant NIHCOLE peut fixer jusqu'à quatre Ku70/Ku80, ce qui suggère un mécanisme d'amélioration du pontage, et le modèle proposé explique pourquoi APLF ne ponte que des Ku liés à l'ADN.",
+  "points": [
+   "Technique : AFM couplée à la photométrie de masse et aux pinces magnétiques et optiques",
+   "Échantillon : complexes ADN, Ku70/Ku80, APLF et ARN NIHCOLE",
+   "Logiciel : non précisé dans le résumé",
+   "Résultat : au moins deux Ku70/Ku80 par extrémité d'ADN sont nécessaires au pontage par APLF"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Article en accès libre chez l'éditeur (Nature Communications).",
+  "pour_toi": "Cas typique d'imagerie AFM de complexes ADN-protéines en biologie moléculaire : l'équipe de Fernando Moreno-Herrero (CSIC) est un contact à sonder sur ses besoins de comptage et de mesure de molécules uniques dans MountainsSPIP.",
+  "donnees": "inconnu",
+  "donnees_note": "Page de l'article inaccessible lors de cette vérification, déclaration de disponibilité non consultée.",
+  "donnees_url": ""
  }
 }
