@@ -1,6 +1,43 @@
 [
 {
 "cat": "litterature",
+"title": "Dynamics of Null and Electrostatic Blind Spots for Quantitative Piezoresponse Force Microscopy",
+"url": "https://doi.org/10.1021/acsnano.6c14615",
+"date": "2026-11-05",
+"source": "OpenAlex",
+"authors": "Martí Checa, Holland Swicegood, Rubén Millán‐Solsona, Ralph Bulanadi et al.",
+"venue": "ACS Nano",
+"abstract": "Abstract Piezoresponse force microscopy (PFM) is a cornerstone technique for probing nanoscale electromechanical phenomena, yet quantitative─and in some cases qualitative─interpretation remains hindered by parasitic electrostatic forces coupled through cantilever dynamics. Recent approaches aim to suppress these…",
+"doi": "10.1021/acsnano.6c14615",
+"cited_by": 0,
+"group": "Résonance de contact",
+"oa": true,
+"oa_url": "https://doi.org/10.1021/acsnano.6c14615",
+"id": "doi:10.1021/acsnano.6c14615",
+"score": 30,
+"tags": [
+"revue majeure"
+],
+"imp": 2,
+"pm": "Tendance scientifique sur une analyse couverte par Mountains : veille de fond utile.",
+"first_seen": "2026-11-07",
+"themes_sugg": [
+"ndma"
+],
+"contact": {
+"nom": "Martí Checa",
+"orcid": "https://orcid.org/0000-0003-2607-6866",
+"institution": "Oak Ridge National Laboratory",
+"certain": true
+},
+"contact_verif": "2026-11-07",
+"donnees": "inconnu",
+"donnees_note": "",
+"donnees_url": "",
+"donnees_verif": "2026-11-07"
+},
+{
+"cat": "litterature",
 "title": "DNA-driven dimerization of Ku70/Ku80 regulates the synapsis of double-strand breaks by APLF",
 "url": "https://doi.org/10.1038/s41467-026-78843-9",
 "date": "2026-11-03",
