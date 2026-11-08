@@ -627,5 +627,20 @@
   "donnees": "inconnu",
   "donnees_note": "Page de l'article inaccessible lors de cette vérification, déclaration de disponibilité non consultée.",
   "donnees_url": ""
+ },
+ "doi:10.1021/acsnano.6c14615": {
+  "titre_fr": "Dynamique des points nuls et des angles morts électrostatiques pour une microscopie à force piézoélectrique (PFM) quantitative",
+  "resume": "La PFM reste difficile à interpréter quantitativement, car des forces électrostatiques parasites se couplent au signal via la dynamique du levier. Les auteurs comparent deux stratégies de mesure proposées pour s'en affranchir : le point nul (NS), lié à la résonance de contact, et l'angle mort électrostatique (ESBS), position quasi statique sur le levier. En combinant modèles analytiques de poutre, simulations par éléments finis fidèles à la géométrie et mesures interférométriques automatisées, ils montrent que ces deux conditions sont de nature différente : le NS annule la sensibilité au mode choisi pour les deux voies d'excitation, l'ESBS ne supprime que la contribution électrostatique répartie. Les deux évoluent avec les conditions de contact pointe-échantillon mais restent séparés en pratique, et une prédiction fiable près de la pointe exige une modélisation 3D réaliste de la sonde.",
+  "points": [
+   "Technique : PFM interférométrique, résonance de contact, détection hors pointe",
+   "Méthode : modèles de poutre analytiques, éléments finis 3D et mesures automatisées",
+   "Résultat : NS et ESBS sont des points de mesure distincts qui dépendent des conditions de contact"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Article en accès libre chez l'éditeur (ACS Nano).",
+  "pour_toi": "Équipe d'Oak Ridge (Martí Checa) à suivre : si la PFM quantitative interférométrique se diffuse, vérifier que MountainsSPIP sait importer ces données multipoints et proposer une correction de la contribution électrostatique.",
+  "donnees": "inconnu",
+  "donnees_note": "Déclaration de disponibilité des données non consultée : page de l'article inaccessible lors de la préparation.",
+  "donnees_url": ""
  }
 }
