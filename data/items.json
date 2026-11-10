@@ -1,6 +1,40 @@
 [
 {
 "cat": "litterature",
+"title": "Jeu de données : afMLevel-data",
+"url": "https://huggingface.co/datasets/Heath-AFM-Lab/afMLevel-data",
+"date": "2026-11-10",
+"source": "Hugging Face",
+"authors": "Heath-AFM-Lab (Maya Tekchandani, Daniel E. Rollins, George R. Heath)",
+"venue": "Hugging Face (Heath-AFM-Lab/afMLevel-data)",
+"abstract": "2,001 real AFM images from multiple instruments, manufacturers and facilities (membranes, proteins, DNA origami, lattices, fibres), each levelled by hand or with classical auto-levelling, with feature masks and backgrounds as training targets for the afMLevel models. CC BY 4.0.",
+"doi": "",
+"cited_by": 0,
+"group": "Jeu de données",
+"id": "hf:Heath-AFM-Lab/afMLevel-data",
+"oa": true,
+"oa_url": "https://huggingface.co/datasets/Heath-AFM-Lab/afMLevel-data",
+"first_seen": "2026-11-10",
+"donnees": "libres",
+"donnees_note": "Jeu de données public sur Hugging Face, licence CC BY 4.0.",
+"donnees_url": "https://huggingface.co/datasets/Heath-AFM-Lab/afMLevel-data",
+"donnees_verif": "2026-11-10",
+"contact": {
+"nom": "George R. Heath",
+"orcid": "https://orcid.org/0000-0001-6431-2191",
+"institution": "University of Leeds",
+"certain": true
+},
+"contact_verif": "2026-11-10",
+"themes_sugg": [],
+"tags": [],
+"score": 20,
+"imp": 4,
+"pm": "Jeu de données AFM ouvert et annoté : de quoi tester ou entraîner les fonctions automatiques de MountainsSPIP, et un labo moteur de l'open data à contacter.",
+"vedette": "Premier grand jeu de données AFM ouvert avec paires brut / redressé : 2 001 images, CC BY 4.0."
+},
+{
+"cat": "litterature",
 "title": "Dynamics of Null and Electrostatic Blind Spots for Quantitative Piezoresponse Force Microscopy",
 "url": "https://doi.org/10.1021/acsnano.6c14615",
 "date": "2026-11-05",
@@ -788,15 +822,15 @@
 "tags": [
 "deep learning"
 ],
-"imp": 3,
+"imp": 4,
 "pm": "Gwyddion et apprentissage automatique sur des données AFM : piste de fonctionnalité à comparer.",
 "first_seen": "2026-10-31",
 "oa": true,
 "oa_url": "https://www.biorxiv.org/content/biorxiv/early/2026/10/21/2026.10.19.760138.full.pdf",
-"donnees": "inconnu",
-"donnees_note": "",
-"donnees_url": "",
-"donnees_verif": "2026-11-02",
+"donnees": "libres",
+"donnees_note": "Données d'entraînement publiées sur Hugging Face (licence CC BY 4.0).",
+"donnees_url": "https://huggingface.co/datasets/Heath-AFM-Lab/afMLevel-data",
+"donnees_verif": "2026-11-10",
 "themes_sugg": [
 "ia"
 ],
@@ -806,7 +840,8 @@
 "institution": "University of Leeds",
 "certain": true
 },
-"contact_verif": "2026-11-02"
+"contact_verif": "2026-11-02",
+"vedette": "afMLevel : redressement des images AFM par IA, modèles et données publiés."
 },
 {
 "cat": "logiciels",

@@ -26,7 +26,7 @@ FICHIER_META = os.path.join(RACINE, "data", "meta.json")
 FICHIER_RESUMES_EN = os.path.join(RACINE, "data", "abstracts.json")  # résumés complets pour la tâche de nuit
 FICHIER_EXCLUS = os.path.join(RACINE, "data", "exclusions.json")  # fiches marquées « Pas pertinent » dans l'appli
 
-VERSION_REQUETES = 4  # à incrémenter quand les requêtes changent
+VERSION_REQUETES = 5  # à incrémenter quand les requêtes changent
 UA = "veille-afm/1.0 (robot personnel de veille scientifique)"
 AUJOURDHUI = dt.date.today()
 erreurs = []
@@ -223,6 +223,31 @@ def github_releases(depot, depuis, nom):
     return out
 
 
+def huggingface_datasets(cfg, depuis):
+    """Jeux de données AFM publiés sur Hugging Face (images brutes, paires annotées pour l'IA…)."""
+    out, vus = [], set()
+    for terme in cfg.get("huggingface", []):
+        url = "https://huggingface.co/api/datasets?" + urllib.parse.urlencode(
+            {"search": terme, "sort": "lastModified", "direction": "-1", "limit": 50, "full": "true"})
+        for d in get_json(url) or []:
+            nom = d.get("id") or ""
+            date = (d.get("createdAt") or d.get("lastModified") or "")[:10]
+            if not nom or nom in vus or not date or date < depuis:
+                continue
+            vus.add(nom)
+            carte = d.get("cardData") or {}
+            titre = carte.get("pretty_name") or nom.split("/")[-1]
+            lien = f"https://huggingface.co/datasets/{nom}"
+            it = item("litterature", f"Jeu de données : {titre}", lien, date, "Hugging Face",
+                      venue=f"Hugging Face ({nom})", authors=d.get("author") or "",
+                      abstract=d.get("description") or "", group="Jeu de données", oa=True, oa_url=lien)
+            it["id"] = "hf:" + nom  # stable même si le titre change
+            it.update({"donnees": "libres", "donnees_note": "Jeu de données public sur Hugging Face.",
+                       "donnees_url": lien, "donnees_verif": AUJOURDHUI.isoformat()})
+            out.append(it)
+    return out
+
+
 def gwyddion_versions(depuis):
     """Nouvelles versions de Gwyddion (fichiers publiés sur SourceForge)."""
     racine = ET.fromstring(http_get("https://sourceforge.net/projects/gwyddion/rss?path=/gwyddion"))
@@ -368,6 +393,11 @@ def importance_pm(it, texte, tags):
         if annonce and a(RE_MATERIEL):
             return 3, f"Nouveau matériel ou mode chez {grp} : vérifier l'import des fichiers et les fonctions d'analyse associées."
         return 2, f"Actualité {grp} : contexte marché."
+
+    if grp == "Jeu de données":
+        if a(RE_ML + r"|label|annot|mask|benchmark|training|ground truth"):
+            return 4, "Jeu de données AFM ouvert et annoté : de quoi tester ou entraîner les fonctions automatiques de MountainsSPIP, et un labo moteur de l'open data à contacter."
+        return 3, "Jeu de données AFM ouvert : à télécharger pour tester l'import et les analyses de MountainsSPIP."
 
     # littérature
     if a(RE_ML) and a(RE_FONCTION):
@@ -563,6 +593,9 @@ def pertinent(it, texte_complet=""):
     t = (it["title"] + " " + it.get("abstract", "") + " " + (texte_complet or "")).lower()
     if it["cat"] == "logiciels" and it["group"].startswith("SPIP"):
         return re.search(RE_CTX_SPIP, t) is not None
+    if it["group"] == "Jeu de données":
+        # la recherche Hugging Face porte sur le nom du dépôt : « afm » doit y être un vrai mot ou un préfixe
+        return re.search(r"(?<![a-z])afm|atomic.force", t + " " + it.get("url", "").lower()) is not None
     if it["cat"] == "litterature":
         # les requêtes thématiques sont larges : on exige que l'AFM (ou le champ proche) soit vraiment là
         return re.search(RE_AFM + r"|s-snom|afm-ir|nanoir|tip-enhanced|near-field microscop|piezoresponse", t) is not None
@@ -668,6 +701,8 @@ def collecter(cfg, depuis, depuis_logiciels=None):
         essai(f"arXiv {req[:40]}", arxiv_recherche, cfg, req, depuis)
     for nom, req in cfg["constructeurs"].items():
         essai(f"Actus {nom}", gnews, req, depuis, nom)
+    if cfg.get("huggingface"):
+        essai("Jeux de données Hugging Face", huggingface_datasets, cfg, depuis)
     # sorties logicielles des concurrents : on remonte toujours jusqu'à date_min
     ds = cfg.get("date_min") or depuis
     sl = cfg.get("sorties_logicielles", {})
@@ -744,8 +779,14 @@ def main():
     limite = (AUJOURDHUI - dt.timedelta(days=cfg["conservation_jours"])).isoformat()
     items = [i for i in par_id.values() if i["first_seen"] >= limite and dans_periode(i, date_min) and not exclu(i, regles)
              and pertinent(i, resumes_en.get(i["id"], ""))]
+    vedettes = cfg.get("vedettes", {})
     for i in items:  # les règles évoluent : on renote tout à chaque passage
         noter(i, cfg)
+        # « En vedette » : sujets que Mathieu veut voir en tête, quoi qu'en dise la notation
+        if i["id"] in vedettes:
+            i["imp"], i["vedette"] = 4, vedettes[i["id"]]
+        else:
+            i.pop("vedette", None)
     # on ne garde que l'essentiel : niveau minimal, pas de citations, pas de doublons
     items = sans_doublons([i for i in items if i["cat"] != "citations" and i["imp"] >= cfg.get("imp_min", 1)])
     items.sort(key=lambda i: (i["first_seen"], i["score"]), reverse=True)

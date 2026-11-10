@@ -30,16 +30,16 @@
   "titre_fr": "afMLevel : modèles U-Net d'apprentissage profond pour la mise à niveau des images et vidéos AFM",
   "resume": "Les expériences AFM, et surtout l'AFM haute vitesse, produisent des centaines à des milliers d'images par séance, qui doivent toutes être redressées (inclinaison, courbure, bruit de ligne) avant mesure. Les routines automatiques actuelles dépendent de masques et de paramètres choisis par l'utilisateur. Les auteurs proposent afMLevel, des modèles U-Net entraînés pour effectuer cette mise à niveau automatiquement sur images et films.",
   "points": [
-   "Technique : apprentissage profond U-Net appliqué au levelling",
+   "Technique : apprentissage profond U-Net appliqué au redressement (levelling)",
    "Échantillon : images et films AFM, y compris AFM haute vitesse",
-   "Logiciel : comparaison probable avec Gwyddion"
+   "Données : 2 001 images d'entraînement publiées sur Hugging Face"
   ],
   "acces": "gratuit",
   "acces_note": "Prépublication bioRxiv en libre accès",
-  "pour_toi": "Concurrent direct d'une fonction cœur de MountainsSPIP : évaluer un redressement automatique sans masque par IA, notamment pour les séries HS-AFM.",
-  "donnees": "inconnu",
-  "donnees_note": "Article non consulté lors de cette veille (accès web indisponible) : déclaration de données à vérifier.",
-  "donnees_url": ""
+  "pour_toi": "Concurrent direct d'une fonction cœur de MountainsSPIP : modèles et données d'entraînement sont publics, de quoi évaluer tout de suite un redressement automatique par IA face au nôtre, notamment sur les séries HS-AFM.",
+  "donnees": "libres",
+  "donnees_note": "Données d'entraînement publiées sur Hugging Face sous licence CC BY 4.0 (annonce des auteurs).",
+  "donnees_url": "https://huggingface.co/datasets/Heath-AFM-Lab/afMLevel-data"
  },
  "doi:10.1021/acs.langmuir.6c05228": {
   "titre_fr": "Détection nanomolaire de biomarqueurs issus de métabolites végétaux activés chimiquement par capteurs à effet de champ, via une réaction de surface",
@@ -642,5 +642,21 @@
   "donnees": "inconnu",
   "donnees_note": "Déclaration de disponibilité des données non consultée : page de l'article inaccessible lors de la préparation.",
   "donnees_url": ""
+ },
+ "hf:Heath-AFM-Lab/afMLevel-data": {
+  "titre_fr": "afMLevel-data : jeu de données ouvert d'images AFM brutes et redressées",
+  "resume": "Le laboratoire de George Heath (Université de Leeds) publie sur Hugging Face les données qui ont servi à entraîner les modèles afMLevel. Maya Tekchandani a réuni 2 001 images AFM réelles venant de plusieurs instruments, constructeurs et plateformes, couvrant membranes, protéines, origamis d'ADN, réseaux et fibres. Chaque image a été redressée à la main ou avec des outils classiques, ce qui donne des paires brut / redressé, plus un masque des objets et le fond soustrait. Les auteurs veulent ainsi offrir à la communauté une base pour entraîner, tester et comparer de nouvelles méthodes de redressement.",
+  "points": [
+   "Contenu : 2 001 images AFM réelles, multi-instruments et multi-constructeurs",
+   "Échantillon : membranes, protéines, origamis d'ADN, réseaux, fibres",
+   "Annotations : image redressée, masque des objets (MLMask) et fond (MLBackground)",
+   "Licence : CC BY 4.0, réutilisation libre avec citation"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Jeu de données en libre accès sur Hugging Face ; la prépublication bioRxiv associée est aussi libre.",
+  "pour_toi": "Banc d'essai idéal pour MountainsSPIP : passer ces 2 001 images dans nos outils de redressement et de détection d'objets, mesurer l'écart avec les vérités terrain, et vérifier l'import des formats d'origine ; le labo Heath est un contact à prendre.",
+  "donnees": "libres",
+  "donnees_note": "Dépôt public Hugging Face, licence CC BY 4.0.",
+  "donnees_url": "https://huggingface.co/datasets/Heath-AFM-Lab/afMLevel-data"
  }
 }

@@ -129,5 +129,14 @@
     "clustering": "cluster|k-means|segmentation|unsupervised|principal component|\\bpca\\b|classification",
     "ia": "machine learning|deep learning|neural network|u-net|convolutional|artificial intelligence|random forest|\\btransformer\\b|\\bai[- ](?:driven|guided|based|powered)",
     "cd": "critical dimension|line ?width|line[- ]edge roughness|sidewall|trench|overlay metrology|cd-afm|semiconductor metrology|wafer"
+  },
+  "huggingface": [
+    "afm",
+    "atomic-force",
+    "atomic_force"
+  ],
+  "vedettes": {
+    "hf:Heath-AFM-Lab/afMLevel-data": "Premier grand jeu de données AFM ouvert avec paires brut / redressé : 2 001 images, CC BY 4.0.",
+    "doi:10.64898/2026.10.19.760138": "afMLevel : redressement des images AFM par IA, modèles et données publiés."
   }
 }

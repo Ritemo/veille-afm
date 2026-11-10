@@ -36,6 +36,8 @@ Base selon la catégorie (citation de mes travaux 60, logiciels 40, constructeur
 
 - Données sources : pour chaque article, le robot cherche si les données sont récupérables (jeux de données DataCite liés au DOI, relation Crossref, déclaration « Data availability » du texte intégral Europe PMC, lien de dépôt dans le résumé). Statuts : libres, annexes, sur demande, non partagées, inconnu. La tâche de nuit complète les cas inconnus en lisant l'article. Interrupteur « Données libres » dans l'appli.
 
+- Jeux de données ouverts : `huggingface` dans `config.json` (mots cherchés dans les noms des jeux de données Hugging Face). Ils arrivent dans Littérature avec l'étiquette « Jeu de données », en Haute, ou en Critique s'ils sont annotés pour l'IA.
+- En vedette : `vedettes` dans `config.json` (identifiant de la fiche : phrase d'accroche). Ces fiches passent en Critique et s'affichent dans un bloc rose « En vedette » tout en haut de « À la une », jusqu'à ce qu'elles soient archivées. Pour en retirer une, supprimer sa ligne.
 - Sorties logicielles : `sorties_logicielles` dans `config.json` (dépôts GitHub suivis, versions de Gwyddion, requêtes d'actualités pour NanoScope Analysis, SmartScan, Ergo, Nanosurf Studio).
 - « Pas pertinent » : masque la fiche dans l'appli et, si un jeton GitHub est enregistré (Réglages, roue dentée), l'ajoute à `data/exclusions.json`. Le robot écarte ces fiches, et une revue ou un média refusé deux fois. `mots_exclus` dans `config.json` écarte les titres contenant ces mots.
 
