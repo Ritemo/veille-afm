@@ -658,5 +658,165 @@
   "donnees": "libres",
   "donnees_note": "Dépôt public Hugging Face, licence CC BY 4.0.",
   "donnees_url": "https://huggingface.co/datasets/Heath-AFM-Lab/afMLevel-data"
+ },
+ "doi:10.1039/d6ay01670g/1365679/bromazepam-distribution-in-a-solid-dosage-form": {
+  "titre_fr": "Répartition du bromazépam dans un comprimé étudiée par spectrométrie de masse d'ions secondaires à temps de vol",
+  "resume": "Les auteurs analysent la surface et la sous-surface d'un comprimé de bromazépam en combinant profilométrie 3D, AFM, XPS et ToF-SIMS. La profilométrie et l'AFM montrent une surface hétérogène et donnent sa rugosité moyenne. L'XPS ne détecte pas le principe actif, trop peu concentré, d'où le recours au ToF-SIMS en 2D et en 3D. Le bromazépam apparaît réparti en îlots discrets dans la matrice d'excipients et non de façon homogène.",
+  "points": [
+   "Technique : profilométrie 3D, AFM, XPS, ToF-SIMS 2D et 3D",
+   "Échantillon : comprimé pharmaceutique de bromazépam",
+   "Logiciel : Mountains cité selon le robot, à confirmer dans le texte",
+   "Résultat : principe actif concentré dans des zones riches, pas réparti uniformément"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Version en libre accès sur le dépôt de l'Université de Maribor",
+  "pour_toi": "Cas d'usage pharmaceutique qui combine profilométrie et AFM : bon exemple de corrélation multi-instruments à valoriser, et Matjaž Finšgar (Maribor) est un utilisateur Mountains à recontacter pour une référence client.",
+  "donnees": "inconnu",
+  "donnees_note": "Article non consulté cette nuit (site inaccessible depuis le robot) : déclaration de données à vérifier.",
+  "donnees_url": ""
+ },
+ "doi:10.1002/maco.70313": {
+  "titre_fr": "Amorçage, progression et arrêt de la corrosion microgalvanique du cuivre en solution sulfurée sans oxygène",
+  "resume": "L'étude suit la croissance de films de Cu2S et la corrosion microgalvanique qui se développe dessous, sur du cuivre exposé jusqu'à 3 ans à des solutions chlorurées contenant des sulfures. Les surfaces sont caractérisées par MEB, coupes FIB, AFM et profilométrie. À faible teneur en sulfure, un film fin et poreux rend la surface plus rugueuse ; à plus forte teneur, un film compact mais irrégulier abrite une corrosion localisée. Les auteurs proposent un mécanisme expliquant l'arrêt de cette corrosion quand le film s'épaissit.",
+  "points": [
+   "Technique : MEB, FIB, AFM, profilométrie",
+   "Échantillon : cuivre en solution chlorurée sulfurée anoxique, jusqu'à 3 ans",
+   "Logiciel : ancien SPIP selon le robot",
+   "Résultat : la corrosion sous le film démarre, progresse puis s'arrête quand le film s'épaissit"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Article en accès libre chez l'éditeur",
+  "pour_toi": "Équipe de Western University (Jian Chen) encore sur l'ancien SPIP : cible de migration vers MountainsSPIP, avec un argument sur l'analyse de rugosité et de profondeur de piqûres en corrosion.",
+  "donnees": "inconnu",
+  "donnees_note": "Article non consulté cette nuit (site inaccessible depuis le robot) : déclaration de données à vérifier.",
+  "donnees_url": ""
+ },
+ "doi:10.48550/arxiv.2610.26223": {
+  "titre_fr": "Protocole de métrologie des flancs pour les qubits supraconducteurs",
+  "resume": "Les auteurs proposent un cadre de mesure par microscopie à sonde locale pour caractériser quantitativement les flancs des structures de qubits supraconducteurs. Ils définissent un descripteur affiné de rugosité latérale (RMS) des flancs et un nouveau rayon équivalent de courbure pour décrire leur profil vertical. Ces descripteurs sont appliqués à plusieurs éléments de qubits et forment la base d'un protocole standardisé. L'objectif est de comparer les procédés de fabrication entre laboratoires et de relier la géométrie des flancs aux performances des qubits.",
+  "points": [
+   "Technique : AFM pour la mesure des flancs",
+   "Échantillon : composants de qubits supraconducteurs",
+   "Logiciel : ancien SPIP selon le robot",
+   "Résultat : nouveaux descripteurs (rugosité latérale RMS, rayon de courbure équivalent) et proposition de protocole"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Prépublication arXiv en libre accès",
+  "pour_toi": "Le DFM (Jørgen Garnæs, berceau historique de SPIP) définit de nouveaux paramètres de flancs : à suivre de près pour les intégrer dans MountainsSPIP (analyse de dimensions critiques) et pour proposer la migration.",
+  "donnees": "inconnu",
+  "donnees_note": "Article non consulté cette nuit (site inaccessible depuis le robot) : déclaration de données à vérifier.",
+  "donnees_url": ""
+ },
+ "doi:10.34133/research.1430": {
+  "titre_fr": "Des fibroblastes Hmmr+ favorisent la régénération du poil en détectant la viscoélasticité de la matrice extracellulaire",
+  "resume": "Les auteurs identifient une population de fibroblastes (Hmmr+) située sous la papille dermique du follicule pileux, qui sécrète des composants de matrice et active les cellules souches. Séquençage ARN sur cellule unique et immunomarquage montrent qu'un remodelage viscoélastique local de la matrice précède la repousse et coïncide avec l'apparition de ces cellules. Des expériences in vivo et sur organoïdes de peau montrent qu'elles agissent comme capteurs mécaniques via la voie NCAM1-FGFR1. Les auteurs proposent un module mécanique à trois acteurs qui pilote la régénération.",
+  "points": [
+   "Technique : séquençage ARN cellule unique, immunomarquage, mesures mécaniques (AFM selon le robot)",
+   "Échantillon : peau de souris et organoïdes de peau",
+   "Logiciel : NanoScope Analysis selon le robot",
+   "Résultat : la viscoélasticité de la matrice guide la régénération du poil via les fibroblastes Hmmr+"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Article en accès libre (Europe PMC)",
+  "pour_toi": "Mesure de viscoélasticité de tissu faite avec NanoScope Analysis : exemple concret pour l'argumentaire de remplacement en nanomécanique biologique (cartes de module et de viscoélasticité dans MountainsSPIP).",
+  "donnees": "inconnu",
+  "donnees_note": "Article non consulté cette nuit (site inaccessible depuis le robot) : déclaration de données à vérifier.",
+  "donnees_url": ""
+ },
+ "hf:afml-rlhf/sample-cache": {
+  "titre_fr": "Jeu de données : sample-cache (Hugging Face)",
+  "resume": "Jeu de données public déposé sur Hugging Face par le compte « afml-rlhf ». La page n'a pas pu être consultée cette nuit et aucun résumé n'est disponible : cette fiche est rédigée à partir du seul titre. Le nom évoque plutôt un cache d'échantillons pour l'entraînement de modèles (RLHF) que des mesures AFM, ce qui reste à vérifier.",
+  "points": [
+   "Format : inconnu, page non consultée",
+   "Contenu : à vérifier, rattachement à l'AFM incertain"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Dépôt public sur Hugging Face",
+  "pour_toi": "Probablement un faux positif (le sigle « afml » ne désigne pas forcément l'AFM) : jette un œil rapide à la page avant de le télécharger pour tester l'import dans MountainsSPIP.",
+  "donnees": "libres",
+  "donnees_note": "Jeu de données public sur Hugging Face.",
+  "donnees_url": "https://huggingface.co/datasets/afml-rlhf/sample-cache"
+ },
+ "doi:10.1002/smtd.71081": {
+  "titre_fr": "Reconstruction robuste de la forme d'une pointe AFM à partir de courbes force-indentation",
+  "resume": "Les auteurs présentent PIFCA, une méthode qui reconstruit la forme d'une pointe AFM à partir de courbes force-indentation acquises sur un échantillon de référence mou. La pointe est approchée par un profil axisymétrique linéaire par morceaux. Validée sur du PDMS, la méthode retrouve des formes de pointe proches de l'axisymétrie avec un très bon ajustement (R² d'au moins 0,98). Elle évite microscopie électronique et reconstruction aveugle, et reste fiable pour les indentations profondes comme superficielles.",
+  "points": [
+   "Technique : courbes force-indentation AFM, méthode PIFCA",
+   "Échantillon : référence en PDMS",
+   "Résultat : forme de pointe reconstruite avec R² ≥ 0,98, sans MEB ni reconstruction aveugle"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Article en accès libre chez l'éditeur",
+  "pour_toi": "Alternative à la reconstruction aveugle de pointe déjà présente dans MountainsSPIP : piste de fonction pour corriger la géométrie de pointe dans l'ajustement des courbes de force sur matériaux mous.",
+  "donnees": "demande",
+  "donnees_note": "Sur demande aux auteurs (déclaration de l'article)",
+  "donnees_url": ""
+ },
+ "doi:10.1021/acs.nanolett.6c02253": {
+  "titre_fr": "États mécaniquement verrouillés induits par instabilité dans des membranes d'oxydes fonctionnels",
+  "resume": "Des membranes autoportantes de SrTiO3 et BaTiO3, transférées sur des cavités gravées, se relaxent dans des états de flambage métastables bien définis. Ces déformations, dictées par la contrainte résiduelle, la rigidité en flexion et la géométrie des cavités, donnent des états bistables reproductibles. AFM, mesures Kelvin et simulations par éléments finis montrent que ces états pilotent le potentiel électromécanique du BaTiO3 ferroélectrique. Les auteurs démontrent aussi des basculements réversibles entre états équivalents.",
+  "points": [
+   "Technique : AFM, microscopie à sonde Kelvin (KPFM), éléments finis",
+   "Échantillon : membranes autoportantes de SrTiO3 et BaTiO3 sur cavités",
+   "Résultat : états de flambage bistables contrôlés par la géométrie, basculement réversible"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Version prépublication en libre accès sur arXiv",
+  "pour_toi": "Couplage topographie et potentiel de surface (KPFM) sur structures 3D : bon cas pour vérifier la superposition multi-canaux et l'analyse de profils de flambage dans MountainsSPIP.",
+  "donnees": "inconnu",
+  "donnees_note": "Article non consulté cette nuit (site inaccessible depuis le robot) : déclaration de données à vérifier.",
+  "donnees_url": ""
+ },
+ "t:a7d01753b372f538": {
+  "titre_fr": "Bruker améliore l'imagerie 3D d'organismes entiers grâce à de nouveaux protocoles de transparisation des tissus",
+  "resume": "Actualité News-Medical sur Bruker. La page n'a pas pu être consultée : cette fiche est rédigée à partir du seul titre. Elle annonce des progrès de Bruker en imagerie 3D d'organismes entiers grâce à des protocoles améliorés de transparisation des tissus, une activité qui relève de la microscopie optique et non de l'AFM.",
+  "points": [
+   "Sujet : imagerie optique 3D et transparisation de tissus",
+   "Source : News-Medical, lu à partir du titre seulement"
+  ],
+  "acces": "inconnu",
+  "acces_note": "Article de presse en ligne, non consulté",
+  "pour_toi": "Hors AFM : simple contexte sur la diversification de Bruker vers l'imagerie biologique, aucune action à prévoir pour MountainsSPIP."
+ },
+ "t:656ce3d1aa358395": {
+  "titre_fr": "Le guide de référence des modes AFM : édition 2026",
+  "resume": "Article de Semiconductor Engineering rattaché à Bruker par le robot. La page n'a pas pu être consultée : cette fiche est rédigée à partir du seul titre. Il s'agit visiblement d'un guide 2026 présentant les différents modes AFM, sans doute orienté semi-conducteurs.",
+  "points": [
+   "Sujet : panorama des modes AFM",
+   "Source : Semiconductor Engineering, lu à partir du titre seulement"
+  ],
+  "acces": "inconnu",
+  "acces_note": "Article de presse en ligne, non consulté",
+  "pour_toi": "À parcourir pour vérifier que les modes mis en avant (et leurs noms commerciaux) sont bien couverts par MountainsSPIP, et pour nourrir les supports marketing orientés semi-conducteurs."
+ },
+ "doi:10.64898/2026.09.28.754974": {
+  "titre_fr": "La glycation induite par le méthylglyoxal module la viscoélasticité du noyau cellulaire",
+  "resume": "Les auteurs étudient si le noyau est une cible mécanique directe du méthylglyoxal, un métabolite qui s'accumule dans le diabète et le vieillissement. Par nanomécanique AFM couplée à l'imagerie confocale, ils montrent que la glycation rigidifie des noyaux isolés, réduit leur fluidité et limite la propagation des déformations. Lamine A/C et état de la chromatine contribuent à cette rigidification, qui modifie aussi la localisation de YAP dans les cellules. Chez l'animal, le noyau cardiaque se rigidifie quand la charge en adduits augmente, sa fluidité restant globalement préservée.",
+  "points": [
+   "Technique : nanomécanique AFM (rigidité et fluidité) et microscopie confocale corrélative",
+   "Échantillon : noyaux isolés, cellules, tissu cardiaque",
+   "Résultat : la glycation rigidifie le noyau et réduit sa fluidité"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Prépublication bioRxiv en libre accès",
+  "pour_toi": "Mesures de rigidité et de fluidité nucléaires par AFM (équipe UCLouvain, Andra Dumitru) : exemple type d'analyse viscoélastique de courbes de force à couvrir, et laboratoire à approcher.",
+  "donnees": "inconnu",
+  "donnees_note": "Article non consulté cette nuit (site inaccessible depuis le robot) : déclaration de données à vérifier.",
+  "donnees_url": ""
+ },
+ "doi:10.1007/s00784-026-07250-7": {
+  "titre_fr": "Comparaison de trois matériaux de gouttières occlusales fabriqués par méthode conventionnelle, usinage et impression 3D",
+  "resume": "L'étude compare trois matériaux commerciaux de gouttières occlusales : PMMA polymérisé à chaud, PMMA usiné en CFAO et résine imprimée en 3D. Analyse mécanique dynamique, absorption d'eau, solubilité et stabilité de couleur après immersion dans le café sont mesurées ; l'AFM et le MEB servent à décrire qualitativement la surface. Le PMMA usiné offre le meilleur profil global (Tg la plus haute, absorption et solubilité les plus faibles). La résine imprimée a la Tg la plus basse, absorbe le plus d'eau, change le plus de couleur et présente une surface plus irrégulière.",
+  "points": [
+   "Technique : DMA, sorption, colorimétrie, AFM et MEB (qualitatifs)",
+   "Échantillon : PMMA chauffé, PMMA usiné CFAO, résine imprimée 3D",
+   "Résultat : PMMA usiné le plus favorable, résine imprimée la moins stable et la plus irrégulière"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Article en accès libre chez l'éditeur",
+  "pour_toi": "L'AFM n'y sert qu'en qualitatif : argument pour montrer aux laboratoires dentaires ce qu'une analyse de rugosité chiffrée dans MountainsSPIP apporterait.",
+  "donnees": "inconnu",
+  "donnees_note": "Article non consulté cette nuit (site inaccessible depuis le robot) : déclaration de données à vérifier.",
+  "donnees_url": ""
  }
 }
