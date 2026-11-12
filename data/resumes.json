@@ -725,14 +725,14 @@
  },
  "hf:afml-rlhf/sample-cache": {
   "titre_fr": "Jeu de données : sample-cache (Hugging Face)",
-  "resume": "Jeu de données public déposé sur Hugging Face par le compte « afml-rlhf ». La page n'a pas pu être consultée cette nuit et aucun résumé n'est disponible : cette fiche est rédigée à partir du seul titre. Le nom évoque plutôt un cache d'échantillons pour l'entraînement de modèles (RLHF) que des mesures AFM, ce qui reste à vérifier.",
+  "resume": "Jeu de données public déposé sur Hugging Face par le compte « afml-rlhf ». La page n'a pas pu être consultée cette nuit et aucun résumé n'est disponible : cette fiche est rédigée à partir du seul titre. Le nom évoque un cache d'échantillons lié à de l'apprentissage par retour humain (RLHF), peut-être en lien avec le projet afMLevel de redressement d'images AFM, ce qui reste à vérifier.",
   "points": [
    "Format : inconnu, page non consultée",
-   "Contenu : à vérifier, rattachement à l'AFM incertain"
+   "Contenu : à vérifier, lien possible avec afMLevel"
   ],
   "acces": "gratuit",
   "acces_note": "Dépôt public sur Hugging Face",
-  "pour_toi": "Probablement un faux positif (le sigle « afml » ne désigne pas forcément l'AFM) : jette un œil rapide à la page avant de le télécharger pour tester l'import dans MountainsSPIP.",
+  "pour_toi": "Si c'est bien un dérivé d'afMLevel (images AFM brutes et redressées), c'est une source de plus pour tester l'import et le redressement dans MountainsSPIP ; sinon, faux positif à ignorer.",
   "donnees": "libres",
   "donnees_note": "Jeu de données public sur Hugging Face.",
   "donnees_url": "https://huggingface.co/datasets/afml-rlhf/sample-cache"
