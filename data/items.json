@@ -1,6 +1,41 @@
 [
 {
 "cat": "logiciels",
+"title": "Formation of interfacial Fe–O–Si bonds between silica and different iron oxides",
+"url": "https://doi.org/10.1007/s44251-026-00162-4",
+"date": "2026-11-09",
+"source": "OpenAlex",
+"authors": "Qi Ding, Richárd Gubó, Xusong Wei, Pengju Ren et al.",
+"venue": "Surface Science and Technology",
+"abstract": "Interaction between iron oxides and silica play an important role in the stability and activity of iron -based catalysts in Fischer–Tropsch synthesis (FTS). It has been reported that the formation of Fe–O–Si bond is related to Fe–SiO 2 interaction and responsible of the dispersion and stability of iron catalysts with…",
+"doi": "10.1007/s44251-026-00162-4",
+"cited_by": 0,
+"group": "SPIP (ancien)",
+"oa": true,
+"oa_url": "https://link.springer.com/content/pdf/10.1007/s44251-026-00162-4.pdf",
+"id": "doi:10.1007/s44251-026-00162-4",
+"score": 40,
+"tags": [],
+"imp": 3,
+"pm": "Utilisateur de l'ancien SPIP : cible de migration vers MountainsSPIP, contact ou argumentaire de mise à jour.",
+"first_seen": "2026-11-12",
+"themes_sugg": [
+"spectral",
+"clustering"
+],
+"contact": {
+"nom": "Xin Yu",
+"institution": "Institute of Coal Chemistry",
+"certain": true
+},
+"contact_verif": "2026-11-12",
+"donnees": "inconnu",
+"donnees_note": "",
+"donnees_url": "",
+"donnees_verif": "2026-11-12"
+},
+{
+"cat": "logiciels",
 "title": "Bromazepam distribution in a solid dosage form studied by time-of-flight secondary ion mass spectrometry:Elektronski vir /",
 "url": "https://doi.org/10.1039/d6ay01670g/1365679/bromazepam-distribution-in-a-solid-dosage-form",
 "date": "2026-09-17",
