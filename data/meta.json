@@ -1,7 +1,11 @@
 {
- "maj": "2026-11-12T08:25+00:00",
+ "maj": "2026-11-13T08:11+00:00",
  "version_requetes": 5,
- "nouveaux": 56,
- "total": 57,
- "erreurs": []
+ "nouveaux": 59,
+ "total": 58,
+ "erreurs": [
+  "arXiv abs:\"atomic force microscopy\" AND abs:na : The read operation timed out",
+  "arXiv abs:\"atomic force microscopy\" AND abs:\"m : The read operation timed out",
+  "arXiv abs:\"AFM-IR\" OR abs:\"s-SNOM\" : The read operation timed out"
+ ]
 }
