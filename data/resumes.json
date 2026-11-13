@@ -818,5 +818,21 @@
   "donnees": "inconnu",
   "donnees_note": "Article non consulté cette nuit (site inaccessible depuis le robot) : déclaration de données à vérifier.",
   "donnees_url": ""
+ },
+ "doi:10.1007/s44251-026-00162-4": {
+  "titre_fr": "Formation de liaisons interfaciales Fe-O-Si entre la silice et différents oxydes de fer",
+  "resume": "Les auteurs font croître de la silice sur deux films d'oxyde de fer (FeO et α-Fe2O3) déposés sur Pt(111), pour comprendre l'interaction silice-fer dans les catalyseurs Fischer-Tropsch. La surface est suivie par LEED, STM, spectroscopie infrarouge (RAIRS) et XPS. Sur FeO, la silice forme une monocouche en nid d'abeille bien ordonnée, liée au support par des ponts Fe-O-Si. Sur Fe2O3, elle forme plutôt des amas tridimensionnels et très peu de liaisons Si-O-Fe : la phase de l'oxyde de fer pilote la structure de l'interface.",
+  "points": [
+   "Technique : STM, LEED, RAIRS et XPS sous ultravide",
+   "Échantillon : silice sur films FeO et α-Fe2O3 sur Pt(111)",
+   "Logiciel : ancien SPIP (selon la veille), non précisé dans le résumé",
+   "Résultat : monocouche en nid d'abeille sur FeO, amas 3D sur Fe2O3"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Article en accès libre chez l'éditeur (Springer)",
+  "pour_toi": "Équipe STM (Institute of Coal Chemistry) encore sous l'ancien SPIP : bonne cible pour proposer la migration vers MountainsSPIP, en mettant en avant l'analyse de réseaux atomiques par FFT.",
+  "donnees": "inconnu",
+  "donnees_note": "Article non consulté cette nuit (site inaccessible depuis le robot) : déclaration de données à vérifier.",
+  "donnees_url": ""
  }
 }
