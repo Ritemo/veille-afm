@@ -834,5 +834,16 @@
   "donnees": "inconnu",
   "donnees_note": "Article non consulté cette nuit (site inaccessible depuis le robot) : déclaration de données à vérifier.",
   "donnees_url": ""
+ },
+ "t:089330a231ee55ed": {
+  "titre_fr": "Park Systems : la demande en équipements de métrologie progresse avec l'essor des semi-conducteurs",
+  "resume": "Article de presse économique coréenne (Financial News) sur Park Systems. La page n'a pas pu être consultée : cette fiche est rédigée à partir du seul titre. Il indique que la demande en équipements de métrologie, dont les AFM industriels de Park Systems, augmente sous l'effet du dynamisme du marché des semi-conducteurs.",
+  "points": [
+   "Sujet : marché de la métrologie pour les semi-conducteurs",
+   "Source : Financial News (Corée), lu à partir du titre seulement"
+  ],
+  "acces": "inconnu",
+  "acces_note": "Article de presse en ligne en coréen, non consulté",
+  "pour_toi": "Signal de marché : Park Systems pousse ses AFM de métrologie en salle blanche, un segment où vérifier que MountainsSPIP lit bien leurs fichiers et répond aux besoins d'analyse en production."
  }
 }
