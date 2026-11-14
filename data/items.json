@@ -1,5 +1,42 @@
 [
 {
+"cat": "litterature",
+"title": "Mechanical Mapping of Thin Elastic Films and Living Cells With Spherical Tip Atomic Force Microscopy Probes at Large Indentations",
+"url": "https://doi.org/10.1002/admi.70728",
+"date": "2026-11-11",
+"source": "OpenAlex",
+"authors": "Gabriel Gomila, Mauricio Cano, Beatriz Cantero, Sophie Strawbridge et al.",
+"venue": "Advanced Materials Interfaces",
+"abstract": "ABSTRACT An explicit semi‐analytical model to quantify large indentation force curves acquired on elastic thin films and living cells on rigid substrates with spherical tip Atomic Force Microscopy (AFM) probes is presented. The model accounts for the bottom effect in the whole indentation range and overcomes the…",
+"doi": "10.1002/admi.70728",
+"cited_by": 0,
+"group": "Courbes de force",
+"oa": true,
+"oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/admi.70728",
+"id": "doi:10.1002/admi.70728",
+"score": 30,
+"tags": [
+"force curve"
+],
+"imp": 2,
+"pm": "Tendance scientifique sur une analyse couverte par Mountains : veille de fond utile.",
+"first_seen": "2026-11-14",
+"themes_sugg": [
+"courbes-force"
+],
+"contact": {
+"nom": "Gabriel Gomila",
+"orcid": "https://orcid.org/0000-0002-1949-1757",
+"institution": "Barcelona Institute of Science and Technology",
+"certain": true
+},
+"contact_verif": "2026-11-14",
+"donnees": "inconnu",
+"donnees_note": "",
+"donnees_url": "",
+"donnees_verif": "2026-11-14"
+},
+{
 "cat": "constructeurs",
 "title": "Park Systems: Metrology Equipment Demand Rises Amid Semiconductor Boom",
 "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE0tS00wQTBWUG9hUzd0TlRKNS03eTdWWko2SVp2bTVxNU5IWXlISFBUQkJNLWJZWlVvWWFaRUliQkoxd190V0oydFRVSk5RSW9jM3ZwWUdCc1k?oc=5",
