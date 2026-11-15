@@ -845,5 +845,21 @@
   "acces": "inconnu",
   "acces_note": "Article de presse en ligne en coréen, non consulté",
   "pour_toi": "Signal de marché : Park Systems pousse ses AFM de métrologie en salle blanche, un segment où vérifier que MountainsSPIP lit bien leurs fichiers et répond aux besoins d'analyse en production."
+ },
+ "doi:10.1002/admi.70728": {
+  "titre_fr": "Cartographie mécanique de films élastiques minces et de cellules vivantes par AFM avec pointes sphériques à grande indentation",
+  "resume": "Les auteurs proposent un modèle semi-analytique explicite pour exploiter des courbes de force à forte indentation, obtenues avec une pointe sphérique sur des films minces ou des cellules posés sur un substrat rigide. Le modèle corrige l'effet du substrat (bottom effect) sur toute la profondeur d'indentation, là où Hertz et Sneddon supposent un échantillon épais et où les corrections paraboloïdes ne valent que pour de faibles indentations. Validé sur des hydrogels de polyacrylamide en force volume, il montre que le module d'Young intrinsèque de ces films augmente sous une épaisseur critique d'environ 15 µm. Sur des macrophages vivants (E d'environ 200 Pa), les modules obtenus s'écartent fortement des modèles classiques : +100 % pour Sneddon et -25 % pour le paraboloïde corrigé.",
+  "points": [
+   "Technique : courbes de force AFM en force volume, pointe sphérique, grandes indentations",
+   "Échantillon : films minces d'hydrogel de polyacrylamide et macrophages vivants",
+   "Résultat : écarts de +100 % (Sneddon) et -25 % (paraboloïde avec correction de substrat) sur le module d'Young",
+   "Modèle : correction de l'effet de substrat valable sur toute la plage d'indentation, extensible aux substrats non rigides"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Article en accès libre chez l'éditeur (Wiley).",
+  "pour_toi": "Modèle de contact sphère sur couche mince à envisager dans l'analyse de courbes de force de MountainsSPIP, en complément de Hertz et Sneddon ; Gabriel Gomila (IBEC Barcelone) est un contact utile pour une collaboration ou une validation.",
+  "donnees": "inconnu",
+  "donnees_note": "Article non consulté cette nuit (accès web indisponible) : déclaration de données à vérifier.",
+  "donnees_url": ""
  }
 }
