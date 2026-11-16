@@ -1,5 +1,42 @@
 [
 {
+"cat": "litterature",
+"title": "Narrow Fe–Ni Alloy Composition Window Enabling Prolonged Carbon Nanotube Growth Revealed by High‐Throughput Drop‐Casting‐Based Catalyst Screening",
+"url": "https://doi.org/10.1002/smll.76705",
+"date": "2026-11-13",
+"source": "OpenAlex",
+"authors": "Takashi Kitao, Atsuko Otsuka, Makoto Yaguchi, Maho Yamada et al.",
+"venue": "Small",
+"abstract": "Catalyst composition is a primary determinant of the growth trajectory of carbon nanotubes (CNTs). However, targeted exploration of the vast compositional space, particularly using methods that can reveal unexpected structure-property relationships, remains a significant challenge. To address this challenge, we…",
+"doi": "10.1002/smll.76705",
+"cited_by": 0,
+"group": "Machine learning et AFM",
+"oa": true,
+"oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/smll.76705",
+"id": "doi:10.1002/smll.76705",
+"score": 30,
+"tags": [
+"revue majeure"
+],
+"imp": 2,
+"pm": "Tendance scientifique sur une analyse couverte par Mountains : veille de fond utile.",
+"first_seen": "2026-11-16",
+"themes_sugg": [
+"particules"
+],
+"contact": {
+"nom": "Takashi Kitao",
+"orcid": "https://orcid.org/0000-0002-9397-4319",
+"institution": "National Institute of Advanced Industrial Science and Technology",
+"certain": true
+},
+"contact_verif": "2026-11-16",
+"donnees": "inconnu",
+"donnees_note": "",
+"donnees_url": "",
+"donnees_verif": "2026-11-16"
+},
+{
 "cat": "constructeurs",
 "title": "Bruker (NasdaqGS:BRKR) Aktienprognose & Analystenschätzungen",
 "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOMlBGSlYwOWhSN2lmbmItUlpGektRUW12TnlVMjFDdXBhZENNS1NLMS1xc0dfd25mT3gzZ2tGTjc3N1ZESjV6Rm41RXBpdzVTdU9pQldaaWJpaWxEb01FT1NrRHI0dkp2UkgtVkdiRFlJd2U2eDVxaEJsUU1aZWdZaHlkbUxCNmRhZGlkUg?oc=5",
