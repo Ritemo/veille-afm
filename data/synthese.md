@@ -1,14 +1,15 @@
-**Semaine calme : aucune sortie concurrente majeure ni citation de Mountains, mais une start-up AFM et un article PFM à surveiller.**
+**Semaine sans sortie concurrente, mais de bonnes pistes : clients SPIP à migrer, un jeu de données ML et une méthode de forme de pointe.**
 
 # À traiter
 
-Rien de Critique ou Haute cette semaine. Deux points méritent quand même un coup d'œil :
-
-- **[Multiscale Instruments, start-up AFM soutenue par l'université nationale de Séoul](https://news.google.com/rss/articles/CBMiswFBVV95cUxOUE54YWNkRlNfLWF2a21nbUhvREJwaHprWm0wdzJVc2EwX19oNVQ3c2JVZlI0S19yWVB6bGdJQVFWa2V6WU1xejZieEV0eHJMVGIxeWNaazlkZEdtS3dxVlUxVUNMcDdtOFE5LS1uX2hiT0NRcHo3Z2Nyam5oaUdQVUhRemF0dW05S2lxNW9QUHdEa1BveGJFaThLSFFqcmdob3loemFVYldDbDdOYkxtVmVWMA?oc=5)** : nouveau constructeur en vue, dans l'orbite de Park Systems. Action : identifier leur format de fichier et leur logiciel, piste de partenariat OEM.
-- **[Angles morts en PFM quantitative (ACS Nano)](https://doi.org/10.1021/acsnano.6c14615)** : les effets électrostatiques faussent la mesure piézo. Action : vérifier si l'analyse PFM de MountainsSPIP permet de corriger ou signaler ces artefacts, piste de fonctionnalité.
+- **[Article citant Mountains (bromazépam, ToF-SIMS)](https://doi.org/10.1039/d6ay01670g/1365679/bromazepam-distribution-in-a-solid-dosage-form)** : Mountains apparaît dans une étude pharmaceutique. Vérifie que l'usage est bien AFM, puis ajoute-la aux références clients.
+- **[Métrologie des flancs pour qubits supraconducteurs](https://doi.org/10.48550/arxiv.2610.26223)** : un labo semi-conducteurs utilise encore l'ancien SPIP. Bonne cible de migration : contacte les auteurs avec l'argumentaire MountainsSPIP.
+- **[Forme de pointe reconstruite depuis les courbes force-indentation](https://doi.org/10.1002/smtd.71081)** : pile dans ton thème. Piste de fonctionnalité pour l'étalonnage de pointe dans le module courbes de force.
+- **[Jeu de données afMLevel](https://huggingface.co/datasets/Heath-AFM-Lab/afMLevel-data)** : images AFM annotées en accès libre. Utile pour tester la mise à niveau automatique de MountainsSPIP.
+- **[Fibroblastes et régénération du poil](https://doi.org/10.34133/research.1430)** : analyse faite sous NanoScope Analysis. À refaire dans MountainsSPIP pour comparer.
 
 # À garder en tête
 
-- [Contrôle mécanique de l'état polaire antiferroélectrique (Small)](https://doi.org/10.1002/smll.76586) : couplage pointe et ferroélectricité, veille de fond.
-- Versions correctives TopoStats 2.4.1 et 2.4.2, PyJibe 0.16.4 : rien de neuf côté fonctionnalités.
-- Rapport marché sur la microscopie par IA (openPR) : contexte, sans action.
+- Deux autres utilisateurs de l'ancien SPIP : [corrosion du cuivre](https://doi.org/10.1002/maco.70313) et [liaisons Fe-O-Si](https://doi.org/10.1007/s44251-026-00162-4).
+- Bruker publie un [guide des modes AFM 2026](https://news.google.com/rss/articles/CBMigAFBVV95cUxOMVBMLWZSejBFZUJzUXR2cGFTZkwzNFdsMUVieVQ0THRmVUFXLVJCUWR4VUpxZEdkWFhXaEJBTEtkcVJadlNjcXZYbEptTHczWUJVbEFmQUJjVThQT1pxOFhUMmRFNExBdzFuOVg5UkNFOTlFbmJhenIwTUF6T0RXOQ?oc=5) : bon repère de vocabulaire.
+- Viscoélasticité nucléaire ([bioRxiv](https://doi.org/10.64898/2026.09.28.754974)) : utile pour ton volet nanoDMA.
