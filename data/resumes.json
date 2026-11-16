@@ -861,5 +861,16 @@
   "donnees": "inconnu",
   "donnees_note": "Article non consulté cette nuit (accès web indisponible) : déclaration de données à vérifier.",
   "donnees_url": ""
+ },
+ "t:e17b3171fc351937": {
+  "titre_fr": "Bruker (NasdaqGS:BRKR) : prévisions boursières et estimations des analystes",
+  "resume": "Page de Simply Wall St (en allemand) qui présente les prévisions des analystes financiers pour l'action Bruker, maison mère de Bruker Nano Surfaces (AFM). La page n'a pas pu être ouverte cette nuit : cette fiche est rédigée à partir du seul titre. Il s'agit d'un contenu boursier générique, sans annonce produit ni technique.",
+  "points": [
+   "Source : Simply Wall St, via Google Actualités",
+   "Contenu : prévisions de cours et estimations d'analystes (non lues)"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Page web grand public, consultable gratuitement (non lue cette nuit)",
+  "pour_toi": "Simple contexte marché sur Bruker, premier constructeur AFM : à regarder seulement si tu suis la santé financière du concurrent de Digital Surf sur le logiciel embarqué (NanoScope Analysis)."
  }
 }
