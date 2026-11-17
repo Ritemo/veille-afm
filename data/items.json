@@ -730,7 +730,7 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02",
+"donnees_verif": "2026-11-17",
 "themes_sugg": [],
 "contact": {
 "nom": "Sujit Das",
@@ -785,7 +785,7 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02",
+"donnees_verif": "2026-11-17",
 "themes_sugg": [
 "particules"
 ],
@@ -891,7 +891,7 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02",
+"donnees_verif": "2026-11-17",
 "themes_sugg": [
 "courbes-force"
 ],
@@ -926,7 +926,7 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02",
+"donnees_verif": "2026-11-17",
 "themes_sugg": [],
 "contact": {
 "nom": "Alexander S. Parker",
@@ -958,7 +958,7 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02",
+"donnees_verif": "2026-11-17",
 "themes_sugg": [
 "particules"
 ],
@@ -994,7 +994,7 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02",
+"donnees_verif": "2026-11-17",
 "themes_sugg": [
 "spectral",
 "afm-ir"
@@ -1030,7 +1030,7 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02",
+"donnees_verif": "2026-11-17",
 "themes_sugg": [
 "spectral"
 ],
@@ -1064,7 +1064,7 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02",
+"donnees_verif": "2026-11-17",
 "themes_sugg": [],
 "contact": {
 "nom": "Khalid Thamer Althagafy",
@@ -1095,7 +1095,7 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02",
+"donnees_verif": "2026-11-17",
 "themes_sugg": [
 "spectral"
 ],
@@ -1130,7 +1130,7 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02",
+"donnees_verif": "2026-11-17",
 "themes_sugg": [],
 "contact": {
 "nom": "Kazukuni Tahara",
@@ -1164,7 +1164,7 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02",
+"donnees_verif": "2026-11-17",
 "themes_sugg": [
 "clustering"
 ],
@@ -1199,7 +1199,7 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02",
+"donnees_verif": "2026-11-17",
 "themes_sugg": [],
 "contact": {
 "nom": "Chandra Sekhar Rakurty",
@@ -1231,7 +1231,7 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02",
+"donnees_verif": "2026-11-17",
 "themes_sugg": [],
 "contact": {
 "nom": "Özge Sağlam",
@@ -1261,10 +1261,10 @@
 "imp": 3,
 "pm": "NanoScope Analysis utilisé sur une analyse que MountainsSPIP couvre : à comparer, argumentaire de remplacement.",
 "first_seen": "2026-11-01",
-"donnees": "demande",
-"donnees_note": "Sur demande aux auteurs (déclaration de l'article)",
-"donnees_url": "",
-"donnees_verif": "2026-11-02",
+"donnees": "libres",
+"donnees_note": "Jeu de données public sur Worldwide Protein Data Bank",
+"donnees_url": "https://doi.org/10.2210/pdb9h7u/pdb",
+"donnees_verif": "2026-11-17",
 "themes_sugg": [
 "spectral"
 ],
@@ -1301,7 +1301,7 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02",
+"donnees_verif": "2026-11-17",
 "themes_sugg": [
 "courbes-force",
 "clustering",
@@ -1378,7 +1378,7 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02",
+"donnees_verif": "2026-11-17",
 "themes_sugg": [
 "courbes-force"
 ],
@@ -1469,7 +1469,7 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02",
+"donnees_verif": "2026-11-17",
 "themes_sugg": [],
 "contact": {
 "nom": "Noriyuki Kodera",
@@ -1536,7 +1536,7 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02",
+"donnees_verif": "2026-11-17",
 "themes_sugg": [],
 "contact": {
 "nom": "Rupali Agnihotri",
@@ -1571,7 +1571,7 @@
 "donnees": "demande",
 "donnees_note": "Sur demande aux auteurs (déclaration de l'article)",
 "donnees_url": "",
-"donnees_verif": "2026-11-02",
+"donnees_verif": "2026-11-17",
 "themes_sugg": [
 "iv"
 ],
@@ -1671,7 +1671,7 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02",
+"donnees_verif": "2026-11-17",
 "themes_sugg": [
 "particules"
 ],
@@ -1708,7 +1708,7 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02",
+"donnees_verif": "2026-11-17",
 "themes_sugg": [
 "courbes-force"
 ],
@@ -1743,7 +1743,7 @@
 "donnees": "demande",
 "donnees_note": "Sur demande aux auteurs (déclaration de l'article)",
 "donnees_url": "",
-"donnees_verif": "2026-11-02",
+"donnees_verif": "2026-11-17",
 "themes_sugg": [],
 "contact": {
 "nom": "Jan Schultheiß",
@@ -1778,7 +1778,7 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02",
+"donnees_verif": "2026-11-17",
 "themes_sugg": [
 "spectral",
 "cd"
@@ -1816,7 +1816,7 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02",
+"donnees_verif": "2026-11-17",
 "themes_sugg": [
 "iv"
 ],
@@ -1853,7 +1853,7 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02",
+"donnees_verif": "2026-11-17",
 "themes_sugg": [
 "cd"
 ],
@@ -1950,7 +1950,7 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-02",
+"donnees_verif": "2026-11-17",
 "themes_sugg": [
 "courbes-force"
 ],
