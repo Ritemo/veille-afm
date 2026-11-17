@@ -131,6 +131,9 @@ main{padding:26px 34px 50px;max-width:1500px;width:100%}
 .b-ved{background:linear-gradient(90deg,var(--pink-l),var(--violet-l))}.b-ved .ic{background:var(--pink);color:#fff}.b-ved .n{color:var(--pink)}
 .card.ved{box-shadow:0 0 0 2px var(--pink),var(--shadow)}
 .ved-ban{display:flex;gap:8px;align-items:flex-start;background:var(--pink-l);border-radius:12px;padding:8px 12px;font-size:13.5px;font-weight:700;line-height:1.4}
+.ved-ban span{flex:1}
+.ved-x{flex:none;border:0;background:#fff;color:var(--pink);font:inherit;font-size:12px;font-weight:700;border-radius:999px;padding:3px 10px;cursor:pointer}
+.ved-x:hover{background:var(--pink);color:#fff}
 .ved-ban svg{width:16px;height:16px;color:var(--pink);flex:none;margin-top:2px}
 .b-arch{background:var(--grey-l)}.b-arch .ic{background:#d5d7de;color:#5b6070}.b-arch .n{color:#5b6070}
 .sugg{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12px;color:var(--ink3)}
@@ -385,6 +388,10 @@ aside{overflow-y:auto}
   if (!st.marques.themes) st.marques.themes = {};
   if (!st.marques.archive) st.marques.archive = {};
   if (!st.marques.notes) st.marques.notes = {};
+  if (!st.marques.vedette) st.marques.vedette = {};
+  // « En vedette » retiré depuis la fiche, sans archiver (synchronisé entre appareils)
+  const horsVedette = id => { const m = st.marques.vedette[id]; return !!(m && m.v); };
+  const ved = i => !!i.vedette && !horsVedette(i.id);
   const archive = id => { const a = st.marques.archive[id]; return a && a.v ? a : null; };
   const etat = id => archive(id) ? "archivee" : st.lu[id] ? "encours" : "nouvelle";
   const notesDe = id => Object.entries(st.marques.notes).filter(([k,n]) => n.v && k.startsWith(id+"|")).map(([k,n]) => ({k, ...n})).sort((a,b) => a.t-b.t);
@@ -409,7 +416,7 @@ aside{overflow-y:auto}
   const ouverts = {};
   const $ = s => document.querySelector(s);
   const esc = s => String(s||"").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-  const imp = i => i.imp || 2;
+  const imp = i => (i.vedette && horsVedette(i.id) && i.imp_base) || i.imp || 2;
   const isNew = i => i.first_seen > st.prevVisit;
   const fmt = d => d ? new Date(d+"T12:00:00").toLocaleDateString("fr-FR",{day:"numeric",month:"short",year:"numeric"}) : "";
   const since = n => new Date(Date.now()-n*864e5).toISOString().slice(0,10);
@@ -433,7 +440,7 @@ aside{overflow-y:auto}
   function pool0(){
     if (st.tab === "creuser") return items.filter(i => st.creuser[i.id]);
     if (st.tab.startsWith("th:")) return items.filter(i => dansTheme(i.id, st.tab.slice(3)));
-    if (st.tab === "une") return items.filter(i => i.vedette || (i.first_seen >= since(14) && imp(i) >= 3) || enSuivi(i.id));
+    if (st.tab === "une") return items.filter(i => ved(i) || (i.first_seen >= since(14) && imp(i) >= 3) || enSuivi(i.id));
     return items.filter(i => i.cat === st.tab);
   }
   function filtered(){
@@ -520,7 +527,7 @@ aside{overflow-y:auto}
   function card(i){
     const [nl, ni] = NIV[imp(i)];
     const e = etat(i.id), ar = archive(i.id), ns = notesDe(i.id), dn = ns[ns.length-1];
-    return `<article class="card c-${i.cat} st-${e} ${i.vedette&&!ar?"ved":""} ${ouverts[i.id]?"open":""}" data-id="${esc(i.id)}">
+    return `<article class="card c-${i.cat} st-${e} ${ved(i)&&!ar?"ved":""} ${ouverts[i.id]?"open":""}" data-id="${esc(i.id)}">
       <div class="row">
         <span class="pill i${imp(i)}">${svg(ni, imp(i)>=3?"currentColor":"none")}${nl}</span>
         <span class="pill cat">${esc(i.group || CAT[i.cat])}</span>
@@ -528,7 +535,7 @@ aside{overflow-y:auto}
         ${pillDonnees(i)}
         <span class="date">${fmt(i.date)}</span>
       </div>
-      ${i.vedette&&!ar?`<div class="ved-ban">${svg(P.star,"currentColor")}<span>En vedette : ${esc(i.vedette)}</span></div>`:""}
+      ${ved(i)&&!ar?`<div class="ved-ban">${svg(P.star,"currentColor")}<span>En vedette : ${esc(i.vedette)}</span><button class="ved-x" data-a="dever" title="Retirer de la vedette, sans archiver">Retirer</button></div>`:""}
       <a class="title" href="${esc(i.url)}" data-m="1">${esc((resumes[i.id]&&resumes[i.id].titre_fr)||i.title)}</a>
       <div class="sub">${esc([i.venue, i.authors].filter(Boolean).join(" · "))}${i.cited_by?` · ${i.cited_by} citation${i.cited_by>1?"s":""}`:""}</div>
       ${i.pm?`<div class="pm">${svg(P.bulb)}<span>${esc(i.pm)}</span></div>`:""}
@@ -616,11 +623,11 @@ aside{overflow-y:auto}
     else if (st.tab === "une" && st.vue !== "archivees") {
       // À la une : deux blocs bien séparés, d'abord ce qui est nouveau, puis ce qui est en cours
       // les sujets « en vedette » passent devant tout, tant qu'ils ne sont pas archivés
-      const vd = l.filter(i => i.vedette && etat(i.id) !== "archivee"), hv = l.filter(i => !vd.includes(i));
+      const vd = l.filter(i => ved(i) && etat(i.id) !== "archivee"), hv = l.filter(i => !vd.includes(i));
       const nv = hv.filter(i => etat(i.id) === "nouvelle"), ec = hv.filter(i => etat(i.id) === "encours"), ar = hv.filter(i => etat(i.id) === "archivee");
       const bloc = (cls, ic, tit, txt, liste) => `<div class="bloc-h ${cls}"><span class="ic">${svg(ic)}</span><div><b>${tit}</b><small>${txt}</small></div><span class="n">${liste.length}</span></div>`
         + (liste.length ? `<div class="grid">${liste.map(card).join("")}</div>` : `<div class="bloc-vide">${cls==="b-new"?"Tu as tout ouvert, rien de neuf pour l'instant.":"Rien en cours : ouvre une nouvelle fiche, range-la dans un thème ou ajoute une note pour la suivre ici."}</div>`);
-      if (vd.length) h += bloc("b-ved", P.star, "En vedette", "Sujets à ne pas manquer, épinglés en tête jusqu'à ce que tu les archives", vd);
+      if (vd.length) h += bloc("b-ved", P.star, "En vedette", "Sujets à ne pas manquer, épinglés en tête jusqu'à ce que tu les archives ou les retires", vd);
       h += bloc("b-new", P.spark, "Nouvelles", "Pas encore ouvertes : importance haute et critique des 14 derniers jours", nv)
          + bloc("b-cours", P.dot, "En cours", "Lues mais pas archivées, et toutes les fiches que tu suis (note, thème, À creuser)", ec);
       if (ar.length) h += bloc("b-arch", P.box, "Archivées", "", ar);
@@ -686,6 +693,8 @@ aside{overflow-y:auto}
     if (e.target.closest("#tokSave")) { st.jeton = $("#tok").value.trim(); save(); verifier(); return; }
     if (e.target.closest("#tokDel")) { st.jeton = ""; save(); reglages(); renderGear(); return; }
     if (e.target.closest("#undo")) { annuler(); return; }
+    const uv = e.target.closest("[data-reved]");
+    if (uv) { vedette(uv.dataset.reved, 1); return; }
     const np = e.target.closest("[data-nope]");
     if (np) { fermer(); pasPertinent(np.dataset.nope); return; }
     const ma = e.target.closest("[data-ma]");
@@ -701,6 +710,7 @@ aside{overflow-y:auto}
     if (a.dataset.a === "nope") { pasPertinent(id); return; }
     if (a.dataset.a === "ranger") { pickTheme(id); return; }
     if (a.dataset.a === "archiver") { fenetreArchive(id); return; }
+    if (a.dataset.a === "dever") { vedette(id, 0); return; }
     if (a.dataset.a === "reactiver") { reactiver(id); render(); return; }
     if (a.dataset.a === "share") {
       if (navigator.share) navigator.share({title: it.title, url: it.url}).catch(()=>{});
@@ -765,6 +775,11 @@ aside{overflow-y:auto}
     save(); render();
     toast(`Fiche retirée${st.jeton ? "" : " sur cet appareil"}. <button id="undo">Annuler</button>`);
     setTimeout(envoyer, 6500);
+  }
+  function vedette(id, garder){
+    st.marques.vedette[id] = {v: garder ? 0 : 1, t: Date.now()}; changeEtat(); render();
+    if (garder) { const t = $("#toast"); if (t) t.style.display = "none"; }
+    else toast(`Fiche retirée de « En vedette » (non archivée). <button data-reved="${esc(id)}">Annuler</button>`);
   }
   function annuler(){
     if (!dernierExclu) return;
@@ -929,17 +944,17 @@ aside{overflow-y:auto}
     syncEnCours = true;
     try {
       const r = await gh("/contents/"+ETAT+"?ref=main&t="+Date.now());
-      let distant = {lu:{}, creuser:{}, themes:{}, archive:{}, notes:{}, defs:null}, sha;
+      let distant = {lu:{}, creuser:{}, themes:{}, archive:{}, notes:{}, vedette:{}, defs:null}, sha;
       if (r.ok) { const j = await r.json(); sha = j.sha; Object.assign(distant, JSON.parse(b64d(j.content))); }
       else if (r.status !== 404) throw new Error(r.status);
       const stable = o => o && typeof o === "object" ? "{"+Object.keys(o).sort().map(k => JSON.stringify(k)+":"+stable(o[k])).join(",")+"}" : JSON.stringify(o);
-      const avant = stable({lu:distant.lu||{}, creuser:distant.creuser||{}, themes:distant.themes||{}, archive:distant.archive||{}, notes:distant.notes||{}, defs:distant.defs||{}});
+      const avant = stable({lu:distant.lu||{}, creuser:distant.creuser||{}, themes:distant.themes||{}, archive:distant.archive||{}, notes:distant.notes||{}, vedette:distant.vedette||{}, defs:distant.defs||{}});
       const limite = Date.now() - 120*864e5, connus = new Set(items.map(i => i.id));
       const plusRecent = (a, b) => !a ? b : !b ? a : (b.t > a.t ? b : a);
-      const fus = {lu:{}, creuser:{}, themes:{}, archive:{}, notes:{}, defs:{}};
+      const fus = {lu:{}, creuser:{}, themes:{}, archive:{}, notes:{}, vedette:{}, defs:{}};
       // définitions des thèmes : la plus récente gagne, thème par thème
       new Set([...Object.keys(distant.defs||{}), ...Object.keys(st.defs)]).forEach(id => fus.defs[id] = plusRecent((distant.defs||{})[id], st.defs[id]));
-      ["lu","creuser","themes","archive","notes"].forEach(k => {
+      ["lu","creuser","themes","archive","notes","vedette"].forEach(k => {
         const ids = new Set([...Object.keys(distant[k]||{}), ...Object.keys(st.marques[k]||{})]);
         ids.forEach(cle => {
           const m = plusRecent((distant[k]||{})[cle], (st.marques[k]||{})[cle]);
@@ -951,7 +966,7 @@ aside{overflow-y:auto}
         });
         if (k === "lu" || k === "creuser") { st[k] = {}; Object.keys(fus[k]).forEach(id => { if (fus[k][id].v) st[k][id] = 1; }); }
       });
-      st.defs = fus.defs; st.marques = {lu:fus.lu, creuser:fus.creuser, themes:fus.themes, archive:fus.archive, notes:fus.notes}; save(); render();
+      st.defs = fus.defs; st.marques = {lu:fus.lu, creuser:fus.creuser, themes:fus.themes, archive:fus.archive, notes:fus.notes, vedette:fus.vedette}; save(); render();
       if (stable(fus) !== avant) {
         const w = await gh("/contents/"+ETAT, {method:"PUT", body:JSON.stringify({
           message:"Synchronisation lu, à creuser et thèmes", branch:"main", sha,

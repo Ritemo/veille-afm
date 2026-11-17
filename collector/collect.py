@@ -784,9 +784,10 @@ def main():
         noter(i, cfg)
         # « En vedette » : sujets que Mathieu veut voir en tête, quoi qu'en dise la notation
         if i["id"] in vedettes:
-            i["imp"], i["vedette"] = 4, vedettes[i["id"]]
+            # imp_base garde le niveau normal : l'appli le réaffiche si la fiche est retirée de la vedette
+            i["imp_base"], i["imp"], i["vedette"] = i["imp"], 4, vedettes[i["id"]]
         else:
-            i.pop("vedette", None)
+            i.pop("vedette", None); i.pop("imp_base", None)
     # on ne garde que l'essentiel : niveau minimal, pas de citations, pas de doublons
     items = sans_doublons([i for i in items if i["cat"] != "citations" and i["imp"] >= cfg.get("imp_min", 1)])
     items.sort(key=lambda i: (i["first_seen"], i["score"]), reverse=True)
