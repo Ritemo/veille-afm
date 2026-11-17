@@ -872,5 +872,20 @@
   "acces": "gratuit",
   "acces_note": "Page web grand public, consultable gratuitement (non lue cette nuit)",
   "pour_toi": "Simple contexte marché sur Bruker, premier constructeur AFM : à regarder seulement si tu suis la santé financière du concurrent de Digital Surf sur le logiciel embarqué (NanoScope Analysis)."
+ },
+ "doi:10.1002/smll.76705": {
+  "titre_fr": "Une fenêtre étroite de composition Fe-Ni prolonge la croissance des nanotubes de carbone, révélée par un criblage haut débit de catalyseurs déposés en gouttes",
+  "resume": "Les auteurs ont construit une plateforme automatisée qui dépose des catalyseurs par gouttes, puis caractérise les forêts de nanotubes de carbone obtenues, pour explorer rapidement de nombreuses compositions fer-nickel. En ajustant la viscosité de la solution et la chélation des métaux, ils obtiennent des dépôts plus uniformes. Le criblage révèle une plage de composition Fe-Ni étroite, jusqu'ici inconnue, qui permet une croissance prolongée des nanotubes. Les cinétiques de croissance et les mesures AFM suggèrent que le nickel stabilise le catalyseur à faible teneur mais freine la nucléation à plus forte teneur, en faisant grossir les nanoparticules.",
+  "points": [
+   "Technique : criblage haut débit automatisé, caractérisation synchronisée en position, AFM",
+   "Échantillon : nanoparticules catalytiques Fe-Ni et forêts de nanotubes de carbone alignés",
+   "Résultat : fenêtre de composition Fe-Ni étroite favorable à une croissance prolongée"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Article en accès libre chez l'éditeur (Wiley, Small).",
+  "pour_toi": "Exemple de flux haut débit où l'AFM sert à mesurer la taille de nanoparticules sur de nombreux échantillons : bon argument pour l'analyse de particules et le traitement par lots automatisé de MountainsSPIP, contact possible chez AIST (Takashi Kitao).",
+  "donnees": "inconnu",
+  "donnees_note": "Article non consulté cette nuit (site inaccessible depuis le robot) : déclaration de données à vérifier.",
+  "donnees_url": ""
  }
 }
