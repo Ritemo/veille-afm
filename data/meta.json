@@ -1,7 +1,9 @@
 {
- "maj": "2026-11-17T09:21+00:00",
+ "maj": "2026-11-18T08:37+00:00",
  "version_requetes": 5,
- "nouveaux": 69,
+ "nouveaux": 68,
  "total": 61,
- "erreurs": []
+ "erreurs": [
+  "OpenAlex nanoDMA / viscoélasticité : HTTP Error 429: Too Many Requests"
+ ]
 }
