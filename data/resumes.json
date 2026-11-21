@@ -887,5 +887,20 @@
   "donnees": "inconnu",
   "donnees_note": "Article non consulté cette nuit (site inaccessible depuis le robot) : déclaration de données à vérifier.",
   "donnees_url": ""
+ },
+ "doi:10.3762/bjnano.17.112": {
+  "titre_fr": "À la pointe de la microscopie à force atomique",
+  "resume": "Fiche rédigée à partir du titre et des métadonnées seulement : aucun résumé n'était fourni et la page de l'article était inaccessible cette nuit. Publié dans le Beilstein Journal of Nanotechnology par Thilo Glatzel, Peter Grütter, Shigeki Kawai et Omur E. Dagdeviren, le texte porte sur les avancées récentes de la microscopie à force atomique. Le titre et la liste d'auteurs, tous figures de l'AFM haute résolution, évoquent un éditorial ou une présentation de numéro thématique, à confirmer en lisant l'article.",
+  "points": [
+   "Revue : Beilstein Journal of Nanotechnology, accès libre",
+   "Auteurs : Glatzel, Grütter, Kawai, Dagdeviren",
+   "Contenu : non consulté, à vérifier sur la page de l'article"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Article en accès libre chez l'éditeur (Beilstein).",
+  "pour_toi": "Si c'est l'ouverture d'un numéro thématique, parcourir le sommaire pour repérer les techniques AFM émergentes à couvrir dans MountainsSPIP, et noter Omur Dagdeviren (ÉTS Montréal) comme contact possible.",
+  "donnees": "inconnu",
+  "donnees_note": "Article non consulté cette nuit (site inaccessible depuis le robot) : déclaration de données à vérifier.",
+  "donnees_url": ""
  }
 }
