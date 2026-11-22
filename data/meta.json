@@ -1,7 +1,10 @@
 {
- "maj": "2026-11-21T08:21+00:00",
+ "maj": "2026-11-22T08:09+00:00",
  "version_requetes": 5,
- "nouveaux": 70,
- "total": 62,
- "erreurs": []
+ "nouveaux": 72,
+ "total": 63,
+ "erreurs": [
+  "arXiv abs:\"atomic force microscopy\" AND abs:\"m : The read operation timed out",
+  "arXiv abs:\"AFM-IR\" OR abs:\"s-SNOM\" : HTTP Error 429: Unknown Error"
+ ]
 }

@@ -1,6 +1,41 @@
 [
 {
 "cat": "litterature",
+"title": "Interfacial mechanisms of gas-bubble friction",
+"url": "https://doi.org/10.1038/s41467-026-79472-y",
+"date": "2026-11-19",
+"source": "OpenAlex",
+"authors": "Shishuang Zhang, Huadong Tian, Jiajun Li, Zhikao Li et al.",
+"venue": "Nature Communications",
+"abstract": "Friction at solid-liquid interfaces is typically interpreted through classical contact mechanics, but molecular origins of gas-bubble friction in aqueous environments remain elusive. Here we report the direct quantification of gas-bubble friction at solid surfaces using atomic force microscopy with nanonewton…",
+"doi": "10.1038/s41467-026-79472-y",
+"cited_by": 0,
+"group": "Courbes de force",
+"oa": true,
+"oa_url": "https://www.nature.com/articles/s41467-026-79472-y_reference.pdf",
+"id": "doi:10.1038/s41467-026-79472-y",
+"score": 30,
+"tags": [
+"revue majeure"
+],
+"imp": 2,
+"pm": "Tendance scientifique sur une analyse couverte par Mountains : veille de fond utile.",
+"first_seen": "2026-11-22",
+"themes_sugg": [],
+"contact": {
+"nom": "Lei Xie",
+"orcid": "https://orcid.org/0000-0003-3520-4815",
+"institution": "Central South University",
+"certain": true
+},
+"contact_verif": "2026-11-22",
+"donnees": "inconnu",
+"donnees_note": "",
+"donnees_url": "",
+"donnees_verif": "2026-11-22"
+},
+{
+"cat": "litterature",
 "title": "At the cutting edge of atomic force microscopy",
 "url": "https://doi.org/10.3762/bjnano.17.112",
 "date": "2026-11-17",
@@ -103,12 +138,12 @@
 "venue": "Advanced Materials Interfaces",
 "abstract": "ABSTRACT An explicit semi‐analytical model to quantify large indentation force curves acquired on elastic thin films and living cells on rigid substrates with spherical tip Atomic Force Microscopy (AFM) probes is presented. The model accounts for the bottom effect in the whole indentation range and overcomes the…",
 "doi": "10.1002/admi.70728",
-"cited_by": 0,
+"cited_by": 1,
 "group": "Courbes de force",
 "oa": true,
 "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/admi.70728",
 "id": "doi:10.1002/admi.70728",
-"score": 30,
+"score": 32,
 "tags": [
 "force curve"
 ],
@@ -614,7 +649,7 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-07"
+"donnees_verif": "2026-11-22"
 },
 {
 "cat": "litterature",
