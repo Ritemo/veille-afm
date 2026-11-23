@@ -902,5 +902,20 @@
   "donnees": "inconnu",
   "donnees_note": "Article non consulté cette nuit (site inaccessible depuis le robot) : déclaration de données à vérifier.",
   "donnees_url": ""
+ },
+ "doi:10.1038/s41467-026-79472-y": {
+  "titre_fr": "Mécanismes interfaciaux du frottement des bulles de gaz",
+  "resume": "Les auteurs mesurent directement, par microscopie à force atomique avec une résolution de l'ordre du nanonewton, le frottement d'une bulle de gaz qui glisse sur une surface solide dans l'eau. Ils montrent que la bulle n'entre en régime de frottement de ligne triple qu'après s'être attachée via la rupture du film liquide, avec des réponses statique et cinétique liées à l'ancrage puis au glissement de la ligne de contact. Sur des surfaces greffées OTS, le frottement est maximal pour une hydrophobie intermédiaire, à cause d'une hétérogénéité chimique plus forte. Les bulles d'oxygène frottent davantage que l'air, l'azote ou le CO2, ce que des simulations de dynamique moléculaire relient aux interactions propres à chaque gaz.",
+  "points": [
+   "Technique : AFM avec bulle de gaz comme sonde, mesures de force latérale à résolution nanonewton, plus simulations de dynamique moléculaire",
+   "Échantillon : substrats greffés OTS d'hydrophobie variable et surfaces greffées PDMS rugueuses, bulles d'oxygène, d'air, d'azote et de CO2",
+   "Résultat : frottement non monotone avec l'hydrophobie, maximal à hydrophobie intermédiaire ; frottement plus faible sur PDMS uniformément rugueux"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Article en accès libre chez l'éditeur (Nature Communications).",
+  "pour_toi": "Cas d'usage original des courbes de force et de la force latérale en milieu liquide (sonde bulle) : bon exemple pour vérifier que Mountains gère l'analyse de frottement statique/cinétique sur courbes latérales, et contact possible avec Lei Xie (Central South University).",
+  "donnees": "inconnu",
+  "donnees_note": "Article non consulté cette nuit (accès web indisponible depuis le robot) : déclaration de données à vérifier.",
+  "donnees_url": ""
  }
 }
