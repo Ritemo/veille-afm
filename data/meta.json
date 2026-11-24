@@ -1,20 +1,7 @@
 {
- "maj": "2026-11-23T09:20+00:00",
+ "maj": "2026-11-24T11:06+00:00",
  "version_requetes": 5,
- "nouveaux": 81,
+ "nouveaux": 76,
  "total": 63,
- "erreurs": [
-  "Europe PMC Mountains : The read operation timed out",
-  "Actus Bruker : HTTP Error 503: Service Unavailable",
-  "Actus Park Systems : HTTP Error 503: Service Unavailable",
-  "Actus Oxford Instruments Asylum : HTTP Error 503: Service Unavailable",
-  "Actus Nanosurf : HTTP Error 503: Service Unavailable",
-  "Actus HORIBA : HTTP Error 503: Service Unavailable",
-  "Actus NT-MDT : HTTP Error 503: Service Unavailable",
-  "Actus Digital Surf : HTTP Error 503: Service Unavailable",
-  "Annonces NanoScope Analysis (Bruker) : HTTP Error 503: Service Unavailable",
-  "Annonces Park SmartScan / SmartAnalysis : HTTP Error 503: Service Unavailable",
-  "Annonces Asylum Ergo / AR : HTTP Error 503: Service Unavailable",
-  "Annonces Nanosurf Studio : HTTP Error 503: Service Unavailable"
- ]
+ "erreurs": []
 }
