@@ -1,5 +1,78 @@
 [
 {
+"cat": "logiciels",
+"title": "Nano-structural analysis of zein-cellulose derivative composite films using AFM-Lorentz contact resonance and local thermal analyses",
+"url": "https://doi.org/10.1039/d6ra09384a",
+"date": "2026-11-23",
+"source": "OpenAlex",
+"authors": "Yuyang Zhang, Jeannine Bonilla, Loong‐Tak Lim",
+"venue": "RSC Advances",
+"abstract": "This study investigated nanoscale zein particle suspensions (ZPS) prepared from aqueous ethanol (90% w/w) by antisolvent precipitation. The zein particles had a volume-based median particle diameter (Dv50) of 0.208 as determined by light scattering. The ZPS was incorporated into either an ethanol-soluble ethyl…",
+"doi": "10.1039/d6ra09384a",
+"cited_by": 0,
+"group": "Gwyddion",
+"oa": true,
+"oa_url": "https://pubs.rsc.org/ra/article-pdf/doi/10.1039/d6ra09384a/15134636/d6ra09384a.pdf",
+"id": "doi:10.1039/d6ra09384a",
+"score": 50,
+"tags": [
+"contact resonance"
+],
+"imp": 3,
+"pm": "Gwyddion utilisé sur une analyse que MountainsSPIP couvre : à comparer, argumentaire de remplacement.",
+"first_seen": "2026-11-26",
+"themes_sugg": [
+"particules",
+"ndma"
+],
+"contact": {
+"nom": "Loong‐Tak Lim",
+"orcid": "https://orcid.org/0000-0002-7579-3338",
+"institution": "University of Guelph",
+"certain": true
+},
+"contact_verif": "2026-11-26",
+"donnees": "inconnu",
+"donnees_note": "",
+"donnees_url": "",
+"donnees_verif": "2026-11-26"
+},
+{
+"cat": "litterature",
+"title": "Enhancing the solvent stability and electrochemical transport of polymer brushes using a double-network architecture",
+"url": "https://doi.org/10.1039/d6nr03456j",
+"date": "2026-11-18",
+"source": "OpenAlex",
+"authors": "Mateusz Głowacki-Grzyb, Esli Diepenbroek, Anna Kiełbasa, Szczepan Zapotoczny et al.",
+"venue": "Nanoscale",
+"abstract": "Polyelectrolyte brushes (PE) consist of densely surface-grafted chains, which impart the surface with stimuli-responsive properties. While this stimuli-responsive behavior enables their use in electrochemical sensing and redox-active interfaces, their stability is a limiting factor in their applicability. Inspired by…",
+"doi": "10.1039/d6nr03456j",
+"cited_by": 0,
+"group": "Champ proche (s-SNOM, TERS)",
+"oa": true,
+"oa_url": "https://pubs.rsc.org/nr/article-pdf/doi/10.1039/D6NR03456J/15089683/d6nr03456j.pdf",
+"id": "doi:10.1039/d6nr03456j",
+"score": 30,
+"tags": [
+"revue majeure"
+],
+"imp": 2,
+"pm": "Tendance scientifique sur une analyse couverte par Mountains : veille de fond utile.",
+"first_seen": "2026-11-26",
+"themes_sugg": [],
+"contact": {
+"nom": "Sissi de Beer",
+"orcid": "https://orcid.org/0000-0002-7208-6814",
+"institution": "University of Twente",
+"certain": true
+},
+"contact_verif": "2026-11-26",
+"donnees": "inconnu",
+"donnees_note": "",
+"donnees_url": "",
+"donnees_verif": "2026-11-26"
+},
+{
 "cat": "litterature",
 "title": "Interfacial mechanisms of gas-bubble friction",
 "url": "https://doi.org/10.1038/s41467-026-79472-y",
@@ -224,19 +297,19 @@
 },
 {
 "cat": "logiciels",
-"title": "Bromazepam distribution in a solid dosage form studied by time-of-flight secondary ion mass spectrometry:Elektronski vir /",
-"url": "https://doi.org/10.1039/d6ay01670g/1365679/bromazepam-distribution-in-a-solid-dosage-form",
-"date": "2026-09-17",
+"title": "Bromazepam distribution in a solid dosage form studied by time-of-flight secondary ion mass spectrometry",
+"url": "https://doi.org/10.1039/d6ay01670g",
+"date": "2026-11-12",
 "source": "OpenAlex",
 "authors": "Matjaž Finšgar",
-"venue": "dCOBISS.SI Digital Repository",
+"venue": "Analytical Methods",
 "abstract": "This work presents the surface and subsurface analysis of a bromazepam (BRZ) tablet using three-dimensional (3D) profilometry, atomic force microscopy, X-ray photoelectron spectroscopy, and time-of-flight secondary ion mass spectrometry. Profilometry and AFM showed that the tablet surface was heterogeneous, with an…",
-"doi": "10.1039/d6ay01670g/1365679/bromazepam-distribution-in-a-solid-dosage-form",
+"doi": "10.1039/d6ay01670g",
 "cited_by": 0,
 "group": "Mountains",
 "oa": true,
-"oa_url": "https://dk.um.si/Dokument.php?lang=slv&id=214870&dn=",
-"id": "doi:10.1039/d6ay01670g/1365679/bromazepam-distribution-in-a-solid-dosage-form",
+"oa_url": "https://doi.org/10.1039/d6ay01670g",
+"id": "doi:10.1039/d6ay01670g",
 "score": 60,
 "tags": [],
 "imp": 3,
@@ -252,11 +325,11 @@
 "institution": "University of Maribor",
 "certain": true
 },
-"contact_verif": "2026-11-11",
+"contact_verif": "2026-11-26",
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-11"
+"donnees_verif": "2026-11-26"
 },
 {
 "cat": "logiciels",
@@ -289,7 +362,7 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-11"
+"donnees_verif": "2026-11-26"
 },
 {
 "cat": "logiciels",
@@ -324,7 +397,7 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-11"
+"donnees_verif": "2026-11-26"
 },
 {
 "cat": "logiciels",
@@ -360,7 +433,7 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-11"
+"donnees_verif": "2026-11-26"
 },
 {
 "cat": "litterature",
@@ -398,7 +471,7 @@
 "donnees": "demande",
 "donnees_note": "Sur demande aux auteurs (déclaration de l'article)",
 "donnees_url": "",
-"donnees_verif": "2026-11-11"
+"donnees_verif": "2026-11-26"
 },
 {
 "cat": "litterature",
@@ -435,7 +508,7 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-11"
+"donnees_verif": "2026-11-26"
 },
 {
 "cat": "constructeurs",
@@ -515,7 +588,7 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-11"
+"donnees_verif": "2026-11-26"
 },
 {
 "cat": "litterature",
@@ -550,7 +623,7 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-11"
+"donnees_verif": "2026-11-26"
 },
 {
 "cat": "litterature",
