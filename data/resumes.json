@@ -659,22 +659,6 @@
   "donnees_note": "Dépôt public Hugging Face, licence CC BY 4.0.",
   "donnees_url": "https://huggingface.co/datasets/Heath-AFM-Lab/afMLevel-data"
  },
- "doi:10.1039/d6ay01670g/1365679/bromazepam-distribution-in-a-solid-dosage-form": {
-  "titre_fr": "Répartition du bromazépam dans un comprimé étudiée par spectrométrie de masse d'ions secondaires à temps de vol",
-  "resume": "Les auteurs analysent la surface et la sous-surface d'un comprimé de bromazépam en combinant profilométrie 3D, AFM, XPS et ToF-SIMS. La profilométrie et l'AFM montrent une surface hétérogène et donnent sa rugosité moyenne. L'XPS ne détecte pas le principe actif, trop peu concentré, d'où le recours au ToF-SIMS en 2D et en 3D. Le bromazépam apparaît réparti en îlots discrets dans la matrice d'excipients et non de façon homogène.",
-  "points": [
-   "Technique : profilométrie 3D, AFM, XPS, ToF-SIMS 2D et 3D",
-   "Échantillon : comprimé pharmaceutique de bromazépam",
-   "Logiciel : Mountains cité selon le robot, à confirmer dans le texte",
-   "Résultat : principe actif concentré dans des zones riches, pas réparti uniformément"
-  ],
-  "acces": "gratuit",
-  "acces_note": "Version en libre accès sur le dépôt de l'Université de Maribor",
-  "pour_toi": "Cas d'usage pharmaceutique qui combine profilométrie et AFM : bon exemple de corrélation multi-instruments à valoriser, et Matjaž Finšgar (Maribor) est un utilisateur Mountains à recontacter pour une référence client.",
-  "donnees": "inconnu",
-  "donnees_note": "Article non consulté cette nuit (site inaccessible depuis le robot) : déclaration de données à vérifier.",
-  "donnees_url": ""
- },
  "doi:10.1002/maco.70313": {
   "titre_fr": "Amorçage, progression et arrêt de la corrosion microgalvanique du cuivre en solution sulfurée sans oxygène",
   "resume": "L'étude suit la croissance de films de Cu2S et la corrosion microgalvanique qui se développe dessous, sur du cuivre exposé jusqu'à 3 ans à des solutions chlorurées contenant des sulfures. Les surfaces sont caractérisées par MEB, coupes FIB, AFM et profilométrie. À faible teneur en sulfure, un film fin et poreux rend la surface plus rugueuse ; à plus forte teneur, un film compact mais irrégulier abrite une corrosion localisée. Les auteurs proposent un mécanisme expliquant l'arrêt de cette corrosion quand le film s'épaissit.",
@@ -916,6 +900,53 @@
   "pour_toi": "Cas d'usage original des courbes de force et de la force latérale en milieu liquide (sonde bulle) : bon exemple pour vérifier que Mountains gère l'analyse de frottement statique/cinétique sur courbes latérales, et contact possible avec Lei Xie (Central South University).",
   "donnees": "inconnu",
   "donnees_note": "Article non consulté cette nuit (accès web indisponible depuis le robot) : déclaration de données à vérifier.",
+  "donnees_url": ""
+ },
+ "doi:10.1039/d6ay01670g": {
+  "titre_fr": "Répartition du bromazépam dans un comprimé étudiée par spectrométrie de masse d'ions secondaires à temps de vol",
+  "resume": "Les auteurs analysent la surface et la sous-surface d'un comprimé de bromazépam en combinant profilométrie 3D, AFM, XPS et ToF-SIMS. La profilométrie et l'AFM montrent une surface hétérogène et donnent sa rugosité moyenne. L'XPS ne détecte pas le principe actif, trop peu concentré, d'où le recours au ToF-SIMS en 2D et en 3D. Le bromazépam apparaît réparti en îlots discrets dans la matrice d'excipients et non de façon homogène.",
+  "points": [
+   "Technique : profilométrie 3D, AFM, XPS, ToF-SIMS 2D et 3D",
+   "Échantillon : comprimé pharmaceutique de bromazépam",
+   "Logiciel : Mountains cité selon le robot, à confirmer dans le texte",
+   "Résultat : principe actif concentré dans des zones riches, pas réparti uniformément"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Article en accès libre chez l'éditeur (Royal Society of Chemistry)",
+  "pour_toi": "Cas d'usage pharmaceutique qui combine profilométrie et AFM : bon exemple de corrélation multi-instruments à valoriser, et Matjaž Finšgar (Maribor) est un utilisateur Mountains à recontacter pour une référence client.",
+  "donnees": "inconnu",
+  "donnees_note": "Article non consulté cette nuit (site inaccessible depuis le robot) : déclaration de données à vérifier.",
+  "donnees_url": ""
+ },
+ "doi:10.1039/d6ra09384a": {
+  "titre_fr": "Analyse nanostructurale de films composites zéine-dérivés de cellulose par AFM en résonance de contact Lorentz et analyse thermique locale",
+  "resume": "Les auteurs préparent des nanoparticules de zéine par précipitation puis les incorporent dans deux matrices de cellulose, l'éthylcellulose (soluble dans l'éthanol) et l'HPMC (soluble dans l'eau), pour former des films coulés. Le MEB montre une structure en bicouche avec l'HPMC, alors qu'avec l'éthylcellulose les particules se répartissent dans toute l'épaisseur, plus concentrées côté support. L'AFM en résonance de contact Lorentz révèle deux zones de rigidité différentes dans le film à l'éthylcellulose contre une seule pour l'HPMC. L'analyse nanothermique confirme ce constat avec deux températures de ramollissement locales contre une.",
+  "points": [
+   "Technique : AFM en résonance de contact Lorentz, analyse nanothermique locale, MEB",
+   "Échantillon : films composites zéine-éthylcellulose et zéine-HPMC pour emballage alimentaire",
+   "Logiciel : Gwyddion selon le robot, à confirmer dans le texte",
+   "Résultat : deux phases mécaniques et thermiques avec l'éthylcellulose, une seule avec l'HPMC"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Article en accès libre chez l'éditeur (RSC Advances)",
+  "pour_toi": "Cartographie de rigidité par résonance de contact traitée avec Gwyddion : bon cas pour montrer la segmentation de phases et les statistiques par région de MountainsSPIP, et Loong-Tak Lim (Guelph) est un contact à approcher.",
+  "donnees": "inconnu",
+  "donnees_note": "Article non consulté cette nuit (site inaccessible depuis le robot) : déclaration de données à vérifier.",
+  "donnees_url": ""
+ },
+ "doi:10.1039/d6nr03456j": {
+  "titre_fr": "Améliorer la tenue aux solvants et le transport électrochimique de brosses de polymères grâce à une architecture en double réseau",
+  "resume": "Inspirés des hydrogels à double réseau, les auteurs renforcent des brosses de polyélectrolyte (PSPMA réticulé greffé sur or) en polymérisant à l'intérieur un second réseau de PHEMA sous UV. Ces brosses en double réseau conservent deux fois mieux leur hauteur après 60 heures dans le solvant que les brosses simples. L'AFM couplé au s-SNOM met en évidence à l'échelle nanométrique une séparation de microphases entre domaines riches en PSPMA et en PHEMA. La voltampérométrie montre aussi un transport plus rapide d'une sonde redox à travers la brosse.",
+  "points": [
+   "Technique : AFM et microscopie optique en champ proche à diffusion (s-SNOM), voltampérométrie cyclique",
+   "Échantillon : brosses de polymères PSPMA/PHEMA en double réseau greffées sur or",
+   "Résultat : hauteur deux fois mieux conservée après 60 h et hétérogénéité nanométrique visible"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Article en accès libre chez l'éditeur (Nanoscale)",
+  "pour_toi": "Exemple de corrélation topographie AFM et contraste s-SNOM sur polymères : à garder en tête pour la superposition multicanal et la cartographie de phases dans MountainsSPIP.",
+  "donnees": "inconnu",
+  "donnees_note": "Article non consulté cette nuit (site inaccessible depuis le robot) : déclaration de données à vérifier.",
   "donnees_url": ""
  }
 }
