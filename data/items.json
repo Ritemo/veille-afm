@@ -1,6 +1,76 @@
 [
 {
 "cat": "logiciels",
+"title": "Atomic layer etching of niobium via alternating O$_2$ and H$_2$/SF$_6$ plasma exposures",
+"url": "https://doi.org/10.48550/arxiv.2611.26735",
+"date": "2026-11-19",
+"source": "OpenAlex",
+"authors": "Lillian B. Hughes Wyatt, Azmain A. Hossain, Yifei Yan, Austin J. Minnich",
+"venue": "arXiv",
+"abstract": "Niobium thin films are a key component of superconducting detectors and electronics, and film surface quality, surface roughness, and geometrical dimensional accuracy affect many performance metrics. Atomic layer etching (ALE) is of interest for modifying film surfaces owing to its Angstrom-scale etching precision…",
+"doi": "10.48550/arxiv.2611.26735",
+"cited_by": 0,
+"group": "NanoScope Analysis",
+"oa": true,
+"oa_url": "https://arxiv.org/pdf/2611.26735",
+"id": "doi:10.48550/arxiv.2611.26735",
+"score": 40,
+"tags": [],
+"imp": 3,
+"pm": "NanoScope Analysis utilisé sur une analyse que MountainsSPIP couvre : à comparer, argumentaire de remplacement.",
+"first_seen": "2026-11-27",
+"themes_sugg": [],
+"contact": {
+"nom": "Austin J. Minnich",
+"orcid": "https://orcid.org/0000-0002-9671-9540",
+"institution": "California Institute of Technology",
+"certain": false
+},
+"contact_verif": "2026-11-27",
+"donnees": "inconnu",
+"donnees_note": "",
+"donnees_url": "",
+"donnees_verif": "2026-11-27"
+},
+{
+"cat": "litterature",
+"title": "Fabrication of CD-AFM tips with flared-like re-entrant apexes via a two-stage in-situ electron-beam-induced carbon deposition",
+"url": "https://doi.org/10.1016/j.ultramic.2026.114469",
+"date": "2026-11-20",
+"source": "OpenAlex",
+"authors": "Xiaopu Miao, Linyan Xu, Sen Wu, Rui Zhang et al.",
+"venue": "Ultramicroscopy",
+"abstract": "",
+"doi": "10.1016/j.ultramic.2026.114469",
+"cited_by": 0,
+"group": "AFM critical dimension",
+"oa": false,
+"oa_url": "",
+"id": "doi:10.1016/j.ultramic.2026.114469",
+"score": 30,
+"tags": [
+"revue majeure"
+],
+"imp": 2,
+"pm": "Tendance scientifique sur une analyse couverte par Mountains : veille de fond utile.",
+"first_seen": "2026-11-27",
+"themes_sugg": [
+"cd"
+],
+"contact": {
+"nom": "Linyan Xu",
+"orcid": "https://orcid.org/0009-0005-6896-0854",
+"institution": "Tianjin University",
+"certain": true
+},
+"contact_verif": "2026-11-27",
+"donnees": "inconnu",
+"donnees_note": "",
+"donnees_url": "",
+"donnees_verif": "2026-11-27"
+},
+{
+"cat": "logiciels",
 "title": "Nano-structural analysis of zein-cellulose derivative composite films using AFM-Lorentz contact resonance and local thermal analyses",
 "url": "https://doi.org/10.1039/d6ra09384a",
 "date": "2026-11-23",
@@ -293,7 +363,7 @@
 "donnees": "inconnu",
 "donnees_note": "",
 "donnees_url": "",
-"donnees_verif": "2026-11-12"
+"donnees_verif": "2026-11-27"
 },
 {
 "cat": "logiciels",
