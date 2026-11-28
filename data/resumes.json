@@ -948,5 +948,35 @@
   "donnees": "inconnu",
   "donnees_note": "Article non consulté cette nuit (site inaccessible depuis le robot) : déclaration de données à vérifier.",
   "donnees_url": ""
+ },
+ "doi:10.48550/arxiv.2611.26735": {
+  "titre_fr": "Gravure par couches atomiques du niobium par expositions alternées à des plasmas O2 et H2/SF6",
+  "resume": "Les auteurs mettent au point un procédé de gravure couche par couche (ALE) assistée par plasma pour les films minces de niobium, utilisés dans les détecteurs et l'électronique supraconducteurs. Chaque cycle alterne une oxydation par plasma d'oxygène et un retrait de l'oxyde par plasma H2/SF6. Le procédé enlève environ 5 à 7 angströms par cycle et lisse la surface. La température de transition supraconductrice est conservée, à la baisse attendue près liée à l'amincissement du film.",
+  "points": [
+   "Technique : gravure par couches atomiques assistée par plasma (O2 puis H2/SF6)",
+   "Échantillon : films minces de niobium pour l'électronique supraconductrice",
+   "Logiciel : NanoScope Analysis (Bruker) repéré pour l'analyse AFM",
+   "Résultat : 5 à 7 Å par cycle avec un lissage de la surface"
+  ],
+  "acces": "gratuit",
+  "acces_note": "Prépublication arXiv en libre accès",
+  "pour_toi": "Cas typique de rugosité avant/après gravure traité sous NanoScope Analysis : bon exemple pour montrer à des équipes de procédés semi-conducteurs (Caltech ici) le suivi de rugosité et les comparaisons de lots dans MountainsSPIP.",
+  "donnees": "inconnu",
+  "donnees_note": "Déclaration sur les données non vérifiée : article non consultable lors de cette passe.",
+  "donnees_url": ""
+ },
+ "doi:10.1016/j.ultramic.2026.114469": {
+  "titre_fr": "Fabrication de pointes CD-AFM à apex évasé et rentrant par dépôt de carbone in situ en deux étapes sous faisceau d'électrons",
+  "resume": "Fiche rédigée à partir du seul titre, le résumé n'étant pas disponible. L'équipe décrit une méthode pour fabriquer des pointes AFM destinées à la mesure de dimensions critiques (CD-AFM), dont l'extrémité est évasée pour sonder les flancs verticaux ou rentrants des motifs. La pointe est construite par dépôt de carbone induit par faisceau d'électrons, réalisé en deux étapes directement dans le microscope. Les performances obtenues ne sont pas connues sans le texte complet.",
+  "points": [
+   "Technique : CD-AFM, dépôt de carbone induit par faisceau d'électrons (EBID)",
+   "Échantillon : pointes AFM à apex évasé pour la métrologie de flancs"
+  ],
+  "acces": "payant",
+  "acces_note": "Article payant chez Elsevier (Ultramicroscopy)",
+  "pour_toi": "Des pointes évasées rendent la déconvolution de forme de pointe plus complexe : à garder en tête pour les outils de reconstruction de pointe et de mesure de flancs de MountainsSPIP en métrologie semi-conducteur.",
+  "donnees": "inconnu",
+  "donnees_note": "Article payant, déclaration sur les données non consultée.",
+  "donnees_url": ""
  }
 }
